@@ -5,6 +5,11 @@ import React, { useEffect } from 'react'
 import api from './utils/api'
 import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
+import Home from "./components/Home";
+import Error from "./components/Error";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
 export const BuilderContext = React.createContext({})
 
 
@@ -81,8 +86,14 @@ function App() {
           height: '100vh',
         }}
       >
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path="*" component={Error} />
+          </Routes>
+        </BrowserRouter>
 
-        <BuilderContext.Provider
+        {/* <BuilderContext.Provider
           value={{
             getSocials,
             updateInfo,
@@ -92,7 +103,7 @@ function App() {
         >
           <ResumeEdit />
           <PreviewScreen />
-        </BuilderContext.Provider>
+        </BuilderContext.Provider> */}
       </div>
     </>
   )
