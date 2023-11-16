@@ -17,28 +17,28 @@ function App() {
   const [infoState, setInfoState] = React.useState(savedData || { components })
   console.log(infoState)
 
-  useEffect(() => {
-    // Load data from localStorage on component mount
+  // useEffect(() => {
+  //   // Load data from localStorage on component mount
 
-    // if (savedData) {
-    //   setInfoState(savedData);
-    // }
-    api.readAll().then((cvs) => {
-      if (cvs.message === 'unauthorized') {
-        if (isLocalHost()) {
-          alert('FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info')
-        } else {
-          alert('FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct')
-        }
-        return false
-      }
+  //   // if (savedData) {
+  //   //   setInfoState(savedData);
+  //   // }
+  //   api.readAll().then((cvs) => {
+  //     if (cvs.message === 'unauthorized') {
+  //       if (isLocalHost()) {
+  //         alert('FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info')
+  //       } else {
+  //         alert('FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct')
+  //       }
+  //       return false
+  //     }
 
-      console.log('all cvs', cvs)
-      setInfoState({
-        cvs: cvs
-      })
-    })
-  }, []);
+  //     console.log('all cvs', cvs)
+  //     setInfoState({
+  //       cvs: cvs
+  //     })
+  //   })
+  // }, []);
 
 
   const getComponentData = (type) => {
