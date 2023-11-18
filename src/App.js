@@ -1,25 +1,21 @@
-import ResumeEdit from './components/Editor/ResumeEdit'
-import PreviewScreen from './components/PDF/ResumeTemplate'
-import { components } from './data'
+
+import { cvs } from './data'
 import React, { useEffect } from 'react'
 import api from './utils/api'
 import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
+import SingleCv from "./components/SingleCv";
 import Home from "./components/Home";
 import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-
 export const BuilderContext = React.createContext({})
-
-
-
 
 function App() {
   const savedData = JSON.parse(localStorage.getItem('cvData'));
 
   const [force, setForce] = React.useState(0)
-  const [infoState, setInfoState] = React.useState(savedData || { components })
+  const [infoState, setInfoState] = React.useState(savedData || cvs[1])
   console.log(infoState)
 
   // useEffect(() => {
@@ -47,20 +43,20 @@ function App() {
 
 
   const getComponentData = (type) => {
-    const data = infoState.components.filter((item) => item.type === type)
+    const data = infoState.filter((item) => item.type === type)
     return data ? data[0] : []
   }
   const getSocials = () => {
-    const socials = infoState.components.filter(
+    const socials = infoState.filter(
       (item) => item.type === 'Socials'
     )
     return socials ? socials[0] : []
   }
   const updateInfo = (item) => {
-    const targetIndex = infoState.components.findIndex(
+    const targetIndex = infoState.findIndex(
       (elem) => elem.type === item.type
     )
-    infoState.components.splice(targetIndex, 1, item)
+    infoState.splice(targetIndex, 1, item)
     setForce(force + 1)
   }
 
@@ -71,41 +67,55 @@ function App() {
       setInfoState(savedData);
     }
   }, []);
+
   const saveToLocalStorage = () => {
     // Save data to localStorage
     localStorage.setItem('cvData', JSON.stringify(infoState));
   };
-
+  const handleCvChange = (i) => {
+    setInfoState(cvs[i])
+  }
   return (
-    <>
-      <Navbar />
-      <div
-        style={{
-          display: 'flex',
-          width: '100%',
-          height: '100vh',
-        }}
-      >
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="*" component={Error} />
-          </Routes>
-        </BrowserRouter>
+    <div
+      style={{
+        display: 'flex',
+        width: '100%',
+        height: '100vh',
+      }}
+    >
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={
+            <BuilderContext.Provider
+              value={{
+                getSocials,
+                updateInfo,
+                getComponentData,
+                infoState,
+                saveToLocalStorage,
+                handleCvChange
+              }}
+            ><Home />
+            </BuilderContext.Provider>
+          } />
+          <Route path='cv/:id' element={<BuilderContext.Provider
+            value={{
+              getSocials,
+              updateInfo,
+              getComponentData,
+              infoState,
+              saveToLocalStorage,
+            }}
+          >
+            <SingleCv />
+          </BuilderContext.Provider>} />
+          <Route path="*" component={Error} />
+        </Routes>
+      </BrowserRouter>
 
-        {/* <BuilderContext.Provider
-          value={{
-            getSocials,
-            updateInfo,
-            getComponentData,
-            saveToLocalStorage,
-          }}
-        >
-          <ResumeEdit />
-          <PreviewScreen />
-        </BuilderContext.Provider> */}
-      </div>
-    </>
+      {/*  */}
+    </div>
   )
 }
 

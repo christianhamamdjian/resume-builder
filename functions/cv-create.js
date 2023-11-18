@@ -10,7 +10,7 @@ exports.handler = async (event, context) => {
   })
   /* parse the string body into a useable JS object */
   const data = JSON.parse(event.body)
-  console.log('Function `todo-create` invoked', data)
+  console.log('Function `cv-create` invoked', data)
   const cv = {
     data: data
   }
