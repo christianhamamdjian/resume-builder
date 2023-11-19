@@ -1,6 +1,7 @@
 /* Api methods to call /functions */
 
 const create = (data) => {
+  console.log(data)
   return fetch('/.netlify/functions/cv-create', {
     body: JSON.stringify(data),
     method: 'POST'

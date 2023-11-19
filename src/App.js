@@ -16,7 +16,7 @@ function App() {
 
   const [force, setForce] = React.useState(0)
   const [infoState, setInfoState] = React.useState(savedData || cvs[1])
-  console.log(infoState)
+  // console.log(infoState)
 
   // useEffect(() => {
   //   // Load data from localStorage on component mount
@@ -24,6 +24,8 @@ function App() {
   //   // if (savedData) {
   //   //   setInfoState(savedData);
   //   // }
+
+
   //   api.readAll().then((cvs) => {
   //     if (cvs.message === 'unauthorized') {
   //       if (isLocalHost()) {
@@ -40,7 +42,48 @@ function App() {
   //     })
   //   })
   // }, []);
+  const getCvId = (cv) => {
+    if (!cv.ref) {
+      return null
+    }
+    return cv.ref['@ref'].id
+  }
 
+  const deleteCv = (e) => {
+    const { cvs } = this.state
+    const cvId = e.target.dataset.id
+
+    // Optimistically remove cv from UI
+    const filteredCvs = cvs.reduce((acc, current) => {
+      const currentId = getCvId(current)
+      if (currentId === cvId) {
+        // save item being removed for rollback
+        acc.rollbackCv = current
+        return acc
+      }
+      // filter deleted cv out of the cvs list
+      acc.optimisticState = acc.optimisticState.concat(current)
+      return acc
+    }, {
+      rollbackCv: {},
+      optimisticState: []
+    })
+
+    this.setState({
+      cvs: filteredCvs.optimisticState
+    })
+
+    // Make API request to delete cv
+    api.delete(cvId).then(() => {
+      console.log(`deleted cv id ${cvId}`)
+    }).catch((e) => {
+      console.log(`There was an error removing ${cvId}`, e)
+      // Add item removed back to list
+      this.setState({
+        cvs: filteredCvs.optimisticState.concat(filteredCvs.rollbackCv)
+      })
+    })
+  }
 
   const getComponentData = (type) => {
     const data = infoState.filter((item) => item.type === type)
@@ -106,6 +149,7 @@ function App() {
               getComponentData,
               infoState,
               saveToLocalStorage,
+              deleteCv
             }}
           >
             <SingleCv />
