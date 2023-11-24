@@ -17,7 +17,8 @@ function App() {
   const [force, setForce] = React.useState(0)
   // const [infoState, setInfoState] = React.useState(savedData || cvs[1])
   const [infoState, setInfoState] = React.useState([])
-  console.log(infoState)
+  const [infoSelected, setInfoSelected] = React.useState([])
+  console.log(infoSelected)
 
   // useEffect(() => {
   //   // Load data from localStorage on component mount
@@ -93,9 +94,10 @@ function App() {
       })
     })
   }
-
+  console.log(infoSelected)
   const getComponentData = (type) => {
-    const data = infoState.filter((item) => item.type === type)
+    // const data = infoState.filter((item) => item.type === type)
+    const data = infoSelected.filter((item) => item.type === type)
     return data ? data[0] : []
   }
   const getSocials = () => {
@@ -157,6 +159,8 @@ function App() {
               updateInfo,
               getComponentData,
               infoState,
+              infoSelected,
+              setInfoSelected,
               // saveToLocalStorage,
               deleteCv
             }}

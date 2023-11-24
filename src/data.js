@@ -6,7 +6,7 @@ export const cvs = [[
     },
     {
         type: 'Profile',
-        name: 'Jane Doe',
+        name: 'John Doe',
         profession: 'Junior Developer',
         profileImageURL: 'https://i.imgur.com/f6L6Y57.png',
         display: true,

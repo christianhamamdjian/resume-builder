@@ -8,6 +8,7 @@ const SingleCv = () => {
     const { id } = useParams()
     const ctx = useContext(BuilderContext)
     const allCvs = ctx.infoState
+    const { setInfoSelected } = ctx
 
     const [name, setName] = useState("")
 
@@ -15,12 +16,14 @@ const SingleCv = () => {
         allCvs.filter((cv, i) => {
             if (i === +id) {
                 setName(cv['data']["items"][1]["name"])
+                console.log(cv['data']["items"])
+                setInfoSelected(cv['data']["items"])
             } else {
                 return null
             }
         })
     }, [])
-    // console.log(name)
+
     return (
         <>
             <h1>Single Cv</h1>
@@ -28,8 +31,8 @@ const SingleCv = () => {
                 back home
             </Link>
             {name}
-            {/* <ResumeEdit id={id} />
-            <PreviewScreen /> */}
+            {/* <ResumeEdit /> */}
+            {/* <PreviewScreen /> */}
         </>
     );
 };
