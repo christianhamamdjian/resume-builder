@@ -9,5 +9,8 @@
  status = 200
 
 [dev]
-  # Local dev command. A.k.a npm start
-  command = "react-scripts start"
+# Local dev command. A.k.a npm start
+command = "react-scripts start"
+framework = "create-react-app"
+functionsPort = 3001
+targetPort = 3000

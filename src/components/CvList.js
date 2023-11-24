@@ -40,7 +40,9 @@ const CvList = () => {
 			<ul>
 				{cvs.map((cv, i) => {
 					return <li key={i}>
-						<Link to={`/cv/${i}`} onClick={() => ctx.handleCvChange(i)}>{cv[1].name}</Link>
+						<Link to={`/cv/${i}`}
+						// onClick={() => ctx.handleCvChange(i)}
+						>{cv[1].name}</Link>
 						<button data-id={i} onClick={ctx.deleteCv}>
 							delete
 						</button>
