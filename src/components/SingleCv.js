@@ -31,8 +31,8 @@ const SingleCv = () => {
                 back home
             </Link>
             {name}
-            {/* <ResumeEdit /> */}
-            {/* <PreviewScreen /> */}
+            <ResumeEdit />
+            <PreviewScreen />
         </>
     );
 };

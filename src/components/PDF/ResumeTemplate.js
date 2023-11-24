@@ -44,12 +44,12 @@ const PreviewScreen = () => {
       >
         <ResumeTemplate builder={ctx} />
       </PDFViewer>
-      <PDFDownloadLink
+      {/* <PDFDownloadLink
         document={<ResumeTemplate builder={ctx} />}
         fileName='somename.pdf'
       >
         {({ loading }) => (loading ? 'Loading document...' : 'Download now!')}
-      </PDFDownloadLink>
+      </PDFDownloadLink> */}
     </div>
   )
 }

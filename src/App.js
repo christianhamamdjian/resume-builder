@@ -101,16 +101,19 @@ function App() {
     return data ? data[0] : []
   }
   const getSocials = () => {
-    const socials = infoState.filter(
+    // const socials = infoState.filter(
+    const socials = infoSelected.filter(
       (item) => item.type === 'Socials'
     )
     return socials ? socials[0] : []
   }
   const updateInfo = (item) => {
-    const targetIndex = infoState.findIndex(
+    // const targetIndex = infoState.findIndex(
+    const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
     )
-    infoState.splice(targetIndex, 1, item)
+    // infoState.splice(targetIndex, 1, item)
+    infoSelected.splice(targetIndex, 1, item)
     setForce(force + 1)
   }
 

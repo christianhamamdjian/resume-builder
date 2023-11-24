@@ -52,8 +52,8 @@ const ResumeEdit = () => {
             <ul className='flex cursor-pointer'>
               <li
                 className={`py-2 mt-2  px-6  border-gray-300 border ${tabSelected === 'About'
-                    ? 'bg-white'
-                    : 'bg-gray-200 text-gray-600'
+                  ? 'bg-white'
+                  : 'bg-gray-200 text-gray-600'
                   } rounded-t-lg `}
                 onClick={() => setTabSelected('About')}
               >
@@ -61,8 +61,8 @@ const ResumeEdit = () => {
               </li>
               <li
                 className={`py-2 mt-2 px-6 border-gray-300 border ${tabSelected === 'Skills'
-                    ? 'bg-white'
-                    : 'bg-gray-200 text-gray-600'
+                  ? 'bg-white'
+                  : 'bg-gray-200 text-gray-600'
                   } rounded-t-lg 	`}
                 onClick={() => setTabSelected('Skills')}
               >
@@ -70,8 +70,8 @@ const ResumeEdit = () => {
               </li>
               <li
                 className={`py-2 mt-2 px-6 border-gray-300 border ${tabSelected === 'Projects'
-                    ? 'bg-white'
-                    : 'bg-gray-200 text-gray-600'
+                  ? 'bg-white'
+                  : 'bg-gray-200 text-gray-600'
                   } rounded-t-lg`}
                 onClick={() => setTabSelected('Projects')}
               >
