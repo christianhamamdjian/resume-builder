@@ -7,12 +7,25 @@ import { BuilderContext } from './../App'
 const CvList = () => {
 
 	const ctx = useContext(BuilderContext)
+	const allCvs = ctx.infoState
+	console.log(allCvs)
 
 	const createNew = (e, cvInfo) => {
 		e.preventDefault()
 		api.create(cvInfo)
 	}
-
+	const renderCvs = () => allCvs.map((cv, i) => {
+		const { data } = cv
+		const name = data["items"][1]["name"]
+		return <li key={i}>
+			<Link to={`/cv/${i}`}
+			// onClick={() => ctx.handleCvChange(i)}
+			>{name}</Link>
+			<button data-id={i} onClick={ctx.deleteCv}>
+				delete
+			</button>
+		</li>
+	})
 	return (
 		<>
 			<h2>
@@ -38,16 +51,7 @@ const CvList = () => {
 			</form>
 			<h1>CV list</h1>
 			<ul>
-				{cvs.map((cv, i) => {
-					return <li key={i}>
-						<Link to={`/cv/${i}`}
-						// onClick={() => ctx.handleCvChange(i)}
-						>{cv[1].name}</Link>
-						<button data-id={i} onClick={ctx.deleteCv}>
-							delete
-						</button>
-					</li>
-				})}
+				{renderCvs()}
 			</ul>
 		</>
 	);

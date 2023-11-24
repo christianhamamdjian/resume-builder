@@ -15,8 +15,9 @@ function App() {
   const savedData = JSON.parse(localStorage.getItem('cvData'));
 
   const [force, setForce] = React.useState(0)
-  const [infoState, setInfoState] = React.useState(savedData || cvs[1])
-  // console.log(infoState)
+  // const [infoState, setInfoState] = React.useState(savedData || cvs[1])
+  const [infoState, setInfoState] = React.useState([])
+  console.log(infoState)
 
   // useEffect(() => {
   //   // Load data from localStorage on component mount
@@ -42,6 +43,14 @@ function App() {
   //     })
   //   })
   // }, []);
+  useEffect(() => {
+    const fetchCvs = async () => {
+      const allCvs = await api.readAll()
+      //console.log(allCvs)
+      setInfoState(allCvs)
+    }
+    fetchCvs()
+  }, []);
   const getCvId = (cv) => {
     if (!cv.ref) {
       return null
@@ -103,21 +112,21 @@ function App() {
     setForce(force + 1)
   }
 
-  useEffect(() => {
-    // Load data from localStorage on component mount
+  // useEffect(() => {
+  //   // Load data from localStorage on component mount
 
-    if (savedData) {
-      setInfoState(savedData);
-    }
-  }, []);
+  //   if (savedData) {
+  //     setInfoState(savedData);
+  //   }
+  // }, []);
 
-  const saveToLocalStorage = () => {
-    // Save data to localStorage
-    localStorage.setItem('cvData', JSON.stringify(infoState));
-  };
-  const handleCvChange = (i) => {
-    setInfoState(cvs[i])
-  }
+  // const saveToLocalStorage = () => {
+  //   // Save data to localStorage
+  //   localStorage.setItem('cvData', JSON.stringify(infoState));
+  // };
+  // const handleCvChange = (i) => {
+  //   setInfoState(cvs[i])
+  // }
   return (
     <div
       style={{
@@ -136,8 +145,8 @@ function App() {
                 updateInfo,
                 getComponentData,
                 infoState,
-                saveToLocalStorage,
-                handleCvChange
+                // saveToLocalStorage,
+                // handleCvChange
               }}
             ><Home />
             </BuilderContext.Provider>
@@ -148,7 +157,7 @@ function App() {
               updateInfo,
               getComponentData,
               infoState,
-              saveToLocalStorage,
+              // saveToLocalStorage,
               deleteCv
             }}
           >
