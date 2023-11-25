@@ -5,21 +5,33 @@ import api from "../utils/api"
 import { BuilderContext } from './../App'
 
 const CvList = () => {
-
 	const ctx = useContext(BuilderContext)
 	const allCvs = ctx.infoState
-	console.log(allCvs)
+	const { setInfoSelected } = ctx
+
+	const setSelectedCv = (e, id) => {
+		e.preventDefault()
+		allCvs.filter((cv, i) => {
+			console.log(id, i)
+			if (+i === +id) {
+				setInfoSelected(cv['data']["items"])
+			} else {
+				return null
+			}
+		})
+	}
 
 	const createNew = (e, cvInfo) => {
 		e.preventDefault()
 		api.create(cvInfo)
 	}
+
 	const renderCvs = () => allCvs.map((cv, i) => {
 		const { data } = cv
 		const name = data["items"][1]["name"]
 		return <li key={i}>
 			<Link to={`/cv/${i}`}
-			// onClick={() => ctx.handleCvChange(i)}
+				onPointerUp={(e) => setSelectedCv(e, i)}
 			>{name}</Link>
 			<button data-id={i} onClick={ctx.deleteCv}>
 				delete

@@ -150,6 +150,7 @@ function App() {
                 updateInfo,
                 getComponentData,
                 infoState,
+                setInfoSelected
                 // saveToLocalStorage,
                 // handleCvChange
               }}
