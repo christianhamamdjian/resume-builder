@@ -9,6 +9,7 @@ const CvList = () => {
 	const ctx = useContext(BuilderContext)
 	const allCvs = ctx.infoState
 	const { setInfoSelected } = ctx
+	const { setInfoState } = ctx
 
 	const { user } = useContext(AuthContext);
 	const userId = user?.id
@@ -25,9 +26,11 @@ const CvList = () => {
 
 	const createNew = (e, cvInfo) => {
 		e.preventDefault()
-		api.create(cvInfo)
+		api.create(cvInfo).then((response) => {
+			console.log("New Cv was created successfully!")
+			setInfoState([...allCvs, response])
+		})
 	}
-
 	const renderCvs = () => allCvs.map((cv, i) => {
 		const { data } = cv
 		const { ref } = cv
@@ -42,7 +45,7 @@ const CvList = () => {
 			</button>
 		</li>
 	})
-	const cvWithId = [{ author: userId }, ...cvs[0]]
+	const cvWithId = [{ author: userId, id: Date.now() }, ...cvs[0]]
 
 	return (
 		<>

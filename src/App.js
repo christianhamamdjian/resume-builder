@@ -61,12 +61,12 @@ function App() {
   //   })
   // }, []);
   useEffect(() => {
-    api.readAll(userId).then((allCvs) => setInfoState(allCvs))
-    // const fetchCvs = async () => {
-    //   const allCvs = await api.readAll(userId)
-    //   setInfoState(allCvs)
-    // }
-    // fetchCvs()
+    // api.readAll(userId).then((allCvs) => setInfoState(allCvs))
+    const fetchCvs = async () => {
+      const allCvs = await api.readAll(userId)
+      setInfoState(allCvs)
+    }
+    fetchCvs()
   }, []);
   const getCvId = (cv) => {
     if (!cv.ref) {
@@ -133,6 +133,7 @@ function App() {
                 updateInfo,
                 getComponentData,
                 infoState,
+                setInfoState,
                 setInfoSelected,
                 deleteCv
                 // saveToLocalStorage,
