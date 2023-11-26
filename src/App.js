@@ -1,6 +1,6 @@
 
 // import { cvs } from './data'
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import api from './utils/api'
 // import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
@@ -8,14 +8,17 @@ import SingleCv from "./components/SingleCv";
 import Home from "./components/Home";
 import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import netlifyIdentity from 'netlify-identity-widget';
+import AuthContext from "./context/authContext";
 
 export const BuilderContext = React.createContext({})
 
+
+
 function App() {
   // const savedData = JSON.parse(localStorage.getItem('cvData'));
-  const currentUserId = netlifyIdentity.currentUser()
-  console.log(currentUserId?.id)
+  const { user } = useContext(AuthContext);
+  console.log(user?.id)
+  const [userId, setUserId] = useState(user?.id)
   // Function to check if the accessed content in the database belongs to the current user.
   // exports.handler = async (event, context) => {
   //   const user = context.clientContext.user
@@ -58,12 +61,12 @@ function App() {
   //   })
   // }, []);
   useEffect(() => {
-    const fetchCvs = async () => {
-      const allCvs = await api.readAll()
-      console.log(allCvs)
-      setInfoState(allCvs)
-    }
-    fetchCvs()
+    api.readAll(userId).then((allCvs) => setInfoState(allCvs))
+    // const fetchCvs = async () => {
+    //   const allCvs = await api.readAll(userId)
+    //   setInfoState(allCvs)
+    // }
+    // fetchCvs()
   }, []);
   const getCvId = (cv) => {
     if (!cv.ref) {
@@ -82,35 +85,11 @@ function App() {
     })
     setInfoState(filteredCvs)
 
-    // // Optimistically remove cv from UI
-    // const filteredCvs = cvs.reduce((acc, current) => {
-    //   const currentId = getCvId(current)
-    //   if (currentId === cvId) {
-    //     // save item being removed for rollback
-    //     acc.rollbackCv = current
-    //     return acc
-    //   }
-    //   // filter deleted cv out of the cvs list
-    //   acc.optimisticState = acc.optimisticState.concat(current)
-    //   return acc
-    // }, {
-    //   rollbackCv: {},
-    //   optimisticState: []
-    // })
-
-    // this.setState({
-    //   cvs: filteredCvs.optimisticState
-    // })
-
     // Make API request to delete cv
     api.delete(cvId).then(() => {
       console.log(`deleted cv id ${cvId}`)
     }).catch((e) => {
       console.log(`There was an error removing ${cvId}`, e)
-      // Add item removed back to list
-      // this.setState({
-      //   cvs: filteredCvs.optimisticState.concat(filteredCvs.rollbackCv)
-      // })
     })
   }
   const getComponentData = (type) => {
@@ -136,21 +115,6 @@ function App() {
 
   }
 
-  // useEffect(() => {
-  //   // Load data from localStorage on component mount
-
-  //   if (savedData) {
-  //     setInfoState(savedData);
-  //   }
-  // }, []);
-
-  // const saveToLocalStorage = () => {
-  //   // Save data to localStorage
-  //   localStorage.setItem('cvData', JSON.stringify(infoState));
-  // };
-  // const handleCvChange = (i) => {
-  //   setInfoState(cvs[i])
-  // }
   return (
     <div
       style={{

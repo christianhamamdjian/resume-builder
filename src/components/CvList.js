@@ -30,7 +30,6 @@ const CvList = () => {
 		const { ref } = cv
 		const name = data["items"][1]["name"]
 		const cvId = ref["@ref"]["id"]
-		console.log(cvId)
 		return <li key={i}>
 			<Link to={`/cv/${i}`}
 				onPointerUp={(e) => setSelectedCv(e, i)}

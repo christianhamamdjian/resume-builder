@@ -1,10 +1,5 @@
 export const cvs = [[
     {
-        type: 'id',
-        id: '1',
-        user: ''
-    },
-    {
         type: 'Profile',
         name: 'John Doe',
         profession: 'Junior Developer',

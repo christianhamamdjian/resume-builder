@@ -1,10 +1,13 @@
 /* Import faunaDB sdk */
 const faunadb = require('faunadb')
+const getId = require('./utils/getId')
 const q = faunadb.query
 
 
 exports.handler = (event, context) => {
   console.log('Function `cv-read-all` invoked')
+  const userId = getId(event.path)
+  console.log(userId)
   /* configure faunaDB Client with our secret */
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET
