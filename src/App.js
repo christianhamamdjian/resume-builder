@@ -1,8 +1,8 @@
 
-import { cvs } from './data'
+// import { cvs } from './data'
 import React, { useEffect } from 'react'
 import api from './utils/api'
-import isLocalHost from './utils/isLocalHost'
+// import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
 import SingleCv from "./components/SingleCv";
 import Home from "./components/Home";
@@ -12,13 +12,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 export const BuilderContext = React.createContext({})
 
 function App() {
-  const savedData = JSON.parse(localStorage.getItem('cvData'));
+  // const savedData = JSON.parse(localStorage.getItem('cvData'));
 
   const [force, setForce] = React.useState(0)
   // const [infoState, setInfoState] = React.useState(savedData || cvs[1])
   const [infoState, setInfoState] = React.useState([])
   const [infoSelected, setInfoSelected] = React.useState([])
-  console.log(infoSelected)
 
   // useEffect(() => {
   //   // Load data from localStorage on component mount
@@ -47,7 +46,7 @@ function App() {
   useEffect(() => {
     const fetchCvs = async () => {
       const allCvs = await api.readAll()
-      //console.log(allCvs)
+      console.log(allCvs)
       setInfoState(allCvs)
     }
     fetchCvs()
@@ -60,28 +59,28 @@ function App() {
   }
 
   const deleteCv = (e) => {
-    const { cvs } = this.state
+    // const { cvs } = this.state
     const cvId = e.target.dataset.id
+    console.log(+cvId)
+    // // Optimistically remove cv from UI
+    // const filteredCvs = cvs.reduce((acc, current) => {
+    //   const currentId = getCvId(current)
+    //   if (currentId === cvId) {
+    //     // save item being removed for rollback
+    //     acc.rollbackCv = current
+    //     return acc
+    //   }
+    //   // filter deleted cv out of the cvs list
+    //   acc.optimisticState = acc.optimisticState.concat(current)
+    //   return acc
+    // }, {
+    //   rollbackCv: {},
+    //   optimisticState: []
+    // })
 
-    // Optimistically remove cv from UI
-    const filteredCvs = cvs.reduce((acc, current) => {
-      const currentId = getCvId(current)
-      if (currentId === cvId) {
-        // save item being removed for rollback
-        acc.rollbackCv = current
-        return acc
-      }
-      // filter deleted cv out of the cvs list
-      acc.optimisticState = acc.optimisticState.concat(current)
-      return acc
-    }, {
-      rollbackCv: {},
-      optimisticState: []
-    })
-
-    this.setState({
-      cvs: filteredCvs.optimisticState
-    })
+    // this.setState({
+    //   cvs: filteredCvs.optimisticState
+    // })
 
     // Make API request to delete cv
     api.delete(cvId).then(() => {
@@ -89,12 +88,11 @@ function App() {
     }).catch((e) => {
       console.log(`There was an error removing ${cvId}`, e)
       // Add item removed back to list
-      this.setState({
-        cvs: filteredCvs.optimisticState.concat(filteredCvs.rollbackCv)
-      })
+      // this.setState({
+      //   cvs: filteredCvs.optimisticState.concat(filteredCvs.rollbackCv)
+      // })
     })
   }
-  console.log(infoSelected)
   const getComponentData = (type) => {
     // const data = infoState.filter((item) => item.type === type)
     const data = infoSelected.filter((item) => item.type === type)
@@ -113,8 +111,9 @@ function App() {
       (elem) => elem.type === item.type
     )
     // infoState.splice(targetIndex, 1, item)
-    infoSelected.splice(targetIndex, 1, item)
+    setInfoSelected(infoSelected.splice(targetIndex, 1, item))
     setForce(force + 1)
+
   }
 
   // useEffect(() => {
@@ -150,7 +149,8 @@ function App() {
                 updateInfo,
                 getComponentData,
                 infoState,
-                setInfoSelected
+                setInfoSelected,
+                deleteCv
                 // saveToLocalStorage,
                 // handleCvChange
               }}

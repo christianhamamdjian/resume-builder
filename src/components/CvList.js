@@ -12,7 +12,6 @@ const CvList = () => {
 	const setSelectedCv = (e, id) => {
 		e.preventDefault()
 		allCvs.filter((cv, i) => {
-			console.log(id, i)
 			if (+i === +id) {
 				setInfoSelected(cv['data']["items"])
 			} else {
@@ -28,13 +27,16 @@ const CvList = () => {
 
 	const renderCvs = () => allCvs.map((cv, i) => {
 		const { data } = cv
+		const { ref } = cv
 		const name = data["items"][1]["name"]
+		const cvId = ref["@ref"]["id"]
+		console.log(cvId)
 		return <li key={i}>
 			<Link to={`/cv/${i}`}
 				onPointerUp={(e) => setSelectedCv(e, i)}
 			>{name}</Link>
-			<button data-id={i} onClick={ctx.deleteCv}>
-				delete
+			<button data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
+				Delete Cv
 			</button>
 		</li>
 	})

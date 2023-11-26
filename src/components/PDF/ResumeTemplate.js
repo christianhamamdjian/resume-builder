@@ -34,6 +34,12 @@ const PreviewScreen = () => {
   const ctx = useContext(BuilderContext)
   return (
     <div style={{ flexGrow: '1' }}>
+      <PDFDownloadLink
+        document={<ResumeTemplate builder={ctx} />}
+        fileName='somename.pdf'
+      >
+        {({ loading }) => (loading ? 'Loading document...' : 'Download now!')}
+      </PDFDownloadLink>
       <PDFViewer
         showToolbar={false}
         style={{
@@ -44,12 +50,6 @@ const PreviewScreen = () => {
       >
         <ResumeTemplate builder={ctx} />
       </PDFViewer>
-      {/* <PDFDownloadLink
-        document={<ResumeTemplate builder={ctx} />}
-        fileName='somename.pdf'
-      >
-        {({ loading }) => (loading ? 'Loading document...' : 'Download now!')}
-      </PDFDownloadLink> */}
     </div>
   )
 }
