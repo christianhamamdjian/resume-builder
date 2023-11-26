@@ -8,12 +8,26 @@ import SingleCv from "./components/SingleCv";
 import Home from "./components/Home";
 import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import netlifyIdentity from 'netlify-identity-widget';
 
 export const BuilderContext = React.createContext({})
 
 function App() {
   // const savedData = JSON.parse(localStorage.getItem('cvData'));
-
+  const currentUserId = netlifyIdentity.currentUser()
+  console.log(currentUserId?.id)
+  // Function to check if the accessed content in the database belongs to the current user.
+  // exports.handler = async (event, context) => {
+  //   const user = context.clientContext.user
+  //   if (user && user.sub === 'your-admin-user-id') {
+  //     // process the function
+  //   } else {
+  //     return: {
+  //       statusCode: 401
+  //       body: JSON.stringify('Unauthorised')
+  //     }
+  //   }
+  // }
   const [force, setForce] = React.useState(0)
   // const [infoState, setInfoState] = React.useState(savedData || cvs[1])
   const [infoState, setInfoState] = React.useState([])
@@ -62,6 +76,12 @@ function App() {
     // const { cvs } = this.state
     const cvId = e.target.dataset.id
     console.log(+cvId)
+    const filteredCvs = infoState.filter((cv) => {
+      const id = cv.ref["@ref"]["id"]
+      return id !== cvId
+    })
+    setInfoState(filteredCvs)
+
     // // Optimistically remove cv from UI
     // const filteredCvs = cvs.reduce((acc, current) => {
     //   const currentId = getCvId(current)
