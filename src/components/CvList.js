@@ -3,12 +3,15 @@ import { cvs } from '../data'
 import { Link } from 'react-router-dom'
 import api from "../utils/api"
 import { BuilderContext } from './../App'
+import AuthContext from "../context/authContext";
 
 const CvList = () => {
 	const ctx = useContext(BuilderContext)
 	const allCvs = ctx.infoState
 	const { setInfoSelected } = ctx
 
+	const { user } = useContext(AuthContext);
+	const userId = user?.id
 	const setSelectedCv = (e, id) => {
 		e.preventDefault()
 		allCvs.filter((cv, i) => {
@@ -32,13 +35,15 @@ const CvList = () => {
 		const cvId = ref["@ref"]["id"]
 		return <li key={i}>
 			<Link to={`/cv/${i}`}
-				onPointerUp={(e) => setSelectedCv(e, i)}
+				onPointerDown={(e) => setSelectedCv(e, i)}
 			>{name}</Link>
 			<button data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
 				Delete Cv
 			</button>
 		</li>
 	})
+	const cvWithId = [{ author: userId }, ...cvs[0]]
+
 	return (
 		<>
 			<h2>
@@ -46,7 +51,8 @@ const CvList = () => {
 			</h2>
 			<form
 				className='cv-create-wrapper'
-				onSubmit={(e) => createNew(e, cvs[0])}
+				// onSubmit={(e) => createNew(e, cvs[0])}
+				onSubmit={(e) => createNew(e, cvWithId)}
 			>
 				<input
 					className='cv-create-input'
