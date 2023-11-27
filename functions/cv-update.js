@@ -9,6 +9,7 @@ exports.handler = (event, context) => {
   })
   const data = JSON.parse(event.body)
   const id = getId(event.path)
+  console.log(id, data)
   console.log(`Function 'cv-update' invoked. update id: ${id}`)
   return client.query(q.Update(q.Ref(`classes/cvs/${id}`), { data }))
     .then((response) => {

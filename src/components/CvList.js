@@ -18,6 +18,7 @@ const CvList = () => {
 		allCvs.filter((cv, i) => {
 			if (+i === +id) {
 				setInfoSelected(cv['data']["items"])
+				ctx.setCvSelected(cv)
 			} else {
 				return null
 			}

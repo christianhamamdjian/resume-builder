@@ -17,7 +17,7 @@ export const BuilderContext = React.createContext({})
 function App() {
   // const savedData = JSON.parse(localStorage.getItem('cvData'));
   const { user } = useContext(AuthContext);
-  console.log(user?.id)
+  // console.log(user?.id)
   const [userId, setUserId] = useState(user?.id)
   // Function to check if the accessed content in the database belongs to the current user.
   // exports.handler = async (event, context) => {
@@ -31,10 +31,11 @@ function App() {
   //     }
   //   }
   // }
-  const [force, setForce] = React.useState(0)
-  // const [infoState, setInfoState] = React.useState(savedData || cvs[1])
-  const [infoState, setInfoState] = React.useState([])
-  const [infoSelected, setInfoSelected] = React.useState([])
+  const [force, setForce] = useState(0)
+  // const [infoState, setInfoState] = useState(savedData || cvs[1])
+  const [infoState, setInfoState] = useState([])
+  const [infoSelected, setInfoSelected] = useState([])
+  const [cvSelected, setCvSelected] = useState([])
 
   // useEffect(() => {
   //   // Load data from localStorage on component mount
@@ -68,6 +69,19 @@ function App() {
     }
     fetchCvs()
   }, []);
+  // useEffect(() => {
+  //   //   console.log(infoSelected)
+  //   //   if (infoSelected) {
+  //   const cvId = infoSelected.length ? infoSelected[0]['id'] : []
+  //   console.log(cvId)
+  //   if (cvId) {
+  //     api.update(cvId, infoSelected).then((response) => {
+  //       console.log(`updated cv id ${cvId} ${response}`)
+  //     }).catch((e) => {
+  //       console.log(`There was an error updating ${cvId}`, e)
+  //     })
+  //   }
+  // }, [infoSelected]);
   const getCvId = (cv) => {
     if (!cv.ref) {
       return null
@@ -105,14 +119,22 @@ function App() {
     return socials ? socials[0] : []
   }
   const updateInfo = (item) => {
-    // const targetIndex = infoState.findIndex(
     const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
     )
-    // infoState.splice(targetIndex, 1, item)
     setInfoSelected(infoSelected.splice(targetIndex, 1, item))
+    // const cvId = infoSelected[0]['id']
+    const { ref } = cvSelected
+    const cvId = ref["@ref"]["id"]
+    console.log(cvSelected)
+    if (cvId) {
+      api.update(cvId, cvSelected['data']).then((response) => {
+        console.log(`updated cv id ${cvId} ${response}`)
+      }).catch((e) => {
+        console.log(`There was an error updating ${cvId}`, e)
+      })
+    }
     setForce(force + 1)
-
   }
 
   return (
@@ -135,6 +157,7 @@ function App() {
                 infoState,
                 setInfoState,
                 setInfoSelected,
+                setCvSelected,
                 deleteCv
                 // saveToLocalStorage,
                 // handleCvChange
