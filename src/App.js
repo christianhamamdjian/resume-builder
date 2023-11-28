@@ -11,35 +11,57 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
 
-
-
 function App() {
-  const { user } = useContext(AuthContext);
-  const [userId, setUserId] = useState(user?.id)
-
+  const { user } = useContext(AuthContext)
+  console.log(user)
+  const [userId, setUserId] = useState(null)
   const [force, setForce] = useState(0)
   // const [infoState, setInfoState] = useState(savedData || cvs[1])
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
+
   useEffect(() => {
-    setUserId(user?.id)
-  }, [user])
+    // const initNetlifyIdentity = async () => {
+    // Import Netlify Identity widget dynamically
+    // const netlifyIdentity = await import('netlify-identity-widget');
+
+    // // Initialize Netlify Identity
+    // netlifyIdentity.init();
+
+    // // Add an event listener for the open event
+    // netlifyIdentity.on('open', () => {
+    //   // Check if the user is authenticated when the modal is opened
+    //   const user = netlifyIdentity.currentUser();
+
+
+    if (user) {
+      // Set the user ID in state
+      setUserId(user.id);
+    }
+    // });
+    // };
+
+    // initNetlifyIdentity();
+  }, [user]);
   useEffect(() => {
     //const userId = netlifyIdentity.currentUser()
-    // console.log(userId)
-    // api.readAll(userId)
-    //   .then((allCvs) => setInfoState(allCvs))
-    //   .catch((e) => {
-    //     console.log(`There was an error fetching cvs`, e)
-    //   })
-    const fetchCvs = async () => {
-      const allCvs = await api.readAll(userId)
-      setInfoState(allCvs)
+    console.log(userId)
+    if (userId) {
+      api.readAll(userId)
+        .then((allCvs) => setInfoState(allCvs))
+        .catch((e) => {
+          console.log(`There was an error fetching cvs`, e)
+        })
+
+      // const fetchCvs = async () => {
+      //   const allCvs = await api.readAll(userId)
+      //   setInfoState(allCvs)
+      // }
+      // fetchCvs()
     }
-    fetchCvs()
     // }
-  }, []);
+  }, [userId]);
 
   const deleteCv = (e) => {
     const cvId = e.target.dataset.id

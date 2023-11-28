@@ -18,7 +18,11 @@ const create = (data) => {
 
 const readAll = (userId) => {
   console.log(userId)
-  return fetch(`/.netlify/functions/cv-read-all/${userId}`).then((response) => {
+  return fetch(`/.netlify/functions/cv-read-all/${userId}`, {
+    // headers: {
+    //   authorization: `Bearer ${userId.token.access_token}`
+    // },
+  }).then((response) => {
     return response.json()
   })
 }
