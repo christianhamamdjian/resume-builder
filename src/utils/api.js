@@ -1,4 +1,5 @@
 /* Api methods to call /functions */
+import netlifyIdentity from "netlify-identity-widget";
 
 const create = (data) => {
   //console.log(data)
@@ -10,18 +11,11 @@ const create = (data) => {
   })
 }
 
-// const readAll = (userId) => {
-//   return fetch(`/.netlify/functions/cv-read-all/${userId}`).then((response) => {
-//     return response.json()
-//   })
-// }
-
-const readAll = (userId) => {
-  console.log(userId)
-  return fetch(`/.netlify/functions/cv-read-all/${userId}`, {
-    // headers: {
-    //   authorization: `Bearer ${userId.token.access_token}`
-    // },
+const readAll = () => {
+  return fetch(`/.netlify/functions/cv-read-all`, {
+    headers: {
+      authorization: `Bearer ${netlifyIdentity.currentUser().token.access_token}`
+    }
   }).then((response) => {
     return response.json()
   })

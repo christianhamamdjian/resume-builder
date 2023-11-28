@@ -6,7 +6,7 @@ const q = faunadb.query
 
 exports.handler = (event, context) => {
   console.log('Function `cv-read-all` invoked')
-  const author = getId(event.path)
+  const author = context.clientContext.user.sub
   const client = new faunadb.Client({
     secret: process.env.FAUNADB_SERVER_SECRET
   })

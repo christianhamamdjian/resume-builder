@@ -14,3 +14,4 @@ command = "react-scripts start"
 framework = "create-react-app"
 functionsPort = 3001
 targetPort = 3000
+  
