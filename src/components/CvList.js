@@ -46,7 +46,7 @@ const CvList = () => {
 			</button>
 		</li>
 	})
-	const cvWithId = [{ author: userId, id: Date.now() }, ...cvs[0]]
+	const cvWithId = [{ authorId: userId, id: Date.now() }, ...cvs[0]]
 
 	return (
 		<>

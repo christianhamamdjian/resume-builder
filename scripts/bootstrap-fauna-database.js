@@ -35,10 +35,18 @@ function createFaunaDB(key) {
   return client.query(q.Create(q.Ref('classes'), { name: 'cvs' }))
     .then(() => {
       return client.query(
-        q.Create(q.Ref('indexes'), {
-          name: 'all_cvs',
-          source: q.Ref('classes/cvs')
-        }))
+        q.Create(q.Ref('indexes'),
+          {
+            name: 'all_cvs',
+            source: q.Ref('classes/cvs')
+          }
+          // {
+          //   name: 'cvs_by_author',
+          //   source: q.Ref("classes/cvs"),
+          //   terms: [{ field: ["data", "cvs", 0, "author"] }],
+          //   values: [{ field: [] }]
+          // }
+        ))
     }).catch((e) => {
       // Database already exists
       if (e.requestResult.statusCode === 400 && e.message === 'instance not unique') {

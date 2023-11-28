@@ -10,8 +10,15 @@ const create = (data) => {
   })
 }
 
-const readAll = () => {
-  return fetch(`/.netlify/functions/cv-read-all`).then((response) => {
+// const readAll = (userId) => {
+//   return fetch(`/.netlify/functions/cv-read-all/${userId}`).then((response) => {
+//     return response.json()
+//   })
+// }
+
+const readAll = (userId) => {
+  console.log(userId)
+  return fetch(`/.netlify/functions/cv-read-all/${userId}`).then((response) => {
     return response.json()
   })
 }

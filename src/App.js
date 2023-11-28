@@ -9,88 +9,39 @@ import Home from "./components/Home";
 import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
-
 export const BuilderContext = React.createContext({})
 
 
 
 function App() {
-  // const savedData = JSON.parse(localStorage.getItem('cvData'));
   const { user } = useContext(AuthContext);
-  // console.log(user?.id)
   const [userId, setUserId] = useState(user?.id)
-  // Function to check if the accessed content in the database belongs to the current user.
-  // exports.handler = async (event, context) => {
-  //   const user = context.clientContext.user
-  //   if (user && user.sub === 'your-admin-user-id') {
-  //     // process the function
-  //   } else {
-  //     return: {
-  //       statusCode: 401
-  //       body: JSON.stringify('Unauthorised')
-  //     }
-  //   }
-  // }
+
   const [force, setForce] = useState(0)
   // const [infoState, setInfoState] = useState(savedData || cvs[1])
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
-
-  // useEffect(() => {
-  //   // Load data from localStorage on component mount
-
-  //   // if (savedData) {
-  //   //   setInfoState(savedData);
-  //   // }
-
-
-  //   api.readAll().then((cvs) => {
-  //     if (cvs.message === 'unauthorized') {
-  //       if (isLocalHost()) {
-  //         alert('FaunaDB key is not unauthorized. Make sure you set it in terminal session where you ran `npm start`. Visit http://bit.ly/set-fauna-key for more info')
-  //       } else {
-  //         alert('FaunaDB key is not unauthorized. Verify the key `FAUNADB_SERVER_SECRET` set in Netlify enviroment variables is correct')
-  //       }
-  //       return false
-  //     }
-
-  //     console.log('all cvs', cvs)
-  //     setInfoState({
-  //       cvs: cvs
-  //     })
-  //   })
-  // }, []);
   useEffect(() => {
-    // api.readAll(userId).then((allCvs) => setInfoState(allCvs))
+    setUserId(user?.id)
+  }, [user])
+  useEffect(() => {
+    //const userId = netlifyIdentity.currentUser()
+    // console.log(userId)
+    // api.readAll(userId)
+    //   .then((allCvs) => setInfoState(allCvs))
+    //   .catch((e) => {
+    //     console.log(`There was an error fetching cvs`, e)
+    //   })
     const fetchCvs = async () => {
       const allCvs = await api.readAll(userId)
       setInfoState(allCvs)
     }
     fetchCvs()
+    // }
   }, []);
-  // useEffect(() => {
-  //   //   console.log(infoSelected)
-  //   //   if (infoSelected) {
-  //   const cvId = infoSelected.length ? infoSelected[0]['id'] : []
-  //   console.log(cvId)
-  //   if (cvId) {
-  //     api.update(cvId, infoSelected).then((response) => {
-  //       console.log(`updated cv id ${cvId} ${response}`)
-  //     }).catch((e) => {
-  //       console.log(`There was an error updating ${cvId}`, e)
-  //     })
-  //   }
-  // }, [infoSelected]);
-  const getCvId = (cv) => {
-    if (!cv.ref) {
-      return null
-    }
-    return cv.ref['@ref'].id
-  }
 
   const deleteCv = (e) => {
-    // const { cvs } = this.state
     const cvId = e.target.dataset.id
     console.log(+cvId)
     const filteredCvs = infoState.filter((cv) => {
@@ -107,12 +58,10 @@ function App() {
     })
   }
   const getComponentData = (type) => {
-    // const data = infoState.filter((item) => item.type === type)
     const data = infoSelected.filter((item) => item.type === type)
     return data ? data[0] : []
   }
   const getSocials = () => {
-    // const socials = infoState.filter(
     const socials = infoSelected.filter(
       (item) => item.type === 'Socials'
     )
