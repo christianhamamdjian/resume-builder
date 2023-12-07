@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import ResumeEdit from '../components/Editor/ResumeEdit'
-import PreviewScreen from '../components/PDF/ResumeTemplate'
+import ResumeEdit from './Editor/ResumeEdit'
+import PreviewScreen from './PDF/ResumeTemplate'
 import AuthContext from "../context/authContext";
-import { BuilderContext } from './../App'
+import { BuilderContext } from '../App'
 import { cvs } from '../data'
 import api from "../utils/api"
 //import netlifyIdentity from 'netlify-identity-widget';
@@ -10,7 +10,7 @@ import api from "../utils/api"
 import CvList from './CvList'
 import SingleCv from './SingleCv'
 
-const Home = () => {
+const CreateCv = () => {
 	const ctx = useContext(BuilderContext)
 	const allCvs = ctx.infoState
 	const { setInfoState } = ctx
@@ -46,14 +46,14 @@ const Home = () => {
 								style={{ marginRight: 20 }}
 							/> */}
 							<div className='cv-actions'>
-								<button className='cv-create-button'>
+								<button className='btn cv-create-button'>
 									Create cv
 								</button>
 							</div>
 						</form>
 						<br />
 						{/* <CvList /> */}
-						<SingleCv />
+						{/* <SingleCv /> */}
 					</div>
 				</>
 			}
@@ -61,4 +61,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default CreateCv;

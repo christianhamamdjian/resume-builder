@@ -4,7 +4,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import api from './utils/api'
 // import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
-import SingleCv from "./components/SingleCv";
+import Dashboard from "./components/Dashboard";
 import Home from "./components/Home";
 import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -20,14 +20,14 @@ function App() {
   const [cvSelected, setCvSelected] = useState([])
 
   useEffect(() => {
-    console.log(user?.id)
+    //console.log(user?.id)
     if (user) {
       setUserId(user.id);
     }
   }, [user]);
   useEffect(() => {
     //const userId = netlifyIdentity.currentUser()
-    console.log(userId)
+    // console.log(userId)
     if (userId) {
       api.readAll()
         .then((allCvs) => setInfoState(allCvs))
@@ -78,10 +78,10 @@ function App() {
     // const cvId = infoSelected[0]['id']
     const { ref } = cvSelected
     const cvId = ref["@ref"]["id"]
-    console.log(cvSelected)
+    //console.log(cvSelected)
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
-        console.log(`updated cv id ${cvId} ${response}`)
+        //console.log(`updated cv id ${cvId} ${response}`)
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })
@@ -90,54 +90,74 @@ function App() {
   }
 
   return (
-    <div
+    <>
+      {/*   <div
       style={{
-        display: 'flex',
-        width: '100%',
-        height: '100vh',
+       display: 'flex',
+       flexDirection: 'column',
+      width: '100%',
+      height: '100vh',
       }}
-    >
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={
-            <BuilderContext.Provider
+     >
+      <div> */}
+      {/* <BrowserRouter> */}
+      <Navbar />
+      <BuilderContext.Provider
+        value={{
+          getSocials,
+          updateInfo,
+          getComponentData,
+          infoState,
+          setInfoState,
+          setInfoSelected,
+          cvSelected,
+          setCvSelected,
+          deleteCv
+          // saveToLocalStorage,
+          // handleCvChange
+        }}
+      ><Dashboard />
+      </BuilderContext.Provider>
+
+      {/* <Routes> */}
+      {/* <Route path='/' element={
+              <BuilderContext.Provider
+                value={{
+                  getSocials,
+                  updateInfo,
+                  getComponentData,
+                  infoState,
+                  setInfoState,
+                  setInfoSelected,
+                  setCvSelected,
+                  deleteCv
+                  // saveToLocalStorage,
+                  // handleCvChange
+                }}
+              ><Home />
+              </BuilderContext.Provider>
+            } /> */}
+      {/* <Route path='cv/:id' element={<BuilderContext.Provider
               value={{
                 getSocials,
                 updateInfo,
                 getComponentData,
                 infoState,
-                setInfoState,
+                infoSelected,
                 setInfoSelected,
                 setCvSelected,
-                deleteCv
                 // saveToLocalStorage,
-                // handleCvChange
+                deleteCv
               }}
-            ><Home />
-            </BuilderContext.Provider>
-          } />
-          <Route path='cv/:id' element={<BuilderContext.Provider
-            value={{
-              getSocials,
-              updateInfo,
-              getComponentData,
-              infoState,
-              infoSelected,
-              setInfoSelected,
-              // saveToLocalStorage,
-              deleteCv
-            }}
-          >
-            <SingleCv />
-          </BuilderContext.Provider>} />
-          <Route path="*" component={Error} />
-        </Routes>
-      </BrowserRouter>
-
-      {/*  */}
-    </div>
-  )
+            >
+              <SingleCv />
+            </BuilderContext.Provider>} />*/}
+      {/* <Route path="*" component={Error} />
+      </Routes> */}
+      {/* </BrowserRouter> */}
+      {/* </div> 
+    </div>*/}
+    </>)
 }
 
 export default App

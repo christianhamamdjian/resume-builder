@@ -6,7 +6,7 @@ import CvList from './CvList'
 import CreateCv from './CreateCv'
 import { BuilderContext } from './../App'
 
-const SingleCv = () => {
+const Dashboard = () => {
     //const { id } = useParams()
     const ctx = useContext(BuilderContext)
     const allCvs = ctx.infoState
@@ -14,17 +14,17 @@ const SingleCv = () => {
     const [name, setName] = useState("")
     const profile = ctx.getComponentData('Profile')
     const socials = ctx.getComponentData('Socials')
-
+    const selected = ctx.cvSelected
     useEffect(() => {
         allCvs.filter((cv, i) => {
-            if (i === +cv.id) {
+            if (i === +selected.id) {
                 setName(cv['data']["items"][1]["name"])
             } else {
                 return null
             }
         })
 
-    }, [profile])
+    }, [])
 
     return (
         <>
@@ -33,9 +33,9 @@ const SingleCv = () => {
                     back home
                 </Link> */}
                 <CreateCv />
-                <div>
+                {/* <div>
                     {`${name}'s cv`}
-                </div>
+                </div> */}
             </div>
             <div className="flex justify-evenly">
                 <div><CvList />
@@ -47,4 +47,4 @@ const SingleCv = () => {
     );
 };
 
-export default SingleCv;
+export default Dashboard;
