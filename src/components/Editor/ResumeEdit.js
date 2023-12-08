@@ -19,6 +19,8 @@ const ResumeEdit = () => {
     setSelect(e.target.value)
   }
   const profile = ctx.getComponentData('Profile')
+  // console.log(profile)
+
   const handleChange = (e) => {
     ctx.updateInfo({ ...profile, about: e.target.value })
   }

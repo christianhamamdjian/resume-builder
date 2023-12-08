@@ -18,7 +18,7 @@ function App() {
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
-
+  //console.log(cvSelected)
   useEffect(() => {
     //console.log(user?.id)
     if (user) {
@@ -46,7 +46,13 @@ function App() {
     }
     // }
   }, [userId]);
-
+  useEffect(() => {
+    const selected = cvSelected['data']
+    //console.log(selected && selected['items'])
+    const newInfoSelected = selected && selected['items']
+    //console.log(infoSelected)
+    setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
+  }, [cvSelected]);
   const deleteCv = (e) => {
     const cvId = e.target.dataset.id
     console.log(+cvId)
@@ -81,10 +87,11 @@ function App() {
     // const cvId = infoSelected[0]['id']
     const { ref } = cvSelected
     const cvId = ref["@ref"]["id"]
-    //console.log(cvSelected)
+    console.log(cvSelected.ref)
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
-        //console.log(`updated cv id ${cvId} ${response}`)
+        setInfoSelected(infoState[cvId]['data'])
+        console.log(response)
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })

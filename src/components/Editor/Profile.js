@@ -1,12 +1,26 @@
 import TextArea from './TextArea'
 import TextInput from './TextInput'
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import ToggleButton from './ToggleButton'
 
 const Profile = () => {
   const ctx = useContext(BuilderContext)
-  const [profile, setProfile] = useState(ctx.getComponentData('Profile'))
+  // console.log(profile)
+  const [profile, setProfile] = useState([])
+  // console.log(profile)
+  const currentCv = ctx.cvSelected
+  // const profile = ctx.getComponentData('Profile')
+  useEffect(() => {
+    const newProfile = ctx.getComponentData('Profile')
+    setProfile(newProfile)
+  }, [])
+
+  useEffect(() => {
+    // console.log(currentCv)
+    const newProfile = ctx.getComponentData('Profile')
+    setProfile(newProfile)
+  }, [currentCv])
 
   return (
     <div className='pb-11'>
