@@ -30,7 +30,10 @@ function App() {
     // console.log(userId)
     if (userId) {
       api.readAll()
-        .then((allCvs) => setInfoState(allCvs))
+        .then((allCvs) => {
+          setInfoState(allCvs)
+          setInfoSelected(allCvs[0]['data']["items"])
+        })
         .catch((e) => {
           console.log(`There was an error fetching cvs`, e)
         })
