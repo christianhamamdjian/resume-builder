@@ -39,6 +39,7 @@ const Certifications = () => {
 
   return (
     <div className='pt-6'>
+      <h1>Certifications:</h1>
       {certification.items.map((item, index) => (
         <div key={index}>
           <TextArea

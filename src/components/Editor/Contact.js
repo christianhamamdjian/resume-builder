@@ -35,6 +35,7 @@ const Contact = () => {
 
   return (
     <div>
+      <h1>Contact:</h1>
       {contact.items.map((item, index) => (
         <TextInput
           key={index}

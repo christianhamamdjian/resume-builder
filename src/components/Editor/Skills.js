@@ -36,6 +36,7 @@ const Skills = () => {
   const handleSaveClick = () => ctx.updateInfo(skills)
   return (
     <div className='pt-10'>
+      <h1>Skills:</h1>
       <ToggleButton
         defaultValue={skills.display}
         handleChange={(name, prop, isEnabled) => {

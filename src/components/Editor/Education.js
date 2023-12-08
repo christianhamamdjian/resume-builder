@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import ActionMenu from './ActionMenu'
 import EducationItem from './EducationItem'
@@ -9,9 +9,26 @@ const Education = () => {
     degree: 'Software Engineering - University of Sydney',
     date: 'Mar 2017 - Dec 2019',
   }
-  const [education, setEducation] = useState(ctx.getComponentData('Education'))
+  // const [education, setEducation] = useState(ctx.getComponentData('Education'))
+  // console.log(education)
+  const [education, setEducation] = useState(null)
+  console.log(education)
+  const currentCv = ctx.cvSelected
+
+  useEffect(() => {
+    const newEducation = ctx.getComponentData('Education')
+    setEducation(newEducation)
+  }, [])
+
+  useEffect(() => {
+    // console.log(currentCv)
+    const newEducation = ctx.getComponentData('Education')
+    setEducation(newEducation)
+  }, [currentCv])
+
   const handleChange = (i, e) => {
     const targetName = e.target.name
+    console.log(targetName, e.target.value)
     const modifiedItem = {
       ...education.items[i],
       [targetName]: e.target.value,
@@ -37,7 +54,8 @@ const Education = () => {
 
   return (
     <div className='pt-6'>
-      {education.items.map((item, index) => (
+      <h1>Education:</h1>
+      {education && education.items.map((item, index) => (
         <EducationItem
           key={index}
           index={index}

@@ -20,6 +20,7 @@ const Socials = () => {
 
   return (
     <div className='flex flex-col space-evenly  my-6  '>
+      <h1>Socials:</h1>
       {socials &&
         socials.items.map((item, index) => (
           <div className='flex flex-col pb-2' key={index}>

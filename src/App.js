@@ -71,7 +71,7 @@ function App() {
   }
   const getComponentData = (type) => {
     const data = infoSelected.filter((item) => item.type === type)
-    console.log(data)
+    // console.log(data)
     return data ? data[0] : []
   }
   const getSocials = () => {
@@ -114,6 +114,8 @@ function App() {
     )
     setInfoSelected(infoSelected.splice(targetIndex, 1, item))
     // const cvId = infoSelected[0]['id']
+    // const cvRef = cvSelected?.ref
+    // const cvId = cvRef["@ref"]["id"]
     const { ref } = cvSelected
     const cvId = ref["@ref"]["id"]
     console.log(cvSelected)

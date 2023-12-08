@@ -6,6 +6,7 @@ import TextArea from './TextArea'
 import TextSelect from './TextSelect'
 import Skills from './Skills'
 import EmploymentHistory from './EmploymentHistory'
+import About from './About'
 import KeySkills from './KeySkills'
 import Projects from './Projects'
 import Profile from './Profile'
@@ -24,13 +25,16 @@ const ResumeEdit = () => {
   const handleChange = (e) => {
     ctx.updateInfo({ ...profile, about: e.target.value })
   }
+  // useEffect(() => {
+  //   handleChange()
+  // }, [])
 
   return (
     <>
       <div className='flex flex-row bg-gray-50'>
         <div className='flex flex-col w-1/2 px-5 py-16'>
-          <Profile />
-          <TextSelect
+          {/* <Profile /> */}
+          {/* <TextSelect
             options={[
               'Education',
               'Skills',
@@ -46,11 +50,17 @@ const ResumeEdit = () => {
           {selected === 'Education' && <Education />}
           {selected === 'Skills' && <Skills />}
           {selected === 'Contact' && <Contact />}
-          {selected === 'Certifications' && <Certifications />}
+          {selected === 'Certifications' && <Certifications />} */}
+
+          <Socials />
+          <Education />
+          <Skills />
+          <Contact />
+          <Certifications />
         </div>
 
         <div className='w-full'>
-          <div className='mx-5 '>
+          {/* <div className='mx-5 '>
             <ul className='flex cursor-pointer'>
               <li
                 className={`py-2 mt-2  px-6  border-gray-300 border ${tabSelected === 'About'
@@ -80,8 +90,8 @@ const ResumeEdit = () => {
                 Projects
               </li>
             </ul>
-          </div>
-          {tabSelected === 'About' && (
+          </div> */}
+          {/* {tabSelected === 'About' && (
             <TextArea
               placeholder='About'
               style='px-5 py-3'
@@ -93,8 +103,22 @@ const ResumeEdit = () => {
             />
           )}
           {tabSelected === 'Skills' && <KeySkills />}
-          {tabSelected === 'Projects' && <Projects />}
-
+          {tabSelected === 'Projects' && <Projects />} */}
+          {/* <h1>About</h1>
+          <TextArea
+            placeholder='About'
+            style='px-5 py-3'
+            label='Profile'
+            defaultValue={profile.about}
+            handleChange={(e) => {
+              handleChange(e)
+            }}
+          /> */}
+          <About />
+          <h1>Skills</h1>
+          <KeySkills />
+          <h1>Projects</h1>
+          <Projects />
           <EmploymentHistory />
         </div>
       </div>
