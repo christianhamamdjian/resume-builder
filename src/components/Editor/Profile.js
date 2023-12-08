@@ -6,9 +6,8 @@ import ToggleButton from './ToggleButton'
 
 const Profile = () => {
   const ctx = useContext(BuilderContext)
-  // console.log(profile)
   const [profile, setProfile] = useState([])
-  // console.log(profile)
+  console.log(profile)
   const currentCv = ctx.cvSelected
   // const profile = ctx.getComponentData('Profile')
   useEffect(() => {

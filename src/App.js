@@ -71,6 +71,7 @@ function App() {
   }
   const getComponentData = (type) => {
     const data = infoSelected.filter((item) => item.type === type)
+    console.log(data)
     return data ? data[0] : []
   }
   const getSocials = () => {
@@ -79,6 +80,34 @@ function App() {
     )
     return socials ? socials[0] : []
   }
+  // const updateInfo = (item) => {
+  //   console.log(item)
+  //   const targetIndex = infoSelected.findIndex(
+  //     (elem) => elem.type === item.type
+  //   )
+  //   setInfoSelected(infoSelected.splice(targetIndex, 1, item))
+  //   const cvId = infoSelected[0]['id']
+  //   // const selected = infoSelected['ref']
+  //   // const cvId = selected && selected["@ref"]["id"]
+  //   // console.log(cvSelected['data'])
+  //   if (cvId) {
+  //     api.update(cvId, cvSelected['data']).then((response) => {
+  //       // setInfoSelected(infoState[cvId]['data'])
+
+
+  //       // const selected = cvSelected['data']
+  //       // //console.log(selected && selected['items'])
+  //       // const newInfoSelected = selected && selected['items']
+  //       // //console.log(infoSelected)
+  //       // setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
+
+  //       console.log(response)
+  //     }).catch((e) => {
+  //       console.log(`There was an error updating ${cvId}`, e)
+  //     })
+  //   }
+  //   setForce(force + 1)
+  // }
   const updateInfo = (item) => {
     const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
@@ -87,18 +116,16 @@ function App() {
     // const cvId = infoSelected[0]['id']
     const { ref } = cvSelected
     const cvId = ref["@ref"]["id"]
-    console.log(cvSelected.ref)
+    console.log(cvSelected)
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
-        setInfoSelected(infoState[cvId]['data'])
-        console.log(response)
+        console.log(`updated cv id ${cvId} ${response}`)
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })
     }
     setForce(force + 1)
   }
-
   return (
     <>
       {/*   <div
