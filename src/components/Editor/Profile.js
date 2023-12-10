@@ -23,6 +23,7 @@ const Profile = () => {
 
   return (
     <div className='pb-11'>
+      <h1>Profile:</h1>
       <TextArea
         placeholder='Full name'
         handleChange={(e) => setProfile({ ...profile, name: e.target.value })}

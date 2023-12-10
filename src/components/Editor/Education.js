@@ -12,7 +12,6 @@ const Education = () => {
   // const [education, setEducation] = useState(ctx.getComponentData('Education'))
   // console.log(education)
   const [education, setEducation] = useState(null)
-  console.log(education)
   const currentCv = ctx.cvSelected
 
   useEffect(() => {

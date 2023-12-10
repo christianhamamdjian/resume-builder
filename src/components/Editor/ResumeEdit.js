@@ -33,7 +33,7 @@ const ResumeEdit = () => {
     <>
       <div className='flex flex-row bg-gray-50'>
         <div className='flex flex-col w-1/2 px-5 py-16'>
-          {/* <Profile /> */}
+          <Profile />
           {/* <TextSelect
             options={[
               'Education',

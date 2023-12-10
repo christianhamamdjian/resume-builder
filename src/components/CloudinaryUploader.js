@@ -19,8 +19,7 @@ const CloudinaryUploader = () => {
       const file = await readFile(uploader.files[0]);
 
       try {
-        const response = await fetch(
-          `${document.location.origin}/.netlify/functions/upload`,
+        const response = await fetch(`/.netlify/functions/upload`,
           {
             method: 'POST',
             body: file,

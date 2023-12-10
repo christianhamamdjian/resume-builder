@@ -8,8 +8,6 @@ const TextArea = ({
   rows,
   isDisabled,
 }) => {
-  console.log(defaultValue)
-
   const [newValue, setNewValue] = useState("")
   useEffect(() => {
     setNewValue(defaultValue)

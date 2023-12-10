@@ -1,17 +1,20 @@
 import { useState, useContext } from 'react'
 import { BuilderContext } from '../../App'
+import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 
 const About = () => {
   const ctx = useContext(BuilderContext)
   const profile = ctx.getComponentData('Profile')
-
+  const [about, setAbout] = useState(ctx.getComponentData('About'))
   const handleChange = (e) => {
-    ctx.updateInfo({ ...profile, about: e.target.value })
+    setAbout({ ...profile, about: e.target.value })
   }
+
+  const handleSaveClick = () => ctx.updateInfo(about)
   return (
     <div className='pt-10'>
-      <h1>About</h1>
+      <h1>About:</h1>
       <TextArea
         placeholder='About'
         style='px-5 py-3'
@@ -47,13 +50,13 @@ const About = () => {
             handleChange={(e) => handleChange(index, e)}
           />
         </div>
-      ))}
+      ))}*/}
 
       <ActionMenu
         handleSaveClick={handleSaveClick}
-        handleAddClick={handleAddClick}
-        handleRemoveClick={handleRemoveClick}
-      /> */}
+      // handleAddClick={handleAddClick}
+      // handleRemoveClick={handleRemoveClick}
+      />
     </div>
   )
 }
