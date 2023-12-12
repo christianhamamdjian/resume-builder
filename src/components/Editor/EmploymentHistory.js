@@ -24,7 +24,6 @@ const EmploymentHistory = () => {
   }
   return (
     <div>
-      <h1 className='px-5 pt-3'>Employment History</h1>
       {employmentInfo.items.map((item, index) => (
         <EmploymentItem
           key={index}

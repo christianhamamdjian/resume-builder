@@ -5,6 +5,7 @@ const ActionMenu = ({
   handleSaveClick,
   handleAddClick,
   handleRemoveClick,
+  onlySave
 }) => {
   return (
     <div className={`flex py-2 flex-row justify-between ${style}`}>
@@ -14,11 +15,11 @@ const ActionMenu = ({
       >
         Save
       </button>
-      <div className='flex flex-row pt-[5px]'>
+      {!onlySave && <div className='flex flex-row pt-[5px]'>
         <Add color='#d1d5db' handleClick={handleAddClick} />
 
         <Remove color='#d1d5db' handleClick={handleRemoveClick} />
-      </div>
+      </div>}
     </div>
   )
 }

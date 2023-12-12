@@ -121,7 +121,8 @@ function App() {
     console.log(cvSelected)
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
-        console.log(`updated cv id ${cvId} ${response}`)
+        console.log(`updated cv id ${cvId}`, response)
+        setCvSelected(response)
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })

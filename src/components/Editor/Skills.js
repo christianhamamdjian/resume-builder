@@ -1,5 +1,5 @@
 import TextInput from './TextInput'
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import ActionMenu from './ActionMenu'
 import ToggleButton from './ToggleButton'
@@ -7,10 +7,26 @@ import ToggleButton from './ToggleButton'
 const Skills = () => {
   const ctx = useContext(BuilderContext)
   const newItem = {
-    text: 'Perl',
-    level: '25',
+    text: 'Skill',
+    level: 'Percent',
   }
-  const [skills, setSkills] = useState(ctx.getComponentData('Skills'))
+  // const [skills, setSkills] = useState(ctx.getComponentData('Skills'))
+  const [skills, setSkills] = useState(null)
+  const currentCv = ctx.cvSelected
+  useEffect(() => {
+    const newSkills = ctx.getComponentData('Skills')
+    setSkills(newSkills)
+  }, [])
+
+  useEffect(() => {
+    console.log(currentCv)
+    const newSkills = ctx.getComponentData('Skills')
+    setSkills(newSkills)
+  }, [currentCv])
+
+  const handleEnable = (isEnabled) => {
+    setSkills({ ...skills, display: isEnabled })
+  }
   const handleChange = (i, e) => {
     const targetName = e.target.name
     const modifiedItem = {
@@ -38,12 +54,15 @@ const Skills = () => {
     <div className='pt-10'>
       <h1>Skills:</h1>
       <ToggleButton
-        defaultValue={skills.display}
+        defaultValue={skills && skills.display}
+        // handleChange={(name, prop, isEnabled) => {
+        //   ctx.updateInfo({ ...skills, display: isEnabled })
+        // }}
         handleChange={(name, prop, isEnabled) => {
-          ctx.updateInfo({ ...skills, display: isEnabled })
+          handleEnable(isEnabled)
         }}
       />
-      {skills.items.map((item, index) => (
+      {skills && skills.items.map((item, index) => (
         <div key={index} className='flex flex-row py-1'>
           <TextInput
             defaultValue={item.text}

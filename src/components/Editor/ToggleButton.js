@@ -1,11 +1,18 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const ToggleButton = ({ name, handleChange, defaultValue, style }) => {
   const [isChecked, setIsUnchecked] = useState(defaultValue)
+  console.log(defaultValue)
   const handleToggle = (checked) => {
     handleChange(name, 'enabled', checked)
     setIsUnchecked(checked)
   }
+  useEffect(() => {
+    setIsUnchecked(defaultValue)
+  }, [])
+  useEffect(() => {
+    setIsUnchecked(defaultValue)
+  }, [defaultValue])
   return (
     <div key={name} className={style}>
       <div className='flex flex-col'>

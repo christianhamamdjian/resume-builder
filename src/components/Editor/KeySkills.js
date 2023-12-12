@@ -1,11 +1,24 @@
 import { BuilderContext } from './../../App'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import TextArea from './TextArea'
 import ToggleButton from './ToggleButton'
 const KeySkills = () => {
   const ctx = useContext(BuilderContext)
 
   const [skills, setSkills] = useState(ctx.getComponentData('KeySkills'))
+
+  const currentCv = ctx.cvSelected
+  useEffect(() => {
+    const newSkills = ctx.getComponentData('KeySkills')
+    setSkills(newSkills)
+  }, [])
+
+  useEffect(() => {
+    console.log(currentCv)
+    const newSkills = ctx.getComponentData('KeySkills')
+    setSkills(newSkills)
+  }, [currentCv])
+
   const handleChange = (e) => {
     setSkills({ ...skills, text: e.target.value })
   }

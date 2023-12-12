@@ -115,10 +115,11 @@ const ResumeEdit = () => {
             }}
           /> */}
           <About />
-          <h1>Skills</h1>
+          <h1>Key Skills</h1>
           <KeySkills />
           <h1>Projects</h1>
           <Projects />
+          <h1>Employment History</h1>
           <EmploymentHistory />
         </div>
       </div>

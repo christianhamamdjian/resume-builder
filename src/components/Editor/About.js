@@ -54,6 +54,7 @@ const About = () => {
 
       <ActionMenu
         handleSaveClick={handleSaveClick}
+        onlySave={true}
       // handleAddClick={handleAddClick}
       // handleRemoveClick={handleRemoveClick}
       />
