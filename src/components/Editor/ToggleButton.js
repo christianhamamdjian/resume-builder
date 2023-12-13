@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 const ToggleButton = ({ name, handleChange, defaultValue, style }) => {
   const [isChecked, setIsUnchecked] = useState(defaultValue)
-  console.log(defaultValue)
+
   const handleToggle = (checked) => {
     handleChange(name, 'enabled', checked)
     setIsUnchecked(checked)

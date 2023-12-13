@@ -1,13 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import EmploymentItem from './EmploymentItem'
 import ActionMenu from './ActionMenu'
 
 const EmploymentHistory = () => {
   const ctx = useContext(BuilderContext)
-  const [employmentInfo, setEmploymentInfo] = React.useState(
-    ctx.getComponentData('Employment')
-  )
+  const [employmentInfo, setEmploymentInfo] = useState(null)
+
+  const currentCv = ctx.cvSelected
+
+  useEffect(() => {
+    const newEmploymentInfo = ctx.getComponentData('Employment')
+    setEmploymentInfo(newEmploymentInfo)
+  }, [])
+
+  useEffect(() => {
+    // console.log(currentCv)
+    const newEmploymentInfo = ctx.getComponentData('Employment')
+    setEmploymentInfo(newEmploymentInfo)
+  }, [currentCv])
+
   const newItem = {
     position: 'Software Engineering - University of Sydney',
     date: 'Mar 2017 - Dec 2019',
@@ -24,7 +36,7 @@ const EmploymentHistory = () => {
   }
   return (
     <div>
-      {employmentInfo.items.map((item, index) => (
+      {employmentInfo && employmentInfo.items.map((item, index) => (
         <EmploymentItem
           key={index}
           index={index}
@@ -35,7 +47,7 @@ const EmploymentHistory = () => {
 
       <ActionMenu
         style='px-5'
-        handleSaveClick={() => ctx.updateInfo(employmentInfo)}
+        handleSaveClick={() => ctx.updateInfo(employmentInfo && employmentInfo, currentCv)}
         handleAddClick={() =>
           setEmploymentInfo({
             ...employmentInfo,

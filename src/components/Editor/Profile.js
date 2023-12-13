@@ -47,10 +47,10 @@ const Profile = () => {
             setProfile({ ...profile, profileImageURL: e.target.value })
           }
           style='pb-3 pr-3'
-          defaultValue={profile.profileImageURL}
+          defaultValue={profile && profile.profileImageURL}
         />
         <ToggleButton
-          defaultValue={profile.display}
+          defaultValue={profile && profile.display}
           handleChange={(name, prop, isEnabled) => {
             ctx.updateInfo({ ...profile, display: isEnabled })
           }}
@@ -58,9 +58,7 @@ const Profile = () => {
       </div>
       <button
         className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-        onClick={() => {
-          ctx.updateInfo(profile)
-        }}
+        onClick={() => ctx.updateInfo(profile && profile, currentCv)}
       >
         Save
       </button>

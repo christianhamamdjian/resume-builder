@@ -49,7 +49,7 @@ const Education = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(education)
+  const handleSaveClick = () => ctx.updateInfo(education && education, currentCv)
 
   return (
     <div className='pt-6'>

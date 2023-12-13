@@ -18,7 +18,7 @@ function App() {
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
-  //console.log(cvSelected)
+  console.log(cvSelected)
   useEffect(() => {
     //console.log(user?.id)
     if (user) {
@@ -33,6 +33,7 @@ function App() {
         .then((allCvs) => {
           setInfoState(allCvs)
           setInfoSelected(allCvs[0]['data']["items"])
+          setCvSelected(allCvs[0])
         })
         .catch((e) => {
           console.log(`There was an error fetching cvs`, e)
@@ -108,7 +109,7 @@ function App() {
   //   }
   //   setForce(force + 1)
   // }
-  const updateInfo = (item) => {
+  const updateInfo = (item, currentCv) => {
     const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
     )
@@ -116,9 +117,8 @@ function App() {
     // const cvId = infoSelected[0]['id']
     // const cvRef = cvSelected?.ref
     // const cvId = cvRef["@ref"]["id"]
-    const { ref } = cvSelected
+    const { ref } = currentCv
     const cvId = ref["@ref"]["id"]
-    console.log(cvSelected)
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
         console.log(`updated cv id ${cvId}`, response)

@@ -19,7 +19,6 @@ const Skills = () => {
   }, [])
 
   useEffect(() => {
-    console.log(currentCv)
     const newSkills = ctx.getComponentData('Skills')
     setSkills(newSkills)
   }, [currentCv])
@@ -49,7 +48,7 @@ const Skills = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(skills)
+  const handleSaveClick = () => ctx.updateInfo(skills && skills, currentCv)
   return (
     <div className='pt-10'>
       <h1>Skills:</h1>

@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
@@ -10,9 +10,19 @@ const Certifications = () => {
     name: '',
     date: '',
   }
-  const [certification, setCetification] = useState(
-    ctx.getComponentData('Certifications')
-  )
+  const [certification, setCetification] = useState(null)
+
+  const currentCv = ctx.cvSelected
+  useEffect(() => {
+    const newCetification = ctx.getComponentData('Cetification')
+    setCetification(newCetification)
+  }, [])
+
+  useEffect(() => {
+    const newCetification = ctx.getComponentData('Cetification')
+    setCetification(newCetification)
+  }, [currentCv])
+
   const handleChange = (i, e) => {
     const targetName = e.target.name
     const modifiedItem = {
@@ -35,12 +45,12 @@ const Certifications = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(certification)
+  const handleSaveClick = () => ctx.updateInfo(certification && certification, currentCv)
 
   return (
     <div className='pt-6'>
       <h1>Certifications:</h1>
-      {certification.items.map((item, index) => (
+      {certification && certification.items.map((item, index) => (
         <div key={index}>
           <TextArea
             placeholder='Certification Type'

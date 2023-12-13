@@ -1,7 +1,7 @@
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 import TextInput from './TextInput'
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import ToggleButton from './ToggleButton'
 
@@ -11,7 +11,18 @@ const Projects = () => {
     name: 'Javascript Project',
     description: 'Some cool stuff',
   }
-  const [projects, setProjects] = useState(ctx.getComponentData('Projects'))
+  const [projects, setProjects] = useState(null)
+  const currentCv = ctx.cvSelected
+
+  useEffect(() => {
+    const newProjects = ctx.getComponentData('Projects')
+    setProjects(newProjects)
+  }, [])
+
+  useEffect(() => {
+    const newProjects = ctx.getComponentData('Projects')
+    setProjects(newProjects)
+  }, [currentCv])
 
   const handleChange = (i, e) => {
     const targetName = e.target.name
@@ -35,10 +46,11 @@ const Projects = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(projects)
+
+  const handleSaveClick = () => ctx.updateInfo(projects && projects, currentCv)
   return (
     <div className='pt-3 px-5 '>
-      {projects.items.map((item, index) => (
+      {projects && projects.items.map((item, index) => (
         <div className='pb-5' key={index}>
           <TextInput
             defaultValue={item.name}
@@ -57,7 +69,7 @@ const Projects = () => {
         </div>
       ))}
       <ToggleButton
-        defaultValue={projects.display}
+        defaultValue={projects && projects.display}
         handleChange={(name, prop, isEnabled) => {
           ctx.updateInfo({ ...projects, display: isEnabled })
         }}

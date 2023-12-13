@@ -1,5 +1,5 @@
 import TextInput from './TextInput'
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import ActionMenu from './ActionMenu'
 
@@ -8,7 +8,17 @@ const Contact = () => {
     text: '',
   }
   const ctx = useContext(BuilderContext)
-  const [contact, setContact] = useState(ctx.getComponentData('Contact'))
+  const [contact, setContact] = useState(null)
+  const currentCv = ctx.cvSelected
+  useEffect(() => {
+    const newContact = ctx.getComponentData('Contact')
+    setContact(newContact)
+  }, [])
+
+  useEffect(() => {
+    const newContact = ctx.getComponentData('Contact')
+    setContact(newContact)
+  }, [currentCv])
 
   const handleChange = (i, e) => {
     const modifiedItem = {
@@ -31,12 +41,12 @@ const Contact = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(contact)
+  const handleSaveClick = () => ctx.updateInfo(contact && contact, currentCv)
 
   return (
     <div>
       <h1>Contact:</h1>
-      {contact.items.map((item, index) => (
+      {contact && contact.items.map((item, index) => (
         <TextInput
           key={index}
           placeholder='Custom field'
