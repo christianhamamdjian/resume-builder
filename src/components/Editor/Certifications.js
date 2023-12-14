@@ -11,15 +11,15 @@ const Certifications = () => {
     date: '',
   }
   const [certification, setCetification] = useState(null)
-
   const currentCv = ctx.cvSelected
+  console.log(currentCv)
   useEffect(() => {
-    const newCetification = ctx.getComponentData('Cetification')
+    const newCetification = ctx.getComponentData('Certifications')
     setCetification(newCetification)
   }, [])
 
   useEffect(() => {
-    const newCetification = ctx.getComponentData('Cetification')
+    const newCetification = ctx.getComponentData('Certifications')
     setCetification(newCetification)
   }, [currentCv])
 

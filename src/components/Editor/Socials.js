@@ -6,7 +6,7 @@ import TextInput from './TextInput'
 const Socials = () => {
   const ctx = useContext(BuilderContext)
   const [socials, setSocials] = useState(null)
-  console.log(socials)
+  // console.log(socials)
   const currentCv = ctx.cvSelected
 
   useEffect(() => {
