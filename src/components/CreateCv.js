@@ -26,7 +26,7 @@ const CreateCv = () => {
 			setInfoState([...allCvs, response])
 		})
 	}
-	const cvWithId = [{ authorId: userId, id: Date.now() }, ...cvs[0]]
+	const cvWithId = [{ type: "id", authorId: userId, id: Date.now() }, ...cvs[0]]
 	return (
 		<>
 			{authReady && user &&

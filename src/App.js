@@ -18,7 +18,7 @@ function App() {
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
-  console.log(cvSelected)
+  // console.log(cvSelected)
   useEffect(() => {
     //console.log(user?.id)
     if (user) {
@@ -70,6 +70,10 @@ function App() {
       console.log(`There was an error removing ${cvId}`, e)
     })
   }
+  const getComponentId = (id) => {
+    const data = infoSelected.filter((item) => item.id === id)
+    return data ? data[0] : []
+  }
   const getComponentData = (type) => {
     const data = infoSelected.filter((item) => item.type === type)
     // console.log(data)
@@ -110,6 +114,7 @@ function App() {
   //   setForce(force + 1)
   // }
   const updateInfo = (item, currentCv) => {
+    console.log(item)
     const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
     )
@@ -150,6 +155,7 @@ function App() {
           infoState,
           setInfoState,
           setInfoSelected,
+          getComponentId,
           cvSelected,
           setCvSelected,
           deleteCv

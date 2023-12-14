@@ -9,22 +9,21 @@ import { BuilderContext } from './../App'
 const Dashboard = () => {
     //const { id } = useParams()
     const ctx = useContext(BuilderContext)
-    const allCvs = ctx.infoState
+    //const allCvs = ctx.infoState
+    // const [name, setName] = useState("")
+    // const profile = ctx.getComponentData('Education')
+    // const socials = ctx.getComponentData('Education')
+    const id = ctx.getComponentData("id")
+    // useEffect(() => {
+    //     allCvs.filter((cv, i) => {
+    //         if (i === +selected.id) {
+    //             setName(cv['data']["items"][1]["name"])
+    //         } else {
+    //             return null
+    //         }
+    //     })
 
-    const [name, setName] = useState("")
-    const profile = ctx.getComponentData('Profile')
-    const socials = ctx.getComponentData('Socials')
-    const selected = ctx.cvSelected
-    useEffect(() => {
-        allCvs.filter((cv, i) => {
-            if (i === +selected.id) {
-                setName(cv['data']["items"][1]["name"])
-            } else {
-                return null
-            }
-        })
-
-    }, [])
+    // }, [])
 
     return (
         <>
@@ -39,9 +38,9 @@ const Dashboard = () => {
             </div>
             <div className="flex justify-evenly">
                 <div><CvList />
-                    {profile && <ResumeEdit />}
+                    {id && <ResumeEdit />}
                 </div>
-                {socials && <PreviewScreen />}
+                {id && <PreviewScreen />}
             </div>
         </>
     );

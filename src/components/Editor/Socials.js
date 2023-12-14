@@ -5,18 +5,20 @@ import TextInput from './TextInput'
 
 const Socials = () => {
   const ctx = useContext(BuilderContext)
-
   const [socials, setSocials] = useState(null)
+  console.log(socials)
   const currentCv = ctx.cvSelected
+
   useEffect(() => {
-    const newSocials = ctx.getSocials()
+    const newSocials = ctx.getComponentData('Socials')
     setSocials(newSocials)
   }, [])
 
   useEffect(() => {
-    const newSocials = ctx.getSocials()
+    const newSocials = ctx.getComponentData('Socials')
     setSocials(newSocials)
   }, [currentCv])
+
   const handleSocialChange = (type, property, value) => {
     const item = socials && socials.items.filter((item) => item.type === type)
     const targetIndex = socials && socials.items.indexOf(item[0])

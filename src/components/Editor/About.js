@@ -1,17 +1,31 @@
-import { useState, useContext } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from '../../App'
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 
 const About = () => {
   const ctx = useContext(BuilderContext)
-  const profile = ctx.getComponentData('Profile')
-  const [about, setAbout] = useState(ctx.getComponentData('About'))
+  const [profile, setProfile] = useState([])
+
+  const currentCv = ctx.cvSelected
+
+  useEffect(() => {
+    const newProfile = ctx.getComponentData('Profile')
+    setProfile(newProfile)
+  }, [])
+
+  useEffect(() => {
+    // console.log(currentCv)
+    const newProfile = ctx.getComponentData('Profile')
+    setProfile(newProfile)
+  }, [currentCv])
+
+
   const handleChange = (e) => {
-    setAbout({ ...profile, about: e.target.value })
+    setProfile({ ...profile, about: e.target.value })
   }
 
-  const handleSaveClick = () => ctx.updateInfo(about)
+  const handleSaveClick = () => ctx.updateInfo(profile && profile, currentCv)
   return (
     <div className='pt-10'>
       <h1>About:</h1>
@@ -19,7 +33,7 @@ const About = () => {
         placeholder='About'
         style='px-5 py-3'
         label='Profile'
-        defaultValue={profile.about}
+        defaultValue={profile && profile.about}
         handleChange={(e) => {
           handleChange(e)
         }}

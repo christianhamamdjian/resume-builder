@@ -19,12 +19,12 @@ const ResumeEdit = () => {
   const handleSelect = (e) => {
     setSelect(e.target.value)
   }
-  const profile = ctx.getComponentData('Profile')
-  // console.log(profile)
+  // const profile = ctx.getComponentData('Profile')
+  // // console.log(profile)
 
-  const handleChange = (e) => {
-    ctx.updateInfo({ ...profile, about: e.target.value })
-  }
+  // const handleChange = (e) => {
+  //   ctx.updateInfo({ ...profile, about: e.target.value })
+  // }
   // useEffect(() => {
   //   handleChange()
   // }, [])
