@@ -18,6 +18,7 @@ function App() {
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
+  const [imageUrl, setImageUrl] = useState("")
   // console.log(cvSelected)
   useEffect(() => {
     //console.log(user?.id)
@@ -84,6 +85,9 @@ function App() {
       (item) => item.type === 'Socials'
     )
     return socials ? socials[0] : []
+  }
+  const handleImageUrl = (url) => {
+    setImageUrl(url)
   }
   // const updateInfo = (item) => {
   //   console.log(item)
@@ -158,7 +162,9 @@ function App() {
           getComponentId,
           cvSelected,
           setCvSelected,
-          deleteCv
+          deleteCv,
+          handleImageUrl,
+          imageUrl
           // saveToLocalStorage,
           // handleCvChange
         }}
