@@ -5,9 +5,9 @@ import api from './utils/api'
 // import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
-import Home from "./components/Home";
-import Error from "./components/Error";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+// import Home from "./components/Home";
+// import Error from "./components/Error";
+// import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
 
@@ -20,6 +20,7 @@ function App() {
   const [cvSelected, setCvSelected] = useState([])
   const [imageUrl, setImageUrl] = useState("")
   // console.log(cvSelected)
+  // console.log(imageUrl)
   useEffect(() => {
     //console.log(user?.id)
     if (user) {

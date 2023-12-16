@@ -12,7 +12,7 @@ const Certifications = () => {
   }
   const [certification, setCetification] = useState(null)
   const currentCv = ctx.cvSelected
-  console.log(currentCv)
+  // console.log(currentCv)
   useEffect(() => {
     const newCetification = ctx.getComponentData('Certifications')
     setCetification(newCetification)

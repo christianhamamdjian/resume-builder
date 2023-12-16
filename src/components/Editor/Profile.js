@@ -8,10 +8,12 @@ import { BuilderContext } from './../../App'
 const Profile = () => {
   const ctx = useContext(BuilderContext)
   const [profile, setProfile] = useState([])
-  const [url, setUrl] = useState("")
 
-  const currentCv = ctx.cvSelected
   const imageUrl = ctx.imageUrl
+  const currentCv = ctx.cvSelected
+
+  // console.log(profile)
+  // console.log(imageUrl)
 
   useEffect(() => {
     const newProfile = ctx.getComponentData('Profile')
@@ -19,12 +21,11 @@ const Profile = () => {
   }, [])
 
   useEffect(() => {
-    const newUrl = ctx.imageUrl
-    setProfile(prevProfile => ({ ...prevProfile, imageUrl: newUrl || imageUrl }))
+    setProfile(prevProfile => ({ ...prevProfile, profileImageURL: imageUrl }))
   }, [imageUrl])
 
   useEffect(() => {
-    // console.log(currentCv)
+    // 
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
   }, [currentCv])
@@ -52,11 +53,11 @@ const Profile = () => {
         <TextInput
           placeholder='Profile Image Url'
           handleChange={(e) =>
-            setProfile({ ...profile, profileImageURL: url || e.target.value })
+            setProfile({ ...profile, profileImageURL: ctx.imageUrl || e.target.value })
           }
           style='pb-3 pr-3'
           //defaultValue={profile && profile.profileImageURL}
-          defaultValue={profile && url || profile.profileImageURL}
+          defaultValue={profile && ctx.imageUrl || profile.profileImageURL}
 
         />
         <ToggleButton
