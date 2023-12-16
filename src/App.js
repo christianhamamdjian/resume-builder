@@ -11,7 +11,6 @@ import Dashboard from "./components/Dashboard";
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
 
-
 function App() {
   const { user } = useContext(AuthContext)
   const [userId, setUserId] = useState(null)
