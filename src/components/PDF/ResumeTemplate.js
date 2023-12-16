@@ -17,7 +17,7 @@ import { BuilderContext } from './../../App'
 import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer'
 import { Right as SectionRight } from './Sections/Right_'
 import { Left as SectionLeft } from './Sections/Left_'
-
+import styles from '../../styles'
 // Font.register({
 //   family: 'Roboto',
 //   fonts: [
@@ -27,7 +27,7 @@ import { Left as SectionLeft } from './Sections/Left_'
 //   ],
 // })
 // Create styles
-import styles from '../../styles'
+
 // Create Document Component
 
 const PreviewScreen = () => {

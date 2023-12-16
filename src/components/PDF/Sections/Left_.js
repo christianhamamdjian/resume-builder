@@ -57,8 +57,9 @@ export const Left = () => {
   const profile = ctx.getComponentData('Profile')
   const contact = ctx.getComponentData('Contact')
   const certifications = ctx.getComponentData('Certifications')
+  const template = ctx.template
   return (
-    <View style={styles.section__left}>
+    <View style={styles[`section__left${template}`]}>
       <ProfileContainer
         name={profile.name}
         profession={profile.profession}

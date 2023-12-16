@@ -19,6 +19,7 @@ function App() {
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState([])
   const [imageUrl, setImageUrl] = useState("")
+  const [template, setTemplate] = useState("")
   // console.log(cvSelected)
   // console.log(imageUrl)
   useEffect(() => {
@@ -165,7 +166,8 @@ function App() {
           setCvSelected,
           deleteCv,
           handleImageUrl,
-          imageUrl
+          imageUrl,
+          template
           // saveToLocalStorage,
           // handleCvChange
         }}

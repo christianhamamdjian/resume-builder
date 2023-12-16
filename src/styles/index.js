@@ -21,6 +21,14 @@ export default StyleSheet.create({
     width: '25%',
     backgroundColor: '#084c41',
   },
+  section__left1: {
+    width: '25%',
+    backgroundColor: 'blue',
+  },
+  section__left2: {
+    width: '25%',
+    backgroundColor: 'red',
+  },
   name_text: {
     paddingTop: '10px',
     paddingBottom: '5px',
