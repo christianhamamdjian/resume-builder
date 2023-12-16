@@ -3,6 +3,8 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 import ToggleButton from './ToggleButton'
 import Upload from '../Upload'
+import TemplateGallery from '../TemplateGallery'
+
 import { BuilderContext } from './../../App'
 
 const Profile = () => {
@@ -11,6 +13,8 @@ const Profile = () => {
 
   const imageUrl = ctx.imageUrl
   const currentCv = ctx.cvSelected
+  const template = ctx.template
+  console.log(template)
 
   // console.log(profile)
   // console.log(imageUrl)
@@ -23,6 +27,10 @@ const Profile = () => {
   useEffect(() => {
     setProfile(prevProfile => ({ ...prevProfile, profileImageURL: imageUrl }))
   }, [imageUrl])
+
+  useEffect(() => {
+    setProfile(prevProfile => ({ ...prevProfile, template: template }))
+  }, [template])
 
   useEffect(() => {
     // 
@@ -69,12 +77,14 @@ const Profile = () => {
 
       </div>
       <Upload />
+      <TemplateGallery />
       <button
         className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
         onClick={() => ctx.updateInfo(profile && profile, currentCv)}
       >
         Save
       </button>
+
     </div>
   )
 }

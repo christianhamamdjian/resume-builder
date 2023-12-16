@@ -91,6 +91,9 @@ function App() {
   const handleImageUrl = (url) => {
     setImageUrl(url)
   }
+  const handleTemplate = (templateId) => {
+    setTemplate(templateId)
+  }
   // const updateInfo = (item) => {
   //   console.log(item)
   //   const targetIndex = infoSelected.findIndex(
@@ -140,6 +143,18 @@ function App() {
     }
     setForce(force + 1)
   }
+  const setSelectedCv = (e, id) => {
+    e.preventDefault()
+    setTemplate("")
+    infoState.filter((cv, i) => {
+      if (+i === +id) {
+        setInfoSelected(cv['data']["items"])
+        setCvSelected(cv)
+      } else {
+        return null
+      }
+    })
+  }
   return (
     <>
       {/*   <div
@@ -164,10 +179,12 @@ function App() {
           getComponentId,
           cvSelected,
           setCvSelected,
+          setSelectedCv,
           deleteCv,
           handleImageUrl,
           imageUrl,
-          template
+          template,
+          handleTemplate
           // saveToLocalStorage,
           // handleCvChange
         }}
