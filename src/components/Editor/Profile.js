@@ -41,6 +41,7 @@ const Profile = () => {
   return (
     <div className='pb-11'>
       <h1>Profile:</h1>
+      <h2>Full Name:</h2>
       <TextArea
         placeholder='Full name'
         handleChange={(e) => setProfile({ ...profile, name: e.target.value })}
@@ -48,7 +49,7 @@ const Profile = () => {
         rows='2'
         defaultValue={profile.name}
       />
-
+      <h2>Profession:</h2>
       <TextInput
         placeholder='Profession'
         handleChange={(e) =>
@@ -57,6 +58,7 @@ const Profile = () => {
         style='pb-3'
         defaultValue={profile.profession}
       />
+      <h2>Image:</h2>
       <div className='flex flex-row'>
         <TextInput
           placeholder='Profile Image Url'
@@ -74,9 +76,9 @@ const Profile = () => {
             ctx.updateInfo({ ...profile, display: isEnabled })
           }}
         />
-
       </div>
       <Upload />
+      <h2>Template:</h2>
       <TemplateGallery />
       <button
         className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
