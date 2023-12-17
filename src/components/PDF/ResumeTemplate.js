@@ -56,7 +56,7 @@ const PreviewScreen = () => {
 
 const ResumeTemplate = ({ builder }) => (
   <Document style={styles.document}>
-    <Page size='A4' style={styles.page}>
+    <Page size='A4' style={styles[`page${builder.template !== "" && builder.template}`]}>
       <BuilderContext.Provider value={builder}>
         <SectionLeft />
         <SectionRight />

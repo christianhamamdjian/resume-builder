@@ -37,13 +37,18 @@ const TemplateGallery = () => {
         setImages(templates);
     }, []);
     return (
-        <div style={{ padding: "1rem", display: "flex", gap: "1rem", width: "100%", height: "5rem" }}>
-            {images.length > 0 &&
-                images.map((image, index) => (
-                    <div className='gallery-img' key={index}>
-                        <img src={image} onClick={() => ctx.handleTemplate(index + 1)} style={{ width: "4rem", height: "auto" }} alt={index} />
-                    </div>
-                ))}
+        <div style={{ padding: "1rem", overflowX: "auto", overflowY: "hidden", maxWidth: "20rem", height: "auto" }}>
+            <div style={{ minWidth: "20rem", display: "flex", gap: "1rem" }}>
+                {images.length > 0 &&
+                    images.map((image, index) => (
+                        <div className='gallery-img' key={index}>
+                            <img
+                                src={image} onClick={() => ctx.handleTemplate(index + 1)}
+                                style={{ width: "4rem", height: "auto" }}
+                                alt={index} />
+                        </div>
+                    ))}
+            </div>
         </div>
     );
 };

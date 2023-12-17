@@ -1,9 +1,13 @@
 import { StyleSheet } from '@react-pdf/renderer'
 
 export default StyleSheet.create({
-  page: {
+  page1: {
     display: 'flex',
     flexDirection: 'row',
+  },
+  page2: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
   },
   section__top: {
     flexGrow: 1,
@@ -17,15 +21,15 @@ export default StyleSheet.create({
     paddingTop: 20,
     width: '75%',
   },
-  section__left: {
+  section__left1: {
     width: '25%',
     backgroundColor: '#084c41',
   },
-  section__left1: {
+  section__left2: {
     width: '25%',
     backgroundColor: 'blue',
   },
-  section__left2: {
+  section__left3: {
     width: '25%',
     backgroundColor: 'red',
   },
