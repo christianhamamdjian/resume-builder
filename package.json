@@ -28,7 +28,7 @@
   "scripts": {
     "start": "craco start",
     "dev": "netlify dev -p 9999",
-    "build": "CI=false && craco build",
+    "build": "CI= GENERATE_SOURCEMAP=false && craco build",
     "bootstrap": "netlify dev:exec node ./scripts/bootstrap-fauna-database.js",
     "test": "craco test",
     "eject": "react-scripts eject"
