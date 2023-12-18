@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import AuthContext from "../context/authContext";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 	const { user, login, logout } = useContext(AuthContext);
 	return (
-		<nav className="bg-white border-gray-200 dark:bg-gray-900">
+		// <nav className="bg-white border-gray-200 dark:bg-gray-900">
+		<nav className="bg-white border-gray-200">
 			<div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
 				<h1>Resume Builder</h1>
 				{user && <p>You are logged in as <b>{user?.email}</b></p>}
