@@ -5,7 +5,7 @@ const TextSelect = ({ style, options, handleChange }) => {
         onChange={(e) => {
           handleChange(e)
         }}
-        className=' w-full bg-white border-2 text-gray-900 border-gray-300 shadow-lg px-3 py-2 rounded-lg focus:outline-none focus:border-indigo-500'
+        className=' w-full bg-white border-1 text-gray-900 border-gray-200 shadow-lg px-3 py-2 rounded focus:outline-none focus:border-indigo-500'
       >
         {options &&
           options.map((value, index) => <option key={index}>{value}</option>)}

@@ -31,10 +31,12 @@ const ResumeEdit = () => {
 
   return (
     <>
-      <div className='flex flex-row bg-gray-50'>
+      {/* <div className='flex flex-row bg-gray-50'> */}
+      <div className='flex flex-row bg-white'>
+
         <div className='flex flex-col w-1/2 px-5 py-16'>
           <Profile />
-          {/* <TextSelect
+          <TextSelect
             options={[
               'Education',
               'Skills',
@@ -50,7 +52,7 @@ const ResumeEdit = () => {
           {selected === 'Education' && <Education />}
           {selected === 'Skills' && <Skills />}
           {selected === 'Contact' && <Contact />}
-          {selected === 'Certifications' && <Certifications />} */}
+          {selected === 'Certifications' && <Certifications />}
 
           <Socials />
           <Education />
