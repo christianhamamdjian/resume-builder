@@ -26,7 +26,7 @@ const Socials = () => {
 const Wrapper = ({ heading, ...props }) => {
   return (
     <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }}>
-      <div
+      <p
         style={{
           color: '#FFF',
           fontSize: '15',
@@ -34,17 +34,17 @@ const Wrapper = ({ heading, ...props }) => {
         }}
       >
         {heading}
-      </div>
+      </p>
       {props.children}
     </div>
   )
 }
 const EducationText = ({ text, date }) => (
   <div style={{ paddingBottom: '10' }} key={text}>
-    <div style={{ color: '#fff', fontSize: '12' }}>{text}</div>
-    <div style={{ color: '#fff', fontSize: '9', paddingTop: '3' }}>
+    <p style={{ color: '#fff', fontSize: '12' }}>{text}</p>
+    <p style={{ color: '#fff', fontSize: '9', paddingTop: '3' }}>
       {date}
-    </div>
+    </p>
   </div>
 )
 
@@ -58,47 +58,51 @@ export const Left = () => {
   const template = ctx.template !== "" ? ctx.template : profile.template
 
   return (
-    <div style={{ padding: "2rem", ...styles[`section__left${template}`] }}>
-      <ProfileContainer
-        name={profile.name}
-        profession={profile.profession}
-        url={profile.profileImageURL}
-        display={profile.display}
-      />
-      <>
-        <Wrapper heading={education.header}>
-          {education.items.map((item, index) => (
-            <EducationText key={index} text={item.degree} date={item.date} />
-          ))}
-        </Wrapper>
-        {skills.display && (
-          <Wrapper heading={skills.header}>
-            {skills.items.map((item, index) => (
-              <SkillItem key={index} name={item.text} fillSkill={item.level} />
+    <>
+
+      <div style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`] }}>
+        {/* <div style={{ zIndex: "-100", display: "block", position: "fixed", top: " 0 ", left: "0", height: "100%", width: "13rem", backgroundColor: "rgb(8, 76, 65)" }}></div > */}
+        <ProfileContainer
+          name={profile.name}
+          profession={profile.profession}
+          url={profile.profileImageURL}
+          display={profile.display}
+        />
+        <>
+          <Wrapper heading={education.header}>
+            {education.items.map((item, index) => (
+              <EducationText key={index} text={item.degree} date={item.date} />
             ))}
           </Wrapper>
-        )}
-        {certifications.display && (
-          <Wrapper heading={certifications.header}>
-            {certifications.items.map((item, index) => (
-              <EducationText key={index} text={item.name} date={item.date} />
-            ))}
-          </Wrapper>
-        )}
-        {contact.display && (
-          <Wrapper heading={contact.header}>
-            {contact.items.map((item, index) => (
-              <div
-                key={index}
-                style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
-              >
-                {item.text}
-              </div>
-            ))}
-          </Wrapper>
-        )}
-        <Socials />
-      </>
-    </div>
+          {skills.display && (
+            <Wrapper heading={skills.header}>
+              {skills.items.map((item, index) => (
+                <SkillItem key={index} name={item.text} fillSkill={item.level} />
+              ))}
+            </Wrapper>
+          )}
+          {certifications.display && (
+            <Wrapper heading={certifications.header}>
+              {certifications.items.map((item, index) => (
+                <EducationText key={index} text={item.name} date={item.date} />
+              ))}
+            </Wrapper>
+          )}
+          {contact.display && (
+            <Wrapper heading={contact.header}>
+              {contact.items.map((item, index) => (
+                <p
+                  key={index}
+                  style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
+                >
+                  {item.text}
+                </p>
+              ))}
+            </Wrapper>
+          )}
+          <Socials />
+        </>
+      </div>
+    </>
   )
 }

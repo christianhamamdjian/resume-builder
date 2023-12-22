@@ -2,19 +2,19 @@ import Divider from './Divider'
 
 const KeySkills = ({ skills }) => {
   return (
-    <div>
+    <div style={{ pageBreakInside: "avoid" }}>
       {skills.display && (
         <div style={{ paddingTop: '10px' }}>
-          <div
+          <p
             style={{
               color: '#000',
               fontSize: '15',
             }}
           >
             {skills.header}
-          </div>
+          </p>
           <Divider />
-          <div style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</div>
+          <p style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</p>
         </div>
       )}
     </div>

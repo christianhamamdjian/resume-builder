@@ -34,9 +34,9 @@ export const ProfileContainer = ({ name, profession, url, display }) => {
           justifyContent: 'center',
         }}
       >
-        <div style={styles.name_text}>{name}</div>
+        <p style={styles.name_text}>{name}</p>
       </div>
-      <div style={styles.profession_text}>{profession}</div>
+      <p style={styles.profession_text}>{profession}</p>
       <div
         style={{
           marginTop: '10px',

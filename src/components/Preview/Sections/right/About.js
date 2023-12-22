@@ -3,16 +3,16 @@ import Divider from './Divider'
 
 const About = ({ text }) => (
   <div>
-    <div
+    <p
       style={{
         color: '#000',
         fontSize: '15',
       }}
     >
       Professional Summary
-    </div>
+    </p>
     <Divider />
-    <div style={styles.main__text}>{text}</div>
+    <p style={styles.main__text}>{text}</p>
   </div>
 )
 export default About

@@ -4,14 +4,14 @@ import Divider from './Divider'
 const EmploymentHistory = ({ items }) => {
   return (
     <div style={{ paddingTop: '20px' }}>
-      <div
+      <p
         style={{
           color: '#000',
           fontSize: '15',
         }}
       >
         Employment History
-      </div>
+      </p>
       <Divider />
       {items.map((item, index) => (
         <EmploymentHistoryItem

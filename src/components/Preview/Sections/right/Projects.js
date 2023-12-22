@@ -2,28 +2,28 @@ import Divider from './Divider'
 
 const Projects = ({ projects }) => {
   return (
-    <div>
+    <div style={{ pageBreakInside: "avoid" }}>
       {projects.display && (
         <div style={{ paddingTop: '20px' }}>
-          <div
+          <p
             style={{
               color: '#000',
               fontSize: '15',
             }}
           >
             {projects.header}
-          </div>
+          </p>
           <Divider />
           {projects.items.map((project, index) => (
             <div key={index}>
-              <div style={{ fontSize: '13', marginVertical: '4' }}>
+              <p style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
-              </div>
-              <div
+              </p>
+              <p
                 style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
               >
                 {project.description}
-              </div>
+              </p>
             </div>
           ))}
         </div>
