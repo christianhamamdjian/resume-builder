@@ -1,33 +1,32 @@
-import { Text, View } from '@react-pdf/renderer'
 import Divider from './Divider'
 
 const Projects = ({ projects }) => {
   return (
     <div>
       {projects.display && (
-        <View style={{ paddingTop: '20px' }}>
-          <Text
+        <div style={{ paddingTop: '20px' }}>
+          <div
             style={{
               color: '#000',
               fontSize: '15',
             }}
           >
             {projects.header}
-          </Text>
+          </div>
           <Divider />
           {projects.items.map((project, index) => (
-            <View key={index}>
-              <Text style={{ fontSize: '13', marginVertical: '4' }}>
+            <div key={index}>
+              <div style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
-              </Text>
-              <Text
+              </div>
+              <div
                 style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
               >
                 {project.description}
-              </Text>
-            </View>
+              </div>
+            </div>
           ))}
-        </View>
+        </div>
       )}
     </div>
   )

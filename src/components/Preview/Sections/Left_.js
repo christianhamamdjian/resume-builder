@@ -1,16 +1,14 @@
 import React, { useContext } from 'react'
-import { View, Text } from '@react-pdf/renderer'
 import { ProfileContainer } from './left/ProfileContainer'
 import { SVGItem } from './left/SVGItem'
-import styles from '../../../styles'
+import { styles } from '../../../styles'
 import { SkillItem } from './left/SkillItem'
 import { BuilderContext } from '../../../App'
 
 const Socials = () => {
   const ctx = useContext(BuilderContext)
-
   return (
-    <View style={styles.socials__container}>
+    <div style={styles.socials__container}>
       {ctx.getSocials().items.map((item, index) => {
         if (item.enabled)
           return (
@@ -22,13 +20,13 @@ const Socials = () => {
             />
           )
       })}
-    </View>
+    </div>
   )
 }
 const Wrapper = ({ heading, ...props }) => {
   return (
-    <View style={{ marginTop: '25', marginLeft: '15', marginRight: '15' }}>
-      <Text
+    <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }}>
+      <div
         style={{
           color: '#FFF',
           fontSize: '15',
@@ -36,18 +34,18 @@ const Wrapper = ({ heading, ...props }) => {
         }}
       >
         {heading}
-      </Text>
+      </div>
       {props.children}
-    </View>
+    </div>
   )
 }
 const EducationText = ({ text, date }) => (
-  <View style={{ paddingBottom: '10' }} key={text}>
-    <Text style={{ color: '#fff', fontSize: '12' }}>{text}</Text>
-    <Text style={{ color: '#fff', fontSize: '9', paddingTop: '3' }}>
+  <div style={{ paddingBottom: '10' }} key={text}>
+    <div style={{ color: '#fff', fontSize: '12' }}>{text}</div>
+    <div style={{ color: '#fff', fontSize: '9', paddingTop: '3' }}>
       {date}
-    </Text>
-  </View>
+    </div>
+  </div>
 )
 
 export const Left = () => {
@@ -57,17 +55,17 @@ export const Left = () => {
   const profile = ctx.getComponentData('Profile')
   const contact = ctx.getComponentData('Contact')
   const certifications = ctx.getComponentData('Certifications')
-  //const template = ctx.template || profile.template
   const template = ctx.template !== "" ? ctx.template : profile.template
+
   return (
-    <View style={styles[`section__left${template}`]}>
+    <div style={{ padding: "2rem", ...styles[`section__left${template}`] }}>
       <ProfileContainer
         name={profile.name}
         profession={profile.profession}
         url={profile.profileImageURL}
         display={profile.display}
       />
-      <View>
+      <>
         <Wrapper heading={education.header}>
           {education.items.map((item, index) => (
             <EducationText key={index} text={item.degree} date={item.date} />
@@ -90,17 +88,17 @@ export const Left = () => {
         {contact.display && (
           <Wrapper heading={contact.header}>
             {contact.items.map((item, index) => (
-              <Text
+              <div
                 key={index}
                 style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
               >
                 {item.text}
-              </Text>
+              </div>
             ))}
           </Wrapper>
         )}
         <Socials />
-      </View>
-    </View>
+      </>
+    </div>
   )
 }

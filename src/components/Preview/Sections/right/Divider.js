@@ -1,7 +1,5 @@
-import { View } from '@react-pdf/renderer'
-
 const Divider = () => (
-  <View
+  <div
     style={{
       height: '1px',
       marginTop: '13px',
@@ -9,7 +7,7 @@ const Divider = () => (
       width: '100%',
       backgroundColor: '#084c41',
     }}
-  ></View>
+  ></div>
 )
 
 export default Divider

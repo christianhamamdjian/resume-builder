@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ResumeEdit from './Editor/ResumeEdit'
-import PreviewScreen from './PDF/ResumeTemplate'
+import PreviewScreen from './Preview/ResumeTemplate'
 import AuthContext from "../context/authContext";
 import { BuilderContext } from '../App'
 import { cvs } from '../data'

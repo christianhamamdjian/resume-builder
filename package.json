@@ -1,16 +1,11 @@
 {
-  "name": "resume-to-pdf",
+  "name": "resume-builder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.0.0",
-    "@react-pdf/renderer": "^2.0.21",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "assert": "^2.0.0",
-    "browserify-zlib": "^0.2.0",
-    "buffer": "^6.0.3",
     "cloudinary": "^1.41.0",
     "cloudinary-react": "^1.8.1",
     "dotenv": "^16.3.1",
@@ -26,11 +21,11 @@
     "web-vitals": "^2.1.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "react-scripts start",
     "dev": "netlify dev -p 9999",
-    "build": "CI=false && craco build",
+    "build": "CI=false && react-scripts build",
     "bootstrap": "netlify dev:exec node ./scripts/bootstrap-fauna-database.js",
-    "test": "craco test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

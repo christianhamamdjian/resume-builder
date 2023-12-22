@@ -1,7 +1,6 @@
-import { Link, Svg, Path } from '@react-pdf/renderer'
 export const SVGItem = ({ path, url }) => (
-  <Link src={url}>
-    <Svg
+  <a src={url}>
+    <svg
       stroke='currentColor'
       fill='#FFF'
       strokeWidth='0'
@@ -9,7 +8,7 @@ export const SVGItem = ({ path, url }) => (
       height='24'
       width='24'
     >
-      <Path d={path} />
-    </Svg>
-  </Link>
+      <path d={path} />
+    </svg>
+  </a>
 )

@@ -1,24 +1,23 @@
-import { Text, View } from '@react-pdf/renderer'
 import Divider from './Divider'
 
 const KeySkills = ({ skills }) => {
   return (
-    <View>
+    <div>
       {skills.display && (
-        <View style={{ paddingTop: '10px' }}>
-          <Text
+        <div style={{ paddingTop: '10px' }}>
+          <div
             style={{
               color: '#000',
               fontSize: '15',
             }}
           >
             {skills.header}
-          </Text>
+          </div>
           <Divider />
-          <Text style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</Text>
-        </View>
+          <div style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</div>
+        </div>
       )}
-    </View>
+    </div>
   )
 }
 

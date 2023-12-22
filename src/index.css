@@ -98,3 +98,28 @@ Navbar
 }
 
 /* ================================== */
+
+
+/* print section */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .non_print_area {
+    display: none;
+  }
+
+  .print_area,
+  .print_area * {
+    visibility: visible;
+  }
+
+  .print_area {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+  }
+}

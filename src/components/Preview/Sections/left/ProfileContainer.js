@@ -1,10 +1,9 @@
-import { Text, View, Image } from '@react-pdf/renderer'
-import styles from '../../../../styles'
+import { styles } from '../../../../styles'
 
 const ProfileImage = ({ url, display }) => (
   <>
     {display && (
-      <Image
+      <img
         style={{
           width: '60px',
           height: '60px',
@@ -18,7 +17,7 @@ const ProfileImage = ({ url, display }) => (
 
 export const ProfileContainer = ({ name, profession, url, display }) => {
   return (
-    <View
+    <div
       style={{
         display: 'flex',
         flexDirection: 'column',
@@ -30,15 +29,15 @@ export const ProfileContainer = ({ name, profession, url, display }) => {
       }}
     >
       <ProfileImage url={url} display={display} />
-      <View
+      <div
         style={{
           justifyContent: 'center',
         }}
       >
-        <Text style={styles.name_text}>{name}</Text>
-      </View>
-      <Text style={styles.profession_text}>{profession}</Text>
-      <View
+        <div style={styles.name_text}>{name}</div>
+      </div>
+      <div style={styles.profession_text}>{profession}</div>
+      <div
         style={{
           marginTop: '10px',
           width: '10%',
@@ -47,6 +46,6 @@ export const ProfileContainer = ({ name, profession, url, display }) => {
           textAlign: 'center',
         }}
       />
-    </View>
+    </div>
   )
 }

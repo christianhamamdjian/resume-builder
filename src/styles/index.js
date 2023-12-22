@@ -1,6 +1,5 @@
-import { StyleSheet } from '@react-pdf/renderer'
 
-export default StyleSheet.create({
+export const styles = {
 
   /* Page */
   page1: {
@@ -112,4 +111,4 @@ export default StyleSheet.create({
     justifyContent: 'space-evenly',
     paddingTop: '20',
   },
-})
+}

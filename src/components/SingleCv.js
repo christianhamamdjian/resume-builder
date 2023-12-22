@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 //import { useParams, Link } from 'react-router-dom'
 import ResumeEdit from '../components/Editor/ResumeEdit'
-import PreviewScreen from '../components/PDF/ResumeTemplate'
+import PreviewScreen from '../components/Preview/ResumeTemplate'
 import CvList from './CvList'
 import CreateCv from './CreateCv'
 import { BuilderContext } from './../App'
