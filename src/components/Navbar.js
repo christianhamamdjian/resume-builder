@@ -9,7 +9,7 @@ const Navbar = () => {
 		<nav className="bg-white border-gray-200">
 			<div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
 				<h1>Resume Builder</h1>
-				{user && <p>You are logged in as <b>{user?.email}</b></p>}
+				{user && <p>Welcome back <b>{user?.email}</b> !</p>}
 				<div className="login">
 					{/* <Link to="home">Home</Link> | */}
 					{/* <Link to="/"> Login</Link> */}

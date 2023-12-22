@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 //import { Link } from 'react-router-dom'
+import CreateCv from './CreateCv'
 import { BuilderContext } from './../App'
 
 const CvList = () => {
@@ -11,12 +12,9 @@ const CvList = () => {
 		const name = data["items"][1]["name"]
 		const cvId = ref["@ref"]["id"]
 		return <li key={i}>
-			<div className="flex justify-evenly">
-				{/* <Link to={`/cv/${i}`}
-					onPointerDown={(e) => setSelectedCv(e, i)}
-				>{name}</Link> */}
-				<button onClick={(e) => ctx.setSelectedCv(e, i)}>{name}</button>
-				<button data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
+			<div className="flex px-4 justify-between">
+				<button className="flex-none w-34 h-8" onClick={(e) => ctx.setSelectedCv(e, i)}>{name}</button>
+				<button className="flex-none w-34 h-8" data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
 					Delete Cv
 				</button>
 			</div>
@@ -25,13 +23,13 @@ const CvList = () => {
 
 	return (
 		<>
-
-			<div>
-				<h1>Your CVs: </h1>
-				<ul>
-					{renderCvs()}
-				</ul>
+			<div className="flex px-4 justify-between">
+				<h1 className="flex-none w-34 h-8"><strong>Your CVs:</strong> </h1>
+				<CreateCv />
 			</div>
+			<ul className="h-36 border-2 border-grey border-solid rounded-xl p-2 overflow-y-auto">
+				{renderCvs()}
+			</ul>
 		</>
 	);
 };

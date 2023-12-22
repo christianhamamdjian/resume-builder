@@ -31,7 +31,7 @@ const CreateCv = () => {
 		<>
 			{authReady && user &&
 				<>
-					<div style={{ width: "40%", margin: "0 auto" }}>
+					<div>
 						<form
 							className='cv-create-wrapper'
 							// onSubmit={(e) => createNew(e, cvs[0])}
