@@ -13,9 +13,9 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="flex justify-stretch">
-                <div>
-                    <div className="flex-1">
+            <div className="flex justify-evenly">
+                <div className="flex-none">
+                    <div>
                         <CvList />
                     </div>
                     {id && <ResumeEdit />}
