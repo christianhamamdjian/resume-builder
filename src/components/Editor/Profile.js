@@ -16,7 +16,7 @@ const Profile = () => {
   const template = ctx.template
   console.log(template)
 
-  // console.log(profile)
+  console.log(profile)
   // console.log(imageUrl)
 
   useEffect(() => {
@@ -37,10 +37,14 @@ const Profile = () => {
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
   }, [currentCv])
-
+  const updateTemplate = (e) => {
+    setProfile({ ...profile, template: e.target.value })
+  }
   return (
     <div className='pb-11'>
       <h1>Profile:</h1>
+      <h2>Template:</h2>
+      <TemplateGallery updateTemplate={updateTemplate} />
       <h2>Full Name:</h2>
       <TextArea
         placeholder='Full name'
@@ -78,8 +82,6 @@ const Profile = () => {
         />
       </div>
       <Upload />
-      <h2>Template:</h2>
-      <TemplateGallery />
       <button
         className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
         onClick={() => ctx.updateInfo(profile && profile, currentCv)}

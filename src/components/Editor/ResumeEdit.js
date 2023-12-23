@@ -12,6 +12,7 @@ import Projects from './Projects'
 import Profile from './Profile'
 import Contact from './Contact'
 import Certifications from './Certifications'
+// import TemplateGallery from '../TemplateGallery'
 const ResumeEdit = () => {
   const ctx = useContext(BuilderContext)
   const [selected, setSelect] = useState('Education')
@@ -35,8 +36,10 @@ const ResumeEdit = () => {
       <div className='flex flex-row bg-white'>
 
         <div className='flex flex-col w-1/2 px-5 py-16'>
+          {/* <h2>Template:</h2>
+           <TemplateGallery /> */}
           <Profile />
-          <TextSelect
+          {/* <TextSelect
             options={[
               'Education',
               'Skills',
@@ -52,7 +55,7 @@ const ResumeEdit = () => {
           {selected === 'Education' && <Education />}
           {selected === 'Skills' && <Skills />}
           {selected === 'Contact' && <Contact />}
-          {selected === 'Certifications' && <Certifications />}
+          {selected === 'Certifications' && <Certifications />} */}
 
           <Socials />
           <Education />

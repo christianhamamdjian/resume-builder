@@ -29,8 +29,6 @@ function App() {
     }
   }, [user]);
   useEffect(() => {
-    //const userId = netlifyIdentity.currentUser()
-    // console.log(userId)
     if (userId) {
       api.readAll()
         .then((allCvs) => {
@@ -41,21 +39,13 @@ function App() {
         .catch((e) => {
           console.log(`There was an error fetching cvs`, e)
         })
-
-      // const fetchCvs = async () => {
-      //   const allCvs = await api.readAll(userId)
-      //   setInfoState(allCvs)
-      // }
-      // fetchCvs()
     }
-    // }
   }, [userId]);
   useEffect(() => {
     const selected = cvSelected['data']
-    //console.log(selected && selected['items'])
     const newInfoSelected = selected && selected['items']
-    //console.log(infoSelected)
     setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
+    setTemplate(newInfoSelected && newInfoSelected[1]["template"])
   }, [cvSelected]);
   const deleteCv = (e) => {
     const cvId = e.target.dataset.id
@@ -133,6 +123,9 @@ function App() {
     // const cvId = cvRef["@ref"]["id"]
     const { ref } = currentCv
     const cvId = ref["@ref"]["id"]
+    // const templatedCv = cvSelected['data']
+    // const newTemplatedCv = templatedCv && templatedCv['items']
+    // const cvWithTemplate={...cvSelected['data'],{...newTemplatedCv[0],template:template} }
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
         console.log(`updated cv id ${cvId}`, response)

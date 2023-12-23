@@ -9,33 +9,20 @@ import template6 from '../templates/Template6.png';
 import template7 from '../templates/Template7.png';
 import { BuilderContext } from '../App'
 
-const TemplateGallery = () => {
+const TemplateGallery = ({ updateTemplate }) => {
     const [images, setImages] = useState([]);
 
     const ctx = useContext(BuilderContext)
 
     const templates = [template1, template2, template3, template4, template5, template6, template7]
-    // const local_function = 'http://localhost:58665/api/getImages';
-    // const deployed_function = 'https://aircloud.netlify.app/.netlify/functions/getImages';
 
-    // useEffect(() => {
-    //     const loadImages = async () => {
-    //         try {
-    //             const res = await fetch(
-    //                 deployed_function
-    //             );
-    //             const data = await res.json();
-    //             setImages(data);
-    //             console.log(data);
-    //         } catch (error) {
-    //             console.log(error);
-    //         }
-    //     };
-    //     loadImages();
-    // }, []);
     useEffect(() => {
         setImages(templates);
     }, []);
+    const handleTemplateChange = (e, index) => {
+        updateTemplate(e)
+        ctx.handleTemplate(index)
+    }
     return (
         <div style={{ padding: "1rem", overflowX: "auto", overflowY: "hidden", maxWidth: "20rem", height: "auto" }}>
             <div style={{ minWidth: "20rem", display: "flex", gap: "1rem" }}>
@@ -43,7 +30,7 @@ const TemplateGallery = () => {
                     images.map((image, index) => (
                         <div className='gallery-img' key={index}>
                             <img
-                                src={image} onClick={() => ctx.handleTemplate(index + 1)}
+                                src={image} onClick={(e) => handleTemplateChange(e, index + 1)}
                                 style={{ width: "4rem", height: "auto" }}
                                 alt={index} />
                         </div>
