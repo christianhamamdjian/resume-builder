@@ -12,16 +12,13 @@ import { BuilderContext } from '../App'
 const TemplateGallery = ({ updateTemplate }) => {
     const [images, setImages] = useState([]);
 
-    const ctx = useContext(BuilderContext)
-
     const templates = [template1, template2, template3, template4, template5, template6, template7]
 
     useEffect(() => {
         setImages(templates);
     }, []);
     const handleTemplateChange = (e, index) => {
-        updateTemplate(e)
-        ctx.handleTemplate(index)
+        updateTemplate(e, index)
     }
     return (
         <div style={{ padding: "1rem", overflowX: "auto", overflowY: "hidden", maxWidth: "20rem", height: "auto" }}>

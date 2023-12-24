@@ -7,20 +7,31 @@ import api from "../utils/api"
 const CreateCv = () => {
 	const ctx = useContext(BuilderContext)
 	const allCvs = ctx.infoState
-	const { setInfoState } = ctx
+	const { setInfoState, setCvSelected } = ctx
 	const { user, authReady } = useContext(AuthContext);
 	const [cvTitle, setCvTitle] = useState("")
 	const userId = user?.id
-	console.log(cvTitle)
 
 	const createNew = (e, cvInfo) => {
 		e.preventDefault()
 		api.create(cvInfo).then((response) => {
 			console.log("New Cv was created successfully!")
 			setInfoState([...allCvs, response])
+			setCvSelected(response)
+			setCvTitle("")
 		})
 	}
-	const cvWithId = [{ type: "id", authorId: userId, id: Date.now(), template: "1", title: cvTitle }, ...cvs[0]]
+
+	const newCv = cvs.map(cv => {
+		if (cv.type === "id") {
+			return ({ ...cv, authorId: userId, id: Date.now() })
+		} else if (cv.type === "info") {
+			return ({ ...cv, template: "1", title: cvTitle })
+		} else {
+			return cv
+		}
+	})
+
 	return (
 		<>
 			{authReady && user &&
@@ -29,7 +40,7 @@ const CreateCv = () => {
 						<form
 							className='cv-create-wrapper'
 							// onSubmit={(e) => createNew(e, cvs[0])}
-							onSubmit={(e) => createNew(e, cvWithId, cvTitle)}
+							onSubmit={(e) => createNew(e, newCv)}
 						>
 							<input
 								className='cv-create-input'
@@ -42,7 +53,7 @@ const CreateCv = () => {
 								style={{ padding: ".2rem", border: "1px solid #dddddd", marginRight: 20, marginBottom: ".5rem" }}
 							/>
 							<div className='cv-actions'>
-								<button className='btn cv-create-button'>
+								<button className='btn cv-create-button' disabled={cvTitle === ""}>
 									Create a new CV
 								</button>
 							</div>

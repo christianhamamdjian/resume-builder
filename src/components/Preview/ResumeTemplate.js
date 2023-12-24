@@ -6,6 +6,9 @@ import { styles } from '../../styles'
 
 const PreviewScreen = () => {
   const ctx = useContext(BuilderContext)
+  const info = ctx.getComponentData('info')
+  const selectedTemplate = ctx.template
+  const template = selectedTemplate === "" ? info && info['template'] : selectedTemplate
   return (
     <div style={{ flexGrow: '1' }}>
       <div>
@@ -17,23 +20,24 @@ const PreviewScreen = () => {
           height: '100%',
         }}
       >
-        <ResumeTemplate builder={ctx} />
+        <ResumeTemplate builder={ctx} template={template} />
       </div>
     </div>
   )
 }
 
-const ResumeTemplate = ({ builder }) => (
+const ResumeTemplate = ({ builder, template }) => (
   <>
     <div className="print_area" style={styles.document}>
-      <div style={styles[`page${builder.template !== "" && builder.template}`]}>
+      {/* <div style={styles[`page${builder.template !== "" && builder.template}`]}> */}
+      <div style={styles[`page${template}`]}>
         <BuilderContext.Provider value={builder}>
           <SectionLeft />
           <SectionRight />
         </BuilderContext.Provider>
       </div>
     </div>
-    <button type="button" className="print-btn btn btn-primary" onClick={() => window.print()}>Print CV</button>
+    <button type="button" style={{ float: "right" }} className="print-btn btn btn-primary" onClick={() => window.print()}>Print CV</button>
   </>
 )
 

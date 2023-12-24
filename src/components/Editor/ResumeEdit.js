@@ -9,6 +9,7 @@ import EmploymentHistory from './EmploymentHistory'
 import About from './About'
 import KeySkills from './KeySkills'
 import Projects from './Projects'
+import CvInfo from './CvInfo'
 import Profile from './Profile'
 import Contact from './Contact'
 import Certifications from './Certifications'
@@ -38,6 +39,7 @@ const ResumeEdit = () => {
         <div className='flex flex-col w-1/2 px-5 py-16'>
           {/* <h2>Template:</h2>
            <TemplateGallery /> */}
+          <CvInfo />
           <Profile />
           {/* <TextSelect
             options={[

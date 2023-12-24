@@ -8,12 +8,16 @@ import Projects from './right/Projects'
 
 export const Right = () => {
   const ctx = useContext(BuilderContext)
+  const profile = ctx.getComponentData('Profile')
+  const skills = ctx.getComponentData('Skills')
+  const employment = ctx.getComponentData('Employment')
+  const projects = ctx.getComponentData('Projects')
   return (
     <div style={styles.section__right}>
-      <About text={ctx.getComponentData('Profile').about} />
-      <EmploymentHistory items={ctx.getComponentData('Employment').items} />
-      <KeySkills skills={ctx.getComponentData('KeySkills')} />
-      <Projects projects={ctx.getComponentData('Projects')} />
+      <About text={profile && profile.about} />
+      <EmploymentHistory items={employment && employment.items} />
+      <KeySkills skills={skills && skills} />
+      <Projects projects={projects && projects} />
     </div>
   )
 }

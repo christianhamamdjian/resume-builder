@@ -20,7 +20,7 @@ function App() {
   const [cvSelected, setCvSelected] = useState([])
   const [imageUrl, setImageUrl] = useState("")
   const [template, setTemplate] = useState("")
-  // console.log(cvSelected)
+  console.log(cvSelected)
   // console.log(imageUrl)
   useEffect(() => {
     //console.log(user?.id)
@@ -45,7 +45,7 @@ function App() {
     const selected = cvSelected['data']
     const newInfoSelected = selected && selected['items']
     setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
-    setTemplate(newInfoSelected && newInfoSelected[1]["template"])
+    setTemplate(newInfoSelected && newInfoSelected[0]["template"])
   }, [cvSelected]);
   const deleteCv = (e) => {
     const cvId = e.target.dataset.id
@@ -113,23 +113,19 @@ function App() {
   //   setForce(force + 1)
   // }
   const updateInfo = (item, currentCv) => {
-    console.log(item)
+    console.log(currentCv)
     const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
     )
     setInfoSelected(infoSelected.splice(targetIndex, 1, item))
-    // const cvId = infoSelected[0]['id']
-    // const cvRef = cvSelected?.ref
-    // const cvId = cvRef["@ref"]["id"]
-    const { ref } = currentCv
+    const { ref } = cvSelected
     const cvId = ref["@ref"]["id"]
-    // const templatedCv = cvSelected['data']
-    // const newTemplatedCv = templatedCv && templatedCv['items']
-    // const cvWithTemplate={...cvSelected['data'],{...newTemplatedCv[0],template:template} }
+    setTemplate("")
     if (cvId) {
       api.update(cvId, cvSelected['data']).then((response) => {
         console.log(`updated cv id ${cvId}`, response)
         setCvSelected(response)
+        setTemplate("")
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })
@@ -138,7 +134,7 @@ function App() {
   }
   const setSelectedCv = (e, id) => {
     e.preventDefault()
-    setTemplate("")
+
     infoState.filter((cv, i) => {
       if (+i === +id) {
         setInfoSelected(cv['data']["items"])
@@ -150,15 +146,6 @@ function App() {
   }
   return (
     <>
-      {/*   <div
-      style={{
-       display: 'flex',
-       flexDirection: 'column',
-      width: '100%',
-      height: '100vh',
-      }}
-     >
-      <div> */}
       {/* <BrowserRouter> */}
       <Navbar />
       <BuilderContext.Provider
@@ -178,8 +165,6 @@ function App() {
           imageUrl,
           template,
           handleTemplate
-          // saveToLocalStorage,
-          // handleCvChange
         }}
       ><Dashboard />
       </BuilderContext.Provider>
@@ -220,8 +205,6 @@ function App() {
       {/* <Route path="*" component={Error} />
       </Routes> */}
       {/* </BrowserRouter> */}
-      {/* </div> 
-    </div>*/}
     </>)
 }
 

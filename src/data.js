@@ -1,4 +1,14 @@
-export const cvs = [[
+export const cvs = [
+    {
+        type: "id",
+        authorId: "",
+        id: "",
+    },
+    {
+        type: "info",
+        title: "",
+        template: "1"
+    },
     {
         type: 'Profile',
         name: 'John Doe',
@@ -131,4 +141,4 @@ export const cvs = [[
             },
         ],
     },
-]]
+]

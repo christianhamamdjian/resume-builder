@@ -3,7 +3,6 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 import ToggleButton from './ToggleButton'
 import Upload from '../Upload'
-import TemplateGallery from '../TemplateGallery'
 
 import { BuilderContext } from './../../App'
 
@@ -13,8 +12,6 @@ const Profile = () => {
 
   const imageUrl = ctx.imageUrl
   const currentCv = ctx.cvSelected
-  const template = ctx.template
-  console.log(template)
 
   console.log(profile)
   // console.log(imageUrl)
@@ -29,22 +26,15 @@ const Profile = () => {
   }, [imageUrl])
 
   useEffect(() => {
-    setProfile(prevProfile => ({ ...prevProfile, template: template }))
-  }, [template])
-
-  useEffect(() => {
-    // 
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
   }, [currentCv])
-  const updateTemplate = (e) => {
-    setProfile({ ...profile, template: e.target.value })
-  }
+
+
   return (
     <div className='pb-11'>
       <h1>Profile:</h1>
-      <h2>Template:</h2>
-      <TemplateGallery updateTemplate={updateTemplate} />
+
       <h2>Full Name:</h2>
       <TextArea
         placeholder='Full name'

@@ -50,12 +50,15 @@ const EducationText = ({ text, date }) => (
 
 export const Left = () => {
   const ctx = useContext(BuilderContext)
+  const selectedTemplate = ctx.template
+  const info = ctx.getComponentData('info')
   const education = ctx.getComponentData('Education')
   const skills = ctx.getComponentData('Skills')
   const profile = ctx.getComponentData('Profile')
   const contact = ctx.getComponentData('Contact')
   const certifications = ctx.getComponentData('Certifications')
-  const template = ctx.template !== "" ? ctx.template : profile.template
+  // const template = ctx.template !== "" ? ctx.template : info && info['template']
+  const template = selectedTemplate === "" ? info && info['template'] : selectedTemplate
 
   return (
     <>
@@ -63,34 +66,34 @@ export const Left = () => {
       <div style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`] }}>
         {/* <div style={{ zIndex: "-100", display: "block", position: "fixed", top: " 0 ", left: "0", height: "100%", width: "13rem", backgroundColor: "rgb(8, 76, 65)" }}></div > */}
         <ProfileContainer
-          name={profile.name}
-          profession={profile.profession}
-          url={profile.profileImageURL}
-          display={profile.display}
+          name={profile && profile.name}
+          profession={profile && profile.profession}
+          url={profile && profile.profileImageURL}
+          display={profile && profile.display}
         />
         <>
-          <Wrapper heading={education.header}>
-            {education.items.map((item, index) => (
+          <Wrapper heading={education && education.header}>
+            {education && education.items.map((item, index) => (
               <EducationText key={index} text={item.degree} date={item.date} />
             ))}
           </Wrapper>
-          {skills.display && (
-            <Wrapper heading={skills.header}>
-              {skills.items.map((item, index) => (
+          {skills && skills.display && (
+            <Wrapper heading={skills && skills.header}>
+              {skills && skills.items.map((item, index) => (
                 <SkillItem key={index} name={item.text} fillSkill={item.level} />
               ))}
             </Wrapper>
           )}
           {certifications.display && (
-            <Wrapper heading={certifications.header}>
-              {certifications.items.map((item, index) => (
+            <Wrapper heading={certifications && certifications.header}>
+              {certifications && certifications.items.map((item, index) => (
                 <EducationText key={index} text={item.name} date={item.date} />
               ))}
             </Wrapper>
           )}
           {contact.display && (
-            <Wrapper heading={contact.header}>
-              {contact.items.map((item, index) => (
+            <Wrapper heading={contact && contact.header}>
+              {contact && contact.items.map((item, index) => (
                 <p
                   key={index}
                   style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
