@@ -1,3 +1,5 @@
+import React, { useContext } from 'react'
+import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
 
 const ProfileImage = ({ url, display }) => (
@@ -16,6 +18,12 @@ const ProfileImage = ({ url, display }) => (
 )
 
 export const ProfileContainer = ({ name, profession, url, display }) => {
+
+  const ctx = useContext(BuilderContext)
+  const selectedTemplate = ctx.template
+  const info = ctx.getComponentData('info')
+  const template = !selectedTemplate ? info && info['template'] : selectedTemplate
+
   return (
     <div
       style={{
@@ -34,9 +42,9 @@ export const ProfileContainer = ({ name, profession, url, display }) => {
           justifyContent: 'center',
         }}
       >
-        <p style={styles.name_text}>{name}</p>
+        <p style={{ ...styles[`name_text${template}`] }}>{name}</p>
       </div>
-      <p style={styles.profession_text}>{profession}</p>
+      <p style={{ ...styles[`profession_text${template}`] }}>{profession}</p>
       <div
         style={{
           marginTop: '10px',

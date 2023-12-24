@@ -8,7 +8,7 @@ const PreviewScreen = () => {
   const ctx = useContext(BuilderContext)
   const info = ctx.getComponentData('info')
   const selectedTemplate = ctx.template
-  const template = selectedTemplate === "" ? info && info['template'] : selectedTemplate
+  const template = !selectedTemplate ? info && info['template'] : selectedTemplate
   return (
     <div style={{ flexGrow: '1' }}>
       <div>
@@ -18,17 +18,19 @@ const PreviewScreen = () => {
         style={{
           width: '100%',
           height: '100%',
+          backgroundColor: "grey",
+          padding: "1rem"
         }}
       >
         <ResumeTemplate builder={ctx} template={template} />
       </div>
-    </div>
+    </div >
   )
 }
 
 const ResumeTemplate = ({ builder, template }) => (
   <>
-    <div className="print_area" style={styles.document}>
+    <div className="print_area" style={{ ...styles.document, backgroundColor: "#ffffff", boxShadow: "" }}>
       {/* <div style={styles[`page${builder.template !== "" && builder.template}`]}> */}
       <div style={styles[`page${template}`]}>
         <BuilderContext.Provider value={builder}>

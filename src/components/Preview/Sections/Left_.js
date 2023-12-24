@@ -5,10 +5,11 @@ import { styles } from '../../../styles'
 import { SkillItem } from './left/SkillItem'
 import { BuilderContext } from '../../../App'
 
-const Socials = () => {
+const Socials = ({ template }) => {
   const ctx = useContext(BuilderContext)
+  console.log(template)
   return (
-    <div style={styles.socials__container}>
+    <div style={{ ...styles[`socials__container${template}`] }}>
       {ctx.getSocials().items.map((item, index) => {
         if (item.enabled)
           return (
@@ -58,13 +59,12 @@ export const Left = () => {
   const contact = ctx.getComponentData('Contact')
   const certifications = ctx.getComponentData('Certifications')
   // const template = ctx.template !== "" ? ctx.template : info && info['template']
-  const template = selectedTemplate === "" ? info && info['template'] : selectedTemplate
-
+  const template = !selectedTemplate ? info && info['template'] : selectedTemplate
+  console.log(template)
   return (
     <>
 
       <div style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`] }}>
-        {/* <div style={{ zIndex: "-100", display: "block", position: "fixed", top: " 0 ", left: "0", height: "100%", width: "13rem", backgroundColor: "rgb(8, 76, 65)" }}></div > */}
         <ProfileContainer
           name={profile && profile.name}
           profession={profile && profile.profession}
@@ -103,7 +103,7 @@ export const Left = () => {
               ))}
             </Wrapper>
           )}
-          <Socials />
+          <Socials template={template} />
         </>
       </div>
     </>
