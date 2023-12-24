@@ -9,7 +9,7 @@ const ProfileImage = ({ url, display }) => (
         style={{
           width: '60px',
           height: '60px',
-          borderRadius: '90',
+          borderRadius: '50%',
         }}
         src={url}
       />
