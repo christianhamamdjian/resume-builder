@@ -42,7 +42,7 @@ const Upload = () => {
             <form onSubmit={submitHandler}>
                 <label>
                     <input type='file' onChange={handleChange} />
-                    <span>+</span>
+                    {/* <span>+</span> */}
                 </label>
 
                 <button type='submit' className='button' disabled={!imageDataUrl}>
