@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "dev": "netlify dev -p 9999",
-    "build": "CI=false && react-scripts build",
+    "build": "CI= GENERATE_SOURCEMAP=false react-scripts build",
     "bootstrap": "netlify dev:exec node ./scripts/bootstrap-fauna-database.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
