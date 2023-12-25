@@ -27,8 +27,8 @@ const About = () => {
 
   const handleSaveClick = () => ctx.updateInfo(profile && profile, currentCv)
   return (
-    <div className='pt-10'>
-      <h1>About:</h1>
+    <div>
+      <h2>About:</h2>
       <TextArea
         placeholder='About'
         style='px-5 py-3'

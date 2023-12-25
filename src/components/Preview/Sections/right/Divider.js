@@ -1,5 +1,7 @@
-const Divider = () => (
-  <div
+import React from 'react'
+
+const Divider = () => {
+  return <div
     style={{
       height: '1px',
       marginTop: '13px',
@@ -8,6 +10,5 @@ const Divider = () => (
       backgroundColor: '#084c41',
     }}
   ></div>
-)
-
+}
 export default Divider

@@ -5,25 +5,26 @@ const Projects = ({ projects }) => {
     <div style={{ pageBreakInside: "avoid" }}>
       {projects.display && (
         <div style={{ paddingTop: '20px' }}>
-          <p
+          <h3
             style={{
               color: '#000',
-              fontSize: '15',
+              fontSize: '1rem',
+              fontWeight: "bold",
             }}
           >
             {projects.header}
-          </p>
+          </h3>
           <Divider />
           {projects.items.map((project, index) => (
             <div key={index}>
               <p style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
               </p>
-              <p
+              <pre
                 style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
               >
                 {project.description}
-              </p>
+              </pre>
             </div>
           ))}
         </div>

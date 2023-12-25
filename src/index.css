@@ -98,7 +98,15 @@ Navbar
 }
 
 /* ================================== */
+.print-btn {
+  margin-top: 2rem;
+  background-color: #ffffff;
+}
 
+pre {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  white-space: pre-wrap;
+}
 
 /* print section */
 @media print {

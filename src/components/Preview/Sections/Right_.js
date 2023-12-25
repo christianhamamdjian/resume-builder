@@ -11,7 +11,7 @@ export const Right = () => {
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
   const profile = ctx.getComponentData('Profile')
-  const skills = ctx.getComponentData('Skills')
+  const skills = ctx.getComponentData('KeySkills')
   const employment = ctx.getComponentData('Employment')
   const projects = ctx.getComponentData('Projects')
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate

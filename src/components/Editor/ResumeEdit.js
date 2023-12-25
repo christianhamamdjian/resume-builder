@@ -34,13 +34,15 @@ const ResumeEdit = () => {
   return (
     <>
       {/* <div className='flex flex-row bg-gray-50'> */}
-      <div className='flex flex-row bg-white'>
+      <div className='flex flex-row bg-white' >
 
-        <div className='flex flex-col w-1/2 px-5 py-16'>
+        <div className='flex flex-col w-1/2'>
           {/* <h2>Template:</h2>
            <TemplateGallery /> */}
-          <CvInfo />
-          <Profile />
+          <div className='border-gray-300 border p-4 '>
+            <CvInfo /></div>
+          <div className='border-gray-300 border p-4 '>
+            <Profile /></div>
           {/* <TextSelect
             options={[
               'Education',
@@ -58,46 +60,50 @@ const ResumeEdit = () => {
           {selected === 'Skills' && <Skills />}
           {selected === 'Contact' && <Contact />}
           {selected === 'Certifications' && <Certifications />} */}
-
-          <Socials />
-          <Education />
-          <Skills />
-          <Contact />
-          <Certifications />
+          <div className='border-gray-300 border p-4 '>
+            <Socials /></div>
+          <div className='border-gray-300 border p-4 '>
+            <Education /></div>
+          <div className='border-gray-300 border p-4 '>
+            <Skills /></div>
+          <div className='border-gray-300 border p-4 '>
+            <Contact /></div>
+          <div className='border-gray-300 border p-4 '>
+            <Certifications /></div>
         </div>
 
-        <div className='w-full'>
+        <div className='flex flex-col w-1/2'>
           {/* <div className='mx-5 '>
-            <ul className='flex cursor-pointer'>
-              <li
-                className={`py-2 mt-2  px-6  border-gray-300 border ${tabSelected === 'About'
-                  ? 'bg-white'
-                  : 'bg-gray-200 text-gray-600'
-                  } rounded-t-lg `}
-                onClick={() => setTabSelected('About')}
-              >
-                About
-              </li>
-              <li
-                className={`py-2 mt-2 px-6 border-gray-300 border ${tabSelected === 'Skills'
-                  ? 'bg-white'
-                  : 'bg-gray-200 text-gray-600'
-                  } rounded-t-lg 	`}
-                onClick={() => setTabSelected('Skills')}
-              >
-                Skills
-              </li>
-              <li
-                className={`py-2 mt-2 px-6 border-gray-300 border ${tabSelected === 'Projects'
-                  ? 'bg-white'
-                  : 'bg-gray-200 text-gray-600'
-                  } rounded-t-lg`}
-                onClick={() => setTabSelected('Projects')}
-              >
-                Projects
-              </li>
-            </ul>
-          </div> */}
+        <ul className='flex cursor-pointer'>
+          <li
+            className={`py-2 mt-2  px-6  border-gray-300 border ${tabSelected === 'About'
+              ? 'bg-white'
+              : 'bg-gray-200 text-gray-600'
+              } rounded-t-lg `}
+            onClick={() => setTabSelected('About')}
+          >
+            About
+          </li>
+          <li
+            className={`py-2 mt-2 px-6 border-gray-300 border ${tabSelected === 'Skills'
+              ? 'bg-white'
+              : 'bg-gray-200 text-gray-600'
+              } rounded-t-lg 	`}
+            onClick={() => setTabSelected('Skills')}
+          >
+            Skills
+          </li>
+          <li
+            className={`py-2 mt-2 px-6 border-gray-300 border ${tabSelected === 'Projects'
+              ? 'bg-white'
+              : 'bg-gray-200 text-gray-600'
+              } rounded-t-lg`}
+            onClick={() => setTabSelected('Projects')}
+          >
+            Projects
+          </li>
+        </ul>
+      </div> */}
           {/* {tabSelected === 'About' && (
             <TextArea
               placeholder='About'
@@ -121,15 +127,20 @@ const ResumeEdit = () => {
               handleChange(e)
             }}
           /> */}
-          <About />
-          <h1>Key Skills</h1>
-          <KeySkills />
-          <h1>Projects</h1>
-          <Projects />
-          <h1>Employment History</h1>
-          <EmploymentHistory />
-        </div>
-      </div>
+          <div className='border-gray-300 border p-4 '>
+            <About />
+          </div>
+          <div className='border-gray-300 border p-4 '>
+            <h2>Key Skills</h2>
+            <KeySkills /></div>
+          <div className='border-gray-300 border p-4 '>
+            <h2>Projects</h2>
+            <Projects /></div>
+          <div className='border-gray-300 border p-4 '>
+            <h2>Employment History</h2>
+            <EmploymentHistory /></div>
+        </div >
+      </div >
     </>
   )
 }

@@ -5,20 +5,21 @@ export const EmploymentHistoryItem = ({
   responsibilities,
 }) => (
   <div style={{ paddingBottom: '20px' }}>
-    <p
+    <h4
       style={{
         color: '#000',
-        fontSize: '13',
+        fontSize: '.9rem',
+        fontWeight: "bold",
       }}
     >
       {text}
-    </p>
+    </h4>
     <p style={{ fontSize: '9', color: '#959ba6', paddingBottom: '5' }}>
       {date}
     </p>
     <p style={{ fontSize: '11' }}>{description}</p>
-    <p style={{ fontSize: '11', marginLeft: '15px', marginTop: '4' }}>
+    <pre style={{ fontSize: '11', marginLeft: '15px', marginTop: '4' }}>
       {responsibilities}
-    </p>
+    </pre>
   </div>
 )

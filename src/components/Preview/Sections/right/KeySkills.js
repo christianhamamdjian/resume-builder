@@ -1,3 +1,4 @@
+import React from 'react'
 import Divider from './Divider'
 
 const KeySkills = ({ skills }) => {
@@ -5,16 +6,17 @@ const KeySkills = ({ skills }) => {
     <div style={{ pageBreakInside: "avoid" }}>
       {skills.display && (
         <div style={{ paddingTop: '10px' }}>
-          <p
+          <h3
             style={{
               color: '#000',
-              fontSize: '15',
+              fontSize: '1rem',
+              fontWeight: "bold",
             }}
           >
             {skills.header}
-          </p>
+          </h3>
           <Divider />
-          <p style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</p>
+          <pre style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</pre>
         </div>
       )}
     </div>

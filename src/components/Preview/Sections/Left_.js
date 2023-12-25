@@ -27,15 +27,16 @@ const Socials = ({ template }) => {
 const Wrapper = ({ heading, ...props }) => {
   return (
     <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }}>
-      <p
+      <h3
         style={{
           color: '#FFF',
           fontSize: '15',
+          fontWeight: "bold",
           paddingBottom: '10',
         }}
       >
         {heading}
-      </p>
+      </h3>
       {props.children}
     </div>
   )

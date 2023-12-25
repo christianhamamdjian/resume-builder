@@ -28,7 +28,7 @@ const CvList = () => {
 				<h1 className="flex-none w-34 h-8"><strong>Your CVs:</strong> </h1>
 				<CreateCv />
 			</div>
-			<ul className="h-36 border-2 border-grey border-solid rounded-xl p-2 overflow-y-auto">
+			<ul className="h-36 border-2 border-grey border-solid p-2 overflow-y-auto">
 				{renderCvs()}
 			</ul>
 		</>

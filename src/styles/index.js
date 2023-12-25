@@ -35,19 +35,19 @@ export const styles = {
   /* Section Right */
   section__right1: {
     margin: 10,
-    padding: 10,
+    padding: 30,
     paddingTop: 20,
     width: '75%',
   },
   section__right2: {
     margin: 10,
-    padding: 10,
+    padding: 30,
     paddingTop: 20,
     width: '75%',
   },
   section__right3: {
     margin: 10,
-    padding: 10,
+    padding: 30,
     paddingTop: 20,
     width: '75%',
   },
@@ -190,17 +190,17 @@ export const styles = {
   /* Skill Item Fill */
   skill__item__fill1: {
     width: '30%',
-    height: '51px',
+    height: '5px',
     backgroundColor: '#FFF',
   },
   skill__item__fill2: {
     width: '30%',
-    height: '51px',
+    height: '5px',
     backgroundColor: '#FFF',
   },
   skill__item__fill3: {
     width: '30%',
-    height: '51px',
+    height: '5px',
     backgroundColor: '#FFF',
   },
 
