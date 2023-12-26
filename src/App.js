@@ -6,8 +6,8 @@ import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 // import Home from "./components/Home";
-// import Error from "./components/Error";
-// import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Error from "./components/Error";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
 
@@ -146,48 +146,53 @@ function App() {
   }
   return (
     <>
-      {/* <BrowserRouter> */}
-      <Navbar />
-      <BuilderContext.Provider
-        value={{
-          getSocials,
-          updateInfo,
-          getComponentData,
-          infoState,
-          setInfoState,
-          setInfoSelected,
-          getComponentId,
-          cvSelected,
-          setCvSelected,
-          setSelectedCv,
-          deleteCv,
-          handleImageUrl,
-          imageUrl,
-          template,
-          handleTemplate
-        }}
-      ><Dashboard />
-      </BuilderContext.Provider>
+      <BrowserRouter>
+        <Navbar />
+        {/* <BuilderContext.Provider
+          value={{
+            getSocials,
+            updateInfo,
+            getComponentData,
+            infoState,
+            setInfoState,
+            setInfoSelected,
+            getComponentId,
+            cvSelected,
+            setCvSelected,
+            setSelectedCv,
+            deleteCv,
+            handleImageUrl,
+            imageUrl,
+            template,
+            handleTemplate
+          }}
+        ><Dashboard />
+        </BuilderContext.Provider> */}
 
-      {/* <Routes> */}
-      {/* <Route path='/' element={
-              <BuilderContext.Provider
-                value={{
-                  getSocials,
-                  updateInfo,
-                  getComponentData,
-                  infoState,
-                  setInfoState,
-                  setInfoSelected,
-                  setCvSelected,
-                  deleteCv
-                  // saveToLocalStorage,
-                  // handleCvChange
-                }}
-              ><Home />
-              </BuilderContext.Provider>
-            } /> */}
-      {/* <Route path='cv/:id' element={<BuilderContext.Provider
+        <Routes>
+          {user && <Route path='/' element={
+            <BuilderContext.Provider
+              value={{
+                getSocials,
+                updateInfo,
+                getComponentData,
+                infoState,
+                setInfoState,
+                setInfoSelected,
+                getComponentId,
+                cvSelected,
+                setCvSelected,
+                setSelectedCv,
+                deleteCv,
+                handleImageUrl,
+                imageUrl,
+                template,
+                handleTemplate
+              }}
+            ><Dashboard />
+            </BuilderContext.Provider>
+          } />}
+          {/* <Route path='cv/:id' element={<BuilderContext.Provider
               value={{
                 getSocials,
                 updateInfo,
@@ -202,9 +207,9 @@ function App() {
             >
               <SingleCv />
             </BuilderContext.Provider>} />*/}
-      {/* <Route path="*" component={Error} />
-      </Routes> */}
-      {/* </BrowserRouter> */}
+          <Route path="*" component={Error} />
+        </Routes>
+      </BrowserRouter >
     </>)
 }
 
