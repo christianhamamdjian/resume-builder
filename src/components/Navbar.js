@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import AuthContext from "../context/authContext";
-import template7 from '../templates/Template7.png';
+import illustration1 from '../images/illustration-1.svg';
 // import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -30,9 +30,13 @@ const Navbar = () => {
 					</div>
 				</div>
 			</nav>
-			{!user && <div style={{ width: "100%", height: "auto", display: "flex", justifyItems: "center", alignContent: "center" }}>
-				<img style={{ margin: "0 auto", width: "20rem", height: "auto" }} src={template7} alt="" />
-			</div>}
+			{!user && <>
+				<div style={{ width: "100%", height: "auto", display: "flex", flexDirection: "column", justifyItems: "center", alignContent: "center" }}>
+					<img style={{ margin: "0 auto", width: "30rem", height: "auto" }} src={illustration1} alt="" />
+					<h1 style={{ textAlign: "center", fontSize: "3rem", fontWeight: "bold", color: "gray" }}>Welcome to Resume Builder!</h1>
+				</div>
+			</>
+			}
 		</>
 	);
 };

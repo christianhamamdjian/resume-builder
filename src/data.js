@@ -10,6 +10,11 @@ export const cvs = [
         template: "1"
     },
     {
+        type: 'Draft',
+        text:
+            'Draft... ',
+    },
+    {
         type: 'Profile',
         name: 'John Doe',
         profession: 'Junior Developer',

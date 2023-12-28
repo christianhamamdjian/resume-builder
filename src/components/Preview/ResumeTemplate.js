@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { BuilderContext } from '../../App'
 import { Right as SectionRight } from './Sections/Right_'
 import { Left as SectionLeft } from './Sections/Left_'
+import Draft from '../../components/Editor/Draft'
 import { styles } from '../../styles'
 
 const PreviewScreen = () => {
@@ -39,7 +40,15 @@ const ResumeTemplate = ({ builder, template }) => (
         </BuilderContext.Provider>
       </div>
     </div>
-    <button type="button" style={{ float: "right" }} className="print-btn btn btn-primary" onClick={() => window.print()}>Print CV</button>
+    <div style={{
+      display: "flex",
+      justifyContent: "flex-end",
+      marginTop: ".2rem",
+      width: "100%"
+    }}>
+      <button type="button" className="print-btn btn btn-primary" onClick={() => window.print()}>Print CV</button>
+    </div>
+    <Draft />
   </>
 )
 
