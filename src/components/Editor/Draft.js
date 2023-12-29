@@ -15,7 +15,6 @@ const Draft = () => {
   }, [])
 
   useEffect(() => {
-    // console.log(currentCv)
     const newDraft = ctx.getComponentData('Draft')
     setDraft(newDraft)
   }, [currentCv])
@@ -30,7 +29,6 @@ const Draft = () => {
     <div style={{
       marginTop: ".2rem", width: "100%", height: "30rem"
     }}>
-      {/* <h2>Draft:</h2> */}
       <TextArea
         placeholder='Draft...'
         style='px-5 py-3'

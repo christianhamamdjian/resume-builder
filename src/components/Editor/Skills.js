@@ -10,7 +10,7 @@ const Skills = () => {
     text: 'Skill',
     level: 'Percent',
   }
-  // const [skills, setSkills] = useState(ctx.getComponentData('Skills'))
+
   const [skills, setSkills] = useState(null)
   const currentCv = ctx.cvSelected
   useEffect(() => {
@@ -54,9 +54,6 @@ const Skills = () => {
       <h1>Skills:</h1>
       <ToggleButton
         defaultValue={skills && skills.display}
-        // handleChange={(name, prop, isEnabled) => {
-        //   ctx.updateInfo({ ...skills, display: isEnabled })
-        // }}
         handleChange={(name, prop, isEnabled) => {
           handleEnable(isEnabled)
         }}

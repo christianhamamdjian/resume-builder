@@ -15,7 +15,6 @@ const EmploymentHistory = () => {
   }, [])
 
   useEffect(() => {
-    // console.log(currentCv)
     const newEmploymentInfo = ctx.getComponentData('Employment')
     setEmploymentInfo(newEmploymentInfo)
   }, [currentCv])

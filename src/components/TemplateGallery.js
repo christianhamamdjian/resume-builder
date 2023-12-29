@@ -1,5 +1,4 @@
 import React, { useEffect, useContext, useState } from 'react';
-// import { Image, Transformation } from 'cloudinary-react';
 import template1 from '../templates/Template1.png';
 import template2 from '../templates/Template2.png';
 import template3 from '../templates/Template3.png';
@@ -7,7 +6,6 @@ import template4 from '../templates/Template4.png';
 import template5 from '../templates/Template5.png';
 import template6 from '../templates/Template6.png';
 import template7 from '../templates/Template7.png';
-import { BuilderContext } from '../App'
 
 const TemplateGallery = ({ updateTemplate }) => {
     const [images, setImages] = useState([]);

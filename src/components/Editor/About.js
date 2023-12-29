@@ -15,7 +15,6 @@ const About = () => {
   }, [])
 
   useEffect(() => {
-    // console.log(currentCv)
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
   }, [currentCv])
@@ -38,39 +37,10 @@ const About = () => {
           handleChange(e)
         }}
       />
-      {/* <h1>About:</h1>
-      <ToggleButton
-        defaultValue={about.display}
-        handleChange={(name, prop, isEnabled) => {
-          ctx.updateInfo({ ...about, display: isEnabled })
-        }}
-      />
-      {about.items.map((item, index) => (
-        <div key={index} className='flex flex-row py-1'>
-          <TextInput
-            defaultValue={item.text}
-            name='text'
-            placeholder='Skill'
-            index={index}
-            handleChange={(e) => handleChange(index, e)}
-          />
-          <TextInput
-            defaultValue={item.level}
-            name='level'
-            type='number'
-            placeholder='%'
-            style='w-1/3'
-            index={index}
-            handleChange={(e) => handleChange(index, e)}
-          />
-        </div>
-      ))}*/}
 
       <ActionMenu
         handleSaveClick={handleSaveClick}
         onlySave={true}
-      // handleAddClick={handleAddClick}
-      // handleRemoveClick={handleRemoveClick}
       />
     </div>
   )

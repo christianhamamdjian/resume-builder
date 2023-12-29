@@ -9,18 +9,14 @@ const Education = () => {
     degree: 'Software Engineering - University of Sydney',
     date: 'Mar 2017 - Dec 2019',
   }
-  // const [education, setEducation] = useState(ctx.getComponentData('Education'))
-  // console.log(education)
   const [education, setEducation] = useState(null)
   const currentCv = ctx.cvSelected
-  // console.log(education)
   useEffect(() => {
     const newEducation = ctx.getComponentData('Education')
     setEducation(newEducation)
   }, [])
 
   useEffect(() => {
-    // console.log(currentCv)
     const newEducation = ctx.getComponentData('Education')
     setEducation(newEducation)
   }, [currentCv])
@@ -33,7 +29,6 @@ const Education = () => {
       [targetName]: e.target.value,
     }
     education.items.splice(i, 1, modifiedItem)
-    //ctx.updateInfo(education)
   }
   const handleAddClick = () => {
     setEducation({

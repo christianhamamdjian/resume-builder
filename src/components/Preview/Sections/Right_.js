@@ -15,7 +15,7 @@ export const Right = () => {
   const employment = ctx.getComponentData('Employment')
   const projects = ctx.getComponentData('Projects')
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-  console.log(template)
+
   return (
     <div style={{ ...styles[`section__right${template}`] }}>
       <About text={profile && profile.about} />

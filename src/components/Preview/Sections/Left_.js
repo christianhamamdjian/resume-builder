@@ -59,9 +59,7 @@ export const Left = () => {
   const profile = ctx.getComponentData('Profile')
   const contact = ctx.getComponentData('Contact')
   const certifications = ctx.getComponentData('Certifications')
-  // const template = ctx.template !== "" ? ctx.template : info && info['template']
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-  console.log(template)
   return (
     <>
 

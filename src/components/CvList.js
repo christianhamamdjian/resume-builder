@@ -11,7 +11,6 @@ const CvList = () => {
 		const { data } = cv
 		const { ref } = cv
 		const title = data["items"][1]["title"]
-		//const name = data["items"][1]["name"]
 		const cvId = ref["@ref"]["id"]
 		return <li key={i}>
 			<div className="flex px-4 justify-between">

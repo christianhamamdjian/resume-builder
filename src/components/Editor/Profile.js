@@ -13,9 +13,6 @@ const Profile = () => {
   const imageUrl = ctx.imageUrl
   const currentCv = ctx.cvSelected
 
-  console.log(profile)
-  // console.log(imageUrl)
-
   useEffect(() => {
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)

@@ -32,7 +32,6 @@ const PreviewScreen = () => {
 const ResumeTemplate = ({ builder, template }) => (
   <>
     <div className="print_area" style={{ ...styles.document, backgroundColor: "#ffffff", boxShadow: "" }}>
-      {/* <div style={styles[`page${builder.template !== "" && builder.template}`]}> */}
       <div style={styles[`page${template}`]}>
         <BuilderContext.Provider value={builder}>
           <SectionLeft />

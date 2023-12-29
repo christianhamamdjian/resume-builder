@@ -1,11 +1,7 @@
-
-// import { cvs } from './data'
 import React, { useState, useEffect, useContext } from 'react'
 import api from './utils/api'
-// import isLocalHost from './utils/isLocalHost'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
-// import Home from "./components/Home";
 import Error from "./components/Error";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
@@ -20,10 +16,8 @@ function App() {
   const [cvSelected, setCvSelected] = useState([])
   const [imageUrl, setImageUrl] = useState("")
   const [template, setTemplate] = useState("")
-  console.log(cvSelected)
-  // console.log(imageUrl)
+
   useEffect(() => {
-    //console.log(user?.id)
     if (user) {
       setUserId(user.id);
     }
@@ -84,34 +78,7 @@ function App() {
   const handleTemplate = (templateId) => {
     setTemplate(templateId)
   }
-  // const updateInfo = (item) => {
-  //   console.log(item)
-  //   const targetIndex = infoSelected.findIndex(
-  //     (elem) => elem.type === item.type
-  //   )
-  //   setInfoSelected(infoSelected.splice(targetIndex, 1, item))
-  //   const cvId = infoSelected[0]['id']
-  //   // const selected = infoSelected['ref']
-  //   // const cvId = selected && selected["@ref"]["id"]
-  //   // console.log(cvSelected['data'])
-  //   if (cvId) {
-  //     api.update(cvId, cvSelected['data']).then((response) => {
-  //       // setInfoSelected(infoState[cvId]['data'])
 
-
-  //       // const selected = cvSelected['data']
-  //       // //console.log(selected && selected['items'])
-  //       // const newInfoSelected = selected && selected['items']
-  //       // //console.log(infoSelected)
-  //       // setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
-
-  //       console.log(response)
-  //     }).catch((e) => {
-  //       console.log(`There was an error updating ${cvId}`, e)
-  //     })
-  //   }
-  //   setForce(force + 1)
-  // }
   const updateInfo = (item, currentCv) => {
     console.log(currentCv)
     const targetIndex = infoSelected.findIndex(
@@ -148,27 +115,6 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        {/* <BuilderContext.Provider
-          value={{
-            getSocials,
-            updateInfo,
-            getComponentData,
-            infoState,
-            setInfoState,
-            setInfoSelected,
-            getComponentId,
-            cvSelected,
-            setCvSelected,
-            setSelectedCv,
-            deleteCv,
-            handleImageUrl,
-            imageUrl,
-            template,
-            handleTemplate
-          }}
-        ><Dashboard />
-        </BuilderContext.Provider> */}
-
         <Routes>
           {user && <Route path='/' element={
             <BuilderContext.Provider
@@ -192,21 +138,6 @@ function App() {
             ><Dashboard />
             </BuilderContext.Provider>
           } />}
-          {/* <Route path='cv/:id' element={<BuilderContext.Provider
-              value={{
-                getSocials,
-                updateInfo,
-                getComponentData,
-                infoState,
-                infoSelected,
-                setInfoSelected,
-                setCvSelected,
-                // saveToLocalStorage,
-                deleteCv
-              }}
-            >
-              <SingleCv />
-            </BuilderContext.Provider>} />*/}
           <Route path="*" component={Error} />
         </Routes>
       </BrowserRouter >
