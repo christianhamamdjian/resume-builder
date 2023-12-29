@@ -4,9 +4,7 @@ import TextArea from './TextArea'
 import ToggleButton from './ToggleButton'
 const KeySkills = () => {
   const ctx = useContext(BuilderContext)
-
   const [skills, setSkills] = useState([])
-
   const currentCv = ctx.cvSelected
   useEffect(() => {
     const newSkills = ctx.getComponentData('KeySkills')

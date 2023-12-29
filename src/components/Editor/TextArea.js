@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React from 'react'
 const TextArea = ({
   name,
   placeholder,
@@ -8,13 +8,16 @@ const TextArea = ({
   rows,
   isDisabled,
 }) => {
-  const [newValue, setNewValue] = useState("")
-  useEffect(() => {
-    setNewValue(defaultValue)
-  }, [])
-  useEffect(() => {
-    setNewValue(defaultValue)
-  }, [defaultValue])
+  //const [newValue, setNewValue] = useState("")
+
+  // useEffect(() => {
+  //   setNewValue(defaultValue)
+  // }, [])
+
+  // useEffect(() => {
+  //   setNewValue("")
+  //   setNewValue(defaultValue)
+  // }, [defaultValue])
 
   return (
     <div className={`w-full ${style}`}>
@@ -26,7 +29,8 @@ const TextArea = ({
         disabled={isDisabled}
         rows={rows ? rows : '6'}
         name={name}
-        defaultValue={newValue}
+        value={defaultValue}
+      //defaultValue={newValue}
       ></textarea>
     </div>
   )

@@ -12,7 +12,8 @@ const Profile = () => {
 
   const imageUrl = ctx.imageUrl
   const currentCv = ctx.cvSelected
-
+  // const updatedProfile = ctx.getComponentData('Profile')
+  // console.log(updatedProfile)
   useEffect(() => {
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
@@ -27,6 +28,11 @@ const Profile = () => {
     setProfile(newProfile)
   }, [currentCv])
 
+  // useEffect(() => {
+  //   setProfile(updatedProfile)
+  // }, [updatedProfile])
+
+  //console.log(profile && profile['about'])
 
   return (
     <div className='pb-11'>
@@ -64,6 +70,7 @@ const Profile = () => {
         <ToggleButton
           defaultValue={profile && profile.display}
           handleChange={(name, prop, isEnabled) => {
+            setProfile(prevProfile => ({ ...prevProfile, display: isEnabled }))
             ctx.updateInfo({ ...profile, display: isEnabled })
           }}
         />

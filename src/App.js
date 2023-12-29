@@ -10,10 +10,10 @@ export const BuilderContext = React.createContext({})
 function App() {
   const { user } = useContext(AuthContext)
   const [userId, setUserId] = useState(null)
-  const [force, setForce] = useState(0)
+  // const [force, setForce] = useState(0)
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
-  const [cvSelected, setCvSelected] = useState([])
+  const [cvSelected, setCvSelected] = useState(infoState[0] || [])
   const [imageUrl, setImageUrl] = useState("")
   const [template, setTemplate] = useState("")
 
@@ -22,6 +22,7 @@ function App() {
       setUserId(user.id);
     }
   }, [user]);
+
   useEffect(() => {
     if (userId) {
       api.readAll()
@@ -35,12 +36,14 @@ function App() {
         })
     }
   }, [userId]);
-  useEffect(() => {
-    const selected = cvSelected['data']
-    const newInfoSelected = selected && selected['items']
-    setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
-    setTemplate(newInfoSelected && newInfoSelected[0]["template"])
-  }, [cvSelected]);
+
+  // useEffect(() => {
+  //   const selected = cvSelected['data']
+  //   const newInfoSelected = selected && selected['items']
+  //   setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
+  //   setTemplate(newInfoSelected && newInfoSelected[0]["template"])
+  // }, [cvSelected]);
+
   const deleteCv = (e) => {
     const cvId = e.target.dataset.id
     console.log(+cvId)
@@ -50,7 +53,6 @@ function App() {
     })
     setInfoState(filteredCvs)
 
-    // Make API request to delete cv
     api.delete(cvId).then(() => {
       console.log(`deleted cv id ${cvId}`)
     }).catch((e) => {
@@ -79,32 +81,35 @@ function App() {
     setTemplate(templateId)
   }
 
-  const updateInfo = (item, currentCv) => {
-    console.log(currentCv)
+  const updateInfo = (item) => {
     const targetIndex = infoSelected.findIndex(
       (elem) => elem.type === item.type
     )
     setInfoSelected(infoSelected.splice(targetIndex, 1, item))
     const { ref } = cvSelected
     const cvId = ref["@ref"]["id"]
+    const updatedItems = cvSelected['data']["items"].map(el => el.type === item.type ? item : el)
+    const updatedCv = { ...cvSelected, data: { ...cvSelected['data'], items: updatedItems } }
+    setInfoSelected(updatedCv['data']["items"])
     setTemplate("")
     if (cvId) {
-      api.update(cvId, cvSelected['data']).then((response) => {
+      api.update(cvId, updatedCv['data']).then((response) => {
         console.log(`updated cv id ${cvId}`, response)
-        setCvSelected(response)
+        //setInfoSelected(response['data']["items"])
         setTemplate("")
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })
     }
-    setForce(force + 1)
+    // setForce(force + 1)
   }
   const setSelectedCv = (e, id) => {
     e.preventDefault()
-
     infoState.filter((cv, i) => {
       if (+i === +id) {
+        //console.log(cv['data']["items"])
         setInfoSelected(cv['data']["items"])
+        setTemplate(cv['data']["items"][0]["template"])
         setCvSelected(cv)
       } else {
         return null

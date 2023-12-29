@@ -10,9 +10,7 @@ const CvInfo = () => {
 
   const currentCv = ctx.cvSelected
   const template = ctx.template
-  console.log(template)
   const handleTemplate = ctx.handleTemplate
-  console.log(cvInfo)
 
   useEffect(() => {
     const newCvInfo = ctx.getComponentData('info')

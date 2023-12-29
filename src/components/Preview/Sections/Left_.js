@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { ProfileContainer } from './left/ProfileContainer'
 import { SVGItem } from './left/SVGItem'
 import { styles } from '../../../styles'
@@ -7,7 +7,7 @@ import { BuilderContext } from '../../../App'
 
 const Socials = ({ template }) => {
   const ctx = useContext(BuilderContext)
-  console.log(template)
+
   return (
     <div style={{ ...styles[`socials__container${template}`] }}>
       {ctx.getSocials().items.map((item, index) => {
@@ -56,10 +56,23 @@ export const Left = () => {
   const info = ctx.getComponentData('info')
   const education = ctx.getComponentData('Education')
   const skills = ctx.getComponentData('Skills')
-  const profile = ctx.getComponentData('Profile')
+  const getProfile = ctx.getComponentData('Profile')
   const contact = ctx.getComponentData('Contact')
   const certifications = ctx.getComponentData('Certifications')
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
+
+  const [profile, setProfile] = useState([])
+  //console.log(getProfile && getProfile['display'])
+  // useEffect(() => {
+  //   const newProfile = getProfile
+  //   setProfile(newProfile)
+  // }, [])
+
+  useEffect(() => {
+    const newProfile = getProfile
+    setProfile(newProfile)
+  }, [getProfile])
+
   return (
     <>
 
