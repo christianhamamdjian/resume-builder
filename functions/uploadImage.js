@@ -8,8 +8,6 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// const { table } = require('./utils/airtable');
-
 exports.handler = async (event) => {
     // Capture the file from the event body
     const file = event.body;
@@ -17,18 +15,7 @@ exports.handler = async (event) => {
     try {
         // Upload the file captured to cloudinary
         const { public_id, secure_url } = await cloudinary.uploader.upload(file,
-            //{
-            //     upload_preset: process.env.CLOUDINARY_UPLOAD_PRESET,
-            // }
         );
-
-        console.log(public_id, secure_url);
-        // Save the secure_url and public id to Airtable
-        // const record = await table.create({
-        //     imgId: public_id,
-        //     url: secure_url,
-        //     username: 'Musebecodes',
-        // });
         const record = {
             imgId: public_id,
             url: secure_url,
