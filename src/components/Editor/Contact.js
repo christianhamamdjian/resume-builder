@@ -1,15 +1,17 @@
-import TextInput from './TextInput'
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
+import TextInput from './TextInput'
 import ActionMenu from './ActionMenu'
+import { BuilderContext } from './../../App'
 
 const Contact = () => {
+  const ctx = useContext(BuilderContext)
   const newItem = {
     text: '',
   }
-  const ctx = useContext(BuilderContext)
   const [contact, setContact] = useState(null)
+
   const currentCv = ctx.cvSelected
+
   useEffect(() => {
     const newContact = ctx.getComponentData('Contact')
     setContact(newContact)

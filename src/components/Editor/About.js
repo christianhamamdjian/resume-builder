@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from '../../App'
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
+import { BuilderContext } from '../../App'
 
 const About = () => {
   const ctx = useContext(BuilderContext)

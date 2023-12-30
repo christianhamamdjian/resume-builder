@@ -1,8 +1,8 @@
-import TextInput from './TextInput'
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
+import TextInput from './TextInput'
 import ActionMenu from './ActionMenu'
 import ToggleButton from './ToggleButton'
+import { BuilderContext } from './../../App'
 
 const Skills = () => {
   const ctx = useContext(BuilderContext)
@@ -10,9 +10,10 @@ const Skills = () => {
     text: 'Skill',
     level: 'Percent',
   }
-
   const [skills, setSkills] = useState(null)
+
   const currentCv = ctx.cvSelected
+
   useEffect(() => {
     const newSkills = ctx.getComponentData('Skills')
     setSkills(newSkills)
@@ -48,12 +49,15 @@ const Skills = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(skills && skills, currentCv)
+
+  const handleSaveClick = () => ctx.updateInfo(skills && skills)
+
   return (
     <div className='pt-10'>
       <h1>Skills:</h1>
       <ToggleButton
         defaultValue={skills && skills.display}
+        // value={skills && skills.display}
         handleChange={(name, prop, isEnabled) => {
           handleEnable(isEnabled)
         }}
@@ -61,14 +65,16 @@ const Skills = () => {
       {skills && skills.items.map((item, index) => (
         <div key={index} className='flex flex-row py-1'>
           <TextInput
-            defaultValue={item.text}
+            defaultValue={item && item.text}
+            // value={item && item.text}
             name='text'
             placeholder='Skill'
             index={index}
             handleChange={(e) => handleChange(index, e)}
           />
           <TextInput
-            defaultValue={item.level}
+            defaultValue={item && item.level}
+            // value={item && item.level}
             name='level'
             type='number'
             placeholder='%'

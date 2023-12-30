@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 import TextInput from './TextInput'
+import { BuilderContext } from './../../App'
 
 const Certifications = () => {
   const ctx = useContext(BuilderContext)
@@ -11,8 +11,10 @@ const Certifications = () => {
     date: '',
   }
   const [certification, setCetification] = useState(null)
+
   const currentCv = ctx.cvSelected
-  // console.log(currentCv)
+
+
   useEffect(() => {
     const newCetification = ctx.getComponentData('Certifications')
     setCetification(newCetification)

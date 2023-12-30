@@ -1,9 +1,9 @@
+import { useState, useEffect, useContext } from 'react'
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 import TextInput from './TextInput'
-import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
 import ToggleButton from './ToggleButton'
+import { BuilderContext } from './../../App'
 
 const Projects = () => {
   const ctx = useContext(BuilderContext)
@@ -12,6 +12,7 @@ const Projects = () => {
     description: 'Some cool stuff',
   }
   const [projects, setProjects] = useState(null)
+
   const currentCv = ctx.cvSelected
 
   useEffect(() => {
@@ -47,7 +48,8 @@ const Projects = () => {
     })
   }
 
-  const handleSaveClick = () => ctx.updateInfo(projects && projects, currentCv)
+  const handleSaveClick = () => ctx.updateInfo(projects && projects)
+
   return (
     <div className='pt-3 px-5 '>
       {projects && projects.items.map((item, index) => (

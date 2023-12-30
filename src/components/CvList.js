@@ -14,7 +14,7 @@ const CvList = () => {
 		const cvId = ref["@ref"]["id"]
 		return <li key={i}>
 			<div className="flex px-4 justify-between">
-				<button className="flex-none w-34 h-8" onClick={(e) => ctx.setSelectedCv(e, i)}>{title}</button>
+				<button className="flex-none w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
 				<button className="flex-none w-34 h-8" data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
 					Delete Cv
 				</button>

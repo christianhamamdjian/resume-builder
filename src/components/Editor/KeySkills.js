@@ -1,11 +1,14 @@
-import { BuilderContext } from './../../App'
 import { useContext, useEffect, useState } from 'react'
 import TextArea from './TextArea'
 import ToggleButton from './ToggleButton'
+import { BuilderContext } from './../../App'
+
 const KeySkills = () => {
   const ctx = useContext(BuilderContext)
   const [skills, setSkills] = useState([])
+
   const currentCv = ctx.cvSelected
+
   useEffect(() => {
     const newSkills = ctx.getComponentData('KeySkills')
     setSkills(newSkills)
@@ -37,7 +40,7 @@ const KeySkills = () => {
       />
       <button
         className='mx-5 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-        onClick={() => ctx.updateInfo(skills && skills, currentCv)}
+        onClick={() => ctx.updateInfo(skills && skills)}
       >
         Save
       </button>

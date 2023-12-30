@@ -1,11 +1,12 @@
-import ToggleButton from './ToggleButton'
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
+import ToggleButton from './ToggleButton'
 import TextInput from './TextInput'
+import { BuilderContext } from './../../App'
 
 const Socials = () => {
   const ctx = useContext(BuilderContext)
   const [socials, setSocials] = useState(null)
+
   const currentCv = ctx.cvSelected
 
   useEffect(() => {
@@ -53,7 +54,7 @@ const Socials = () => {
       ))}
       <button
         className=' w-20 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-        onClick={() => ctx.updateInfo(socials && socials, currentCv)}
+        onClick={() => ctx.updateInfo(socials && socials)}
       >
         Save
       </button>

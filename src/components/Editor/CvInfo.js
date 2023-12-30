@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import TextInput from './TextInput'
 import TemplateGallery from '../TemplateGallery'
-
 import { BuilderContext } from '../../App'
 
 const CvInfo = () => {
@@ -9,7 +8,9 @@ const CvInfo = () => {
   const [cvInfo, setCvInfo] = useState([])
 
   const currentCv = ctx.cvSelected
+
   const template = ctx.template
+
   const handleTemplate = ctx.handleTemplate
 
   useEffect(() => {

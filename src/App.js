@@ -103,7 +103,7 @@ function App() {
     }
     // setForce(force + 1)
   }
-  const setSelectedCv = (e, id) => {
+  const handleSelectedCv = (e, id) => {
     e.preventDefault()
     infoState.filter((cv, i) => {
       if (+i === +id) {
@@ -133,7 +133,7 @@ function App() {
                 getComponentId,
                 cvSelected,
                 setCvSelected,
-                setSelectedCv,
+                handleSelectedCv,
                 deleteCv,
                 handleImageUrl,
                 imageUrl,

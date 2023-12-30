@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
 import ActionMenu from './ActionMenu'
 import EducationItem from './EducationItem'
+import { BuilderContext } from './../../App'
 
 const Education = () => {
   const ctx = useContext(BuilderContext)
@@ -10,7 +10,9 @@ const Education = () => {
     date: 'Mar 2017 - Dec 2019',
   }
   const [education, setEducation] = useState(null)
+
   const currentCv = ctx.cvSelected
+
   useEffect(() => {
     const newEducation = ctx.getComponentData('Education')
     setEducation(newEducation)

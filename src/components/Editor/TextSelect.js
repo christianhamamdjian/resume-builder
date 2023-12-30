@@ -1,3 +1,5 @@
+import React from 'react'
+
 const TextSelect = ({ style, options, handleChange }) => {
   return (
     <div className={`w-full ${style}`}>

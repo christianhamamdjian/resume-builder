@@ -1,18 +1,25 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
+import { BuilderContext } from './../../App'
 
 const ToggleButton = ({ name, handleChange, defaultValue, style }) => {
+  const ctx = useContext(BuilderContext)
   const [isChecked, setIsUnchecked] = useState(defaultValue)
+
+  const currentCv = ctx.cvSelected
 
   const handleToggle = (checked) => {
     handleChange(name, 'enabled', checked)
     setIsUnchecked(checked)
   }
+
   useEffect(() => {
     setIsUnchecked(defaultValue)
   }, [])
+
   useEffect(() => {
     setIsUnchecked(defaultValue)
-  }, [defaultValue])
+  }, [defaultValue, currentCv])
+
   return (
     <div key={name} className={style}>
       <div className='flex flex-col'>
@@ -26,6 +33,7 @@ const ToggleButton = ({ name, handleChange, defaultValue, style }) => {
               <span className='absolute block w-4 h-4 mt-1 ml-1 rounded-md shadow inset-y-0 left-0 focus-within:shadow-outline transition-transform duration-300 ease-in-out bg-gray-400 transform translate-x-full'>
                 <input
                   id={name}
+                  defaultValue={defaultValue}
                   type='checkbox'
                   className='absolute opacity-0 w-0 h-0'
                   onClick={() => {
@@ -46,6 +54,7 @@ const ToggleButton = ({ name, handleChange, defaultValue, style }) => {
                 <input
                   id={name}
                   type='checkbox'
+                  defaultValue={defaultValue}
                   className='absolute opacity-0 w-0 h-0'
                   onClick={() => {
                     handleToggle(true)
