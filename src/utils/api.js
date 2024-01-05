@@ -12,9 +12,10 @@ const create = (data) => {
 }
 
 const readAll = () => {
+  let token = netlifyIdentity.currentUser().token.access_token
   return fetch(`/.netlify/functions/cv-read-all`, {
     headers: {
-      authorization: `Bearer ${netlifyIdentity.currentUser().token.access_token}`
+      authorization: `Bearer ${token}`
     }
   }).then((response) => {
     return response.json()
