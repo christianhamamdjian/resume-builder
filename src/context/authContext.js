@@ -6,7 +6,6 @@ const AuthContext = createContext();
 export const AuthContextProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [authReady, setAuthReady] = useState(false);
-
 	useEffect(() => {
 		netlifyIdentity.on("login", (user) => {
 			// console.log("user", user);
@@ -34,6 +33,11 @@ export const AuthContextProvider = ({ children }) => {
 			netlifyIdentity.off("login");
 		};
 	}, []);
+	useEffect(() => {
+		if (user && user.token.expires_at < new Date().getTime()) {
+			netlifyIdentity.refresh().then(token => window.location.reload())
+		}
+	}, [user])
 
 	const login = () => {
 		netlifyIdentity.open();
