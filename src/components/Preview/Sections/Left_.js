@@ -4,6 +4,7 @@ import { SVGItem } from './left/SVGItem'
 import { styles } from '../../../styles'
 import { SkillItem } from './left/SkillItem'
 import { BuilderContext } from '../../../App'
+import '../../../index.css'
 
 const Socials = ({ template }) => {
   const ctx = useContext(BuilderContext)
@@ -75,8 +76,10 @@ export const Left = () => {
 
   return (
     <>
-
-      <div style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`] }}>
+      <div className={`section__left-back${template}`}></div>
+      <div
+        style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`] }}
+      >
         <ProfileContainer
           name={profile && profile.name}
           profession={profile && profile.profession}

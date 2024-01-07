@@ -23,7 +23,6 @@ const CvInfo = () => {
   }, [template])
 
   useEffect(() => {
-    // 
     const newCvInfo = ctx.getComponentData('info')
     setCvInfo(newCvInfo)
   }, [currentCv])

@@ -143,7 +143,7 @@ function App() {
             ><Dashboard />
             </BuilderContext.Provider>
           } />}
-          <Route path="*" component={Error} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter >
     </>)

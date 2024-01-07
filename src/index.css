@@ -130,4 +130,31 @@ pre {
     top: 0;
     overflow: hidden;
   }
+
+  .section__left-back1 {
+    width: 24.5%;
+    min-width: 12rem;
+    background-color: #084c41;
+    position: fixed;
+    height: 100vh;
+    z-index: -100;
+  }
+
+  .section__left-back2 {
+    width: 24.5%;
+    min-width: 12rem;
+    background-color: blue;
+    position: fixed;
+    height: 100vh;
+    z-index: -100;
+  }
+
+  .section__left-back3 {
+    width: 24.5%;
+    min-width: 12rem;
+    background-color: red;
+    position: fixed;
+    height: 100vh;
+    z-index: -100;
+  }
 }
