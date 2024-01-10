@@ -26,7 +26,7 @@ const CreateCv = () => {
 		if (cv.type === "id") {
 			return ({ ...cv, authorId: userId, id: Date.now() })
 		} else if (cv.type === "info") {
-			return ({ ...cv, template: "1", title: cvTitle })
+			return ({ ...cv, template: "1", title: cvTitle, backgroundColor: "" })
 		} else {
 			return cv
 		}

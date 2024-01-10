@@ -16,6 +16,7 @@ function App() {
   const [cvSelected, setCvSelected] = useState(infoState[0] || [])
   const [imageUrl, setImageUrl] = useState("")
   const [template, setTemplate] = useState("")
+  const [backgroundColor, setBackgroundColor] = useState("")
 
   useEffect(() => {
     if (user) {
@@ -110,6 +111,7 @@ function App() {
         //console.log(cv['data']["items"])
         setInfoSelected(cv['data']["items"])
         setTemplate(cv['data']["items"][0]["template"])
+        setBackgroundColor("")
         setCvSelected(cv)
       } else {
         return null
@@ -138,7 +140,9 @@ function App() {
                 handleImageUrl,
                 imageUrl,
                 template,
-                handleTemplate
+                handleTemplate,
+                backgroundColor,
+                setBackgroundColor
               }}
             ><Dashboard />
             </BuilderContext.Provider>

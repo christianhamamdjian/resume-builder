@@ -7,7 +7,8 @@ export const cvs = [
     {
         type: "info",
         title: "",
-        template: "1"
+        template: "1",
+        backgroundColor: ""
     },
     {
         type: 'Draft',

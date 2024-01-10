@@ -78,7 +78,7 @@ export const Left = () => {
     <>
       <div className={`section__left-back${template}`}></div>
       <div
-        style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`] }}
+        style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`], backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
       >
         <ProfileContainer
           name={profile && profile.name}
@@ -120,7 +120,7 @@ export const Left = () => {
           )}
           <Socials template={template} />
         </>
-      </div>
+      </div >
     </>
   )
 }
