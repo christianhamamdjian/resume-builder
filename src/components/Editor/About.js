@@ -22,6 +22,7 @@ const About = () => {
 
   const handleChange = (e) => {
     setProfile({ ...profile, about: e.target.value })
+    ctx.setCurrentCvProfile({ ...profile, about: e.target.value })
   }
 
   const handleSaveClick = () => ctx.updateInfo(profile && profile, currentCv)

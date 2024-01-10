@@ -17,6 +17,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState("")
   const [template, setTemplate] = useState("")
   const [backgroundColor, setBackgroundColor] = useState("")
+  const [currentCvProfile, setCurrentCvProfile] = useState(null)
 
   useEffect(() => {
     if (user) {
@@ -143,7 +144,9 @@ function App() {
                 template,
                 handleTemplate,
                 backgroundColor,
-                setBackgroundColor
+                setBackgroundColor,
+                currentCvProfile,
+                setCurrentCvProfile
               }}
             ><Dashboard />
             </BuilderContext.Provider>

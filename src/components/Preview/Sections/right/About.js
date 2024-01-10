@@ -7,7 +7,9 @@ const About = ({ text }) => {
   const ctx = useContext(BuilderContext)
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
+  const currentCvProfile = ctx.currentCvProfile
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
+  console.log(currentCvProfile)
   return <div>
     <h3
       style={{
@@ -19,7 +21,7 @@ const About = ({ text }) => {
       Professional Summary
     </h3>
     <Divider />
-    <p style={{ ...styles[`main__text${template}`] }}>{text}</p>
+    <p style={{ ...styles[`main__text${template}`] }}>{currentCvProfile !== null ? currentCvProfile['about'] : text}</p>
   </div>
 }
 export default About
