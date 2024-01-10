@@ -106,12 +106,13 @@ function App() {
   }
   const handleSelectedCv = (e, id) => {
     e.preventDefault()
+    setBackgroundColor("")
     infoState.filter((cv, i) => {
       if (+i === +id) {
         //console.log(cv['data']["items"])
         setInfoSelected(cv['data']["items"])
-        setTemplate(cv['data']["items"][0]["template"])
-        setBackgroundColor("")
+        setTemplate(cv['data']["items"][1]["template"])
+        setBackgroundColor(cv['data']["items"][1]["backgroundColor"])
         setCvSelected(cv)
       } else {
         return null
