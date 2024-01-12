@@ -8,7 +8,10 @@ const About = () => {
   const [profile, setProfile] = useState([])
 
   const currentCv = ctx.cvSelected
-
+  const content = ctx.content
+  const moveContentUp = ctx.moveContentUp
+  const moveContentDown = ctx.moveContentDown
+  const index = content.indexOf("About")
   useEffect(() => {
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
@@ -38,7 +41,8 @@ const About = () => {
           handleChange(e)
         }}
       />
-
+      <button onClick={() => moveContentUp(index)}>↑</button>
+      <button onClick={() => moveContentDown(index)}>↓</button>
       <ActionMenu
         handleSaveClick={handleSaveClick}
         onlySave={true}

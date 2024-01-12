@@ -3,6 +3,10 @@ import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
+import About from './components/Preview/Sections/right/About'
+import EmploymentHistory from './components/Preview/Sections/right/EmploymentHistory'
+import KeySkills from './components/Preview/Sections/right/KeySkills'
+import Projects from './components/Preview/Sections/right/Projects'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
@@ -120,6 +124,36 @@ function App() {
       }
     })
   }
+
+  const initialContent = [
+    "About",
+    "Employment History",
+    "Key Skills",
+    "Projects",
+  ];
+
+  const [content, setContent] = useState(initialContent);
+  console.log(content)
+  const moveContentUp = (index) => {
+    if (index > 0) {
+      const updatedContent = [...content];
+      const temp = updatedContent[index];
+      updatedContent[index] = updatedContent[index - 1];
+      updatedContent[index - 1] = temp;
+      setContent(updatedContent);
+    }
+  };
+
+  const moveContentDown = (index) => {
+    if (index < content.length - 1) {
+      const updatedContent = [...content];
+      const temp = updatedContent[index];
+      updatedContent[index] = updatedContent[index + 1];
+      updatedContent[index + 1] = temp;
+      setContent(updatedContent);
+    }
+  };
+
   return (
     <>
       <BrowserRouter>
@@ -146,7 +180,11 @@ function App() {
                 backgroundColor,
                 setBackgroundColor,
                 currentCvProfile,
-                setCurrentCvProfile
+                setCurrentCvProfile,
+                content,
+                moveContentUp,
+                moveContentDown,
+                initialContent
               }}
             ><Dashboard />
             </BuilderContext.Provider>

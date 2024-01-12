@@ -9,7 +9,7 @@ const About = ({ text }) => {
   const info = ctx.getComponentData('info')
   const currentCvProfile = ctx.currentCvProfile
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-  console.log(currentCvProfile)
+
   return <div>
     <h3
       style={{
