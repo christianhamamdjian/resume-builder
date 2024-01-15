@@ -8,6 +8,10 @@ const Socials = () => {
   const [socials, setSocials] = useState(null)
 
   const currentCv = ctx.cvSelected
+  const leftContentOrder = ctx.leftContentOrder
+  const moveLeftContentUp = ctx.moveLeftContentUp
+  const moveLeftContentDown = ctx.moveLeftContentDown
+  const index = leftContentOrder && leftContentOrder.indexOf("Contact")
 
   useEffect(() => {
     const newSocials = ctx.getComponentData('Socials')
@@ -30,35 +34,40 @@ const Socials = () => {
   }
 
   return (
-    <div className='flex flex-col space-evenly  my-6  '>
-      <h1>Socials:</h1>
-      {socials && socials.items.map((item, index) => (
-        <div className='flex flex-col pb-2' key={index}>
-          <a className=' text-gray-800 text-sm'>{item.type}</a>
-          <div className='flex flex-row gap-x-5'>
-            <TextInput
-              placeholder={`${item.type} url`}
-              defaultValue={item.url}
-              handleChange={(e) => {
-                handleSocialChange(item.type, 'url', e.target.value)
-              }}
-            />
+    <>
+      <div className='flex flex-col space-evenly  my-6  '>
+        <h1>Socials:</h1>
+        {socials && socials.items.map((item, index) => (
+          <div className='flex flex-col pb-2' key={index}>
+            <a className=' text-gray-800 text-sm'>{item.type}</a>
+            <div className='flex flex-row gap-x-5'>
+              <TextInput
+                placeholder={`${item.type} url`}
+                defaultValue={item.url}
+                handleChange={(e) => {
+                  handleSocialChange(item.type, 'url', e.target.value)
+                }}
+              />
 
-            <ToggleButton
-              name={item.type}
-              handleChange={handleSocialChange}
-              defaultValue={item.enabled}
-            />
+              <ToggleButton
+                name={item.type}
+                handleChange={handleSocialChange}
+                defaultValue={item.enabled}
+              />
+            </div>
           </div>
-        </div>
-      ))}
-      <button
-        className=' w-20 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-        onClick={() => ctx.updateInfo(socials && socials)}
-      >
-        Save
-      </button>
-    </div>
+        ))}
+
+        <button
+          className=' w-20 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+          onClick={() => ctx.updateInfo(socials && socials)}
+        >
+          Save
+        </button>
+      </div>
+      <button onClick={() => moveLeftContentUp(index)}>↑</button>
+      <button onClick={() => moveLeftContentDown(index)}>↓</button>
+    </>
   )
 }
 

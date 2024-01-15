@@ -69,7 +69,7 @@ export const Left = () => {
     const newProfile = getProfile
     setProfile(newProfile)
   }, [getProfile])
-
+  console.log(leftContentOrder)
   return (
     <>
       <div className={`section__left-back${template}`}></div>
@@ -83,9 +83,9 @@ export const Left = () => {
           display={profile && profile.display}
         />
 
-        {leftContentOrder.map((item, index) => {
+        {leftContentOrder && leftContentOrder.map((item, index) => {
           if (item === "Education") {
-            return (<Wrapper heading={education && education.header}>
+            return (<Wrapper key={index} heading={education && education.header}>
               {education && education.items.map((item, index) => (
                 <EducationText key={index} text={item.degree} date={item.date} />
               ))}
@@ -93,7 +93,7 @@ export const Left = () => {
           }
           if (item === "Skills") {
             return (skills && skills.display && (
-              <Wrapper heading={skills && skills.header}>
+              <Wrapper key={index} heading={skills && skills.header}>
                 {skills && skills.items.map((item, index) => (
                   <SkillItem key={index} name={item.text} fillSkill={item.level} />
                 ))}
@@ -102,7 +102,7 @@ export const Left = () => {
           }
           if (item === "Certifications") {
             return (certifications.display && (
-              <Wrapper heading={certifications && certifications.header}>
+              <Wrapper key={index} heading={certifications && certifications.header}>
                 {certifications && certifications.items.map((item, index) => (
                   <EducationText key={index} text={item.name} date={item.date} />
                 ))}
@@ -111,7 +111,7 @@ export const Left = () => {
           }
           if (item === "Contact") {
             return (contact.display && (
-              <Wrapper heading={contact && contact.header}>
+              <Wrapper key={index} heading={contact && contact.header}>
                 {contact && contact.items.map((item, index) => (
                   <p
                     key={index}
@@ -124,7 +124,7 @@ export const Left = () => {
             ))
           }
           if (item === "Socials") {
-            return (<Socials template={template} />)
+            return (<Socials key={index} template={template} />)
           }
         })
         }

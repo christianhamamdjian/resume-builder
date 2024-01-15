@@ -14,7 +14,6 @@ const Contact = () => {
   const leftContentOrder = ctx.leftContentOrder
   const moveLeftContentUp = ctx.moveLeftContentUp
   const moveLeftContentDown = ctx.moveLeftContentDown
-  console.log(leftContentOrder)
   const index = leftContentOrder && leftContentOrder.indexOf("Contact")
   useEffect(() => {
     const newContact = ctx.getComponentData('Contact')

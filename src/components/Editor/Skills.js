@@ -13,6 +13,10 @@ const Skills = () => {
   const [skills, setSkills] = useState(null)
 
   const currentCv = ctx.cvSelected
+  const leftContentOrder = ctx.leftContentOrder
+  const moveLeftContentUp = ctx.moveLeftContentUp
+  const moveLeftContentDown = ctx.moveLeftContentDown
+  const index = leftContentOrder && leftContentOrder.indexOf("Contact")
 
   useEffect(() => {
     const newSkills = ctx.getComponentData('Skills')
@@ -84,7 +88,8 @@ const Skills = () => {
           />
         </div>
       ))}
-
+      <button onClick={() => moveLeftContentUp(index)}>↑</button>
+      <button onClick={() => moveLeftContentDown(index)}>↓</button>
       <ActionMenu
         handleSaveClick={handleSaveClick}
         handleAddClick={handleAddClick}

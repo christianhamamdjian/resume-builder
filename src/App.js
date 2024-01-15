@@ -104,7 +104,7 @@ function App() {
         setTemplate(cv['data']["items"][1]["template"])
         setBackgroundColor(cv['data']["items"][1]["backgroundColor"])
         setRightContentOrder(cv['data']["items"][1]['rightOrder'])
-        setLeftContentOrder(cv['data']["items"][1]['lefttOrder'])
+        setLeftContentOrder(cv['data']["items"][1]['leftOrder'])
         setCvSelected(cv)
       } else {
         return null
