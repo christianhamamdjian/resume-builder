@@ -8,7 +8,7 @@ import Projects from './right/Projects'
 
 export const Right = () => {
   const ctx = useContext(BuilderContext)
-  const content = ctx.content
+  const rightContentOrder = ctx.rightContentOrder
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
   const profile = ctx.getComponentData('Profile')
@@ -16,21 +16,20 @@ export const Right = () => {
   const employment = ctx.getComponentData('Employment')
   const projects = ctx.getComponentData('Projects')
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-  console.log(content)
   return (
     <div style={{ ...styles[`section__right${template}`] }}>
-      {content.map(item => {
+      {rightContentOrder.map((item, index) => {
         if (item === "About") {
-          return (<About text={profile && profile.about} />)
+          return (<About key={index} text={profile && profile.about} />)
         }
         if (item === "Employment History") {
-          return (<EmploymentHistory items={employment && employment.items} />)
+          return (<EmploymentHistory key={index} items={employment && employment.items} />)
         }
         if (item === "Key Skills") {
-          return (<KeySkills skills={skills && skills} />)
+          return (<KeySkills key={index} skills={skills && skills} />)
         }
         if (item === "Projects") {
-          return (<Projects projects={projects && projects} />)
+          return (<Projects key={index} projects={projects && projects} />)
         }
       })}
     </div>

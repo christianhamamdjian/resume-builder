@@ -8,6 +8,10 @@ const EmploymentHistory = () => {
   const [employmentInfo, setEmploymentInfo] = useState(null)
 
   const currentCv = ctx.cvSelected
+  const rightContentOrder = ctx.rightContentOrder
+  const moveRightContentUp = ctx.moveRightContentUp
+  const moveRightContentDown = ctx.moveRightContentDown
+  const index = rightContentOrder.indexOf("Employment History")
 
   useEffect(() => {
     const newEmploymentInfo = ctx.getComponentData('Employment')
@@ -43,7 +47,8 @@ const EmploymentHistory = () => {
           handleChange={handleChange}
         />
       ))}
-
+      <button onClick={() => moveRightContentUp(index)}>↑</button>
+      <button onClick={() => moveRightContentDown(index)}>↓</button>
       <ActionMenu
         style='px-5'
         handleSaveClick={() => ctx.updateInfo(employmentInfo && employmentInfo, currentCv)}

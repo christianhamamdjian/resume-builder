@@ -8,10 +8,14 @@ const Contact = () => {
   const newItem = {
     text: '',
   }
-  const [contact, setContact] = useState(null)
+  const [contact, setContact] = useState()
 
   const currentCv = ctx.cvSelected
-
+  const leftContentOrder = ctx.leftContentOrder
+  const moveLeftContentUp = ctx.moveLeftContentUp
+  const moveLeftContentDown = ctx.moveLeftContentDown
+  console.log(leftContentOrder)
+  const index = leftContentOrder && leftContentOrder.indexOf("Contact")
   useEffect(() => {
     const newContact = ctx.getComponentData('Contact')
     setContact(newContact)
@@ -56,6 +60,8 @@ const Contact = () => {
           handleChange={(e) => handleChange(index, e)}
         />
       ))}
+      <button onClick={() => moveLeftContentUp(index)}>↑</button>
+      <button onClick={() => moveLeftContentDown(index)}>↓</button>
       <ActionMenu
         handleSaveClick={handleSaveClick}
         handleAddClick={handleAddClick}

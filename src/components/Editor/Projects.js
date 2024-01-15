@@ -14,6 +14,10 @@ const Projects = () => {
   const [projects, setProjects] = useState(null)
 
   const currentCv = ctx.cvSelected
+  const rightContentOrder = ctx.rightContentOrder
+  const moveRightContentUp = ctx.moveRightContentUp
+  const moveRightContentDown = ctx.moveRightContentDown
+  const index = rightContentOrder.indexOf("Projects")
 
   useEffect(() => {
     const newProjects = ctx.getComponentData('Projects')
@@ -76,6 +80,9 @@ const Projects = () => {
           ctx.updateInfo({ ...projects, display: isEnabled })
         }}
       />
+
+      <button onClick={() => moveRightContentUp(index)}>↑</button>
+      <button onClick={() => moveRightContentDown(index)}>↓</button>
       <ActionMenu
         handleSaveClick={handleSaveClick}
         handleAddClick={handleAddClick}

@@ -8,6 +8,10 @@ const KeySkills = () => {
   const [skills, setSkills] = useState([])
 
   const currentCv = ctx.cvSelected
+  const rightContentOrder = ctx.rightContentOrder
+  const moveRightContentUp = ctx.moveRightContentUp
+  const moveRightContentDown = ctx.moveRightContentDown
+  const index = rightContentOrder.indexOf("Key Skills")
 
   useEffect(() => {
     const newSkills = ctx.getComponentData('KeySkills')
@@ -38,6 +42,8 @@ const KeySkills = () => {
           ctx.updateInfo({ ...skills, display: isEnabled })
         }}
       />
+      <button onClick={() => moveRightContentUp(index)}>↑</button>
+      <button onClick={() => moveRightContentDown(index)}>↓</button>
       <button
         className='mx-5 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
         onClick={() => ctx.updateInfo(skills && skills)}

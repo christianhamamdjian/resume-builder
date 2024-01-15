@@ -3,10 +3,6 @@ import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
-import About from './components/Preview/Sections/right/About'
-import EmploymentHistory from './components/Preview/Sections/right/EmploymentHistory'
-import KeySkills from './components/Preview/Sections/right/KeySkills'
-import Projects from './components/Preview/Sections/right/Projects'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
@@ -14,7 +10,6 @@ export const BuilderContext = React.createContext({})
 function App() {
   const { user } = useContext(AuthContext)
   const [userId, setUserId] = useState(null)
-  // const [force, setForce] = useState(0)
   const [infoState, setInfoState] = useState([])
   const [infoSelected, setInfoSelected] = useState([])
   const [cvSelected, setCvSelected] = useState(infoState[0] || [])
@@ -22,6 +17,25 @@ function App() {
   const [template, setTemplate] = useState("")
   const [backgroundColor, setBackgroundColor] = useState("")
   const [currentCvProfile, setCurrentCvProfile] = useState(null)
+
+  const initialRightContent = [
+    "About",
+    "Employment History",
+    "Key Skills",
+    "Projects",
+  ];
+
+  const [rightContentOrder, setRightContentOrder] = useState(initialRightContent || []);
+
+  const initialLeftContent = [
+    "Education",
+    "Skills",
+    "Certifications",
+    "Contact",
+    "Socials",
+  ];
+
+  const [leftContentOrder, setLeftContentOrder] = useState(initialLeftContent || []);
 
   useEffect(() => {
     if (user) {
@@ -36,19 +50,14 @@ function App() {
           setInfoState(allCvs)
           setInfoSelected(allCvs[0]['data']["items"])
           setCvSelected(allCvs[0])
+          setRightContentOrder(allCvs[0]['data']["items"][1]['rightOrder'])
+          setLeftContentOrder(allCvs[0]['data']["items"][1]['leftOrder'])
         })
         .catch((e) => {
           console.log(`There was an error fetching cvs`, e)
         })
     }
   }, [userId]);
-
-  // useEffect(() => {
-  //   const selected = cvSelected['data']
-  //   const newInfoSelected = selected && selected['items']
-  //   setInfoSelected(newInfoSelected ? newInfoSelected : infoSelected)
-  //   setTemplate(newInfoSelected && newInfoSelected[0]["template"])
-  // }, [cvSelected]);
 
   const deleteCv = (e) => {
     const cvId = e.target.dataset.id
@@ -71,7 +80,6 @@ function App() {
   }
   const getComponentData = (type) => {
     const data = infoSelected.filter((item) => item.type === type)
-    // console.log(data)
     return data ? data[0] : []
   }
   const getSocials = () => {
@@ -87,37 +95,16 @@ function App() {
     setTemplate(templateId)
   }
 
-  const updateInfo = (item) => {
-    const targetIndex = infoSelected.findIndex(
-      (elem) => elem.type === item.type
-    )
-    setInfoSelected(infoSelected.splice(targetIndex, 1, item))
-    const { ref } = cvSelected
-    const cvId = ref["@ref"]["id"]
-    const updatedItems = cvSelected['data']["items"].map(el => el.type === item.type ? item : el)
-    const updatedCv = { ...cvSelected, data: { ...cvSelected['data'], items: updatedItems } }
-    setInfoSelected(updatedCv['data']["items"])
-    setTemplate("")
-    if (cvId) {
-      api.update(cvId, updatedCv['data']).then((response) => {
-        console.log(`updated cv id ${cvId}`, response)
-        //setInfoSelected(response['data']["items"])
-        setTemplate("")
-      }).catch((e) => {
-        console.log(`There was an error updating ${cvId}`, e)
-      })
-    }
-    // setForce(force + 1)
-  }
   const handleSelectedCv = (e, id) => {
     e.preventDefault()
     setBackgroundColor("")
     infoState.filter((cv, i) => {
       if (+i === +id) {
-        //console.log(cv['data']["items"])
         setInfoSelected(cv['data']["items"])
         setTemplate(cv['data']["items"][1]["template"])
         setBackgroundColor(cv['data']["items"][1]["backgroundColor"])
+        setRightContentOrder(cv['data']["items"][1]['rightOrder'])
+        setLeftContentOrder(cv['data']["items"][1]['lefttOrder'])
         setCvSelected(cv)
       } else {
         return null
@@ -125,35 +112,77 @@ function App() {
     })
   }
 
-  const initialContent = [
-    "About",
-    "Employment History",
-    "Key Skills",
-    "Projects",
-  ];
-
-  const [content, setContent] = useState(initialContent);
-  console.log(content)
-  const moveContentUp = (index) => {
+  const moveRightContentUp = (index) => {
     if (index > 0) {
-      const updatedContent = [...content];
+      const updatedContent = [...rightContentOrder];
       const temp = updatedContent[index];
       updatedContent[index] = updatedContent[index - 1];
       updatedContent[index - 1] = temp;
-      setContent(updatedContent);
+      setRightContentOrder(updatedContent);
     }
   };
 
-  const moveContentDown = (index) => {
-    if (index < content.length - 1) {
-      const updatedContent = [...content];
+  const moveRightContentDown = (index) => {
+    if (index < rightContentOrder.length - 1) {
+      const updatedContent = [...rightContentOrder];
       const temp = updatedContent[index];
       updatedContent[index] = updatedContent[index + 1];
       updatedContent[index + 1] = temp;
-      setContent(updatedContent);
+      setRightContentOrder(updatedContent);
+    }
+  };
+  const moveLeftContentUp = (index) => {
+    if (index > 0) {
+      const updatedContent = [...leftContentOrder];
+      const temp = updatedContent[index];
+      updatedContent[index] = updatedContent[index - 1];
+      updatedContent[index - 1] = temp;
+      setLeftContentOrder(updatedContent);
     }
   };
 
+  const moveLeftContentDown = (index) => {
+    if (index < leftContentOrder.length - 1) {
+      const updatedContent = [...leftContentOrder];
+      const temp = updatedContent[index];
+      updatedContent[index] = updatedContent[index + 1];
+      updatedContent[index + 1] = temp;
+      setLeftContentOrder(updatedContent);
+    }
+  };
+
+  const updateInfo = (item) => {
+    const targetIndex = infoSelected.findIndex(
+      (elem) => elem.type === item.type
+    )
+    setInfoSelected(infoSelected.splice(targetIndex, 1, item))
+    const { ref } = cvSelected
+    const cvId = ref["@ref"]["id"]
+    const updatedItems = cvSelected['data']["items"].map(el => {
+      if (el.type === "info" && el.type === item.type) {
+        return { ...item, rightOrder: rightContentOrder, leftOrder: leftContentOrder }
+      }
+      if (el.type === "info") {
+        return { ...el, rightOrder: rightContentOrder, leftOrder: leftContentOrder }
+      }
+      if (el.type === item.type) {
+        return item
+      }
+      return el
+    })
+    const updatedCv = { ...cvSelected, data: { ...cvSelected['data'], items: updatedItems } }
+    console.log(updatedCv)
+    setInfoSelected(updatedCv['data']["items"])
+    setTemplate("")
+    if (cvId) {
+      api.update(cvId, updatedCv['data']).then((response) => {
+        console.log(`updated cv id ${cvId}`, response)
+        setTemplate("")
+      }).catch((e) => {
+        console.log(`There was an error updating ${cvId}`, e)
+      })
+    }
+  }
   return (
     <>
       <BrowserRouter>
@@ -181,10 +210,14 @@ function App() {
                 setBackgroundColor,
                 currentCvProfile,
                 setCurrentCvProfile,
-                content,
-                moveContentUp,
-                moveContentDown,
-                initialContent
+                rightContentOrder,
+                leftContentOrder,
+                moveRightContentUp,
+                moveRightContentDown,
+                moveLeftContentUp,
+                moveLeftContentDown,
+                initialRightContent,
+                initialLeftContent
               }}
             ><Dashboard />
             </BuilderContext.Provider>

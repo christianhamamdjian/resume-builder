@@ -53,6 +53,7 @@ const EducationText = ({ text, date }) => (
 
 export const Left = () => {
   const ctx = useContext(BuilderContext)
+  const leftContentOrder = ctx.leftContentOrder
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
   const education = ctx.getComponentData('Education')
@@ -63,11 +64,6 @@ export const Left = () => {
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
 
   const [profile, setProfile] = useState([])
-  //console.log(getProfile && getProfile['display'])
-  // useEffect(() => {
-  //   const newProfile = getProfile
-  //   setProfile(newProfile)
-  // }, [])
 
   useEffect(() => {
     const newProfile = getProfile
@@ -86,8 +82,53 @@ export const Left = () => {
           url={profile && profile.profileImageURL}
           display={profile && profile.display}
         />
-        <>
-          <Wrapper heading={education && education.header}>
+
+        {leftContentOrder.map((item, index) => {
+          if (item === "Education") {
+            return (<Wrapper heading={education && education.header}>
+              {education && education.items.map((item, index) => (
+                <EducationText key={index} text={item.degree} date={item.date} />
+              ))}
+            </Wrapper>)
+          }
+          if (item === "Skills") {
+            return (skills && skills.display && (
+              <Wrapper heading={skills && skills.header}>
+                {skills && skills.items.map((item, index) => (
+                  <SkillItem key={index} name={item.text} fillSkill={item.level} />
+                ))}
+              </Wrapper>
+            ))
+          }
+          if (item === "Certifications") {
+            return (certifications.display && (
+              <Wrapper heading={certifications && certifications.header}>
+                {certifications && certifications.items.map((item, index) => (
+                  <EducationText key={index} text={item.name} date={item.date} />
+                ))}
+              </Wrapper>
+            ))
+          }
+          if (item === "Contact") {
+            return (contact.display && (
+              <Wrapper heading={contact && contact.header}>
+                {contact && contact.items.map((item, index) => (
+                  <p
+                    key={index}
+                    style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
+                  >
+                    {item.text}
+                  </p>
+                ))}
+              </Wrapper>
+            ))
+          }
+          if (item === "Socials") {
+            return (<Socials template={template} />)
+          }
+        })
+        }
+        {/* <Wrapper heading={education && education.header}>
             {education && education.items.map((item, index) => (
               <EducationText key={index} text={item.degree} date={item.date} />
             ))}
@@ -118,9 +159,9 @@ export const Left = () => {
               ))}
             </Wrapper>
           )}
-          <Socials template={template} />
-        </>
-      </div >
+          <Socials template={template} /> */}
+
+      </div>
     </>
   )
 }
