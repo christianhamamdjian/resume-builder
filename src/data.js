@@ -94,7 +94,7 @@ export const cvs = [
     {
         header: 'Skills',
         type: 'Skills',
-        display: false,
+        display: true,
         items: [
             {
                 text: 'Python',

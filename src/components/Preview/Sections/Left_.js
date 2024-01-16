@@ -74,7 +74,6 @@ export const Left = () => {
     <>
       <div
         className="section__left-back"
-        //className={`section__left-back${template}`}
         style={{ backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
       ></div>
       <div
@@ -132,39 +131,6 @@ export const Left = () => {
           }
         })
         }
-        {/* <Wrapper heading={education && education.header}>
-            {education && education.items.map((item, index) => (
-              <EducationText key={index} text={item.degree} date={item.date} />
-            ))}
-          </Wrapper>
-          {skills && skills.display && (
-            <Wrapper heading={skills && skills.header}>
-              {skills && skills.items.map((item, index) => (
-                <SkillItem key={index} name={item.text} fillSkill={item.level} />
-              ))}
-            </Wrapper>
-          )}
-          {certifications.display && (
-            <Wrapper heading={certifications && certifications.header}>
-              {certifications && certifications.items.map((item, index) => (
-                <EducationText key={index} text={item.name} date={item.date} />
-              ))}
-            </Wrapper>
-          )}
-          {contact.display && (
-            <Wrapper heading={contact && contact.header}>
-              {contact && contact.items.map((item, index) => (
-                <p
-                  key={index}
-                  style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
-                >
-                  {item.text}
-                </p>
-              ))}
-            </Wrapper>
-          )}
-          <Socials template={template} /> */}
-
       </div>
     </>
   )

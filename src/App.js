@@ -17,6 +17,14 @@ function App() {
   const [template, setTemplate] = useState("")
   const [backgroundColor, setBackgroundColor] = useState("")
   const [currentCvProfile, setCurrentCvProfile] = useState(null)
+  const [currentCvSkills, setCurrentCvSkills] = useState([])
+  const [currentCvProjects, setCurrentCvProjects] = useState(null)
+  const [currentCvEmploymentInfo, setCurrentCvEmploymentInfo] = useState(null)
+  const [currentCvSocials, setCurrentCvSocials] = useState(null)
+  const [currentCvEducation, setCurrentCvEducation] = useState(null)
+  const [currentCvKeySkills, setCurrentCvKeySkills] = useState(null)
+  const [currentCvContact, setCurrentCvContact] = useState(null)
+  const [currentCvCertifications, setCurrentCvCertifications] = useState(null)
 
   const initialRightContent = [
     "About",
@@ -98,6 +106,15 @@ function App() {
   const handleSelectedCv = (e, id) => {
     e.preventDefault()
     setBackgroundColor("")
+    setCurrentCvProfile("")
+    setCurrentCvSkills("")
+    setCurrentCvProjects("")
+    setCurrentCvEmploymentInfo("")
+    setCurrentCvSocials("")
+    setCurrentCvEducation("")
+    setCurrentCvKeySkills(null)
+    setCurrentCvContact("")
+    setCurrentCvCertifications("")
     infoState.filter((cv, i) => {
       if (+i === +id) {
         setInfoSelected(cv['data']["items"])
@@ -217,7 +234,23 @@ function App() {
                 moveLeftContentUp,
                 moveLeftContentDown,
                 initialRightContent,
-                initialLeftContent
+                initialLeftContent,
+                currentCvSkills,
+                setCurrentCvSkills,
+                currentCvProjects,
+                setCurrentCvProjects,
+                currentCvEmploymentInfo,
+                setCurrentCvEmploymentInfo,
+                currentCvSocials,
+                setCurrentCvSocials,
+                currentCvEducation,
+                setCurrentCvEducation,
+                currentCvKeySkills,
+                setCurrentCvKeySkills,
+                currentCvContact,
+                setCurrentCvContact,
+                currentCvCertifications,
+                setCurrentCvCertifications,
               }}
             ><Dashboard />
             </BuilderContext.Provider>

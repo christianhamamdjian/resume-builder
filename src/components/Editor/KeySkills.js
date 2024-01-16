@@ -25,6 +25,7 @@ const KeySkills = () => {
 
   const handleChange = (e) => {
     setSkills({ ...skills, text: e.target.value })
+    ctx.setCurrentCvKeySkills({ ...skills, text: e.target.value })
   }
 
   return (
