@@ -72,7 +72,11 @@ export const Left = () => {
   console.log(leftContentOrder)
   return (
     <>
-      <div className={`section__left-back${template}`}></div>
+      <div
+        className="section__left-back"
+        //className={`section__left-back${template}`}
+        style={{ backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
+      ></div>
       <div
         style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`], backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
       >
