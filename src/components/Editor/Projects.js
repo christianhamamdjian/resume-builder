@@ -36,6 +36,7 @@ const Projects = () => {
       [targetName]: e.target.value,
     }
     projects.items.splice(i, 1, modifiedItem)
+    ctx.setCurrentCvProjects(projects)
   }
   const handleAddClick = () => {
     setProjects({
