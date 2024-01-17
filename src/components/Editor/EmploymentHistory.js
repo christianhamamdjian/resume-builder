@@ -35,7 +35,11 @@ const EmploymentHistory = () => {
       ...employmentInfo.items[i],
       [targetName]: e.target.value,
     }
-    employmentInfo.items.splice(i, 1, modifiedItem)
+    const newEmploymentInfo = {
+      ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
+    }
+    setEmploymentInfo(newEmploymentInfo)
+    ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
   }
   return (
     <div>
