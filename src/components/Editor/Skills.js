@@ -37,7 +37,11 @@ const Skills = () => {
       ...skills.items[i],
       [targetName]: e.target.value,
     }
-    skills.items.splice(i, 1, modifiedItem)
+    // skills.items.splice(i, 1, modifiedItem)
+    const newSkills = { ...skills, items: [...skills.items.slice(0, i), modifiedItem, ...skills.items.slice(i + 1)] }
+    setSkills(newSkills)
+    ctx.setCurrentCvSkills(newSkills)
+
   }
   const handleAddClick = () => {
     setSkills({

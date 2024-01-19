@@ -28,8 +28,13 @@ const Socials = () => {
     const targetIndex = socials && socials.items.indexOf(item[0])
     if (property === 'url')
       socials && socials.items.splice(targetIndex, 1, { ...item[0], url: value })
+    //   const newSocials = { ...socials, items: [...socials.items.slice(0, i), modifiedItem, ...socials.items.slice(i + 1)] }
+    // setSocials(newSocials)
+    // ctx.setCurrentCvSocials(newSocials)
+
     else if (property === 'enabled') {
       socials && socials.items.splice(targetIndex, 1, { ...item[0], enabled: value })
+
     }
   }
 

@@ -10,7 +10,7 @@ const Certifications = () => {
     name: '',
     date: '',
   }
-  const [certification, setCetification] = useState(null)
+  const [certification, setCertification] = useState(null)
 
   const currentCv = ctx.cvSelected
   const leftContentOrder = ctx.leftContentOrder
@@ -20,12 +20,12 @@ const Certifications = () => {
 
   useEffect(() => {
     const newCetification = ctx.getComponentData('Certifications')
-    setCetification(newCetification)
+    setCertification(newCetification)
   }, [])
 
   useEffect(() => {
     const newCetification = ctx.getComponentData('Certifications')
-    setCetification(newCetification)
+    setCertification(newCetification)
   }, [currentCv])
 
   const handleChange = (i, e) => {
@@ -34,16 +34,19 @@ const Certifications = () => {
       ...certification.items[i],
       [targetName]: e.target.value,
     }
-    certification.items.splice(i, 1, modifiedItem)
+    //certification.items.splice(i, 1, modifiedItem)
+    const newCertification = { ...certification, items: [...certification.items.slice(0, i), modifiedItem, ...certification.items.slice(i + 1)] }
+    setCertification(newCertification)
+    ctx.setCurrentCvCertifications(newCertification)
   }
   const handleAddClick = () => {
-    setCetification({
+    setCertification({
       ...certification,
       items: [...certification.items, newItem],
     })
   }
   const handleRemoveClick = () => {
-    setCetification({
+    setCertification({
       ...certification,
       items: certification.items.filter(
         (item, index) => index < certification.items.length - 1

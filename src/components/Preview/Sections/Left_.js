@@ -57,12 +57,17 @@ export const Left = () => {
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
   const education = ctx.getComponentData('Education')
+  const currentCvEducation = ctx.currentCvEducation
   const skills = ctx.getComponentData('Skills')
+  const currentCvSkills = ctx.currentCvSkills
   const getProfile = ctx.getComponentData('Profile')
   const contact = ctx.getComponentData('Contact')
+  const currentCvContact = ctx.currentCvContact
   const certifications = ctx.getComponentData('Certifications')
+  const currentCvCertifications = ctx.currentCvCertifications
+  const currentCvSocials = ctx.currentCvSocials
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-
+  console.log(currentCvSkills)
   const [profile, setProfile] = useState([])
 
   useEffect(() => {
@@ -89,9 +94,12 @@ export const Left = () => {
         {leftContentOrder && leftContentOrder.map((item, index) => {
           if (item === "Education") {
             return (<Wrapper key={index} heading={education && education.header}>
-              {education && education.items.map((item, index) => (
+              {currentCvEducation !== null ? currentCvEducation.items.map((item, index) => (
                 <EducationText key={index} text={item.degree} date={item.date} />
-              ))}
+              ))
+                : education && education.items.map((item, index) => (
+                  <EducationText key={index} text={item.degree} date={item.date} />
+                ))}
             </Wrapper>)
           }
           if (item === "Skills") {
@@ -100,29 +108,46 @@ export const Left = () => {
                 {skills && skills.items.map((item, index) => (
                   <SkillItem key={index} name={item.text} fillSkill={item.level} />
                 ))}
+                {/* {currentCvSkills !== null ? currentCvSkills.items.map((item, index) => (
+                  <SkillItem key={index} name={item.text} fillSkill={item.level} />
+                ))
+                  : skills && skills.items.map((item, index) => (
+                    <SkillItem key={index} name={item.text} fillSkill={item.level} />
+                  ))} */}
               </Wrapper>
             ))
           }
           if (item === "Certifications") {
             return (certifications.display && (
               <Wrapper key={index} heading={certifications && certifications.header}>
-                {certifications && certifications.items.map((item, index) => (
+                {currentCvCertifications !== null ? currentCvCertifications.items.map((item, index) => (
                   <EducationText key={index} text={item.name} date={item.date} />
-                ))}
+                ))
+                  : certifications.items.map((item, index) => (
+                    <EducationText key={index} text={item.name} date={item.date} />
+                  ))}
               </Wrapper>
             ))
           }
           if (item === "Contact") {
             return (contact.display && (
               <Wrapper key={index} heading={contact && contact.header}>
-                {contact && contact.items.map((item, index) => (
+                {currentCvContact !== null ? currentCvContact.items.map((item, index) => (
                   <p
                     key={index}
                     style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
                   >
                     {item.text}
                   </p>
-                ))}
+                ))
+                  : contact.items.map((item, index) => (
+                    <p
+                      key={index}
+                      style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
+                    >
+                      {item.text}
+                    </p>
+                  ))}
               </Wrapper>
             ))
           }

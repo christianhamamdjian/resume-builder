@@ -34,7 +34,10 @@ const Education = () => {
       ...education.items[i],
       [targetName]: e.target.value,
     }
-    education.items.splice(i, 1, modifiedItem)
+    //education.items.splice(i, 1, modifiedItem)
+    const newEducation = { ...education, items: [...education.items.slice(0, i), modifiedItem, ...education.items.slice(i + 1)] }
+    setEducation(newEducation)
+    ctx.setCurrentCvEducation(newEducation)
   }
   const handleAddClick = () => {
     setEducation({

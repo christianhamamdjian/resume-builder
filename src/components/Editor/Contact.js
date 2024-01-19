@@ -30,7 +30,10 @@ const Contact = () => {
       ...contact.items[i],
       text: e.target.value,
     }
-    contact.items.splice(i, 1, modifiedItem)
+    //contact.items.splice(i, 1, modifiedItem)
+    const newContact = { ...contact, items: [...contact.items.slice(0, i), modifiedItem, ...contact.items.slice(i + 1)] }
+    setContact(newContact)
+    ctx.setCurrentCvContact(newContact)
   }
   const handleAddClick = () => {
     setContact({
