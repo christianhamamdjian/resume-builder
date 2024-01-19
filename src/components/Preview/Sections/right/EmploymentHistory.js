@@ -10,7 +10,7 @@ const EmploymentHistory = ({ items }) => {
   const info = ctx.getComponentData('info')
   const currentCvEmploymentInfo = ctx.currentCvEmploymentInfo
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-  console.log(currentCvEmploymentInfo)
+
   return (
     <div style={{ paddingTop: '20px' }}>
       <h3

@@ -74,7 +74,8 @@ export const Left = () => {
     const newProfile = getProfile
     setProfile(newProfile)
   }, [getProfile])
-  console.log(leftContentOrder)
+
+
   return (
     <>
       <div
@@ -105,15 +106,15 @@ export const Left = () => {
           if (item === "Skills") {
             return (skills && skills.display && (
               <Wrapper key={index} heading={skills && skills.header}>
-                {skills && skills.items.map((item, index) => (
+                {/* {skills && skills.items.map((item, index) => (
                   <SkillItem key={index} name={item.text} fillSkill={item.level} />
-                ))}
-                {/* {currentCvSkills !== null ? currentCvSkills.items.map((item, index) => (
+                ))} */}
+                {currentCvSkills !== null ? currentCvSkills.items.map((item, index) => (
                   <SkillItem key={index} name={item.text} fillSkill={item.level} />
                 ))
                   : skills && skills.items.map((item, index) => (
                     <SkillItem key={index} name={item.text} fillSkill={item.level} />
-                  ))} */}
+                  ))}
               </Wrapper>
             ))
           }
