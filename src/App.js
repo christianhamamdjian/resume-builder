@@ -3,6 +3,7 @@ import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
+import Editor from "./components/markdown-editor/Editor";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
@@ -204,6 +205,7 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        {/* <Editor /> */}
         <Routes>
           {user && <Route path='/' element={
             <BuilderContext.Provider

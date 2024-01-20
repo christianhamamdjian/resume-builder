@@ -12,7 +12,7 @@ export const styles = {
   },
   page3: {
     display: 'flex',
-    flexDirection: 'row-reverse',
+    flexDirection: 'column',
   },
 
   /* Section Top */
@@ -65,7 +65,8 @@ export const styles = {
     backgroundColor: 'blue',
   },
   section__left3: {
-    width: '25%',
+    display: 'flex',
+    flexDirection: 'row',
     backgroundColor: 'red',
   },
 
