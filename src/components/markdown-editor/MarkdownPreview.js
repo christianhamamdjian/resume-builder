@@ -1,11 +1,9 @@
-// MarkdownPreview.js
 import React from 'react';
 
 const MarkdownPreview = ({ markdown }) => {
     const convertMarkdownToHtml = (markdownText) => {
         let htmlText = markdownText;
 
-        // Replace Markdown syntax with HTML equivalents (customize as needed)
         htmlText = htmlText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>'); // Bold
         htmlText = htmlText.replace(/_(.*?)_/g, '<em>$1</em>'); // Italics
         htmlText = htmlText.replace(/`([^`]+)`/g, '<code>$1</code>'); // Code
@@ -19,9 +17,13 @@ const MarkdownPreview = ({ markdown }) => {
 
     return (
         <div style={{ marginTop: '20px' }}>
-            <h3>Preview:</h3>
+            {/* <h3>Preview:</h3> */}
             <div
-                style={{ border: '1px solid #ccc', padding: '10px', borderRadius: '5px' }}
+                style={{
+                    //border: '1px solid #ccc', 
+                    //padding: '10px', 
+                    //borderRadius: '5px' 
+                }}
                 dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(markdown) }}
             />
         </div>

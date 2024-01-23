@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
 import Divider from './Divider'
+import MarkdownPreview from '../../../markdown-editor/MarkdownPreview'
 
 const About = ({ text }) => {
   const ctx = useContext(BuilderContext)
@@ -21,7 +22,8 @@ const About = ({ text }) => {
       Professional Summary
     </h3>
     <Divider />
-    <p style={{ ...styles[`main__text${template}`] }}>{currentCvProfile !== null ? currentCvProfile['about'] : text}</p>
+    <MarkdownPreview markdown={currentCvProfile !== null ? currentCvProfile['about'] : text} />
+    {/* <p style={{ ...styles[`main__text${template}`] }}>{currentCvProfile !== null ? currentCvProfile['about'] : text}</p> */}
   </div>
 }
 export default About

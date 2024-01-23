@@ -3,7 +3,6 @@ import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
-import Editor from "./components/markdown-editor/Editor";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
 export const BuilderContext = React.createContext({})
@@ -45,6 +44,31 @@ function App() {
   ];
 
   const [leftContentOrder, setLeftContentOrder] = useState(initialLeftContent || []);
+
+
+  // const [markdowns, setMarkdowns] = useState({});
+
+  // const handleInputChange = (id, newMarkdown) => {
+  //   setMarkdowns((prevMarkdowns) => ({
+  //     ...prevMarkdowns,
+  //     [id]: newMarkdown,
+  //   }));
+  // };
+
+  // const handleStyleClick = (id, tag) => {
+  //   const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
+  //   const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
+  //   const newText =
+  //     markdowns[id].substring(0, start) +
+  //     `${tag}${markdowns[id].substring(start, end)}${tag}` +
+  //     markdowns[id].substring(end);
+  //   setMarkdowns((prevMarkdowns) => ({
+  //     ...prevMarkdowns,
+  //     [id]: newText,
+  //   }));
+  // };
+
+
 
   useEffect(() => {
     if (user) {
@@ -205,7 +229,6 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
-        {/* <Editor /> */}
         <Routes>
           {user && <Route path='/' element={
             <BuilderContext.Provider
@@ -253,6 +276,9 @@ function App() {
                 setCurrentCvContact,
                 currentCvCertifications,
                 setCurrentCvCertifications,
+                // markdowns,
+                // handleInputChange,
+                // handleStyleClick
               }}
             ><Dashboard />
             </BuilderContext.Provider>

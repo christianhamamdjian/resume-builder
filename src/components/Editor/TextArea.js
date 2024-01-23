@@ -9,16 +9,6 @@ const TextArea = ({
   rows,
   isDisabled,
 }) => {
-  //const [newValue, setNewValue] = useState("")
-
-  // useEffect(() => {
-  //   setNewValue(defaultValue)
-  // }, [])
-
-  // useEffect(() => {
-  //   setNewValue("")
-  //   setNewValue(defaultValue)
-  // }, [defaultValue])
 
   return (
     <div className={`w-full ${style}`}>

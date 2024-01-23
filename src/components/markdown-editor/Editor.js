@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import MarkdownEditor from './MarkdownEditor';
 import MarkdownPreview from './MarkdownPreview';
@@ -30,22 +29,22 @@ const Editor = () => {
         <div>
             <div style={{ display: 'flex', gap: '20px' }}>
                 <MarkdownEditor
-                    id={1}
-                    markdown={markdowns[1] || ''}
+                    id={'about'}
+                    markdown={markdowns['about'] || ''}
                     onInputChange={handleInputChange}
                     onStyleClick={handleStyleClick}
                 />
-                <MarkdownPreview markdown={markdowns[1] || ''} />
+                <MarkdownPreview markdown={markdowns['about'] || ''} />
             </div>
 
             <div style={{ display: 'flex', gap: '20px', marginTop: '20px' }}>
                 <MarkdownEditor
-                    id={2}
-                    markdown={markdowns[2] || ''}
+                    id={'employment'}
+                    markdown={markdowns['employment'] || ''}
                     onInputChange={handleInputChange}
                     onStyleClick={handleStyleClick}
                 />
-                <MarkdownPreview markdown={markdowns[2] || ''} />
+                <MarkdownPreview markdown={markdowns['employment'] || ''} />
             </div>
 
             {/* Add more instances as needed */}

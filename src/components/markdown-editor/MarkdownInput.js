@@ -1,4 +1,3 @@
-// MarkdownInput.js
 import React from 'react';
 
 const MarkdownInput = ({ id, markdown, onInputChange }) => {
