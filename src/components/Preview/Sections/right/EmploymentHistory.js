@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
-import { EmploymentHistoryItem } from './EmploymentHistoryItem'
+import EmploymentHistoryItem from './EmploymentHistoryItem'
 import Divider from './Divider'
 
 const EmploymentHistory = ({ items }) => {

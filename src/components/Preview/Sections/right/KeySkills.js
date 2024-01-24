@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
 import Divider from './Divider'
+import MarkdownPreview from '../../../markdown-editor/MarkdownPreview'
 
 const KeySkills = ({ skills }) => {
   const ctx = useContext(BuilderContext)
@@ -24,8 +25,9 @@ const KeySkills = ({ skills }) => {
             {skills.header}
           </h3>
           <Divider />
+          <MarkdownPreview markdown={currentCvKeySkills !== null ? currentCvKeySkills.text : skills.text} />
           {/* <pre style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</pre> */}
-          <pre style={{ ...styles[`main__text${template}`], fontSize: '11', marginTop: '4' }}>{currentCvKeySkills !== null ? currentCvKeySkills.text : skills.text}</pre>
+          {/* <pre style={{ ...styles[`main__text${template}`], fontSize: '11', marginTop: '4' }}>{currentCvKeySkills !== null ? currentCvKeySkills.text : skills.text}</pre> */}
         </div>
       )}
     </div>

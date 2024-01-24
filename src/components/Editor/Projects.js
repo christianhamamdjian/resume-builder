@@ -3,6 +3,8 @@ import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 import TextInput from './TextInput'
 import ToggleButton from './ToggleButton'
+import { Hide } from './Icons/Hide'
+import Show from './Icons/Show'
 import { BuilderContext } from './../../App'
 
 const Projects = () => {
@@ -12,6 +14,7 @@ const Projects = () => {
     description: 'Some cool stuff',
   }
   const [projects, setProjects] = useState(null)
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const rightContentOrder = ctx.rightContentOrder
@@ -58,24 +61,42 @@ const Projects = () => {
 
   return (
     <div className='pt-3 px-5 '>
-      {projects && projects.items.map((item, index) => (
-        <div className='pb-5' key={index}>
-          <TextInput
-            defaultValue={item.name}
-            placeholder='Project Name'
-            style='pb-2'
-            name='name'
-            handleChange={(e) => handleChange(index, e)}
-          />
+      {!isToggled ? (
+        <Hide
+          handleClick={() => {
+            setIsToggled(true)
+          }}
+        />
+      ) : (
+        <Show
+          handleClick={() => {
+            setIsToggled(!isToggled)
+          }}
+        />
+      )}
+      {!isToggled && (
+        <>
+          {projects && projects.items.map((item, index) => (
+            <div className='pb-5' key={index}>
 
-          <TextArea
-            name='description'
-            defaultValue={item.description}
-            placeholder='Description'
-            handleChange={(e) => handleChange(index, e)}
-          />
-        </div>
-      ))}
+              <TextInput
+                defaultValue={item.name}
+                placeholder='Project Name'
+                style='pb-2'
+                name='name'
+                handleChange={(e) => handleChange(index, e)}
+              />
+
+              <TextArea
+                name='description'
+                defaultValue={item.description}
+                placeholder='Description'
+                handleChange={(e) => handleChange(index, e)}
+              />
+
+            </div>
+          ))}
+        </>)}
       <ToggleButton
         defaultValue={projects && projects.display}
         handleChange={(name, prop, isEnabled) => {

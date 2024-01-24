@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import ActionMenu from './ActionMenu'
-import TextArea from './TextArea'
+//import TextArea from './TextArea'
+import { Hide } from './Icons/Hide'
+import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
 import { BuilderContext } from '../../App'
@@ -8,6 +10,7 @@ import { BuilderContext } from '../../App'
 const About = () => {
   const ctx = useContext(BuilderContext)
   const [profile, setProfile] = useState([])
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const rightContentOrder = ctx.rightContentOrder
@@ -49,15 +52,30 @@ const About = () => {
   return (
     <div>
       <h2>About:</h2>
-      <MarkdownEditor
-        id={'about'}
-        //markdown={markdowns['about'] || ''}
-        markdown={profile && profile.about}
-        //onInputChange={handleInputChange}
-        onInputChange={handleChange}
-        onStyleClick={handleStyleClick}
-      />
-      {/* <TextArea
+      {!isToggled ? (
+        <Hide
+          handleClick={() => {
+            setIsToggled(true)
+          }}
+        />
+      ) : (
+        <Show
+          handleClick={() => {
+            setIsToggled(!isToggled)
+          }}
+        />
+      )}
+      {!isToggled && (
+        <>
+          <MarkdownEditor
+            id={'about'}
+            //markdown={markdowns['about'] || ''}
+            markdown={profile && profile['about']}
+            //onInputChange={handleInputChange}
+            onInputChange={handleChange}
+            onStyleClick={handleStyleClick}
+          />
+          {/* <TextArea
         placeholder='About'
         style='px-5 py-3'
         label='Profile'
@@ -66,12 +84,14 @@ const About = () => {
           handleChange(e)
         }}
       /> */}
-      <button onClick={() => moveRightContentUp(index)}>↑</button>
-      <button onClick={() => moveRightContentDown(index)}>↓</button>
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        onlySave={true}
-      />
+          <button onClick={() => moveRightContentUp(index)}>↑</button>
+          <button onClick={() => moveRightContentDown(index)}>↓</button>
+          <ActionMenu
+            handleSaveClick={handleSaveClick}
+            onlySave={true}
+          />
+        </>)
+      }
     </div>
   )
 }

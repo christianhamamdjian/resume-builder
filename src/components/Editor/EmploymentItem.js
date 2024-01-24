@@ -3,7 +3,9 @@ import TextInput from './TextInput'
 import { useState } from 'react'
 import { Hide } from './Icons/Hide'
 import Show from './Icons/Show'
-const EmploymentItem = ({ data, index, handleChange }) => {
+import MarkdownEditor from '../markdown-editor/MarkdownEditor'
+
+const EmploymentItem = ({ data, index, handleChange, employmentInfo, handleStyleClick }) => {
   const [isToggled, setIsToggled] = useState(true)
   return (
     <div className='px-5 py-2'>
@@ -38,7 +40,23 @@ const EmploymentItem = ({ data, index, handleChange }) => {
             defaultValue={data.date}
             handleChange={(e) => handleChange(index, e)}
           />
-          <TextArea
+          <MarkdownEditor
+            id={'description'}
+            //markdown={markdowns['about'] || ''}
+            markdown={data.description}
+            //onInputChange={handleInputChange}
+            onInputChange={handleChange}
+            onStyleClick={handleStyleClick}
+          />
+          <MarkdownEditor
+            id={'responsibilities'}
+            //markdown={markdowns['about'] || ''}
+            markdown={data.responsibilities}
+            //onInputChange={handleInputChange}
+            onInputChange={handleChange}
+            onStyleClick={handleStyleClick}
+          />
+          {/* <TextArea
             placeholder='Position Description'
             name='description'
             defaultValue={data.description}
@@ -49,7 +67,7 @@ const EmploymentItem = ({ data, index, handleChange }) => {
             name='responsibilities'
             defaultValue={data.responsibilities}
             handleChange={(e) => handleChange(index, e)}
-          />
+          /> */}
         </div>
       )}
     </div>

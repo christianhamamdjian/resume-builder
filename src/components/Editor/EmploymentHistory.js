@@ -30,10 +30,10 @@ const EmploymentHistory = () => {
     responsibilities: '',
   }
   const handleChange = (i, e) => {
-    const targetName = e.target.name
+    const targetName = i
     const modifiedItem = {
       ...employmentInfo.items[i],
-      [targetName]: e.target.value,
+      [targetName]: e,
     }
     const newEmploymentInfo = {
       ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
@@ -41,6 +41,24 @@ const EmploymentHistory = () => {
     setEmploymentInfo(newEmploymentInfo)
     ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
   }
+
+
+  // const handleChange = (id, e) => {
+  //   setProfile({ ...profile, about: e })
+  //   ctx.setCurrentCvProfile({ ...profile, about: e })
+  // }
+
+  // const handleStyleClick = (id, tag) => {
+  //   const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
+  //   const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
+  //   const newText =
+  //     profile['about'].substring(0, start) +
+  //     `${tag}${profile['about'].substring(start, end)}${tag}` +
+  //     profile['about'].substring(end);
+  //   handleChange(id, newText)
+  // };
+
+
   return (
     <div>
       {employmentInfo && employmentInfo.items.map((item, index) => (
@@ -48,7 +66,9 @@ const EmploymentHistory = () => {
           key={index}
           index={index}
           data={item}
+          employmentInfo={employmentInfo}
           handleChange={handleChange}
+        // handleStyleClick={handleStyleClick}
         />
       ))}
       <button onClick={() => moveRightContentUp(index)}>↑</button>
