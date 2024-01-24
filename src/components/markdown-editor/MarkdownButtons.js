@@ -1,8 +1,8 @@
 import React from 'react';
 
-const MarkdownButtons = ({ id, onStyleClick }) => {
+const MarkdownButtons = ({ id, onStyleClick, index }) => {
     const handleStyle = (tag) => {
-        onStyleClick(id, tag);
+        onStyleClick(id, tag, index);
     };
     const buttonStyle = {
         backgroundColor: '#000000',

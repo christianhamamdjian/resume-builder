@@ -2,12 +2,12 @@ import React from 'react';
 import MarkdownInput from './MarkdownInput';
 import MarkdownButtons from './MarkdownButtons';
 
-const MarkdownEditor = ({ id, markdown, onInputChange, onStyleClick }) => {
+const MarkdownEditor = ({ id, index, markdown, onInputChange, onStyleClick }) => {
 
     return (
         <div>
-            <MarkdownInput id={id} markdown={markdown} onInputChange={onInputChange} />
-            <MarkdownButtons id={id} onStyleClick={onStyleClick} />
+            <MarkdownInput id={id} index={index} markdown={markdown} onInputChange={onInputChange} />
+            <MarkdownButtons id={id} index={index} onStyleClick={onStyleClick} />
         </div>
     );
 };

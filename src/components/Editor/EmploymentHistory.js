@@ -29,10 +29,12 @@ const EmploymentHistory = () => {
     description: '1',
     responsibilities: '',
   }
-  const handleChange = (i, e) => {
-    const targetName = i
+  const handleChange = (id, e, i) => {
+    // const targetName = e.target.name
+    const targetName = id
     const modifiedItem = {
       ...employmentInfo.items[i],
+      // [targetName]: e.target.value,
       [targetName]: e,
     }
     const newEmploymentInfo = {
@@ -41,23 +43,6 @@ const EmploymentHistory = () => {
     setEmploymentInfo(newEmploymentInfo)
     ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
   }
-
-
-  // const handleChange = (id, e) => {
-  //   setProfile({ ...profile, about: e })
-  //   ctx.setCurrentCvProfile({ ...profile, about: e })
-  // }
-
-  // const handleStyleClick = (id, tag) => {
-  //   const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
-  //   const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
-  //   const newText =
-  //     profile['about'].substring(0, start) +
-  //     `${tag}${profile['about'].substring(start, end)}${tag}` +
-  //     profile['about'].substring(end);
-  //   handleChange(id, newText)
-  // };
-
 
   return (
     <div>
@@ -68,7 +53,6 @@ const EmploymentHistory = () => {
           data={item}
           employmentInfo={employmentInfo}
           handleChange={handleChange}
-        // handleStyleClick={handleStyleClick}
         />
       ))}
       <button onClick={() => moveRightContentUp(index)}>↑</button>

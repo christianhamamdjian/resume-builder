@@ -7,6 +7,17 @@ import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
 const EmploymentItem = ({ data, index, handleChange, employmentInfo, handleStyleClick }) => {
   const [isToggled, setIsToggled] = useState(true)
+
+  //   const handleStyleClick = (id, tag, index) => {
+  //   const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
+  //   const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
+  //   const newText =
+  //     employmentInfo.items[index]['about'].substring(0, start) +
+  //     `${tag}${employmentInfo.items[index]['about'].substring(start, end)}${tag}` +
+  //     employmentInfo.items[index]['about'].substring(end);
+  //   handleChange(id, newText)
+  // };
+
   return (
     <div className='px-5 py-2'>
       {!isToggled ? (
@@ -42,6 +53,7 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo, handleStyle
           />
           <MarkdownEditor
             id={'description'}
+            index={index}
             //markdown={markdowns['about'] || ''}
             markdown={data.description}
             //onInputChange={handleInputChange}
@@ -50,6 +62,7 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo, handleStyle
           />
           <MarkdownEditor
             id={'responsibilities'}
+            index={index}
             //markdown={markdowns['about'] || ''}
             markdown={data.responsibilities}
             //onInputChange={handleInputChange}

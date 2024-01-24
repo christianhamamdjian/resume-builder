@@ -1,8 +1,8 @@
 import React from 'react';
 
-const MarkdownInput = ({ id, markdown, onInputChange }) => {
+const MarkdownInput = ({ id, index, markdown, onInputChange }) => {
     const handleInputChange = (event) => {
-        onInputChange(id, event.target.value);
+        onInputChange(id, event.target.value, index);
     };
 
     return (

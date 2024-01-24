@@ -6,8 +6,8 @@ const EmploymentHistoryItem = ({
   description,
   responsibilities,
 }) => {
-  console.log(description,
-    responsibilities)
+  // console.log(description,
+  //   responsibilities)
   return (
     <div style={{ paddingBottom: '20px' }}>
       <h4
@@ -27,7 +27,7 @@ const EmploymentHistoryItem = ({
       {/* <pre style={{ fontSize: '11', marginLeft: '15px', marginTop: '4' }}>
       {responsibilities}
     </pre> */}
-      {/* <MarkdownPreview markdown={responsibilities !== undefined && responsibilities} /> */}
+      <MarkdownPreview markdown={responsibilities} />
     </div>
   )
 }
