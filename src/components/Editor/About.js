@@ -38,7 +38,8 @@ const About = () => {
       profile['about'].substring(0, start) +
       `${tag}${profile['about'].substring(start, end)}${tag}` +
       profile['about'].substring(end);
-    handleChange(id, newText)
+    setProfile({ ...profile, about: newText })
+    ctx.setCurrentCvProfile({ ...profile, about: newText })
   };
   const handleSaveClick = () => ctx.updateInfo(profile && profile, currentCv)
   return (

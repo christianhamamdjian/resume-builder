@@ -36,7 +36,8 @@ const KeySkills = () => {
       skills['text'].substring(0, start) +
       `${tag}${skills['text'].substring(start, end)}${tag}` +
       skills['text'].substring(end);
-    handleChange(id, newText)
+    setSkills({ ...skills, text: newText })
+    ctx.setCurrentCvKeySkills({ ...skills, text: newText })
   };
   return (
     <>

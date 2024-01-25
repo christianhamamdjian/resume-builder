@@ -75,7 +75,6 @@ export const Left = () => {
     setProfile(newProfile)
   }, [getProfile])
 
-  console.log(info)
   return (
     <>
       <div

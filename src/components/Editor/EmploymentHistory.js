@@ -29,10 +29,7 @@ const EmploymentHistory = () => {
     description: '1',
     responsibilities: '',
   }
-  // const handleInputChange = (id, e) => {
-  //   setProfile({ ...profile, about: e })
-  //   ctx.setCurrentCvProfile({ ...profile, about: e })
-  // }
+
   const handleChange = (e, id, i) => {
     const targetName = e.target.name
     //const targetName = id
