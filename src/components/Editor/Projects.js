@@ -5,6 +5,7 @@ import TextInput from './TextInput'
 import ToggleButton from './ToggleButton'
 import { Hide } from './Icons/Hide'
 import Show from './Icons/Show'
+import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import { BuilderContext } from './../../App'
 
 const Projects = () => {
@@ -32,16 +33,27 @@ const Projects = () => {
     setProjects(newProjects)
   }, [currentCv])
 
-  const handleChange = (i, e) => {
-    const targetName = e.target.name
+  const handleChange = (e, id, i) => {
+    const targetName = id
+    const targetValue = e.target ? e.target.value : e
     const modifiedItem = {
       ...projects.items[i],
-      [targetName]: e.target.value,
+      [targetName]: targetValue,
     }
     const newProjects = { ...projects, items: [...projects.items.slice(0, i), modifiedItem, ...projects.items.slice(i + 1)] }
     setProjects(newProjects)
     ctx.setCurrentCvProjects(newProjects)
   }
+  const handleStyleClick = (id, tag, index) => {
+    const start = document.getElementById(`markdownTextarea-${id}${index}`).selectionStart;
+    const end = document.getElementById(`markdownTextarea-${id}${index}`).selectionEnd;
+    const newText =
+      projects.items[index][id].substring(0, start) +
+      `${tag}${projects.items[index][id].substring(start, end)}${tag}` +
+      projects.items[index][id].substring(end);
+    handleChange(newText, id, index)
+    console.log(newText, id, index)
+  };
   const handleAddClick = () => {
     setProjects({
       ...projects,
@@ -84,15 +96,23 @@ const Projects = () => {
                 placeholder='Project Name'
                 style='pb-2'
                 name='name'
-                handleChange={(e) => handleChange(index, e)}
+                handleChange={(e) => handleChange(e, 'name', index)}
               />
-
-              <TextArea
+              <MarkdownEditor
+                id={'description'}
+                index={index}
+                //markdown={markdowns['about'] || ''}
+                markdown={item.description}
+                //onInputChange={handleInputChange}
+                onInputChange={handleChange}
+                onStyleClick={handleStyleClick}
+              />
+              {/* <TextArea
                 name='description'
                 defaultValue={item.description}
                 placeholder='Description'
                 handleChange={(e) => handleChange(index, e)}
-              />
+              /> */}
 
             </div>
           ))}

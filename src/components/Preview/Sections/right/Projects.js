@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
+import MarkdownPreview from '../../../markdown-editor/MarkdownPreview'
+
 import Divider from './Divider'
 
 const Projects = ({ projects }) => {
@@ -29,22 +31,24 @@ const Projects = ({ projects }) => {
               <p style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
               </p>
-              <pre
+              {/* <pre
                 style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
               >
                 {project.description}
-              </pre>
+              </pre> */}
+              <MarkdownPreview markdown={project.description} />
             </div>
           )) : projects.items.map((project, index) => (
             <div key={index}>
               <p style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
               </p>
-              <pre
+              {/* <pre
                 style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
               >
                 {project.description}
-              </pre>
+              </pre> */}
+              <MarkdownPreview markdown={project.description} />
             </div>
           ))}
         </div>

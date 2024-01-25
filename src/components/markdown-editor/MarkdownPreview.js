@@ -10,7 +10,7 @@ const MarkdownPreview = ({ markdown }) => {
         htmlText = htmlText.replace(/~~(.*?)~~/g, '<del>$1</del>'); // Strikethrough
         htmlText = htmlText.replace(/^\s*-\s*(.*)$/gm, '<li>$1</li>'); // Unordered List
         htmlText = htmlText.replace(/^\s*\d+\.\s*(.*)$/gm, '<li>$1</li>'); // Ordered List
-        htmlText = htmlText.replace(/=(.*?)=/g, '<inst>$1</inst>'); // Underline
+        htmlText = htmlText.replace(/=(.*?)=/g, '<ins>$1</ins>'); // Underline
 
         return htmlText;
     };
