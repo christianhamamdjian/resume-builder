@@ -31,16 +31,18 @@ const EmploymentHistory = () => {
   }
 
   const handleChange = (e, id, i) => {
-    const targetName = e.target.name
-    //const targetName = id
+    // const targetName = e.target.name
+    const targetName = id
+    const targetValue = e.target ? e.target.value : e
     const modifiedItem = {
       ...employmentInfo.items[i],
       // [targetName]: e.target.value,
-      [targetName]: e.target.value,
+      [targetName]: targetValue,
     }
     const newEmploymentInfo = {
       ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
     }
+    console.log(e)
     setEmploymentInfo(newEmploymentInfo)
     ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
   }

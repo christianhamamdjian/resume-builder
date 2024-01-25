@@ -51,7 +51,7 @@ const CvInfo = () => {
       <TemplateGallery updateTemplate={updateTemplate} />
       <div>
         <label htmlFor="background-color">Background color: </label>
-        <input type="color" id="background-color" value={ctx.backgroundColor !== "" ? ctx.backgroundColor : cvInfo.backgroundColor} onChange={e => handleBacgroundColor(e)} />
+        <input type="color" id="background-color" value={ctx.backgroundColor !== "" ? ctx.backgroundColor : ctx.getComponentData('info')} onChange={e => handleBacgroundColor(e)} />
       </div>
       <button
         className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'

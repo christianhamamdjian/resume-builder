@@ -24,7 +24,7 @@ const MarkdownPreview = ({ markdown }) => {
                     //padding: '10px', 
                     //borderRadius: '5px' 
                 }}
-                dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(markdown) }}
+                dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(markdown || "") }}
             />
         </div>
     );

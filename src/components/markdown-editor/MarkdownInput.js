@@ -7,7 +7,7 @@ const MarkdownInput = ({ id, index, markdown, onInputChange }) => {
 
     return (
         <textarea
-            id={`markdownTextarea-${id}`}
+            id={`markdownTextarea-${id}${index}`}
             value={markdown}
             onChange={handleInputChange}
             placeholder={`Type your Markdown here (Editor ${id})...`}

@@ -5,18 +5,19 @@ import { Hide } from './Icons/Hide'
 import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
-const EmploymentItem = ({ data, index, handleChange, employmentInfo, handleStyleClick }) => {
+const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
   const [isToggled, setIsToggled] = useState(true)
 
-  //   const handleStyleClick = (id, tag, index) => {
-  //   const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
-  //   const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
-  //   const newText =
-  //     employmentInfo.items[index]['about'].substring(0, start) +
-  //     `${tag}${employmentInfo.items[index]['about'].substring(start, end)}${tag}` +
-  //     employmentInfo.items[index]['about'].substring(end);
-  //   handleChange(id, newText)
-  // };
+  const handleStyleClick = (id, tag, index) => {
+    const start = document.getElementById(`markdownTextarea-${id}${index}`).selectionStart;
+    const end = document.getElementById(`markdownTextarea-${id}${index}`).selectionEnd;
+    const newText =
+      employmentInfo.items[index][id].substring(0, start) +
+      `${tag}${employmentInfo.items[index][id].substring(start, end)}${tag}` +
+      employmentInfo.items[index][id].substring(end);
+    handleChange(newText, id, index)
+    // console.log(newText, id, index)
+  };
 
   return (
     <div className='px-5 py-2'>
