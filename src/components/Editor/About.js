@@ -62,6 +62,7 @@ const About = () => {
         <>
           <MarkdownEditor
             id={'about'}
+            parent={'about'}
             //markdown={markdowns['about'] || ''}
             markdown={profile && profile['about']}
             //onInputChange={handleInputChange}

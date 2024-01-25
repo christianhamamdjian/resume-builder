@@ -44,9 +44,9 @@ const Projects = () => {
     setProjects(newProjects)
     ctx.setCurrentCvProjects(newProjects)
   }
-  const handleStyleClick = (id, tag, index) => {
-    const start = document.getElementById(`markdownTextarea-${id}${index}`).selectionStart;
-    const end = document.getElementById(`markdownTextarea-${id}${index}`).selectionEnd;
+  const handleStyleClick = (id, tag, index, parent) => {
+    const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
+    const end = document.getElementById(`${parent}-${id}-${index}`).selectionEnd;
     const newText =
       projects.items[index][id].substring(0, start) +
       `${tag}${projects.items[index][id].substring(start, end)}${tag}` +
@@ -100,6 +100,7 @@ const Projects = () => {
               />
               <MarkdownEditor
                 id={'description'}
+                parent={'projects'}
                 index={index}
                 //markdown={markdowns['about'] || ''}
                 markdown={item.description}

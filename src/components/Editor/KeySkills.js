@@ -58,6 +58,7 @@ const KeySkills = () => {
         <>
           <MarkdownEditor
             id={'skills'}
+            parent={'keyskills'}
             markdown={skills && skills['text']}
             onInputChange={handleChange}
             onStyleClick={handleStyleClick}

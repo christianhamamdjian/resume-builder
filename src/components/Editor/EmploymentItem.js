@@ -8,9 +8,9 @@ import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
   const [isToggled, setIsToggled] = useState(true)
 
-  const handleStyleClick = (id, tag, index) => {
-    const start = document.getElementById(`markdownTextarea-${id}${index}`).selectionStart;
-    const end = document.getElementById(`markdownTextarea-${id}${index}`).selectionEnd;
+  const handleStyleClick = (id, tag, index, parent) => {
+    const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
+    const end = document.getElementById(`${parent}-${id}-${index}`).selectionEnd;
     const newText =
       employmentInfo.items[index][id].substring(0, start) +
       `${tag}${employmentInfo.items[index][id].substring(start, end)}${tag}` +
@@ -57,6 +57,7 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
           />
           <MarkdownEditor
             id={'description'}
+            parent={'employment'}
             index={index}
             //markdown={markdowns['about'] || ''}
             markdown={data.description}
@@ -66,6 +67,7 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
           />
           <MarkdownEditor
             id={'responsibilities'}
+            parent={'employment'}
             index={index}
             //markdown={markdowns['about'] || ''}
             markdown={data.responsibilities}

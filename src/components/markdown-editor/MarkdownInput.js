@@ -1,13 +1,13 @@
 import React from 'react';
 
-const MarkdownInput = ({ id, index, markdown, onInputChange }) => {
+const MarkdownInput = ({ id, parent, index, markdown, onInputChange }) => {
     const handleInputChange = (event) => {
         onInputChange(event, id, index);
     };
 
     return (
         <textarea
-            id={`markdownTextarea-${id}${index}`}
+            id={`${parent}-${id}-${index}`}
             value={markdown}
             onChange={handleInputChange}
             placeholder={`Type your Markdown here (Editor ${id})...`}
