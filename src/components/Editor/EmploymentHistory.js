@@ -29,13 +29,17 @@ const EmploymentHistory = () => {
     description: '1',
     responsibilities: '',
   }
-  const handleChange = (id, e, i) => {
-    // const targetName = e.target.name
-    const targetName = id
+  // const handleInputChange = (id, e) => {
+  //   setProfile({ ...profile, about: e })
+  //   ctx.setCurrentCvProfile({ ...profile, about: e })
+  // }
+  const handleChange = (e, id, i) => {
+    const targetName = e.target.name
+    //const targetName = id
     const modifiedItem = {
       ...employmentInfo.items[i],
       // [targetName]: e.target.value,
-      [targetName]: e,
+      [targetName]: e.target.value,
     }
     const newEmploymentInfo = {
       ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
@@ -53,6 +57,7 @@ const EmploymentHistory = () => {
           data={item}
           employmentInfo={employmentInfo}
           handleChange={handleChange}
+        //handleInputChange={handleInputChange}
         />
       ))}
       <button onClick={() => moveRightContentUp(index)}>↑</button>

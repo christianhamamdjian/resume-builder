@@ -61,13 +61,13 @@ export const Left = () => {
   const skills = ctx.getComponentData('Skills')
   const currentCvSkills = ctx.currentCvSkills
   const getProfile = ctx.getComponentData('Profile')
+  const currentCvProfile = ctx.currentCvProfile
   const contact = ctx.getComponentData('Contact')
   const currentCvContact = ctx.currentCvContact
   const certifications = ctx.getComponentData('Certifications')
   const currentCvCertifications = ctx.currentCvCertifications
   const currentCvSocials = ctx.currentCvSocials
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
-  console.log(currentCvSkills)
   const [profile, setProfile] = useState([])
 
   useEffect(() => {
@@ -75,7 +75,7 @@ export const Left = () => {
     setProfile(newProfile)
   }, [getProfile])
 
-
+  console.log(info)
   return (
     <>
       <div
@@ -86,10 +86,10 @@ export const Left = () => {
         style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`], backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
       >
         <ProfileContainer
-          name={profile && profile.name}
-          profession={profile && profile.profession}
-          url={profile && profile.profileImageURL}
-          display={profile && profile.display}
+          name={currentCvProfile !== null ? currentCvProfile.name : profile.name}
+          profession={currentCvProfile !== null ? currentCvProfile.profession : profile.profession}
+          url={currentCvProfile !== null ? currentCvProfile.profileImageURL : profile.profileImageURL}
+          display={currentCvProfile !== null ? currentCvProfile.display : profile.display}
         />
 
         {leftContentOrder && leftContentOrder.map((item, index) => {

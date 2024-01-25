@@ -35,21 +35,24 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo, handleStyle
       )}
 
       <TextInput
+        id={'position'}
+        index={index}
         placeholder='Postion Title - Company'
         style='pb-2'
         isDisabled={isToggled}
         name='position'
         defaultValue={data.position}
-        handleChange={(e) => handleChange(index, e)}
+        handleChange={handleChange}
       />
       {!isToggled && (
         <div>
           <TextInput
+            id={'date'}
             placeholder='Date From - To'
             style='pb-2'
             name='date'
             defaultValue={data.date}
-            handleChange={(e) => handleChange(index, e)}
+            handleChange={handleChange}
           />
           <MarkdownEditor
             id={'description'}

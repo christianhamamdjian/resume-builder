@@ -34,7 +34,10 @@ const Profile = () => {
       <h2>Full Name:</h2>
       <TextArea
         placeholder='Full name'
-        handleChange={(e) => setProfile({ ...profile, name: e.target.value })}
+        handleChange={(e) => {
+          setProfile({ ...profile, name: e.target.value })
+          ctx.setCurrentCvProfile({ ...profile, name: e.target.value })
+        }}
         style='pb-3'
         rows='2'
         defaultValue={profile.name}
@@ -42,9 +45,10 @@ const Profile = () => {
       <h2>Profession:</h2>
       <TextInput
         placeholder='Profession'
-        handleChange={(e) =>
+        handleChange={(e) => {
           setProfile({ ...profile, profession: e.target.value })
-        }
+          ctx.setCurrentCvProfile({ ...profile, profession: e.target.value })
+        }}
         style='pb-3'
         defaultValue={profile.profession}
       />
@@ -52,19 +56,20 @@ const Profile = () => {
       <div className='flex flex-row'>
         <TextInput
           placeholder='Profile Image Url'
-          handleChange={(e) =>
+          handleChange={(e) => {
             setProfile({ ...profile, profileImageURL: ctx.imageUrl || e.target.value })
-          }
+            ctx.setCurrentCvProfile({ ...profile, profileImageURL: ctx.imageUrl || e.target.value })
+          }}
           style='pb-3 pr-3'
           //defaultValue={profile && profile.profileImageURL}
           defaultValue={profile && ctx.imageUrl || profile.profileImageURL}
-
         />
         <ToggleButton
           defaultValue={profile && profile.display}
           handleChange={(name, prop, isEnabled) => {
             setProfile(prevProfile => ({ ...prevProfile, display: isEnabled }))
             ctx.updateInfo({ ...profile, display: isEnabled })
+            ctx.setCurrentCvProfile({ ...profile, display: isEnabled })
           }}
         />
       </div>

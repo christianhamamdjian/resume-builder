@@ -31,7 +31,7 @@ const Skills = () => {
   const handleEnable = (isEnabled) => {
     setSkills({ ...skills, display: isEnabled })
   }
-  const handleChange = (i, e) => {
+  const handleChange = (e, i) => {
     const targetName = e.target.name
     const modifiedItem = {
       ...skills.items[i],
@@ -78,7 +78,7 @@ const Skills = () => {
             name='text'
             placeholder='Skill'
             index={index}
-            handleChange={(e) => handleChange(index, e)}
+            handleChange={(e) => handleChange(e, index)}
           />
           <TextInput
             defaultValue={item && item.level}
@@ -88,7 +88,7 @@ const Skills = () => {
             placeholder='%'
             style='w-1/3'
             index={index}
-            handleChange={(e) => handleChange(index, e)}
+            handleChange={(e) => handleChange(e, index)}
           />
         </div>
       ))}

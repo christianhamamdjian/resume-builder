@@ -1,6 +1,8 @@
 import React from 'react'
 
 const TextInput = ({
+  id,
+  index,
   name,
   style,
   placeholder,
@@ -9,13 +11,7 @@ const TextInput = ({
   type,
   handleChange,
 }) => {
-  // const [newValue, setNewValue] = useState("")
-  // useEffect(() => {
-  //   setNewValue(defaultValue)
-  // }, [])
-  // useEffect(() => {
-  //   setNewValue(defaultValue)
-  // }, [defaultValue])
+
   return (
     <div className={`w-full ${style}`}>
       <input
@@ -27,7 +23,7 @@ const TextInput = ({
           }`}
         disabled={isDisabled}
         onChange={(e) => {
-          handleChange(e)
+          handleChange(e, id, index)
         }}
         type={type}
       ></input>

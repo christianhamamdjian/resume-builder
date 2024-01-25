@@ -8,7 +8,7 @@ export const cvs = [
         type: "info",
         title: "",
         template: "1",
-        backgroundColor: "",
+        backgroundColor: "#000000",
         rightOrder: [
             "About",
             "Employment History",

@@ -27,9 +27,8 @@ const Education = () => {
     setEducation(newEducation)
   }, [currentCv])
 
-  const handleChange = (i, e) => {
+  const handleChange = (e, i) => {
     const targetName = e.target.name
-    console.log(targetName, e.target.value)
     const modifiedItem = {
       ...education.items[i],
       [targetName]: e.target.value,

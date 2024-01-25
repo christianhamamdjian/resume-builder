@@ -34,15 +34,16 @@ const CvInfo = () => {
     ctx.setBackgroundColor(e.target.value)
     setCvInfo(prevCvInfo => ({ ...prevCvInfo, backgroundColor: e.target.value }))
   }
+  const handleChange = (e) => {
+    setCvInfo({ ...cvInfo, title: e.target.value })
+  }
   return (
     <div className='pb-11'>
       <h1>Cv info:</h1>
       <h2>Title:</h2>
       <TextInput
         placeholder='CV Title'
-        handleChange={(e) =>
-          setCvInfo({ ...cvInfo, title: e.target.value })
-        }
+        handleChange={handleChange}
         style='pb-3'
         defaultValue={cvInfo.title}
       />
@@ -50,7 +51,7 @@ const CvInfo = () => {
       <TemplateGallery updateTemplate={updateTemplate} />
       <div>
         <label htmlFor="background-color">Background color: </label>
-        <input type="color" id="background-color" value={ctx.backgroundColor} onChange={e => handleBacgroundColor(e)} />
+        <input type="color" id="background-color" value={ctx.backgroundColor !== "" ? ctx.backgroundColor : cvInfo.backgroundColor} onChange={e => handleBacgroundColor(e)} />
       </div>
       <button
         className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'

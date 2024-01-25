@@ -63,7 +63,10 @@ const Socials = () => {
             </div>
           </div>
         ))}
-
+      </div>
+      <button onClick={() => moveLeftContentUp(index)}>↑</button>
+      <button onClick={() => moveLeftContentDown(index)}>↓</button>
+      <div>
         <button
           className=' w-20 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
           onClick={() => ctx.updateInfo(socials && socials)}
@@ -71,8 +74,6 @@ const Socials = () => {
           Save
         </button>
       </div>
-      <button onClick={() => moveLeftContentUp(index)}>↑</button>
-      <button onClick={() => moveLeftContentDown(index)}>↓</button>
     </>
   )
 }

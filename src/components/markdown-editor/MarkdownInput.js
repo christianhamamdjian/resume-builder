@@ -2,7 +2,7 @@ import React from 'react';
 
 const MarkdownInput = ({ id, index, markdown, onInputChange }) => {
     const handleInputChange = (event) => {
-        onInputChange(id, event.target.value, index);
+        onInputChange(event, id, index);
     };
 
     return (

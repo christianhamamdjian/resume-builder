@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react'
-import TextArea from './TextArea'
 import ToggleButton from './ToggleButton'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import { Hide } from './Icons/Hide'
@@ -26,13 +25,9 @@ const KeySkills = () => {
     setSkills(newSkills)
   }, [currentCv])
 
-  // const handleChange = (e) => {
-  //   setSkills({ ...skills, text: e.target.value })
-  //   ctx.setCurrentCvKeySkills({ ...skills, text: e.target.value })
-  // }
-  const handleChange = (id, e) => {
-    setSkills({ ...skills, text: e })
-    ctx.setCurrentCvKeySkills({ ...skills, text: e })
+  const handleChange = (e, id) => {
+    setSkills({ ...skills, text: e.target.value })
+    ctx.setCurrentCvKeySkills({ ...skills, text: e.target.value })
   }
   const handleStyleClick = (id, tag) => {
     const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
@@ -45,12 +40,6 @@ const KeySkills = () => {
   };
   return (
     <>
-      {/* <TextArea
-        placeholder='Key Skills'
-        style='px-5 py-3'
-        defaultValue={skills && skills.text}
-        handleChange={handleChange}
-      /> */}
       {!isToggled ? (
         <Hide
           handleClick={() => {

@@ -25,7 +25,7 @@ const Contact = () => {
     setContact(newContact)
   }, [currentCv])
 
-  const handleChange = (i, e) => {
+  const handleChange = (e, i) => {
     const modifiedItem = {
       ...contact.items[i],
       text: e.target.value,
@@ -59,7 +59,7 @@ const Contact = () => {
           key={index}
           placeholder='Custom field'
           defaultValue={item.text}
-          handleChange={(e) => handleChange(index, e)}
+          handleChange={(e) => handleChange(e, index)}
         />
       ))}
       <button onClick={() => moveLeftContentUp(index)}>↑</button>

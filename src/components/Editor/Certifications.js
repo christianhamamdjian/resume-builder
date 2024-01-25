@@ -28,7 +28,7 @@ const Certifications = () => {
     setCertification(newCetification)
   }, [currentCv])
 
-  const handleChange = (i, e) => {
+  const handleChange = (e, i) => {
     const targetName = e.target.name
     const modifiedItem = {
       ...certification.items[i],
@@ -66,7 +66,7 @@ const Certifications = () => {
             style='pb-2'
             name='name'
             defaultValue={item.name}
-            handleChange={(e) => handleChange(index, e)}
+            handleChange={(e) => handleChange(e, index)}
           />
 
           <TextInput
@@ -74,7 +74,7 @@ const Certifications = () => {
             name='date'
             style='pb-2'
             defaultValue={item.date}
-            handleChange={(e) => handleChange(index, e)}
+            handleChange={(e) => handleChange(e, index)}
           />
         </div>
       ))}
