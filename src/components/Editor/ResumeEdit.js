@@ -14,48 +14,48 @@ const ResumeEdit = () => {
 
   return (
     <>
-      <div className='flex flex-row bg-white' >
-        <div className='flex flex-col w-1/2'>
-          <div className='border-gray-300 border p-4 '>
-            <CvInfo />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <Profile />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <Socials />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <Education />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <Skills />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <Contact />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <Certifications />
-          </div>
-        </div>
-        <div className='flex flex-col w-1/2'>
-          <div className='border-gray-300 border p-4 '>
-            <About />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <h2>Key Skills</h2>
-            <KeySkills />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <h2>Projects</h2>
-            <Projects />
-          </div>
-          <div className='border-gray-300 border p-4 '>
-            <h2>Employment History</h2>
-            <EmploymentHistory />
-          </div>
-        </div >
-      </div >
+      {/* <div className='flex flex-row bg-white' > */}
+      {/* <div className='flex flex-col w-1/2'> */}
+      <div className='border-gray-300 border p-4 '>
+        <CvInfo />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <Profile />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <Socials />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <Education />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <Skills />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <Contact />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <Certifications />
+      </div>
+      {/* </div>
+        <div className='flex flex-col w-1/2'> */}
+      <div className='border-gray-300 border p-4 '>
+        <About />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <h2>Key Skills</h2>
+        <KeySkills />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <h2>Projects</h2>
+        <Projects />
+      </div>
+      <div className='border-gray-300 border p-4 '>
+        <h2>Employment History</h2>
+        <EmploymentHistory />
+      </div>
+      {/* </div > */}
+      {/* </div > */}
     </>
   )
 }

@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import TextInput from './TextInput'
 import ActionMenu from './ActionMenu'
+import Hide from './Icons/Hide'
+import Show from './Icons/Show'
 import { BuilderContext } from './../../App'
 
 const Contact = () => {
@@ -9,6 +11,7 @@ const Contact = () => {
     text: '',
   }
   const [contact, setContact] = useState()
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const leftContentOrder = ctx.leftContentOrder
@@ -54,21 +57,42 @@ const Contact = () => {
   return (
     <div>
       <h1>Contact:</h1>
-      {contact && contact.items.map((item, index) => (
-        <TextInput
-          key={index}
-          placeholder='Custom field'
-          defaultValue={item.text}
-          handleChange={(e) => handleChange(e, index)}
+      {!isToggled ? (
+        <Hide
+          handleClick={() => {
+            setIsToggled(true)
+          }}
         />
-      ))}
-      <button onClick={() => moveLeftContentUp(index)}>↑</button>
-      <button onClick={() => moveLeftContentDown(index)}>↓</button>
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        handleAddClick={handleAddClick}
-        handleRemoveClick={handleRemoveClick}
-      />
+      ) : (
+        <Show
+          handleClick={() => {
+            setIsToggled(!isToggled)
+          }}
+        />
+      )
+      }
+      {
+        !isToggled && (
+          <>
+
+            {contact && contact.items.map((item, index) => (
+              <TextInput
+                key={index}
+                placeholder='Custom field'
+                defaultValue={item.text}
+                handleChange={(e) => handleChange(e, index)}
+              />
+            ))}
+            <button onClick={() => moveLeftContentUp(index)}>↑</button>
+            <button onClick={() => moveLeftContentDown(index)}>↓</button>
+            <ActionMenu
+              handleSaveClick={handleSaveClick}
+              handleAddClick={handleAddClick}
+              handleRemoveClick={handleRemoveClick}
+            />
+          </>
+        )
+      }
     </div>
   )
 }

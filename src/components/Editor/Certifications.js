@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 import TextInput from './TextInput'
+import Hide from './Icons/Hide'
+import Show from './Icons/Show'
 import { BuilderContext } from './../../App'
 
 const Certifications = () => {
@@ -11,6 +13,7 @@ const Certifications = () => {
     date: '',
   }
   const [certification, setCertification] = useState(null)
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const leftContentOrder = ctx.leftContentOrder
@@ -58,33 +61,53 @@ const Certifications = () => {
   return (
     <div className='pt-6'>
       <h1>Certifications:</h1>
-      {certification && certification.items.map((item, index) => (
-        <div key={index}>
-          <TextArea
-            placeholder='Certification Type'
-            rows='2'
-            style='pb-2'
-            name='name'
-            defaultValue={item.name}
-            handleChange={(e) => handleChange(e, index)}
-          />
+      {!isToggled ? (
+        <Hide
+          handleClick={() => {
+            setIsToggled(true)
+          }}
+        />
+      ) : (
+        <Show
+          handleClick={() => {
+            setIsToggled(!isToggled)
+          }}
+        />
+      )
+      }
+      {
+        !isToggled && (
+          <>
+            {certification && certification.items.map((item, index) => (
+              <div key={index}>
+                <TextArea
+                  placeholder='Certification Type'
+                  rows='2'
+                  style='pb-2'
+                  name='name'
+                  defaultValue={item.name}
+                  handleChange={(e) => handleChange(e, index)}
+                />
 
-          <TextInput
-            placeholder='Date '
-            name='date'
-            style='pb-2'
-            defaultValue={item.date}
-            handleChange={(e) => handleChange(e, index)}
-          />
-        </div>
-      ))}
-      <button onClick={() => moveLeftContentUp(index)}>↑</button>
-      <button onClick={() => moveLeftContentDown(index)}>↓</button>
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        handleAddClick={handleAddClick}
-        handleRemoveClick={handleRemoveClick}
-      />
+                <TextInput
+                  placeholder='Date '
+                  name='date'
+                  style='pb-2'
+                  defaultValue={item.date}
+                  handleChange={(e) => handleChange(e, index)}
+                />
+              </div>
+            ))}
+            <button onClick={() => moveLeftContentUp(index)}>↑</button>
+            <button onClick={() => moveLeftContentDown(index)}>↓</button>
+            <ActionMenu
+              handleSaveClick={handleSaveClick}
+              handleAddClick={handleAddClick}
+              handleRemoveClick={handleRemoveClick}
+            />
+          </>
+        )
+      }
     </div>
   )
 }

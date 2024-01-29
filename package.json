@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "cloudinary": "^1.41.0",
     "cloudinary-react": "^1.8.1",
+    "dompurify": "^3.0.8",
     "dotenv": "^16.3.1",
     "faunadb": "^4.8.0",
     "netlify-identity-widget": "^1.9.2",

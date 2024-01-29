@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { BuilderContext } from './../../App'
 import EmploymentItem from './EmploymentItem'
+import Hide from './Icons/Hide'
+import Show from './Icons/Show'
 import ActionMenu from './ActionMenu'
 
 const EmploymentHistory = () => {
   const ctx = useContext(BuilderContext)
   const [employmentInfo, setEmploymentInfo] = useState(null)
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const rightContentOrder = ctx.rightContentOrder
@@ -49,36 +52,58 @@ const EmploymentHistory = () => {
 
   return (
     <div>
-      {employmentInfo && employmentInfo.items.map((item, index) => (
-        <EmploymentItem
-          key={index}
-          index={index}
-          data={item}
-          employmentInfo={employmentInfo}
-          handleChange={handleChange}
-        //handleInputChange={handleInputChange}
-        />
-      ))}
-      <button onClick={() => moveRightContentUp(index)}>↑</button>
-      <button onClick={() => moveRightContentDown(index)}>↓</button>
-      <ActionMenu
-        style='px-5'
-        handleSaveClick={() => ctx.updateInfo(employmentInfo && employmentInfo, currentCv)}
-        handleAddClick={() =>
-          setEmploymentInfo({
-            ...employmentInfo,
-            items: [...employmentInfo.items, newItem],
-          })
-        }
-        handleRemoveClick={() =>
-          setEmploymentInfo({
-            ...employmentInfo,
-            items: employmentInfo.items.filter(
-              (item, index) => index < employmentInfo.items.length - 1
-            ),
-          })
-        }
-      />
+      {
+        !isToggled ? (
+          <Hide
+            handleClick={() => {
+              setIsToggled(true)
+            }}
+          />
+        ) : (
+          <Show
+            handleClick={() => {
+              setIsToggled(!isToggled)
+            }}
+          />
+        )
+      }
+      {
+        !isToggled && (
+          <>
+
+            {employmentInfo && employmentInfo.items.map((item, index) => (
+              <EmploymentItem
+                key={index}
+                index={index}
+                data={item}
+                employmentInfo={employmentInfo}
+                handleChange={handleChange}
+              //handleInputChange={handleInputChange}
+              />
+            ))}
+            <button onClick={() => moveRightContentUp(index)}>↑</button>
+            <button onClick={() => moveRightContentDown(index)}>↓</button>
+            <ActionMenu
+              style='px-5'
+              handleSaveClick={() => ctx.updateInfo(employmentInfo && employmentInfo, currentCv)}
+              handleAddClick={() =>
+                setEmploymentInfo({
+                  ...employmentInfo,
+                  items: [...employmentInfo.items, newItem],
+                })
+              }
+              handleRemoveClick={() =>
+                setEmploymentInfo({
+                  ...employmentInfo,
+                  items: employmentInfo.items.filter(
+                    (item, index) => index < employmentInfo.items.length - 1
+                  ),
+                })
+              }
+            />
+          </>
+        )
+      }
     </div>
   )
 }

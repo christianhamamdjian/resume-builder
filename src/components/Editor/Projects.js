@@ -3,7 +3,7 @@ import ActionMenu from './ActionMenu'
 import TextArea from './TextArea'
 import TextInput from './TextInput'
 import ToggleButton from './ToggleButton'
-import { Hide } from './Icons/Hide'
+import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import { BuilderContext } from './../../App'
@@ -72,7 +72,8 @@ const Projects = () => {
   const handleSaveClick = () => ctx.updateInfo(projects && projects)
 
   return (
-    <div className='pt-3 px-5 '>
+    // <div className='pt-3 px-5 '>
+    <>
       {!isToggled ? (
         <Hide
           handleClick={() => {
@@ -117,22 +118,23 @@ const Projects = () => {
 
             </div>
           ))}
-        </>)}
-      <ToggleButton
-        defaultValue={projects && projects.display}
-        handleChange={(name, prop, isEnabled) => {
-          ctx.updateInfo({ ...projects, display: isEnabled })
-        }}
-      />
 
-      <button onClick={() => moveRightContentUp(index)}>↑</button>
-      <button onClick={() => moveRightContentDown(index)}>↓</button>
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        handleAddClick={handleAddClick}
-        handleRemoveClick={handleRemoveClick}
-      />
-    </div>
+          <ToggleButton
+            defaultValue={projects && projects.display}
+            handleChange={(name, prop, isEnabled) => {
+              ctx.updateInfo({ ...projects, display: isEnabled })
+            }}
+          />
+
+          <button onClick={() => moveRightContentUp(index)}>↑</button>
+          <button onClick={() => moveRightContentDown(index)}>↓</button>
+          <ActionMenu
+            handleSaveClick={handleSaveClick}
+            handleAddClick={handleAddClick}
+            handleRemoveClick={handleRemoveClick}
+          />
+        </>)}
+    </>
   )
 }
 

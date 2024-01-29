@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import TextInput from './TextInput'
 import ActionMenu from './ActionMenu'
 import ToggleButton from './ToggleButton'
+import Hide from './Icons/Hide'
+import Show from './Icons/Show'
 import { BuilderContext } from './../../App'
 
 const Skills = () => {
@@ -11,6 +13,7 @@ const Skills = () => {
     level: 'Percent',
   }
   const [skills, setSkills] = useState(null)
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const leftContentOrder = ctx.leftContentOrder
@@ -61,45 +64,65 @@ const Skills = () => {
   const handleSaveClick = () => ctx.updateInfo(skills && skills)
 
   return (
-    <div className='pt-10'>
+    <>
       <h1>Skills:</h1>
-      <ToggleButton
-        defaultValue={skills && skills.display}
-        // value={skills && skills.display}
-        handleChange={(name, prop, isEnabled) => {
-          handleEnable(isEnabled)
-        }}
-      />
-      {skills && skills.items.map((item, index) => (
-        <div key={index} className='flex flex-row py-1'>
-          <TextInput
-            defaultValue={item && item.text}
-            // value={item && item.text}
-            name='text'
-            placeholder='Skill'
-            index={index}
-            handleChange={(e) => handleChange(e, index)}
-          />
-          <TextInput
-            defaultValue={item && item.level}
-            // value={item && item.level}
-            name='level'
-            type='number'
-            placeholder='%'
-            style='w-1/3'
-            index={index}
-            handleChange={(e) => handleChange(e, index)}
-          />
-        </div>
-      ))}
-      <button onClick={() => moveLeftContentUp(index)}>↑</button>
-      <button onClick={() => moveLeftContentDown(index)}>↓</button>
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        handleAddClick={handleAddClick}
-        handleRemoveClick={handleRemoveClick}
-      />
-    </div>
+      {!isToggled ? (
+        <Hide
+          handleClick={() => {
+            setIsToggled(true)
+          }}
+        />
+      ) : (
+        <Show
+          handleClick={() => {
+            setIsToggled(!isToggled)
+          }}
+        />
+      )
+      }
+      {
+        !isToggled && (
+          <>
+            <ToggleButton
+              defaultValue={skills && skills.display}
+              // value={skills && skills.display}
+              handleChange={(name, prop, isEnabled) => {
+                handleEnable(isEnabled)
+              }}
+            />
+            {skills && skills.items.map((item, index) => (
+              <div key={index} className='flex flex-row py-1'>
+                <TextInput
+                  defaultValue={item && item.text}
+                  // value={item && item.text}
+                  name='text'
+                  placeholder='Skill'
+                  index={index}
+                  handleChange={(e) => handleChange(e, index)}
+                />
+                <TextInput
+                  defaultValue={item && item.level}
+                  // value={item && item.level}
+                  name='level'
+                  type='number'
+                  placeholder='%'
+                  style='w-1/3'
+                  index={index}
+                  handleChange={(e) => handleChange(e, index)}
+                />
+              </div>
+            ))}
+            <button onClick={() => moveLeftContentUp(index)}>↑</button>
+            <button onClick={() => moveLeftContentDown(index)}>↓</button>
+            <ActionMenu
+              handleSaveClick={handleSaveClick}
+              handleAddClick={handleAddClick}
+              handleRemoveClick={handleRemoveClick}
+            />
+          </>
+        )
+      }
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 import ActionMenu from './ActionMenu'
-import { Hide } from './Icons/Hide'
+import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
@@ -31,9 +31,9 @@ const About = () => {
     setProfile({ ...profile, about: e.target.value })
     ctx.setCurrentCvProfile({ ...profile, about: e.target.value })
   }
-  const handleStyleClick = (id, tag) => {
-    const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
-    const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
+  const handleStyleClick = (id, tag, index, parent) => {
+    const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
+    const end = document.getElementById(`${parent}-${id}-${index}`).selectionEnd;
     const newText =
       profile['about'].substring(0, start) +
       `${tag}${profile['about'].substring(start, end)}${tag}` +
@@ -76,7 +76,8 @@ const About = () => {
             handleSaveClick={handleSaveClick}
             onlySave={true}
           />
-        </>)
+        </>
+      )
       }
     </div>
   )

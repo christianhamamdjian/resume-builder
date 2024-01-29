@@ -1,4 +1,5 @@
 import React from 'react';
+import DOMPurify from 'dompurify'
 
 const MarkdownPreview = ({ markdown }) => {
     const convertMarkdownToHtml = (markdownText) => {
@@ -14,17 +15,13 @@ const MarkdownPreview = ({ markdown }) => {
 
         return htmlText;
     };
-
+    const sanitizedData = () => ({
+        __html: DOMPurify.sanitize(convertMarkdownToHtml(markdown || ""))
+    })
     return (
         <div style={{ marginTop: '20px' }}>
-            {/* <h3>Preview:</h3> */}
             <div
-                style={{
-                    //border: '1px solid #ccc', 
-                    //padding: '10px', 
-                    //borderRadius: '5px' 
-                }}
-                dangerouslySetInnerHTML={{ __html: convertMarkdownToHtml(markdown || "") }}
+                dangerouslySetInnerHTML={sanitizedData()}
             />
         </div>
     );

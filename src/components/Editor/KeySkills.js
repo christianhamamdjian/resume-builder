@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import ToggleButton from './ToggleButton'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
-import { Hide } from './Icons/Hide'
+import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import { BuilderContext } from './../../App'
 
@@ -29,9 +29,9 @@ const KeySkills = () => {
     setSkills({ ...skills, text: e.target.value })
     ctx.setCurrentCvKeySkills({ ...skills, text: e.target.value })
   }
-  const handleStyleClick = (id, tag) => {
-    const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
-    const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
+  const handleStyleClick = (id, tag, index, parent) => {
+    const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
+    const end = document.getElementById(`${parent}-${id}-${index}`).selectionEnd;
     const newText =
       skills['text'].substring(0, start) +
       `${tag}${skills['text'].substring(start, end)}${tag}` +

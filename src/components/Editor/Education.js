@@ -1,6 +1,8 @@
 import { useState, useEffect, useContext } from 'react'
 import ActionMenu from './ActionMenu'
 import EducationItem from './EducationItem'
+import Hide from './Icons/Hide'
+import Show from './Icons/Show'
 import { BuilderContext } from './../../App'
 
 const Education = () => {
@@ -10,6 +12,7 @@ const Education = () => {
     date: 'Mar 2017 - Dec 2019',
   }
   const [education, setEducation] = useState(null)
+  const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const leftContentOrder = ctx.leftContentOrder
@@ -57,21 +60,41 @@ const Education = () => {
   return (
     <div className='pt-6'>
       <h1>Education:</h1>
-      {education && education.items.map((item, index) => (
-        <EducationItem
-          key={index}
-          index={index}
-          data={item}
-          handleChange={handleChange}
+      {!isToggled ? (
+        <Hide
+          handleClick={() => {
+            setIsToggled(true)
+          }}
         />
-      ))}
-      <button onClick={() => moveLeftContentUp(index)}>↑</button>
-      <button onClick={() => moveLeftContentDown(index)}>↓</button>
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        handleAddClick={handleAddClick}
-        handleRemoveClick={handleRemoveClick}
-      />
+      ) : (
+        <Show
+          handleClick={() => {
+            setIsToggled(!isToggled)
+          }}
+        />
+      )}
+      {
+        !isToggled && (
+          <>
+
+            {education && education.items.map((item, index) => (
+              <EducationItem
+                key={index}
+                index={index}
+                data={item}
+                handleChange={handleChange}
+              />
+            ))}
+            <button onClick={() => moveLeftContentUp(index)}>↑</button>
+            <button onClick={() => moveLeftContentDown(index)}>↓</button>
+            <ActionMenu
+              handleSaveClick={handleSaveClick}
+              handleAddClick={handleAddClick}
+              handleRemoveClick={handleRemoveClick}
+            />
+          </>
+        )
+      }
     </div>
   )
 }

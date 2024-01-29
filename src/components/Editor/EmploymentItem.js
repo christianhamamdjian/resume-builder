@@ -1,12 +1,9 @@
 import TextArea from './TextArea'
 import TextInput from './TextInput'
 import { useState } from 'react'
-import { Hide } from './Icons/Hide'
-import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
 const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
-  const [isToggled, setIsToggled] = useState(true)
 
   const handleStyleClick = (id, tag, index, parent) => {
     const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
@@ -21,61 +18,48 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
 
   return (
     <div className='px-5 py-2'>
-      {!isToggled ? (
-        <Hide
-          handleClick={() => {
-            setIsToggled(true)
-          }}
-        />
-      ) : (
-        <Show
-          handleClick={() => {
-            setIsToggled(!isToggled)
-          }}
-        />
-      )}
 
       <TextInput
         id={'position'}
         index={index}
         placeholder='Postion Title - Company'
         style='pb-2'
-        isDisabled={isToggled}
+        //isDisabled={isToggled}
         name='position'
         defaultValue={data.position}
         handleChange={handleChange}
       />
-      {!isToggled && (
-        <div>
-          <TextInput
-            id={'date'}
-            placeholder='Date From - To'
-            style='pb-2'
-            name='date'
-            defaultValue={data.date}
-            handleChange={handleChange}
-          />
-          <MarkdownEditor
-            id={'description'}
-            parent={'employment'}
-            index={index}
-            //markdown={markdowns['about'] || ''}
-            markdown={data.description}
-            //onInputChange={handleInputChange}
-            onInputChange={handleChange}
-            onStyleClick={handleStyleClick}
-          />
-          <MarkdownEditor
-            id={'responsibilities'}
-            parent={'employment'}
-            index={index}
-            //markdown={markdowns['about'] || ''}
-            markdown={data.responsibilities}
-            //onInputChange={handleInputChange}
-            onInputChange={handleChange}
-            onStyleClick={handleStyleClick}
-          />
-          {/* <TextArea
+
+      <div>
+        <TextInput
+          id={'date'}
+          placeholder='Date From - To'
+          style='pb-2'
+          name='date'
+          defaultValue={data.date}
+          handleChange={handleChange}
+        />
+        <MarkdownEditor
+          id={'description'}
+          parent={'employment'}
+          index={index}
+          //markdown={markdowns['about'] || ''}
+          markdown={data.description}
+          //onInputChange={handleInputChange}
+          onInputChange={handleChange}
+          onStyleClick={handleStyleClick}
+        />
+        <MarkdownEditor
+          id={'responsibilities'}
+          parent={'employment'}
+          index={index}
+          //markdown={markdowns['about'] || ''}
+          markdown={data.responsibilities}
+          //onInputChange={handleInputChange}
+          onInputChange={handleChange}
+          onStyleClick={handleStyleClick}
+        />
+        {/* <TextArea
             placeholder='Position Description'
             name='description'
             defaultValue={data.description}
@@ -87,8 +71,8 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
             defaultValue={data.responsibilities}
             handleChange={(e) => handleChange(index, e)}
           /> */}
-        </div>
-      )}
+      </div>
+
     </div>
   )
 }
