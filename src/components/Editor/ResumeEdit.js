@@ -9,6 +9,7 @@ import CvInfo from './CvInfo'
 import Profile from './Profile'
 import Contact from './Contact'
 import Certifications from './Certifications'
+import Languages from './Languages'
 
 const ResumeEdit = () => {
 
@@ -37,10 +38,18 @@ const ResumeEdit = () => {
         <div className='border-gray-300 border p-4 '>
           <Certifications />
         </div>
+        <div className='border-gray-300 border p-4 '>
+          <Languages />
+        </div>
+
         {/* </div>
         <div className='flex flex-col w-1/2'> */}
         <div className='border-gray-300 border p-4 '>
           <About />
+        </div>
+        <div className='border-gray-300 border p-4 '>
+          <h2>Employment History</h2>
+          <EmploymentHistory />
         </div>
         <div className='border-gray-300 border p-4 '>
           <h2>Key Skills</h2>
@@ -50,10 +59,7 @@ const ResumeEdit = () => {
           <h2>Projects</h2>
           <Projects />
         </div>
-        <div className='border-gray-300 border p-4 '>
-          <h2>Employment History</h2>
-          <EmploymentHistory />
-        </div>
+
         {/* </div > */}
       </div >
     </>

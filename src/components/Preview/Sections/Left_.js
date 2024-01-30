@@ -46,7 +46,7 @@ const Wrapper = ({ heading, ...props }) => {
 }
 const EducationText = ({ text, date }) => {
   const ctx = useContext(BuilderContext)
-  console.log(ctx.backgroundColor)
+
   return (
     <div style={{ paddingBottom: '10' }} key={text}>
       <p style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '12' }}>{text}</p>
@@ -69,12 +69,14 @@ export const Left = () => {
   const currentCvProfile = ctx.currentCvProfile
   const contact = ctx.getComponentData('Contact')
   const currentCvContact = ctx.currentCvContact
+  const languages = ctx.getComponentData('Languages')
+  const currentCvLanguages = ctx.currentCvLanguages
   const certifications = ctx.getComponentData('Certifications')
   const currentCvCertifications = ctx.currentCvCertifications
   const currentCvSocials = ctx.currentCvSocials
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
   const [profile, setProfile] = useState([])
-
+  console.log(languages)
   useEffect(() => {
     const newProfile = getProfile
     setProfile(newProfile)
@@ -138,7 +140,7 @@ export const Left = () => {
             ))
           }
           if (item === "Contact") {
-            return (contact.display && (
+            return (contact && contact.display && (
               <Wrapper key={index} heading={contact && contact.header}>
                 {currentCvContact !== null ? currentCvContact.items.map((item, index) => (
                   <p
@@ -159,8 +161,34 @@ export const Left = () => {
               </Wrapper>
             ))
           }
+          if (item === "Languages") {
+            return (languages && languages.display && (
+              <Wrapper key={index} heading={languages && languages.header}>
+                {currentCvLanguages !== null ? currentCvLanguages.items.map((item, index) => (
+                  <p
+                    key={index}
+                    style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '12', marginBottom: '8px' }}
+                  >
+                    {item.text}
+                  </p>
+                ))
+                  : languages.items.map((item, index) => (
+                    <p
+                      key={index}
+                      style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '12', marginBottom: '8px' }}
+                    >
+                      {item.text}
+                    </p>
+                  ))}
+              </Wrapper>
+            ))
+          }
           if (item === "Socials") {
-            return (<Socials key={index} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} template={template} />)
+            return (
+              <Wrapper key={index}>
+                <Socials key={index} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} template={template} />
+              </Wrapper>
+            )
           }
         })
         }

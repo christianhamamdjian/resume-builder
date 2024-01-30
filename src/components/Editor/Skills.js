@@ -20,7 +20,7 @@ const Skills = () => {
   const leftContentOrder = ctx.leftContentOrder
   const moveLeftContentUp = ctx.moveLeftContentUp
   const moveLeftContentDown = ctx.moveLeftContentDown
-  const index = leftContentOrder && leftContentOrder.indexOf("Contact")
+  const index = leftContentOrder && leftContentOrder.indexOf("Skills")
 
   useEffect(() => {
     const newSkills = ctx.getComponentData('Skills')

@@ -20,7 +20,7 @@ const Certifications = () => {
   const leftContentOrder = ctx.leftContentOrder
   const moveLeftContentUp = ctx.moveLeftContentUp
   const moveLeftContentDown = ctx.moveLeftContentDown
-  const index = leftContentOrder && leftContentOrder.indexOf("Contact")
+  const index = leftContentOrder && leftContentOrder.indexOf("Certifications")
 
   useEffect(() => {
     const newCetification = ctx.getComponentData('Certifications')

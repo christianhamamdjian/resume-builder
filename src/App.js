@@ -25,7 +25,7 @@ function App() {
   const [currentCvKeySkills, setCurrentCvKeySkills] = useState(null)
   const [currentCvContact, setCurrentCvContact] = useState(null)
   const [currentCvCertifications, setCurrentCvCertifications] = useState(null)
-
+  const [currentCvLanguages, setCurrentCvLanguages] = useState(null)
   const initialRightContent = [
     "About",
     "Employment History",
@@ -40,35 +40,11 @@ function App() {
     "Skills",
     "Certifications",
     "Contact",
+    "Languages",
     "Socials",
   ];
 
   const [leftContentOrder, setLeftContentOrder] = useState(initialLeftContent || []);
-
-
-  // const [markdowns, setMarkdowns] = useState({});
-
-  // const handleInputChange = (id, newMarkdown) => {
-  //   setMarkdowns((prevMarkdowns) => ({
-  //     ...prevMarkdowns,
-  //     [id]: newMarkdown,
-  //   }));
-  // };
-
-  // const handleStyleClick = (id, tag) => {
-  //   const start = document.getElementById(`markdownTextarea-${id}`).selectionStart;
-  //   const end = document.getElementById(`markdownTextarea-${id}`).selectionEnd;
-  //   const newText =
-  //     markdowns[id].substring(0, start) +
-  //     `${tag}${markdowns[id].substring(start, end)}${tag}` +
-  //     markdowns[id].substring(end);
-  //   setMarkdowns((prevMarkdowns) => ({
-  //     ...prevMarkdowns,
-  //     [id]: newText,
-  //   }));
-  // };
-
-
 
   useEffect(() => {
     if (user) {
@@ -139,6 +115,7 @@ function App() {
     setCurrentCvEducation(null)
     setCurrentCvKeySkills(null)
     setCurrentCvContact(null)
+    setCurrentCvLanguages(null)
     setCurrentCvCertifications(null)
     infoState.filter((cv, i) => {
       if (+i === +id) {
@@ -276,9 +253,8 @@ function App() {
                 setCurrentCvContact,
                 currentCvCertifications,
                 setCurrentCvCertifications,
-                // markdowns,
-                // handleInputChange,
-                // handleStyleClick
+                currentCvLanguages,
+                setCurrentCvLanguages,
               }}
             ><Dashboard />
             </BuilderContext.Provider>

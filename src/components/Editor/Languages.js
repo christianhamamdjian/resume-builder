@@ -1,66 +1,63 @@
 import { useState, useEffect, useContext } from 'react'
+import TextInput from './TextInput'
 import ActionMenu from './ActionMenu'
-import EducationItem from './EducationItem'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MoveUpDownLeft from './MoveUpDownLeft'
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
-const Education = () => {
+const Languages = () => {
   const ctx = useContext(BuilderContext)
   const newItem = {
-    degree: 'Software Engineering - University of Sydney',
-    date: 'Mar 2017 - Dec 2019',
+    text: '',
   }
-  const [education, setEducation] = useState(null)
+  const [languages, setLanguages] = useState()
   const [isToggled, setIsToggled] = useState(true)
 
   const currentCv = ctx.cvSelected
   const leftContentOrder = ctx.leftContentOrder
   const moveLeftContentUp = ctx.moveLeftContentUp
   const moveLeftContentDown = ctx.moveLeftContentDown
-  const index = leftContentOrder && leftContentOrder.indexOf("Education")
-
+  const index = leftContentOrder && leftContentOrder.indexOf("Languages")
   useEffect(() => {
-    const newEducation = ctx.getComponentData('Education')
-    setEducation(newEducation)
+    const newLanguages = ctx.getComponentData('Languages')
+    setLanguages(newLanguages)
   }, [])
 
   useEffect(() => {
-    const newEducation = ctx.getComponentData('Education')
-    setEducation(newEducation)
+    const newLanguages = ctx.getComponentData('Languages')
+    setLanguages(newLanguages)
   }, [currentCv])
 
   const handleChange = (e, i) => {
-    const targetName = e.target.name
     const modifiedItem = {
-      ...education.items[i],
-      [targetName]: e.target.value,
+      ...languages.items[i],
+      text: e.target.value,
     }
-    //education.items.splice(i, 1, modifiedItem)
-    const newEducation = { ...education, items: [...education.items.slice(0, i), modifiedItem, ...education.items.slice(i + 1)] }
-    setEducation(newEducation)
-    ctx.setCurrentCvEducation(newEducation)
+    //languages.items.splice(i, 1, modifiedItem)
+    const newLanguages = { ...languages, items: [...languages.items.slice(0, i), modifiedItem, ...languages.items.slice(i + 1)] }
+    setLanguages(newLanguages)
+    ctx.setCurrentCvLanguages(newLanguages)
   }
   const handleAddClick = () => {
-    setEducation({
-      ...education,
-      items: [...education.items, newItem],
+    setLanguages({
+      ...languages,
+      items: [...languages.items, newItem],
     })
   }
   const handleRemoveClick = () => {
-    setEducation({
-      ...education,
-      items: education.items.filter(
-        (item, index) => index < education.items.length - 1
+    setLanguages({
+      ...languages,
+      items: languages.items.filter(
+        (item, index) => index < languages.items.length - 1
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(education && education, currentCv)
+  const handleSaveClick = () => ctx.updateInfo(languages && languages, currentCv)
 
   return (
-    <>
-      <h1>Education:</h1>
+    <div>
+      <h1>Languages:</h1>
       {!isToggled ? (
         <Hide
           handleClick={() => {
@@ -73,17 +70,18 @@ const Education = () => {
             setIsToggled(!isToggled)
           }}
         />
-      )}
+      )
+      }
       {
         !isToggled && (
           <>
 
-            {education && education.items.map((item, index) => (
-              <EducationItem
+            {languages && languages.items.map((item, index) => (
+              <TextInput
                 key={index}
-                index={index}
-                data={item}
-                handleChange={handleChange}
+                placeholder='Custom field'
+                defaultValue={item.text}
+                handleChange={(e) => handleChange(e, index)}
               />
             ))}
             <MoveUpDownLeft
@@ -99,8 +97,8 @@ const Education = () => {
           </>
         )
       }
-    </>
+    </div>
   )
 }
 
-export default Education
+export default Languages

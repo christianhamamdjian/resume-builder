@@ -15,6 +15,32 @@ export const styles = {
     flexDirection: 'column',
   },
 
+  /* Profile Container */
+  profile_container1: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '20',
+    height: '150',
+    fontFamily: 'Helvetica-Bold',
+  },
+  profile_container2: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '20',
+    height: '150',
+    fontFamily: 'Helvetica-Bold',
+  },
+  profile_container3: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '20',
+    height: '150',
+    fontFamily: 'Helvetica-Bold',
+  },
+
   /* Section Top */
   section__top1: {
     flexGrow: 1,
@@ -54,19 +80,20 @@ export const styles = {
 
   /* Section Left */
   section__left1: {
-    width: '25%',
+    width: '30%',
     minWidth: "12rem",
     // backgroundColor: '#084c41',
     // paddingBottom: "30000px",
     // marginBottom: "-30000px"
   },
   section__left2: {
-    width: '25%',
+    width: '30%',
     // backgroundColor: 'blue',
   },
   section__left3: {
     display: 'flex',
     flexDirection: 'row',
+    flexWrap: 'wrap',
     // backgroundColor: 'red',
   },
 

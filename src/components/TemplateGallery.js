@@ -10,7 +10,8 @@ import template7 from '../templates/Template7.png';
 const TemplateGallery = ({ updateTemplate }) => {
     const [images, setImages] = useState([]);
 
-    const templates = [template1, template2, template3, template4, template5, template6, template7]
+    // const templates = [template1, template2, template3, template4, template5, template6, template7]
+    const templates = [template1, template2, template3]
 
     useEffect(() => {
         setImages(templates);

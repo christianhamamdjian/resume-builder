@@ -15,7 +15,7 @@ const Socials = () => {
   const leftContentOrder = ctx.leftContentOrder
   const moveLeftContentUp = ctx.moveLeftContentUp
   const moveLeftContentDown = ctx.moveLeftContentDown
-  const index = leftContentOrder && leftContentOrder.indexOf("Contact")
+  const index = leftContentOrder && leftContentOrder.indexOf("Socials")
 
   useEffect(() => {
     const newSocials = ctx.getComponentData('Socials')

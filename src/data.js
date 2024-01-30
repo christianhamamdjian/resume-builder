@@ -20,6 +20,7 @@ export const cvs = [
             "Skills",
             "Certifications",
             "Contact",
+            "Languages",
             "Socials",
         ]
     },
@@ -157,6 +158,19 @@ export const cvs = [
             },
             {
                 text: 'www.eliotdev.com',
+            },
+        ],
+    },
+    {
+        header: 'Languages',
+        type: 'Languages',
+        display: true,
+        items: [
+            {
+                text: 'English - Native',
+            },
+            {
+                text: 'Spanish - Proficient',
             },
         ],
     },

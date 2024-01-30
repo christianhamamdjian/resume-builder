@@ -7,8 +7,9 @@ const ProfileImage = ({ url, display, textColor }) => (
     {display && (
       <img
         style={{
-          width: '60px',
-          height: '60px',
+          width: '100px',
+          height: '100px',
+          border: '4px solid #ffffff',
           borderRadius: '50%',
         }}
         src={url}
@@ -27,13 +28,8 @@ export const ProfileContainer = ({ name, profession, url, display, textColor }) 
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        marginTop: '20',
+        ...styles[`profile_container${template}`],
         marginBottom: display ? '20px' : '-65px',
-        height: '150',
-        fontFamily: 'Helvetica-Bold',
       }}
     >
       <ProfileImage url={url} display={display} />
