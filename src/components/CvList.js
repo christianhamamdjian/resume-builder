@@ -9,7 +9,7 @@ import { BuilderContext } from './../App'
 const CvList = () => {
 	const ctx = useContext(BuilderContext)
 	const { user } = useContext(AuthContext)
-	const [isToggled, setIsToggled] = useState(true)
+	const [isToggled, setIsToggled] = useState(ctx.infoState.length === 0 ? false : true)
 
 	const renderCvs = () => ctx.infoState.map((cv, i) => {
 		const { data } = cv

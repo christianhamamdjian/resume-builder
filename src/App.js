@@ -18,6 +18,7 @@ function App() {
   const [backgroundColor, setBackgroundColor] = useState("")
   const [currentCvProfile, setCurrentCvProfile] = useState(null)
   const [currentCvSkills, setCurrentCvSkills] = useState(null)
+  const [currentCvAbout, setCurrentCvAbout] = useState(null)
   const [currentCvProjects, setCurrentCvProjects] = useState(null)
   const [currentCvEmploymentInfo, setCurrentCvEmploymentInfo] = useState(null)
   const [currentCvSocials, setCurrentCvSocials] = useState(null)
@@ -239,6 +240,8 @@ function App() {
                 initialLeftContent,
                 currentCvSkills,
                 setCurrentCvSkills,
+                currentCvAbout,
+                setCurrentCvAbout,
                 currentCvProjects,
                 setCurrentCvProjects,
                 currentCvEmploymentInfo,

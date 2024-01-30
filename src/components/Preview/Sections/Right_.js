@@ -12,6 +12,7 @@ export const Right = () => {
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
   const profile = ctx.getComponentData('Profile')
+  const about = ctx.getComponentData('About')
   const skills = ctx.getComponentData('KeySkills')
   const employment = ctx.getComponentData('Employment')
   const projects = ctx.getComponentData('Projects')
@@ -20,7 +21,7 @@ export const Right = () => {
     <div style={{ ...styles[`section__right${template}`] }}>
       {rightContentOrder.map((item, index) => {
         if (item === "About") {
-          return (<About key={index} text={profile && profile.about} />)
+          return (<About key={index} text={about && about.text} title={about && about.title} />)
         }
         if (item === "Employment History") {
           return (<EmploymentHistory key={index} items={employment && employment.items} />)

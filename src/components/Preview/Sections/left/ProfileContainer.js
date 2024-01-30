@@ -6,11 +6,18 @@ const ProfileImage = ({ url, display, textColor }) => (
   <>
     {display && (
       <img
+        // style={{
+        //   width: '100px',
+        //   height: '100px',
+        //   border: '4px solid #ffffff',
+        //   borderRadius: '50%',
+        // }}
         style={{
-          width: '100px',
-          height: '100px',
-          border: '4px solid #ffffff',
-          borderRadius: '50%',
+          width: '280px',
+          height: '200px',
+          objectFit: "cover",
+          //border: '4px solid #ffffff',
+          borderRadius: '0%',
         }}
         src={url}
       />

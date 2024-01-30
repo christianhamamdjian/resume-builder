@@ -35,10 +35,15 @@ export const cvs = [
         profession: 'Junior Developer',
         profileImageURL: 'https://i.imgur.com/f6L6Y57.png',
         display: true,
-        about:
-            'Recent college graduate with experience in various areas of software engineering, including infrastructure and data analytics. A fast learner who thrives on generating innovative ideas, trouble-shooting and problem-solving, and working with object-oriented programming languages including Python and Java. ',
     },
-
+    {
+        header: 'About',
+        type: 'About',
+        display: true,
+        title: 'Professional Summary',
+        text:
+            'Recent college graduate with experience in various areas of software engineering, including infrastructure and data analytics. A fast learner who thrives on generating innovative ideas, trouble-shooting and problem-solving, and working with object-oriented programming languages including Python and Java. '
+    },
     {
         header: 'Education',
         type: 'Education',

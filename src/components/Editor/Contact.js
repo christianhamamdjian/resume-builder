@@ -75,15 +75,16 @@ const Contact = () => {
       {
         !isToggled && (
           <>
-
-            {contact && contact.items.map((item, index) => (
-              <TextInput
-                key={index}
-                placeholder='Custom field'
-                defaultValue={item.text}
-                handleChange={(e) => handleChange(e, index)}
-              />
-            ))}
+            <div className='flex flex-col gap-2 py-2'>
+              {contact && contact.items.map((item, index) => (
+                <TextInput
+                  key={index}
+                  placeholder='Custom field'
+                  defaultValue={item.text}
+                  handleChange={(e) => handleChange(e, index)}
+                />
+              ))}
+            </div>
             <MoveUpDownLeft
               moveLeftContentUp={moveLeftContentUp}
               moveLeftContentDown={moveLeftContentDown}

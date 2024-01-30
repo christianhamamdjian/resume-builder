@@ -4,11 +4,11 @@ import { styles } from '../../../../styles'
 import Divider from './Divider'
 import MarkdownPreview from '../../../markdown-editor/MarkdownPreview'
 
-const About = ({ text }) => {
+const About = ({ text, title }) => {
   const ctx = useContext(BuilderContext)
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
-  const currentCvProfile = ctx.currentCvProfile
+  const currentCvAbout = ctx.currentCvAbout
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
 
   return <div>
@@ -19,10 +19,11 @@ const About = ({ text }) => {
         fontSize: '1rem',
       }}
     >
-      Professional Summary
+      {/* Professional Summary */}
+      {currentCvAbout !== null ? currentCvAbout['title'] : title}
     </h3>
     <Divider />
-    <MarkdownPreview markdown={currentCvProfile !== null ? currentCvProfile['about'] : text} />
+    <MarkdownPreview markdown={currentCvAbout !== null ? currentCvAbout['text'] : text} />
     {/* <p style={{ ...styles[`main__text${template}`] }}>{currentCvProfile !== null ? currentCvProfile['about'] : text}</p> */}
   </div>
 }

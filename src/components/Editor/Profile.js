@@ -95,7 +95,7 @@ const Profile = () => {
             </div>
             <Upload />
             <button
-              className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+              className='  py-1 px-6 mt-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
               onClick={() => ctx.updateInfo(profile && profile)}
             >
               Save

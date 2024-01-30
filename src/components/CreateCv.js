@@ -55,7 +55,7 @@ const CreateCv = () => {
 							/>
 							<div className='cv-actions'>
 								<button className='btn cv-create-button' disabled={cvTitle === ""}>
-									Create a new CV
+									New CV
 								</button>
 							</div>
 						</form>
