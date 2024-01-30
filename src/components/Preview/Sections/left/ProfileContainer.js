@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
 
-const ProfileImage = ({ url, display }) => (
+const ProfileImage = ({ url, display, textColor }) => (
   <>
     {display && (
       <img
@@ -17,7 +17,7 @@ const ProfileImage = ({ url, display }) => (
   </>
 )
 
-export const ProfileContainer = ({ name, profession, url, display }) => {
+export const ProfileContainer = ({ name, profession, url, display, textColor }) => {
 
   const ctx = useContext(BuilderContext)
   const selectedTemplate = ctx.template
@@ -42,15 +42,16 @@ export const ProfileContainer = ({ name, profession, url, display }) => {
           justifyContent: 'center',
         }}
       >
-        <p style={{ ...styles[`name_text${template}`] }}>{name}</p>
+        <p style={{ ...styles[`name_text${template}`], color: textColor }}>{name}</p>
       </div>
-      <p style={{ ...styles[`profession_text${template}`] }}>{profession}</p>
+      <p style={{ ...styles[`profession_text${template}`], color: textColor }}>{profession}</p>
       <div
         style={{
           marginTop: '10px',
           width: '10%',
           height: '1px',
-          backgroundColor: '#FFF',
+          //backgroundColor: '#FFF',
+          backgroundColor: textColor,
           textAlign: 'center',
         }}
       />

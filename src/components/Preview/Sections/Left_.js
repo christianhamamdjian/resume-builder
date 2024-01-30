@@ -16,6 +16,7 @@ const Socials = ({ template }) => {
           return (
             <SVGItem
               key={index}
+              textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`}
               viewBox={item.viewBox}
               path={item.path}
               url={item.url}
@@ -26,11 +27,12 @@ const Socials = ({ template }) => {
   )
 }
 const Wrapper = ({ heading, ...props }) => {
+  const ctx = useContext(BuilderContext)
   return (
     <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }}>
       <h3
         style={{
-          color: '#FFF',
+          color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
           fontSize: '15',
           fontWeight: "bold",
           paddingBottom: '10',
@@ -42,14 +44,17 @@ const Wrapper = ({ heading, ...props }) => {
     </div>
   )
 }
-const EducationText = ({ text, date }) => (
-  <div style={{ paddingBottom: '10' }} key={text}>
-    <p style={{ color: '#fff', fontSize: '12' }}>{text}</p>
-    <p style={{ color: '#fff', fontSize: '9', paddingTop: '3' }}>
-      {date}
-    </p>
-  </div>
-)
+const EducationText = ({ text, date }) => {
+  const ctx = useContext(BuilderContext)
+  console.log(ctx.backgroundColor)
+  return (
+    <div style={{ paddingBottom: '10' }} key={text}>
+      <p style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '12' }}>{text}</p>
+      <p style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '9', paddingTop: '3' }}>
+        {date}
+      </p>
+    </div>)
+}
 
 export const Left = () => {
   const ctx = useContext(BuilderContext)
@@ -82,13 +87,16 @@ export const Left = () => {
         style={{ backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
       ></div>
       <div
-        style={{ pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`], backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}` }}
+        style={{
+          pageBreakInside: "avoid", padding: "2rem", ...styles[`section__left${template}`], backgroundColor: `${ctx.backgroundColor !== "" ? ctx.backgroundColor : info.backgroundColor}`, color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`
+        }}
       >
         <ProfileContainer
           name={currentCvProfile !== null ? currentCvProfile.name : profile.name}
           profession={currentCvProfile !== null ? currentCvProfile.profession : profile.profession}
           url={currentCvProfile !== null ? currentCvProfile.profileImageURL : profile.profileImageURL}
           display={currentCvProfile !== null ? currentCvProfile.display : profile.display}
+          textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`}
         />
 
         {leftContentOrder && leftContentOrder.map((item, index) => {
@@ -109,10 +117,10 @@ export const Left = () => {
                   <SkillItem key={index} name={item.text} fillSkill={item.level} />
                 ))} */}
                 {currentCvSkills !== null ? currentCvSkills.items.map((item, index) => (
-                  <SkillItem key={index} name={item.text} fillSkill={item.level} />
+                  <SkillItem key={index} name={item.text} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} fillSkill={item.level} />
                 ))
                   : skills && skills.items.map((item, index) => (
-                    <SkillItem key={index} name={item.text} fillSkill={item.level} />
+                    <SkillItem key={index} name={item.text} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} fillSkill={item.level} />
                   ))}
               </Wrapper>
             ))
@@ -135,7 +143,7 @@ export const Left = () => {
                 {currentCvContact !== null ? currentCvContact.items.map((item, index) => (
                   <p
                     key={index}
-                    style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
+                    style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '12', marginBottom: '8px' }}
                   >
                     {item.text}
                   </p>
@@ -143,7 +151,7 @@ export const Left = () => {
                   : contact.items.map((item, index) => (
                     <p
                       key={index}
-                      style={{ color: '#fff', fontSize: '12', marginBottom: '8px' }}
+                      style={{ color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`, fontSize: '12', marginBottom: '8px' }}
                     >
                       {item.text}
                     </p>
@@ -152,7 +160,7 @@ export const Left = () => {
             ))
           }
           if (item === "Socials") {
-            return (<Socials key={index} template={template} />)
+            return (<Socials key={index} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} template={template} />)
           }
         })
         }
