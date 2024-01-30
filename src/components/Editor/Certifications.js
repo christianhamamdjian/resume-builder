@@ -59,7 +59,7 @@ const Certifications = () => {
   const handleSaveClick = () => ctx.updateInfo(certification && certification, currentCv)
 
   return (
-    <div className='pt-6'>
+    <>
       <h1>Certifications:</h1>
       {!isToggled ? (
         <Hide
@@ -108,7 +108,7 @@ const Certifications = () => {
           </>
         )
       }
-    </div>
+    </>
   )
 }
 
