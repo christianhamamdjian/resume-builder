@@ -11,14 +11,16 @@ const Dashboard = () => {
 
     return (
         <>
-            <div className="flex justify-evenly">
-                <div className="flex-none">
+            <div className="flex justify-evenly wrap">
+                <div className="flex flex-col w-1/3 bg-white'">
                     <div>
                         <CvList />
                     </div>
                     {id && <ResumeEdit />}
                 </div>
-                {id && <PreviewScreen />}
+                <div className="flex flex-col w-2/3 bg-white'">
+                    {id && <PreviewScreen />}
+                </div>
             </div>
         </>
     );

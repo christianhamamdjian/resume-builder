@@ -26,7 +26,7 @@ const CvList = () => {
 		<>
 			{user && (
 				<>
-					<div className="flex px-4 justify-between">
+					<div className="flex flex-col px-4 justify-between">
 						<h1 className="flex-none w-34 h-8"><strong>Your CVs:</strong> </h1>
 						<CreateCv />
 					</div>

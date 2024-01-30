@@ -38,19 +38,20 @@ const CreateCv = () => {
 				<>
 					<div>
 						<form
-							className='cv-create-wrapper'
+							// className='cv-create-wrapper'
+							className="flex px-4 justify-between"
 							// onSubmit={(e) => createNew(e, cvs[0])}
 							onSubmit={(e) => createNew(e, newCv)}
 						>
 							<input
-								className='cv-create-input'
+								//className='cv-create-input'
 								placeholder='CV title'
 								name='name'
 								//ref={el => inputElement = el}
 								autoComplete='off'
 								value={cvTitle}
 								onChange={(e) => setCvTitle(e.target.value)}
-								style={{ padding: ".2rem", border: "1px solid #dddddd", marginRight: 20, marginBottom: ".5rem" }}
+								style={{ padding: ".4rem", border: "1px solid #dddddd", marginRight: 20, marginBottom: ".5rem", minWidth: "10rem", width: "16rem" }}
 							/>
 							<div className='cv-actions'>
 								<button className='btn cv-create-button' disabled={cvTitle === ""}>
