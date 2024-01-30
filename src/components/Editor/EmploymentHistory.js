@@ -3,6 +3,7 @@ import { BuilderContext } from './../../App'
 import EmploymentItem from './EmploymentItem'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import TextInput from './TextInput'
 import MoveUpDownRight from './MoveUpDownRight'
 import ActionMenu from './ActionMenu'
 
@@ -34,21 +35,25 @@ const EmploymentHistory = () => {
     responsibilities: '',
   }
 
-  const handleChange = (e, id, i) => {
-    // const targetName = e.target.name
-    const targetName = id
-    const targetValue = e.target ? e.target.value : e
-    const modifiedItem = {
-      ...employmentInfo.items[i],
-      // [targetName]: e.target.value,
-      [targetName]: targetValue,
+  const handleChange = (e, id, i, title) => {
+    if (title && title === "title") {
+      setEmploymentInfo({ ...employmentInfo, title: e.target.value })
+      ctx.setCurrentCvEmploymentInfo({ ...employmentInfo, title: e.target.value })
+    } else {
+      const targetName = id
+      const targetValue = e.target ? e.target.value : e
+      const modifiedItem = {
+        ...employmentInfo.items[i],
+        // [targetName]: e.target.value,
+        [targetName]: targetValue,
+      }
+      const newEmploymentInfo = {
+        ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
+      }
+      console.log(e)
+      setEmploymentInfo(newEmploymentInfo)
+      ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
     }
-    const newEmploymentInfo = {
-      ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
-    }
-    console.log(e)
-    setEmploymentInfo(newEmploymentInfo)
-    ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
   }
 
   return (
@@ -71,17 +76,24 @@ const EmploymentHistory = () => {
       {
         !isToggled && (
           <>
-
-            {employmentInfo && employmentInfo.items.map((item, index) => (
-              <EmploymentItem
+            <div className='flex flex-col gap-2 py-2'>
+              <TextInput
                 key={index}
-                index={index}
-                data={item}
-                employmentInfo={employmentInfo}
-                handleChange={handleChange}
-              //handleInputChange={handleInputChange}
+                placeholder='Custom field'
+                defaultValue={employmentInfo && employmentInfo['title']}
+                handleChange={(e) => handleChange(e, index, "i", "title")}
               />
-            ))}
+              {employmentInfo && employmentInfo.items.map((item, index) => (
+                <EmploymentItem
+                  key={index}
+                  index={index}
+                  data={item}
+                  employmentInfo={employmentInfo}
+                  handleChange={handleChange}
+                //handleInputChange={handleInputChange}
+                />
+              ))}
+            </div>
             <MoveUpDownRight
               moveRightContentUp={moveRightContentUp}
               moveRightContentDown={moveRightContentDown}

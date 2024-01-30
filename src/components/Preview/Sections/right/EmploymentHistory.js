@@ -4,7 +4,7 @@ import { styles } from '../../../../styles'
 import EmploymentHistoryItem from './EmploymentHistoryItem'
 import Divider from './Divider'
 
-const EmploymentHistory = ({ items }) => {
+const EmploymentHistory = ({ items, title }) => {
   const ctx = useContext(BuilderContext)
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
@@ -20,7 +20,8 @@ const EmploymentHistory = ({ items }) => {
           fontWeight: "bold",
         }}
       >
-        Employment History
+        {/* Employment History */}
+        {currentCvEmploymentInfo !== null ? currentCvEmploymentInfo['title'] : title}
       </h3>
       <Divider />
       {currentCvEmploymentInfo !== null ? currentCvEmploymentInfo.items.map((item, index) => (

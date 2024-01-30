@@ -20,46 +20,46 @@ const ResumeEdit = () => {
     <>
       <div className='flex flex-col bg-white' >
         {/* <div className='flex flex-col w-1/2'> */}
-        <div className='border-gray-300 border p-4 '>
+        <div className='border-t-gray-400 border p-4 '>
           <CvInfo />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvProfile ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvProfile ? "#ffffff" : "#dddddd"}` }}>
           <Profile />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvEducation ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvEducation ? "#ffffff" : "#dddddd"}` }}>
           <Education />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvSkills ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvSkills ? "#ffffff" : "#dddddd"}` }}>
           <Skills />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvContact ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvContact ? "#ffffff" : "#dddddd"}` }}>
           <Contact />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvCertifications ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvCertifications ? "#ffffff" : "#dddddd"}` }}>
           <Certifications />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvLanguages ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvLanguages ? "#ffffff" : "#dddddd"}` }}>
           <Languages />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvSocials ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvSocials ? "#ffffff" : "#dddddd"}` }}>
           <Socials />
         </div>
 
         {/* </div>
         <div className='flex flex-col w-1/2'> */}
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${ctx.currentCvAbout ? "#dddddd" : "#ffffff"}` }}>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvAbout ? "#dddddd" : "#ffffff"}` }}>
           <About />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvEmploymentHistory ? "#ffffff" : "#dddddd"}` }}>
-          <h2>Employment History</h2>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvEmploymentHistory ? "#ffffff" : "#dddddd"}` }}>
+          <h2 className='font-bold'>Employment History</h2>
           <EmploymentHistory />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvKeySkills ? "#ffffff" : "#dddddd"}` }}>
-          <h2>Key Skills</h2>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvKeySkills ? "#ffffff" : "#dddddd"}` }}>
+          <h2 className='font-bold'>Key Skills</h2>
           <KeySkills />
         </div>
-        <div className='border-gray-300 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvProjects ? "#ffffff" : "#dddddd"}` }}>
-          <h2>Projects</h2>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvProjects ? "#ffffff" : "#dddddd"}` }}>
+          <h2 className='font-bold'>Projects</h2>
           <Projects />
         </div>
 

@@ -48,6 +48,7 @@ export const cvs = [
         header: 'Education',
         type: 'Education',
         display: true,
+        title: 'Education',
         items: [
             {
                 degree: 'Software Engineering - University of Sydney',
@@ -59,12 +60,14 @@ export const cvs = [
         header: 'Key Skills',
         type: 'KeySkills',
         display: true,
+        title: 'Key Skills',
         text: '• Knowledge of basic coding languages including C++, HTML5, and JavaScript.\n• Basic knowledge of  SQL, NoSQL databases\n• Knowledgable on Node.js, Spring, Hibernate\n• Extensive Linux/Unix experience\n• Software testing (Jest, Chai, Mocha)\n• CI/CD Basics ',
     },
     {
         header: 'Employment History',
         type: 'Employment',
         display: true,
+        title: 'Employment History',
         items: [
             {
                 position: 'Software Engineer - Bank of E-Corp',
@@ -88,6 +91,7 @@ export const cvs = [
         header: 'Projects',
         type: 'Projects',
         display: true,
+        title: 'Projects',
         items: [
             {
                 name: 'Poker Simulator',
@@ -101,6 +105,7 @@ export const cvs = [
         header: 'Skills',
         type: 'Skills',
         display: true,
+        title: 'Skills',
         items: [
             {
                 text: 'Python',
@@ -112,6 +117,7 @@ export const cvs = [
         header: 'Certifications',
         type: 'Certifications',
         display: true,
+        title: 'Certifications',
         items: [
             {
                 name: 'Oracle Certified\nAssociate (OCA)',
@@ -154,6 +160,7 @@ export const cvs = [
         header: 'Contact',
         type: 'Contact',
         display: true,
+        title: 'Contact',
         items: [
             {
                 text: '+61 01 012121',
@@ -170,6 +177,7 @@ export const cvs = [
         header: 'Languages',
         type: 'Languages',
         display: true,
+        title: 'Languages',
         items: [
             {
                 text: 'English - Native',

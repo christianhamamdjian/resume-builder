@@ -11,7 +11,6 @@ export const Right = () => {
   const rightContentOrder = ctx.rightContentOrder
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
-  const profile = ctx.getComponentData('Profile')
   const about = ctx.getComponentData('About')
   const skills = ctx.getComponentData('KeySkills')
   const employment = ctx.getComponentData('Employment')
@@ -24,13 +23,13 @@ export const Right = () => {
           return (<About key={index} text={about && about.text} title={about && about.title} />)
         }
         if (item === "Employment History") {
-          return (<EmploymentHistory key={index} items={employment && employment.items} />)
+          return (<EmploymentHistory key={index} items={employment && employment.items} title={employment && employment.title} />)
         }
         if (item === "Key Skills") {
-          return (<KeySkills key={index} skills={skills && skills} />)
+          return (<KeySkills key={index} skills={skills && skills} title={skills && skills.title} />)
         }
         if (item === "Projects") {
-          return (<Projects key={index} projects={projects && projects} />)
+          return (<Projects key={index} projects={projects && projects} title={projects && projects.title} />)
         }
       })}
     </div>
