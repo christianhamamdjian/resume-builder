@@ -3,6 +3,7 @@ import { BuilderContext } from './../../App'
 import EmploymentItem from './EmploymentItem'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import MoveUpDownRight from './MoveUpDownRight'
 import ActionMenu from './ActionMenu'
 
 const EmploymentHistory = () => {
@@ -81,8 +82,11 @@ const EmploymentHistory = () => {
               //handleInputChange={handleInputChange}
               />
             ))}
-            <button onClick={() => moveRightContentUp(index)}>↑</button>
-            <button onClick={() => moveRightContentDown(index)}>↓</button>
+            <MoveUpDownRight
+              moveRightContentUp={moveRightContentUp}
+              moveRightContentDown={moveRightContentDown}
+              index={index}
+            />
             <ActionMenu
               style='px-5'
               handleSaveClick={() => ctx.updateInfo(employmentInfo && employmentInfo, currentCv)}

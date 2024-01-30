@@ -4,6 +4,7 @@ import TextArea from './TextArea'
 import TextInput from './TextInput'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import MoveUpDownLeft from './MoveUpDownLeft'
 import { BuilderContext } from './../../App'
 
 const Certifications = () => {
@@ -98,8 +99,11 @@ const Certifications = () => {
                 />
               </div>
             ))}
-            <button onClick={() => moveLeftContentUp(index)}>↑</button>
-            <button onClick={() => moveLeftContentDown(index)}>↓</button>
+            <MoveUpDownLeft
+              moveLeftContentUp={moveLeftContentUp}
+              moveLeftContentDown={moveLeftContentDown}
+              index={index}
+            />
             <ActionMenu
               handleSaveClick={handleSaveClick}
               handleAddClick={handleAddClick}

@@ -3,6 +3,7 @@ import ToggleButton from './ToggleButton'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import MoveUpDownRight from './MoveUpDownRight'
 import { BuilderContext } from './../../App'
 
 const KeySkills = () => {
@@ -70,8 +71,11 @@ const KeySkills = () => {
               ctx.updateInfo({ ...skills, display: isEnabled })
             }}
           />
-          <button onClick={() => moveRightContentUp(index)}>↑</button>
-          <button onClick={() => moveRightContentDown(index)}>↓</button>
+          <MoveUpDownRight
+            moveRightContentUp={moveRightContentUp}
+            moveRightContentDown={moveRightContentDown}
+            index={index}
+          />
           <button
             className='mx-5 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
             onClick={() => ctx.updateInfo(skills && skills)}

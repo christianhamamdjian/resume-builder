@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 //import { Link } from 'react-router-dom'
 import CreateCv from './CreateCv'
+import Hide from '../components/Editor/Icons/Hide'
+import Show from '../components/Editor/Icons/Show'
 import AuthContext from "../context/authContext";
 import { BuilderContext } from './../App'
 
 const CvList = () => {
 	const ctx = useContext(BuilderContext)
 	const { user } = useContext(AuthContext)
+	const [isToggled, setIsToggled] = useState(true)
+
 	const renderCvs = () => ctx.infoState.map((cv, i) => {
 		const { data } = cv
 		const { ref } = cv
@@ -26,13 +30,30 @@ const CvList = () => {
 		<>
 			{user && (
 				<>
-					<div className="flex flex-col px-4 justify-between">
-						<h1 className="flex-none w-34 h-8"><strong>Your CVs:</strong> </h1>
-						<CreateCv />
+					<div className="flex flex-col px-4 py-4 justify-between">
+						<h1 className="flex-none w-34 h-8">Your documents: </h1>
+						{!isToggled ? (
+							<Hide
+								handleClick={() => {
+									setIsToggled(true)
+								}}
+							/>
+						) : (
+							<Show
+								handleClick={() => {
+									setIsToggled(!isToggled)
+								}}
+							/>
+						)}
+						{!isToggled && (
+							<>
+								<CreateCv />
+								<ul className="h-36 border-2 border-grey border-solid p-2 overflow-y-auto">
+									{renderCvs()}
+								</ul>
+							</>
+						)}
 					</div>
-					<ul className="h-36 border-2 border-grey border-solid p-2 overflow-y-auto">
-						{renderCvs()}
-					</ul>
 				</>
 			)}
 		</>

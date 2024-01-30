@@ -2,6 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import ActionMenu from './ActionMenu'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+//import Suggestions from './Suggestions'
+import MoveUpDownRight from './MoveUpDownRight'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
 import { BuilderContext } from '../../App'
@@ -45,6 +47,7 @@ const About = () => {
   return (
     <div>
       <h2>About:</h2>
+      {/* <Suggestions /> */}
       {!isToggled ? (
         <Hide
           handleClick={() => {
@@ -69,9 +72,11 @@ const About = () => {
             onInputChange={handleChange}
             onStyleClick={handleStyleClick}
           />
-
-          <button onClick={() => moveRightContentUp(index)}>↑</button>
-          <button onClick={() => moveRightContentDown(index)}>↓</button>
+          <MoveUpDownRight
+            moveRightContentUp={moveRightContentUp}
+            moveRightContentDown={moveRightContentDown}
+            index={index}
+          />
           <ActionMenu
             handleSaveClick={handleSaveClick}
             onlySave={true}

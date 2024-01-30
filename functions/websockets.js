@@ -4,7 +4,7 @@ import { HandlerEvent, HandlerContext } from "@netlify/functions";
 
 dotenv.config();
 
-export async function handler(event: HandlerEvent, context: HandlerContext) {
+export async function handler(event = HandlerEvent, context = HandlerContext) {
     if (!process.env.ABLY_API_KEY) {
         return {
             statusCode: 500,
@@ -37,7 +37,7 @@ import * as Ably from "ably/promises";
     });
     const channel = connection.channels.get("some-channel-name");
 
-    await channel.subscribe((msg: Types.Message) => {
+    await channel.subscribe((msg = Types.Message) => {
         console.log("Ably message received", msg);
         document.getElementById("response").innerHTML += "<br />" + JSON.stringify(msg);
     });

@@ -6,6 +6,7 @@ import ToggleButton from './ToggleButton'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
+import MoveUpDownRight from './MoveUpDownRight'
 import { BuilderContext } from './../../App'
 
 const Projects = () => {
@@ -126,8 +127,11 @@ const Projects = () => {
             }}
           />
 
-          <button onClick={() => moveRightContentUp(index)}>↑</button>
-          <button onClick={() => moveRightContentDown(index)}>↓</button>
+          <MoveUpDownRight
+            moveRightContentUp={moveRightContentUp}
+            moveRightContentDown={moveRightContentDown}
+            index={index}
+          />
           <ActionMenu
             handleSaveClick={handleSaveClick}
             handleAddClick={handleAddClick}
