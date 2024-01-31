@@ -4,7 +4,7 @@ import { styles } from '../../../../styles'
 import Divider from './Divider'
 import MarkdownPreview from '../../../markdown-editor/MarkdownPreview'
 
-const KeySkills = ({ skills }) => {
+const KeySkills = ({ skills, title }) => {
   const ctx = useContext(BuilderContext)
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
@@ -22,7 +22,8 @@ const KeySkills = ({ skills }) => {
               fontWeight: "bold",
             }}
           >
-            {skills.header}
+            {/* {skills.header} */}
+            {currentCvKeySkills !== null ? currentCvKeySkills['title'] : title}
           </h3>
           <Divider />
           <MarkdownPreview markdown={currentCvKeySkills !== null ? currentCvKeySkills.text : skills.text} />

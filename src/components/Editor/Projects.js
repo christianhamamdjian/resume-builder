@@ -34,16 +34,21 @@ const Projects = () => {
     setProjects(newProjects)
   }, [currentCv])
 
-  const handleChange = (e, id, i) => {
-    const targetName = id
-    const targetValue = e.target ? e.target.value : e
-    const modifiedItem = {
-      ...projects.items[i],
-      [targetName]: targetValue,
+  const handleChange = (e, id, i, title) => {
+    if (title && title === "title") {
+      setProjects({ ...projects, title: e.target.value })
+      ctx.setCurrentCvProjects({ ...projects, title: e.target.value })
+    } else {
+      const targetName = id
+      const targetValue = e.target ? e.target.value : e
+      const modifiedItem = {
+        ...projects.items[i],
+        [targetName]: targetValue,
+      }
+      const newProjects = { ...projects, items: [...projects.items.slice(0, i), modifiedItem, ...projects.items.slice(i + 1)] }
+      setProjects(newProjects)
+      ctx.setCurrentCvProjects(newProjects)
     }
-    const newProjects = { ...projects, items: [...projects.items.slice(0, i), modifiedItem, ...projects.items.slice(i + 1)] }
-    setProjects(newProjects)
-    ctx.setCurrentCvProjects(newProjects)
   }
   const handleStyleClick = (id, tag, index, parent) => {
     const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
@@ -90,36 +95,43 @@ const Projects = () => {
       )}
       {!isToggled && (
         <>
-          {projects && projects.items.map((item, index) => (
-            <div className='pb-5' key={index}>
+          <div div className='flex flex-col gap-2 py-2'>
+            <TextInput
+              key={index}
+              placeholder='Custom field'
+              defaultValue={projects && projects['title']}
+              handleChange={(e) => handleChange(e, 'name', index, "title")}
+            />
+            {projects && projects.items.map((item, index) => (
+              <div className='pb-5' key={index}>
 
-              <TextInput
-                defaultValue={item.name}
-                placeholder='Project Name'
-                style='pb-2'
-                name='name'
-                handleChange={(e) => handleChange(e, 'name', index)}
-              />
-              <MarkdownEditor
-                id={'description'}
-                parent={'projects'}
-                index={index}
-                //markdown={markdowns['about'] || ''}
-                markdown={item.description}
-                //onInputChange={handleInputChange}
-                onInputChange={handleChange}
-                onStyleClick={handleStyleClick}
-              />
-              {/* <TextArea
+                <TextInput
+                  defaultValue={item.name}
+                  placeholder='Project Name'
+                  style='pb-2'
+                  name='name'
+                  handleChange={(e) => handleChange(e, 'name', index)}
+                />
+                <MarkdownEditor
+                  id={'description'}
+                  parent={'projects'}
+                  index={index}
+                  //markdown={markdowns['about'] || ''}
+                  markdown={item.description}
+                  //onInputChange={handleInputChange}
+                  onInputChange={handleChange}
+                  onStyleClick={handleStyleClick}
+                />
+                {/* <TextArea
                 name='description'
                 defaultValue={item.description}
                 placeholder='Description'
                 handleChange={(e) => handleChange(index, e)}
               /> */}
+              </div>
 
-            </div>
-          ))}
-
+            ))}
+          </div>
           <ToggleButton
             defaultValue={projects && projects.display}
             handleChange={(name, prop, isEnabled) => {

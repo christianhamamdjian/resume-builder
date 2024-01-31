@@ -5,7 +5,7 @@ import MarkdownPreview from '../../../markdown-editor/MarkdownPreview'
 
 import Divider from './Divider'
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, title }) => {
   const ctx = useContext(BuilderContext)
   const selectedTemplate = ctx.template
   const info = ctx.getComponentData('info')
@@ -23,7 +23,8 @@ const Projects = ({ projects }) => {
               fontWeight: "bold",
             }}
           >
-            {projects.header}
+            {/* {projects.header} */}
+            {currentCvProjects !== null ? currentCvProjects['title'] : title}
           </h3>
           <Divider />
           {currentCvProjects !== null ? currentCvProjects.items.map((project, index) => (

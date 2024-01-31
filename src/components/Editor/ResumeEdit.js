@@ -23,25 +23,25 @@ const ResumeEdit = () => {
         <div className='border-t-gray-400 border p-4 '>
           <CvInfo />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvProfile ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvProfile ? "#dddddd" : "#ffffff"}` }}>
           <Profile />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvEducation ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvEducation ? "#dddddd" : "#ffffff"}` }}>
           <Education />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvSkills ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvSkills ? "#dddddd" : "#ffffff"}` }}>
           <Skills />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvContact ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvContact ? "#dddddd" : "#ffffff"}` }}>
           <Contact />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvCertifications ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvCertifications ? "#dddddd" : "#ffffff"}` }}>
           <Certifications />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvLanguages ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvLanguages ? "#dddddd" : "#ffffff"}` }}>
           <Languages />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvSocials ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvSocials ? "#dddddd" : "#ffffff"}` }}>
           <Socials />
         </div>
 
@@ -50,15 +50,15 @@ const ResumeEdit = () => {
         <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvAbout ? "#dddddd" : "#ffffff"}` }}>
           <About />
         </div>
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvEmploymentHistory ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvEmploymentInfo ? "#dddddd" : "#ffffff"}` }}>
           <h2 className='font-bold'>Employment History</h2>
           <EmploymentHistory />
         </div>
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvKeySkills ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvKeySkills ? "#dddddd" : "#ffffff"}` }}>
           <h2 className='font-bold'>Key Skills</h2>
           <KeySkills />
         </div>
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${!ctx.currentCvProjects ? "#ffffff" : "#dddddd"}` }}>
+        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvProjects ? "#dddddd" : "#ffffff"}` }}>
           <h2 className='font-bold'>Projects</h2>
           <Projects />
         </div>

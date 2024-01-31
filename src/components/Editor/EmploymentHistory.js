@@ -101,7 +101,10 @@ const EmploymentHistory = () => {
             />
             <ActionMenu
               style='px-5'
-              handleSaveClick={() => ctx.updateInfo(employmentInfo && employmentInfo, currentCv)}
+              handleSaveClick={() => {
+                ctx.updateInfo(employmentInfo && employmentInfo, currentCv)
+                ctx.setCurrentCvEmploymentInfo(null)
+              }}
               handleAddClick={() =>
                 setEmploymentInfo({
                   ...employmentInfo,

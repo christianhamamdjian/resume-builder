@@ -3,6 +3,7 @@ import ToggleButton from './ToggleButton'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import TextInput from './TextInput'
 import MoveUpDownRight from './MoveUpDownRight'
 import { BuilderContext } from './../../App'
 
@@ -26,9 +27,14 @@ const KeySkills = () => {
     setSkills(newSkills)
   }, [currentCv])
 
-  const handleChange = (e, id) => {
-    setSkills({ ...skills, text: e.target.value })
-    ctx.setCurrentCvKeySkills({ ...skills, text: e.target.value })
+  const handleChange = (e, id, title) => {
+    if (title && title === "title") {
+      setSkills({ ...skills, title: e.target.value })
+      ctx.setCurrentCvKeySkills({ ...skills, title: e.target.value })
+    } else {
+      setSkills({ ...skills, text: e.target.value })
+      ctx.setCurrentCvKeySkills({ ...skills, text: e.target.value })
+    }
   }
   const handleStyleClick = (id, tag, index, parent) => {
     const start = document.getElementById(`${parent}-${id}-${index}`).selectionStart;
@@ -57,13 +63,21 @@ const KeySkills = () => {
       )}
       {!isToggled && (
         <>
-          <MarkdownEditor
-            id={'skills'}
-            parent={'keyskills'}
-            markdown={skills && skills['text']}
-            onInputChange={handleChange}
-            onStyleClick={handleStyleClick}
-          />
+          <div className='flex flex-col gap-2 py-2'>
+            <TextInput
+              key={index}
+              placeholder='Custom field'
+              defaultValue={skills && skills['title']}
+              handleChange={(e) => handleChange(e, index, "title")}
+            />
+            <MarkdownEditor
+              id={'skills'}
+              parent={'keyskills'}
+              markdown={skills && skills['text']}
+              onInputChange={handleChange}
+              onStyleClick={handleStyleClick}
+            />
+          </div>
           <ToggleButton
             style='px-5 pb-2'
             defaultValue={skills && skills.display}
