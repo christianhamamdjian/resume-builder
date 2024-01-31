@@ -101,21 +101,21 @@ export const styles = {
   name_text1: {
     paddingTop: '10px',
     paddingBottom: '5px',
-    fontSize: '14px',
+    fontSize: '18px',
     fontWeight: '900',
     color: 'white',
   },
   name_text2: {
     paddingTop: '10px',
     paddingBottom: '5px',
-    fontSize: '14px',
+    fontSize: '18px',
     fontWeight: '900',
     color: 'white',
   },
   name_text3: {
     paddingTop: '10px',
     paddingBottom: '5px',
-    fontSize: '14px',
+    fontSize: '18px',
     fontWeight: '900',
     color: 'white',
   },
@@ -124,17 +124,17 @@ export const styles = {
   profession_text1: {
     // fontFamily: 'Roboto',
     color: '#d1d5db',
-    fontSize: '11px',
+    fontSize: '14px',
   },
   profession_text2: {
     // fontFamily: 'Roboto',
     color: '#d1d5db',
-    fontSize: '11px',
+    fontSize: '14px',
   },
   profession_text3: {
     // fontFamily: 'Roboto',
     color: '#d1d5db',
-    fontSize: '11px',
+    fontSize: '14px',
   },
 
   /* Heading Text */

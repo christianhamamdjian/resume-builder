@@ -32,7 +32,7 @@ const PreviewScreen = () => {
 const ResumeTemplate = ({ builder, template }) => {
   const ctx = useContext(BuilderContext)
   const info = ctx.getComponentData('info')
-  console.log(ctx.currentCvFontFamily, info && info.font)
+
   return (
     <>
       <div className="print_area" style={{ ...styles.document, backgroundColor: "#ffffff", boxShadow: "" }}>

@@ -28,6 +28,9 @@ function App() {
   const [currentCvCertifications, setCurrentCvCertifications] = useState(null)
   const [currentCvLanguages, setCurrentCvLanguages] = useState(null)
   const [currentCvFontFamily, setCurrentCvFontFamily] = useState("")
+  const [currentCvRoundCorners, setCurrentCvRoundCorners] = useState("")
+  const [currentCvBorderWidth, setCurrentCvBorderWidth] = useState("")
+
 
   const initialRightContent = [
     "About",
@@ -261,7 +264,11 @@ function App() {
                 currentCvLanguages,
                 setCurrentCvLanguages,
                 currentCvFontFamily,
-                setCurrentCvFontFamily
+                setCurrentCvFontFamily,
+                currentCvRoundCorners,
+                setCurrentCvRoundCorners,
+                currentCvBorderWidth,
+                setCurrentCvBorderWidth
               }}
             ><Dashboard />
             </BuilderContext.Provider>

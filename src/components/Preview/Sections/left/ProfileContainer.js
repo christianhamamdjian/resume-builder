@@ -2,28 +2,32 @@ import React, { useContext } from 'react'
 import { BuilderContext } from '../../../../App'
 import { styles } from '../../../../styles'
 
-const ProfileImage = ({ url, display, textColor }) => (
-  <>
-    {display && (
-      <img
-        // style={{
-        //   width: '100px',
-        //   height: '100px',
-        //   border: '4px solid #ffffff',
-        //   borderRadius: '50%',
-        // }}
-        style={{
-          width: '280px',
-          height: '200px',
-          objectFit: "cover",
-          //border: '4px solid #ffffff',
-          borderRadius: '0%',
-        }}
-        src={url}
-      />
-    )}
-  </>
-)
+const ProfileImage = ({ url, display, textColor }) => {
+  const ctx = useContext(BuilderContext)
+  const info = ctx.getComponentData('info')
+
+  return (
+    <>
+      {display && (
+        <img
+          // style={{
+          //   width: '100px',
+          //   height: '100px',
+          //   border: '4px solid #ffffff',
+          //   borderRadius: '50%',
+          // }}
+          style={{
+            width: '280px',
+            height: '200px',
+            objectFit: "cover",
+            border: `${ctx.currentCvBorderWidth !== "" ? ctx.currentCvBorderWidth : info.borderWidth}px solid #ffffff`,
+            borderRadius: `${ctx.currentCvRoundCorners !== "" ? ctx.currentCvRoundCorners : info.roundCorners}%`,
+          }}
+          src={url}
+        />
+      )}
+    </>)
+}
 
 export const ProfileContainer = ({ name, profession, url, display, textColor }) => {
 

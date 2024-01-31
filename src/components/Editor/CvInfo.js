@@ -9,7 +9,7 @@ const CvInfo = () => {
   const ctx = useContext(BuilderContext)
   const [cvInfo, setCvInfo] = useState([])
   const [isToggled, setIsToggled] = useState(true)
-  console.log(cvInfo)
+
   const currentCv = ctx.cvSelected
 
   const template = ctx.template
@@ -76,10 +76,20 @@ const CvInfo = () => {
     setCvInfo({ ...cvInfo, font: e.target.value })
     ctx.setCurrentCvFontFamily(e.target.value)
   }
+  const handleImageChange = (e) => {
+    setCvInfo({ ...cvInfo, roundCorners: e.target.value })
+    ctx.setCurrentCvRoundCorners(e.target.value)
+  }
+  const handleBorderChange = (e) => {
+    setCvInfo({ ...cvInfo, borderWidth: e.target.value })
+    ctx.setCurrentCvBorderWidth(e.target.value)
+  }
+
   const handleSaveClick = () => {
     ctx.updateInfo(cvInfo && cvInfo, currentCv)
     ctx.setCurrentCvFontFamily("")
   }
+
   return (
     <>
       <h1>Cv info:</h1>
@@ -135,6 +145,30 @@ const CvInfo = () => {
                 className='box-form-top-span'
                 style={{ fontFamily: `${ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}` }}
               > {ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}</span>
+            </div>
+            <div className='field'>
+              <label>Image corners:</label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                name="roundCorners"
+                value={ctx.currentCvRoundCorners !== "" ? ctx.currentCvRoundCorners : cvInfo && cvInfo.roundCorners}
+                onChange={(e) => handleImageChange(e)}
+              />
+            </div>
+            <div className='field'>
+              <label>Image border:</label>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="1"
+                name="roundCorners"
+                value={ctx.currentCvBorderWidth !== "" ? ctx.currentCvRoundCorners : cvInfo && cvInfo.borderWidth}
+                onChange={(e) => handleBorderChange(e)}
+              />
             </div>
             <button
               className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'

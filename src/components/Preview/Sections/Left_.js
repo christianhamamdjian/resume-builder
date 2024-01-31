@@ -65,7 +65,6 @@ export const Left = () => {
   const currentCvSocials = ctx.currentCvSocials
   const template = !selectedTemplate ? info && info['template'] : selectedTemplate
   const [profile, setProfile] = useState([])
-  console.log(languages)
   useEffect(() => {
     const newProfile = getProfile
     setProfile(newProfile)

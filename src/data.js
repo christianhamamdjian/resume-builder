@@ -9,6 +9,8 @@ export const cvs = [
         title: "",
         template: "1",
         font: "Helvetica",
+        roundCorners: "",
+        borderWidth: "",
         backgroundColor: "#000000",
         rightOrder: [
             "About",
