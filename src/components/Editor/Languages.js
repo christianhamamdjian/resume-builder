@@ -29,15 +29,19 @@ const Languages = () => {
     setLanguages(newLanguages)
   }, [currentCv])
 
-  const handleChange = (e, i) => {
-    const modifiedItem = {
-      ...languages.items[i],
-      text: e.target.value,
+  const handleChange = (e, i, title) => {
+    if (title && title === "title") {
+      setLanguages({ ...languages, title: e.target.value })
+      ctx.setCurrentCvLanguages({ ...languages, title: e.target.value })
+    } else {
+      const modifiedItem = {
+        ...languages.items[i],
+        text: e.target.value,
+      }
+      const newLanguages = { ...languages, items: [...languages.items.slice(0, i), modifiedItem, ...languages.items.slice(i + 1)] }
+      setLanguages(newLanguages)
+      ctx.setCurrentCvLanguages(newLanguages)
     }
-    //languages.items.splice(i, 1, modifiedItem)
-    const newLanguages = { ...languages, items: [...languages.items.slice(0, i), modifiedItem, ...languages.items.slice(i + 1)] }
-    setLanguages(newLanguages)
-    ctx.setCurrentCvLanguages(newLanguages)
   }
   const handleAddClick = () => {
     setLanguages({
@@ -76,14 +80,22 @@ const Languages = () => {
         !isToggled && (
           <>
             <div className='flex flex-col gap-2 py-2'>
-              {languages && languages.items.map((item, index) => (
-                <TextInput
-                  key={index}
-                  placeholder='Custom field'
-                  defaultValue={item.text}
-                  handleChange={(e) => handleChange(e, index)}
-                />
-              ))}
+              <TextInput
+                key={index}
+                placeholder='Custom field'
+                defaultValue={languages && languages['title']}
+                handleChange={(e) => handleChange(e, index, "title")}
+              />
+              <div className='flex flex-col gap-2 py-2'>
+                {languages && languages.items.map((item, index) => (
+                  <TextInput
+                    key={index}
+                    placeholder='Custom field'
+                    defaultValue={item.text}
+                    handleChange={(e) => handleChange(e, index)}
+                  />
+                ))}
+              </div>
             </div>
             <MoveUpDownLeft
               moveLeftContentUp={moveLeftContentUp}

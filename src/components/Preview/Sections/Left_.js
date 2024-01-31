@@ -27,19 +27,8 @@ const Socials = ({ template }) => {
   )
 }
 const Wrapper = ({ heading, ...props }) => {
-  const ctx = useContext(BuilderContext)
   return (
     <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }}>
-      <h3
-        style={{
-          color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
-          fontSize: '15',
-          fontWeight: "bold",
-          paddingBottom: '10',
-        }}
-      >
-        {heading}
-      </h3>
       {props.children}
     </div>
   )
@@ -103,21 +92,41 @@ export const Left = () => {
 
         {leftContentOrder && leftContentOrder.map((item, index) => {
           if (item === "Education") {
-            return (<Wrapper key={index} heading={education && education.header}>
-              {currentCvEducation !== null ? currentCvEducation.items.map((item, index) => (
-                <EducationText key={index} text={item.degree} date={item.date} />
-              ))
-                : education && education.items.map((item, index) => (
+            return (
+              <Wrapper key={index}>
+                <h3
+                  style={{
+                    color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
+                    fontSize: '15',
+                    fontWeight: "bold",
+                    paddingBottom: '10',
+                  }}
+                >
+                  {currentCvEducation !== null ? currentCvEducation['title'] : education.header}
+                </h3>
+
+                {currentCvEducation !== null ? currentCvEducation.items.map((item, index) => (
                   <EducationText key={index} text={item.degree} date={item.date} />
-                ))}
-            </Wrapper>)
+                ))
+                  : education && education.items.map((item, index) => (
+                    <EducationText key={index} text={item.degree} date={item.date} />
+                  ))}
+              </Wrapper>)
           }
           if (item === "Skills") {
             return (skills && skills.display && (
-              <Wrapper key={index} heading={skills && skills.header}>
-                {/* {skills && skills.items.map((item, index) => (
-                  <SkillItem key={index} name={item.text} fillSkill={item.level} />
-                ))} */}
+              <Wrapper key={index}>
+                <h3
+                  style={{
+                    color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
+                    fontSize: '15',
+                    fontWeight: "bold",
+                    paddingBottom: '10',
+                  }}
+                >
+                  {currentCvSkills !== null ? currentCvSkills['title'] : skills.header}
+                </h3>
+
                 {currentCvSkills !== null ? currentCvSkills.items.map((item, index) => (
                   <SkillItem key={index} name={item.text} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} fillSkill={item.level} />
                 ))
@@ -129,7 +138,17 @@ export const Left = () => {
           }
           if (item === "Certifications") {
             return (certifications.display && (
-              <Wrapper key={index} heading={certifications && certifications.header}>
+              <Wrapper key={index}>
+                <h3
+                  style={{
+                    color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
+                    fontSize: '15',
+                    fontWeight: "bold",
+                    paddingBottom: '10',
+                  }}
+                >
+                  {currentCvCertifications !== null ? currentCvCertifications['title'] : certifications.header}
+                </h3>
                 {currentCvCertifications !== null ? currentCvCertifications.items.map((item, index) => (
                   <EducationText key={index} text={item.name} date={item.date} />
                 ))
@@ -141,7 +160,19 @@ export const Left = () => {
           }
           if (item === "Contact") {
             return (contact && contact.display && (
-              <Wrapper key={index} heading={contact && contact.header}>
+              <Wrapper key={index}>
+                <h3
+                  style={{
+                    color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
+                    fontSize: '15',
+                    fontWeight: "bold",
+                    paddingBottom: '10',
+                  }}
+                >
+                  {currentCvContact !== null ? currentCvContact['title'] : contact.header}
+                </h3>
+
+
                 {currentCvContact !== null ? currentCvContact.items.map((item, index) => (
                   <p
                     key={index}
@@ -163,7 +194,17 @@ export const Left = () => {
           }
           if (item === "Languages") {
             return (languages && languages.display && (
-              <Wrapper key={index} heading={languages && languages.header}>
+              <Wrapper key={index}>
+                <h3
+                  style={{
+                    color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
+                    fontSize: '15',
+                    fontWeight: "bold",
+                    paddingBottom: '10',
+                  }}
+                >
+                  {currentCvLanguages !== null ? currentCvLanguages['title'] : languages.header}
+                </h3>
                 {currentCvLanguages !== null ? currentCvLanguages.items.map((item, index) => (
                   <p
                     key={index}

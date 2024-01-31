@@ -32,16 +32,20 @@ const Certifications = () => {
     setCertification(newCetification)
   }, [currentCv])
 
-  const handleChange = (e, i) => {
-    const targetName = e.target.name
-    const modifiedItem = {
-      ...certification.items[i],
-      [targetName]: e.target.value,
+  const handleChange = (e, i, title) => {
+    if (title && title === "title") {
+      setCertification({ ...certification, title: e.target.value })
+      ctx.setCurrentCvCertifications({ ...certification, title: e.target.value })
+    } else {
+      const targetName = e.target.name
+      const modifiedItem = {
+        ...certification.items[i],
+        [targetName]: e.target.value,
+      }
+      const newCertification = { ...certification, items: [...certification.items.slice(0, i), modifiedItem, ...certification.items.slice(i + 1)] }
+      setCertification(newCertification)
+      ctx.setCurrentCvCertifications(newCertification)
     }
-    //certification.items.splice(i, 1, modifiedItem)
-    const newCertification = { ...certification, items: [...certification.items.slice(0, i), modifiedItem, ...certification.items.slice(i + 1)] }
-    setCertification(newCertification)
-    ctx.setCurrentCvCertifications(newCertification)
   }
   const handleAddClick = () => {
     setCertification({
@@ -79,26 +83,34 @@ const Certifications = () => {
       {
         !isToggled && (
           <>
-            {certification && certification.items.map((item, index) => (
-              <div key={index}>
-                <TextArea
-                  placeholder='Certification Type'
-                  rows='2'
-                  style='pb-2'
-                  name='name'
-                  defaultValue={item.name}
-                  handleChange={(e) => handleChange(e, index)}
-                />
+            <div className='flex flex-col gap-2 py-2'>
+              <TextInput
+                key={index}
+                placeholder='Custom field'
+                defaultValue={certification && certification['title']}
+                handleChange={(e) => handleChange(e, index, "title")}
+              />
+              {certification && certification.items.map((item, index) => (
+                <div key={index}>
+                  <TextArea
+                    placeholder='Certification Type'
+                    rows='2'
+                    style='pb-2'
+                    name='name'
+                    defaultValue={item.name}
+                    handleChange={(e) => handleChange(e, index)}
+                  />
 
-                <TextInput
-                  placeholder='Date '
-                  name='date'
-                  style='pb-2'
-                  defaultValue={item.date}
-                  handleChange={(e) => handleChange(e, index)}
-                />
-              </div>
-            ))}
+                  <TextInput
+                    placeholder='Date '
+                    name='date'
+                    style='pb-2'
+                    defaultValue={item.date}
+                    handleChange={(e) => handleChange(e, index)}
+                  />
+                </div>
+              ))}
+            </div>
             <MoveUpDownLeft
               moveLeftContentUp={moveLeftContentUp}
               moveLeftContentDown={moveLeftContentDown}

@@ -29,15 +29,19 @@ const Contact = () => {
     setContact(newContact)
   }, [currentCv])
 
-  const handleChange = (e, i) => {
-    const modifiedItem = {
-      ...contact.items[i],
-      text: e.target.value,
+  const handleChange = (e, i, title) => {
+    if (title && title === "title") {
+      setContact({ ...contact, title: e.target.value })
+      ctx.setCurrentCvContact({ ...contact, title: e.target.value })
+    } else {
+      const modifiedItem = {
+        ...contact.items[i],
+        text: e.target.value,
+      }
+      const newContact = { ...contact, items: [...contact.items.slice(0, i), modifiedItem, ...contact.items.slice(i + 1)] }
+      setContact(newContact)
+      ctx.setCurrentCvContact(newContact)
     }
-    //contact.items.splice(i, 1, modifiedItem)
-    const newContact = { ...contact, items: [...contact.items.slice(0, i), modifiedItem, ...contact.items.slice(i + 1)] }
-    setContact(newContact)
-    ctx.setCurrentCvContact(newContact)
   }
   const handleAddClick = () => {
     setContact({
@@ -76,14 +80,22 @@ const Contact = () => {
         !isToggled && (
           <>
             <div className='flex flex-col gap-2 py-2'>
-              {contact && contact.items.map((item, index) => (
-                <TextInput
-                  key={index}
-                  placeholder='Custom field'
-                  defaultValue={item.text}
-                  handleChange={(e) => handleChange(e, index)}
-                />
-              ))}
+              <TextInput
+                key={index}
+                placeholder='Custom field'
+                defaultValue={contact && contact['title']}
+                handleChange={(e) => handleChange(e, index, "title")}
+              />
+              <div className='flex flex-col gap-2 py-2'>
+                {contact && contact.items.map((item, index) => (
+                  <TextInput
+                    key={index}
+                    placeholder='Custom field'
+                    defaultValue={item.text}
+                    handleChange={(e) => handleChange(e, index)}
+                  />
+                ))}
+              </div>
             </div>
             <MoveUpDownLeft
               moveLeftContentUp={moveLeftContentUp}

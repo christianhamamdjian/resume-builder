@@ -3,6 +3,7 @@ import ActionMenu from './ActionMenu'
 import EducationItem from './EducationItem'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import TextInput from './TextInput'
 import MoveUpDownLeft from './MoveUpDownLeft'
 import { BuilderContext } from './../../App'
 
@@ -31,16 +32,20 @@ const Education = () => {
     setEducation(newEducation)
   }, [currentCv])
 
-  const handleChange = (e, i) => {
-    const targetName = e.target.name
-    const modifiedItem = {
-      ...education.items[i],
-      [targetName]: e.target.value,
+  const handleChange = (e, i, title) => {
+    if (title && title === "title") {
+      setEducation({ ...education, title: e.target.value })
+      ctx.setCurrentCvEducation({ ...education, title: e.target.value })
+    } else {
+      const targetName = e.target.name
+      const modifiedItem = {
+        ...education.items[i],
+        [targetName]: e.target.value,
+      }
+      const newEducation = { ...education, items: [...education.items.slice(0, i), modifiedItem, ...education.items.slice(i + 1)] }
+      setEducation(newEducation)
+      ctx.setCurrentCvEducation(newEducation)
     }
-    //education.items.splice(i, 1, modifiedItem)
-    const newEducation = { ...education, items: [...education.items.slice(0, i), modifiedItem, ...education.items.slice(i + 1)] }
-    setEducation(newEducation)
-    ctx.setCurrentCvEducation(newEducation)
   }
   const handleAddClick = () => {
     setEducation({
@@ -77,15 +82,22 @@ const Education = () => {
       {
         !isToggled && (
           <>
-
-            {education && education.items.map((item, index) => (
-              <EducationItem
+            <div className='flex flex-col gap-2 py-2'>
+              <TextInput
                 key={index}
-                index={index}
-                data={item}
-                handleChange={handleChange}
+                placeholder='Custom field'
+                defaultValue={education && education['title']}
+                handleChange={(e) => handleChange(e, index, "title")}
               />
-            ))}
+              {education && education.items.map((item, index) => (
+                <EducationItem
+                  key={index}
+                  index={index}
+                  data={item}
+                  handleChange={handleChange}
+                />
+              ))}
+            </div>
             <MoveUpDownLeft
               moveLeftContentUp={moveLeftContentUp}
               moveLeftContentDown={moveLeftContentDown}

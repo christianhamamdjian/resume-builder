@@ -35,17 +35,20 @@ const Skills = () => {
   const handleEnable = (isEnabled) => {
     setSkills({ ...skills, display: isEnabled })
   }
-  const handleChange = (e, i) => {
-    const targetName = e.target.name
-    const modifiedItem = {
-      ...skills.items[i],
-      [targetName]: e.target.value,
+  const handleChange = (e, i, title) => {
+    if (title && title === "title") {
+      setSkills({ ...skills, title: e.target.value })
+      ctx.setCurrentCvSkills({ ...skills, title: e.target.value })
+    } else {
+      const targetName = e.target.name
+      const modifiedItem = {
+        ...skills.items[i],
+        [targetName]: e.target.value,
+      }
+      const newSkills = { ...skills, items: [...skills.items.slice(0, i), modifiedItem, ...skills.items.slice(i + 1)] }
+      setSkills(newSkills)
+      ctx.setCurrentCvSkills(newSkills)
     }
-    // skills.items.splice(i, 1, modifiedItem)
-    const newSkills = { ...skills, items: [...skills.items.slice(0, i), modifiedItem, ...skills.items.slice(i + 1)] }
-    setSkills(newSkills)
-    ctx.setCurrentCvSkills(newSkills)
-
   }
   const handleAddClick = () => {
     setSkills({
@@ -84,35 +87,43 @@ const Skills = () => {
       {
         !isToggled && (
           <>
-            <ToggleButton
-              defaultValue={skills && skills.display}
-              // value={skills && skills.display}
-              handleChange={(name, prop, isEnabled) => {
-                handleEnable(isEnabled)
-              }}
-            />
-            {skills && skills.items.map((item, index) => (
-              <div key={index} className='flex flex-row py-1'>
-                <TextInput
-                  defaultValue={item && item.text}
-                  // value={item && item.text}
-                  name='text'
-                  placeholder='Skill'
-                  index={index}
-                  handleChange={(e) => handleChange(e, index)}
-                />
-                <TextInput
-                  defaultValue={item && item.level}
-                  // value={item && item.level}
-                  name='level'
-                  type='number'
-                  placeholder='%'
-                  style='w-1/3'
-                  index={index}
-                  handleChange={(e) => handleChange(e, index)}
-                />
-              </div>
-            ))}
+            <div className='flex flex-col gap-2 py-2'>
+              <TextInput
+                key={index}
+                placeholder='Custom field'
+                defaultValue={skills && skills['title']}
+                handleChange={(e) => handleChange(e, index, "title")}
+              />
+              <ToggleButton
+                defaultValue={skills && skills.display}
+                // value={skills && skills.display}
+                handleChange={(name, prop, isEnabled) => {
+                  handleEnable(isEnabled)
+                }}
+              />
+              {skills && skills.items.map((item, index) => (
+                <div key={index} className='flex flex-row py-1'>
+                  <TextInput
+                    defaultValue={item && item.text}
+                    // value={item && item.text}
+                    name='text'
+                    placeholder='Skill'
+                    index={index}
+                    handleChange={(e) => handleChange(e, index)}
+                  />
+                  <TextInput
+                    defaultValue={item && item.level}
+                    // value={item && item.level}
+                    name='level'
+                    type='number'
+                    placeholder='%'
+                    style='w-1/3'
+                    index={index}
+                    handleChange={(e) => handleChange(e, index)}
+                  />
+                </div>
+              ))}
+            </div>
             <MoveUpDownLeft
               moveLeftContentUp={moveLeftContentUp}
               moveLeftContentDown={moveLeftContentDown}
