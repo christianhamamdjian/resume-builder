@@ -5,14 +5,17 @@ export const styles = {
   page1: {
     display: 'flex',
     flexDirection: 'row',
+    // fontFamily: 'Verdana',
   },
   page2: {
     display: 'flex',
     flexDirection: 'row-reverse',
+    // fontFamily: 'Times',
   },
   page3: {
     display: 'flex',
     flexDirection: 'column',
+    // fontFamily: 'Helvetica-Bold',
   },
 
   /* Profile Container */
@@ -22,7 +25,6 @@ export const styles = {
     alignItems: 'center',
     marginTop: '20',
     height: '150',
-    fontFamily: 'Helvetica-Bold',
   },
   profile_container2: {
     display: 'flex',
@@ -30,7 +32,6 @@ export const styles = {
     alignItems: 'center',
     marginTop: '20',
     height: '150',
-    fontFamily: 'Helvetica-Bold',
   },
   profile_container3: {
     display: 'flex',
@@ -38,7 +39,6 @@ export const styles = {
     alignItems: 'center',
     marginTop: '20',
     height: '150',
-    fontFamily: 'Helvetica-Bold',
   },
 
   /* Section Top */

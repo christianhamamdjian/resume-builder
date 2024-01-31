@@ -29,26 +29,31 @@ const PreviewScreen = () => {
   )
 }
 
-const ResumeTemplate = ({ builder, template }) => (
-  <>
-    <div className="print_area" style={{ ...styles.document, backgroundColor: "#ffffff", boxShadow: "" }}>
-      <div style={styles[`page${template}`]}>
-        <BuilderContext.Provider value={builder}>
-          <SectionLeft />
-          <SectionRight />
-        </BuilderContext.Provider>
+const ResumeTemplate = ({ builder, template }) => {
+  const ctx = useContext(BuilderContext)
+  const info = ctx.getComponentData('info')
+  console.log(ctx.currentCvFontFamily, info && info.font)
+  return (
+    <>
+      <div className="print_area" style={{ ...styles.document, backgroundColor: "#ffffff", boxShadow: "" }}>
+        <div style={{ ...styles[`page${template}`], fontFamily: `${ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : info && info.font}` }}>
+          <BuilderContext.Provider value={builder}>
+            <SectionLeft />
+            <SectionRight />
+          </BuilderContext.Provider>
+        </div>
       </div>
-    </div>
-    <div style={{
-      display: "flex",
-      justifyContent: "flex-end",
-      marginTop: ".2rem",
-      width: "100%"
-    }}>
-      <button type="button" className="print-btn btn btn-primary" onClick={() => window.print()}>Print CV</button>
-    </div>
-    <Draft />
-  </>
-)
+      <div style={{
+        display: "flex",
+        justifyContent: "flex-end",
+        marginTop: ".2rem",
+        width: "100%"
+      }}>
+        <button type="button" className="print-btn btn btn-primary" onClick={() => window.print()}>Print CV</button>
+      </div>
+      <Draft />
+    </>
+  )
+}
 
 export default PreviewScreen

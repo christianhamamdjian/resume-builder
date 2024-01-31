@@ -27,6 +27,8 @@ function App() {
   const [currentCvContact, setCurrentCvContact] = useState(null)
   const [currentCvCertifications, setCurrentCvCertifications] = useState(null)
   const [currentCvLanguages, setCurrentCvLanguages] = useState(null)
+  const [currentCvFontFamily, setCurrentCvFontFamily] = useState("")
+
   const initialRightContent = [
     "About",
     "Employment History",
@@ -258,6 +260,8 @@ function App() {
                 setCurrentCvCertifications,
                 currentCvLanguages,
                 setCurrentCvLanguages,
+                currentCvFontFamily,
+                setCurrentCvFontFamily
               }}
             ><Dashboard />
             </BuilderContext.Provider>
