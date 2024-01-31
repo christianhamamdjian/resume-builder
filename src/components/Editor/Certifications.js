@@ -61,7 +61,10 @@ const Certifications = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(certification && certification, currentCv)
+  const handleSaveClick = () => {
+    ctx.updateInfo(certification && certification, currentCv)
+    ctx.setCurrentCvCertifications(null)
+  }
 
   return (
     <>

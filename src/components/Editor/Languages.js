@@ -57,7 +57,10 @@ const Languages = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(languages && languages, currentCv)
+  const handleSaveClick = () => {
+    ctx.updateInfo(languages && languages, currentCv)
+    ctx.setCurrentCvLanguages(null)
+  }
 
   return (
     <div>

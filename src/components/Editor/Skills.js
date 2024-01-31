@@ -65,7 +65,10 @@ const Skills = () => {
     })
   }
 
-  const handleSaveClick = () => ctx.updateInfo(skills && skills)
+  const handleSaveClick = () => {
+    ctx.updateInfo(skills && skills)
+    ctx.setCurrentCvSkills(null)
+  }
 
   return (
     <>

@@ -61,7 +61,10 @@ const Education = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(education && education, currentCv)
+  const handleSaveClick = () => {
+    ctx.updateInfo(education && education, currentCv)
+    ctx.setCurrentCvEducation(null)
+  }
 
   return (
     <>

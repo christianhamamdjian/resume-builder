@@ -75,7 +75,10 @@ const Projects = () => {
     })
   }
 
-  const handleSaveClick = () => ctx.updateInfo(projects && projects)
+  const handleSaveClick = () => {
+    ctx.updateInfo(projects && projects)
+    ctx.setCurrentCvProjects(null)
+  }
 
   return (
     // <div className='pt-3 px-5 '>

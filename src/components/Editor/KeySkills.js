@@ -46,6 +46,10 @@ const KeySkills = () => {
     setSkills({ ...skills, text: newText })
     ctx.setCurrentCvKeySkills({ ...skills, text: newText })
   };
+  const handleSaveClick = () => {
+    ctx.updateInfo(skills && skills)
+    ctx.setCurrentCvKeySkills(null)
+  }
   return (
     <>
       {!isToggled ? (
@@ -92,7 +96,7 @@ const KeySkills = () => {
           />
           <button
             className='mx-5 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-            onClick={() => ctx.updateInfo(skills && skills)}
+            onClick={handleSaveClick}
           >
             Save
           </button>

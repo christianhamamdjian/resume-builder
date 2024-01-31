@@ -42,7 +42,10 @@ const Socials = () => {
       ctx.setCurrentCvSocials(newSocials)
     }
   }
-
+  const handleSaveClick = () => {
+    ctx.updateInfo(socials && socials)
+    ctx.setCurrentCvSocials(null)
+  }
   return (
     <>
       <div>
@@ -93,7 +96,7 @@ const Socials = () => {
               </div>
               <button
                 className=' w-20 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-                onClick={() => ctx.updateInfo(socials && socials)}
+                onClick={handleSaveClick}
               >
                 Save
               </button>

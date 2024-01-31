@@ -57,8 +57,10 @@ const Contact = () => {
       ),
     })
   }
-  const handleSaveClick = () => ctx.updateInfo(contact && contact, currentCv)
-
+  const handleSaveClick = () => {
+    ctx.updateInfo(contact && contact, currentCv)
+    ctx.setCurrentCvContact(null)
+  }
   return (
     <div>
       <h1>Contact:</h1>
