@@ -20,7 +20,7 @@ const ResumeEdit = () => {
     <>
       <div className='flex flex-col bg-white' >
         {/* <div className='flex flex-col w-1/2'> */}
-        <div className='border-t-gray-400 border p-4 '>
+        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvInfo ? "#dddddd" : "#ffffff"}` }}>
           <CvInfo />
         </div>
         <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvProfile ? "#dddddd" : "#ffffff"}` }}>

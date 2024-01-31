@@ -40,7 +40,7 @@ export const ProfileContainer = ({ name, profession, url, display, textColor }) 
     <div
       style={{
         ...styles[`profile_container${template}`],
-        marginBottom: display ? '20px' : '-65px',
+        //marginBottom: display ? '20px' : '-65px'
       }}
     >
       <ProfileImage url={url} display={display} />

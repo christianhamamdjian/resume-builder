@@ -16,6 +16,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState("")
   const [template, setTemplate] = useState("")
   const [backgroundColor, setBackgroundColor] = useState("")
+  const [currentCvInfo, setCurrentCvInfo] = useState(null)
   const [currentCvProfile, setCurrentCvProfile] = useState(null)
   const [currentCvSkills, setCurrentCvSkills] = useState(null)
   const [currentCvAbout, setCurrentCvAbout] = useState(null)
@@ -196,7 +197,6 @@ function App() {
       return el
     })
     const updatedCv = { ...cvSelected, data: { ...cvSelected['data'], items: updatedItems } }
-    console.log(updatedCv)
     setInfoSelected(updatedCv['data']["items"])
     setTemplate("")
     if (cvId) {
@@ -207,6 +207,21 @@ function App() {
         console.log(`There was an error updating ${cvId}`, e)
       })
     }
+  }
+  const duplicateCv = (e, cvCopy) => {
+    console.log(cvCopy['data']["items"])
+    const oldTitle = cvCopy['data']["items"][1]['title']
+    const newCopy = cvCopy['data']["items"].map((item, index) => {
+      if (index === 1) {
+        return { ...item, title: `${oldTitle} copy` }
+      }
+      return item
+    })
+    api.create(newCopy).then((response) => {
+      console.log("New Cv was created successfully!")
+      setInfoState([...infoState, response])
+      setCvSelected(response)
+    })
   }
   return (
     <>
@@ -243,6 +258,8 @@ function App() {
                 moveLeftContentDown,
                 initialRightContent,
                 initialLeftContent,
+                currentCvInfo,
+                setCurrentCvInfo,
                 currentCvSkills,
                 setCurrentCvSkills,
                 currentCvAbout,
@@ -268,7 +285,8 @@ function App() {
                 currentCvRoundCorners,
                 setCurrentCvRoundCorners,
                 currentCvBorderWidth,
-                setCurrentCvBorderWidth
+                setCurrentCvBorderWidth,
+                duplicateCv
               }}
             ><Dashboard />
             </BuilderContext.Provider>

@@ -32,13 +32,16 @@ const CvInfo = () => {
   const updateTemplate = (e, index) => {
     setCvInfo({ ...cvInfo, template: e.target.value })
     handleTemplate(index)
+    ctx.setCurrentCvInfo(cvInfo)
   }
-  const handleBacgroundColor = (e) => {
+  const handleBackgroundColor = (e) => {
     ctx.setBackgroundColor(e.target.value)
     setCvInfo(prevCvInfo => ({ ...prevCvInfo, backgroundColor: e.target.value }))
+    ctx.setCurrentCvInfo(cvInfo)
   }
   const handleChange = (e) => {
     setCvInfo({ ...cvInfo, title: e.target.value })
+    ctx.setCurrentCvInfo(cvInfo)
   }
   const fontOptions = [
     { value: 'Poppins', label: 'Poppins' },
@@ -75,19 +78,22 @@ const CvInfo = () => {
   const handleFontChange = (e) => {
     setCvInfo({ ...cvInfo, font: e.target.value })
     ctx.setCurrentCvFontFamily(e.target.value)
+    ctx.setCurrentCvInfo(cvInfo)
   }
   const handleImageChange = (e) => {
     setCvInfo({ ...cvInfo, roundCorners: e.target.value })
     ctx.setCurrentCvRoundCorners(e.target.value)
+    ctx.setCurrentCvInfo(cvInfo)
   }
   const handleBorderChange = (e) => {
     setCvInfo({ ...cvInfo, borderWidth: e.target.value })
     ctx.setCurrentCvBorderWidth(e.target.value)
+    ctx.setCurrentCvInfo(cvInfo)
   }
 
   const handleSaveClick = () => {
     ctx.updateInfo(cvInfo && cvInfo, currentCv)
-    ctx.setCurrentCvFontFamily("")
+    ctx.setCurrentCvInfo("")
   }
 
   return (
@@ -118,11 +124,11 @@ const CvInfo = () => {
             />
             <h2>Template:</h2>
             <TemplateGallery updateTemplate={updateTemplate} />
-            <div>
+            <div className='field mt-6 mb-6'>
               <label htmlFor="background-color">Background color: </label>
-              <input type="color" id="background-color" value={ctx.backgroundColor !== "" ? ctx.backgroundColor : ctx.getComponentData('info')} onChange={e => handleBacgroundColor(e)} />
+              <input type="color" id="background-color" value={ctx.backgroundColor !== "" ? ctx.backgroundColor : ctx.getComponentData('info')} onChange={e => handleBackgroundColor(e)} />
             </div>
-            <div className='field'>
+            <div className='field mt-6 mb-6'>
               <label htmlFor="fonts">Choose a font:</label>
               <select
                 name="fonts"
@@ -146,7 +152,7 @@ const CvInfo = () => {
                 style={{ fontFamily: `${ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}` }}
               > {ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}</span>
             </div>
-            <div className='field'>
+            <div className='field mt-6 mb-6'>
               <label>Image corners:</label>
               <input
                 type="range"
@@ -158,20 +164,20 @@ const CvInfo = () => {
                 onChange={(e) => handleImageChange(e)}
               />
             </div>
-            <div className='field'>
+            <div className='field mt-6 mb-6'>
               <label>Image border:</label>
               <input
                 type="range"
                 min="0"
                 max="100"
                 step="1"
-                name="roundCorners"
-                value={ctx.currentCvBorderWidth !== "" ? ctx.currentCvRoundCorners : cvInfo && cvInfo.borderWidth}
+                name="borderWidth"
+                value={ctx.currentCvBorderWidth !== "" ? ctx.currentCvBorderWidth : cvInfo && cvInfo.borderWidth}
                 onChange={(e) => handleBorderChange(e)}
               />
             </div>
             <button
-              className='  py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+              className='py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
               onClick={handleSaveClick}
             >
               Save

@@ -5,6 +5,7 @@ export const styles = {
   page1: {
     display: 'flex',
     flexDirection: 'row',
+
     // fontFamily: 'Verdana',
   },
   page2: {
@@ -80,14 +81,20 @@ export const styles = {
 
   /* Section Left */
   section__left1: {
-    width: '40%',
+    // width: '40%',
+    flexGrow: "0",
+    flexShrink: "0",
+    flexBasis: "17rem",
     minWidth: "12rem",
     // backgroundColor: '#084c41',
     // paddingBottom: "30000px",
     // marginBottom: "-30000px"
   },
   section__left2: {
-    width: '40%',
+    flexGrow: "0",
+    flexShrink: "0",
+    flexBasis: "17rem",
+    minWidth: "12rem",
     // backgroundColor: 'blue',
   },
   section__left3: {

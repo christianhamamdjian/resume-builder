@@ -16,12 +16,20 @@ const CvList = () => {
 		const { ref } = cv
 		const title = data["items"][1]["title"]
 		const cvId = ref["@ref"]["id"]
-		return <li key={i}>
-			<div className="flex px-4 justify-between">
+		return <li
+			//style={{ border: "1px solid #dddddd" }} 
+			key={i}
+		>
+			<div className="flex px-2 justify-between">
 				<button className="flex-none w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
-				<button className="flex-none w-34 h-8" data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
-					Delete Cv
-				</button>
+				<div className="flex px-4 justify-between ml-auto gap-2">
+					<button className="flex-none w-34 h-8 border border-solid border-gray px-2" data-id={cvId} onClick={(e) => ctx.duplicateCv(e, cv)}>
+						Duplicate
+					</button>
+					<button className="flex-none w-34 h-8 border border-solid border-gray px-2" data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
+						Delete
+					</button>
+				</div>
 			</div>
 		</li>
 	})
@@ -48,7 +56,7 @@ const CvList = () => {
 						{!isToggled && (
 							<>
 								<CreateCv />
-								<ul className="h-36 border-2 border-grey border-solid p-2 overflow-y-auto">
+								<ul className="flex flex-col h-36 border-2 border-grey gap-2 border-solid p-2 overflow-y-auto">
 									{renderCvs()}
 								</ul>
 							</>

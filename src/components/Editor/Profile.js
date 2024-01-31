@@ -29,7 +29,10 @@ const Profile = () => {
     const newProfile = ctx.getComponentData('Profile')
     setProfile(newProfile)
   }, [currentCv])
-
+  const handleSaveClick = () => {
+    ctx.updateInfo(profile && profile)
+    ctx.setCurrentCvProfile(null)
+  }
   return (
     <>
       <h1>Profile:</h1>
@@ -96,7 +99,7 @@ const Profile = () => {
             <Upload />
             <button
               className='  py-1 px-6 mt-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
-              onClick={() => ctx.updateInfo(profile && profile)}
+              onClick={handleSaveClick}
             >
               Save
             </button>
