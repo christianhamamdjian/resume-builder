@@ -9,7 +9,7 @@ const EducationItem = ({ index, data, handleChange }) => {
         style='pb-2'
         name='degree'
         defaultValue={data.degree}
-        handleChange={(e) => handleChange(index, e)}
+        handleChange={(e) => handleChange(e, index)}
       />
 
       <TextInput
@@ -17,7 +17,7 @@ const EducationItem = ({ index, data, handleChange }) => {
         name='date'
         style='pb-2'
         defaultValue={data.date}
-        handleChange={(e) => handleChange(index, e)}
+        handleChange={(e) => handleChange(e, index)}
       />
     </div>
   )

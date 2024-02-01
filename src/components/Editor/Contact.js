@@ -62,8 +62,8 @@ const Contact = () => {
     ctx.setCurrentCvContact(null)
   }
   return (
-    <div>
-      <h1>Contact:</h1>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>Contact:</h2>
       {!isToggled ? (
         <Hide
           handleClick={() => {

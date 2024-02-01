@@ -21,7 +21,7 @@ const Hide = ({ handleClick, color, className, height, width, fill }) => (
       viewBox="0 0 320 512"
       onClick={handleClick}
       fill="#cccccc"
-      style={{ rotate: "-90deg" }}
+      style={{ rotate: "-90deg", cursor: "pointer" }}
     >
       <path
         fill={fill}

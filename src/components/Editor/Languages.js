@@ -63,8 +63,8 @@ const Languages = () => {
   }
 
   return (
-    <div>
-      <h1>Languages:</h1>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>Languages:</h2>
       {!isToggled ? (
         <Hide
           handleClick={() => {

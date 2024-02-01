@@ -68,65 +68,67 @@ const Certifications = () => {
 
   return (
     <>
-      <h1>Certifications:</h1>
-      {!isToggled ? (
-        <Hide
-          handleClick={() => {
-            setIsToggled(true)
-          }}
-        />
-      ) : (
-        <Show
-          handleClick={() => {
-            setIsToggled(!isToggled)
-          }}
-        />
-      )
-      }
-      {
-        !isToggled && (
-          <>
-            <div className='flex flex-col gap-2 py-2'>
-              <TextInput
-                key={index}
-                placeholder='Custom field'
-                defaultValue={certification && certification['title']}
-                handleChange={(e) => handleChange(e, index, "title")}
-              />
-              {certification && certification.items.map((item, index) => (
-                <div key={index}>
-                  <TextArea
-                    placeholder='Certification Type'
-                    rows='2'
-                    style='pb-2'
-                    name='name'
-                    defaultValue={item.name}
-                    handleChange={(e) => handleChange(e, index)}
-                  />
-
-                  <TextInput
-                    placeholder='Date '
-                    name='date'
-                    style='pb-2'
-                    defaultValue={item.date}
-                    handleChange={(e) => handleChange(e, index)}
-                  />
-                </div>
-              ))}
-            </div>
-            <MoveUpDownLeft
-              moveLeftContentUp={moveLeftContentUp}
-              moveLeftContentDown={moveLeftContentDown}
-              index={index}
-            />
-            <ActionMenu
-              handleSaveClick={handleSaveClick}
-              handleAddClick={handleAddClick}
-              handleRemoveClick={handleRemoveClick}
-            />
-          </>
+      <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+        <h2 className='font-bold text-gray-400'>Certifications:</h2>
+        {!isToggled ? (
+          <Hide
+            handleClick={() => {
+              setIsToggled(true)
+            }}
+          />
+        ) : (
+          <Show
+            handleClick={() => {
+              setIsToggled(!isToggled)
+            }}
+          />
         )
-      }
+        }
+        {
+          !isToggled && (
+            <>
+              <div className='flex flex-col gap-2 py-2'>
+                <TextInput
+                  key={index}
+                  placeholder='Custom field'
+                  defaultValue={certification && certification['title']}
+                  handleChange={(e) => handleChange(e, index, "title")}
+                />
+                {certification && certification.items.map((item, index) => (
+                  <div key={index}>
+                    <TextArea
+                      placeholder='Certification Type'
+                      rows='2'
+                      style='pb-2'
+                      name='name'
+                      defaultValue={item.name}
+                      handleChange={(e) => handleChange(e, index)}
+                    />
+
+                    <TextInput
+                      placeholder='Date '
+                      name='date'
+                      style='pb-2'
+                      defaultValue={item.date}
+                      handleChange={(e) => handleChange(e, index)}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <MoveUpDownLeft
+                moveLeftContentUp={moveLeftContentUp}
+                moveLeftContentDown={moveLeftContentDown}
+                index={index}
+              />
+              <ActionMenu
+                handleSaveClick={handleSaveClick}
+                handleAddClick={handleAddClick}
+                handleRemoveClick={handleRemoveClick}
+              />
+            </>
+          )
+        }</div>
     </>
   )
 }

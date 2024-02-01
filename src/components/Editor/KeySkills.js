@@ -51,7 +51,8 @@ const KeySkills = () => {
     ctx.setCurrentCvKeySkills(null)
   }
   return (
-    <>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>Key Skills:</h2>
       {!isToggled ? (
         <Hide
           handleClick={() => {
@@ -83,7 +84,6 @@ const KeySkills = () => {
             />
           </div>
           <ToggleButton
-            style='px-5 pb-2'
             defaultValue={skills && skills.display}
             handleChange={(name, prop, isEnabled) => {
               ctx.updateInfo({ ...skills, display: isEnabled })
@@ -95,14 +95,14 @@ const KeySkills = () => {
             index={index}
           />
           <button
-            className='mx-5 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+            className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
             onClick={handleSaveClick}
           >
             Save
           </button>
         </>)
       }
-    </>
+    </div>
   )
 }
 

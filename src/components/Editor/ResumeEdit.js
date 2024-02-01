@@ -20,46 +20,43 @@ const ResumeEdit = () => {
     <>
       <div className='flex flex-col bg-white' >
         {/* <div className='flex flex-col w-1/2'> */}
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvInfo ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvInfo ? 'blue-50' : "white"}`}>
           <CvInfo />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvProfile ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvProfile ? 'blue-50' : "white"}`}>
           <Profile />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvEducation ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvEducation ? 'blue-50' : "white"}`}>
           <Education />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvSkills ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvSkills ? 'blue-50' : "white"}`}>
           <Skills />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvContact ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvContact ? 'blue-50' : "white"}`}>
           <Contact />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvCertifications ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvCertifications ? 'blue-50' : "white"}`}>
           <Certifications />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvLanguages ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvLanguages ? 'blue-50' : "white"}`}>
           <Languages />
         </div>
-        <div className='border-t-gray-400 border p-4 ' style={{ backgroundColor: `${ctx.currentCvSocials ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvSocials ? 'blue-50' : "white"}`}>
           <Socials />
         </div>
 
         {/* </div>
         <div className='flex flex-col w-1/2'> */}
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvAbout ? "#dddddd" : "#ffffff"}` }}>
+        <div className={`'border-t-gray-400 ' bg-${ctx.currentCvAbout ? 'blue-50' : "white"}`} >
           <About />
         </div>
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvEmploymentInfo ? "#dddddd" : "#ffffff"}` }}>
-          <h2 className='font-bold'>Employment History</h2>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvEmploymentInfo ? 'blue-50' : "white"}`}>
           <EmploymentHistory />
         </div>
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvKeySkills ? "#dddddd" : "#ffffff"}` }}>
-          <h2 className='font-bold'>Key Skills</h2>
+        <div className={`'border-t-gray-400' bg-${ctx.currentCvKeySkills ? 'blue-50' : "white"}`}>
           <KeySkills />
         </div>
-        <div className='border-t-gray-600 border p-4 ' style={{ backgroundColor: `${ctx.currentCvProjects ? "#dddddd" : "#ffffff"}` }}>
-          <h2 className='font-bold'>Projects</h2>
+        <div className={`'border-t-gray-400 border-b-gray-400 bg-${ctx.currentCvProjects ? 'blue-50' : "white"}`}>
           <Projects />
         </div>
 

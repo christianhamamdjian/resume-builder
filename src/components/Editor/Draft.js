@@ -31,17 +31,19 @@ const Draft = () => {
     }}>
       <TextArea
         placeholder='Draft...'
-        style='px-5 py-3'
+        style='mt-8'
         label='Draft'
         defaultValue={draft && draft.text}
         handleChange={(e) => {
           handleChange(e)
         }}
       />
-      <ActionMenu
-        handleSaveClick={handleSaveClick}
-        onlySave={true}
-      />
+      <div className='flex justify-end'>
+        <ActionMenu
+          handleSaveClick={handleSaveClick}
+          onlySave={true}
+        />
+      </div>
     </div >
   )
 }

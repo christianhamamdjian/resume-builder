@@ -1,5 +1,5 @@
 const Show = ({ handleClick, color, className, height, width, fill }) => (
-  <div style={{ display: "flex", justifyContent: "flex-end" }}>
+  <div style={{ display: "flex", justifyContent: "flex-end", cursor: "pointer" }}>
     {/* <svg
       xmlns='http://www.w3.org/2000/svg'
       className='h-6 w-6'
@@ -27,7 +27,7 @@ const Show = ({ handleClick, color, className, height, width, fill }) => (
       viewBox="0 0 320 512"
       onClick={handleClick}
       fill="#cccccc"
-      style={{ rotate: "90deg" }}
+      style={{ rotate: "90deg", cursor: "pointer" }}
     >
       <path
         fill={fill}

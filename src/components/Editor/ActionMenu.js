@@ -10,15 +10,18 @@ const ActionMenu = ({
   return (
     <div className={`flex py-2 flex-row justify-between ${style}`}>
       <button
-        className='py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+        className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
         onClick={handleSaveClick}
       >
         Save
       </button>
-      {!onlySave && <div className='flex flex-row pt-[5px]'>
-        <Add color='#d1d5db' handleClick={handleAddClick} />
-
-        <Remove color='#d1d5db' handleClick={handleRemoveClick} />
+      {!onlySave && <div className='flex flex-row pt-[5px] gap-2'>
+        <button handleClick={handleAddClick} className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded cursor-pointer'>
+          <Add color='#d1d5db' />
+        </button>
+        <button handleClick={handleRemoveClick} className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded cursor-pointer'>
+          <Remove color='#d1d5db' />
+        </button>
       </div>}
     </div>
   )

@@ -17,19 +17,17 @@ const CvList = () => {
 		const title = data["items"][1]["title"]
 		const cvId = ref["@ref"]["id"]
 		return <li
-			//style={{ border: "1px solid #dddddd" }} 
 			key={i}
+			className="flex px-2 py-2 justify-between bg-blue-50"
 		>
-			<div className="flex px-2 justify-between">
-				<button className="flex-none w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
-				<div className="flex px-4 justify-between ml-auto gap-2">
-					<button className="flex-none w-34 h-8 border border-solid border-gray px-2" data-id={cvId} onClick={(e) => ctx.duplicateCv(e, cv)}>
-						Duplicate
-					</button>
-					<button className="flex-none w-34 h-8 border border-solid border-gray px-2" data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
-						Delete
-					</button>
-				</div>
+			<button className="flex-none w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
+			<div className="flex px-4 justify-between ml-auto gap-2">
+				<button className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' data-id={cvId} onClick={(e) => ctx.duplicateCv(e, cv)}>
+					Duplicate
+				</button>
+				<button className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' data-id={cvId} onClick={(e) => ctx.deleteCv(e)}>
+					Delete
+				</button>
 			</div>
 		</li>
 	})
@@ -38,8 +36,8 @@ const CvList = () => {
 		<>
 			{user && (
 				<>
-					<div className="flex flex-col px-4 py-4 justify-between">
-						<h1 className="flex-none w-34 h-8">Your documents: </h1>
+					<div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'flex flex-col justify-between border p-4 ' : 'border p-4 bg-white hover:bg-blue-50 cursor-pointer'}`}>
+						<h2 className='font-bold text-gray-400'>Your documents: </h2>
 						{!isToggled ? (
 							<Hide
 								handleClick={() => {
@@ -56,7 +54,7 @@ const CvList = () => {
 						{!isToggled && (
 							<>
 								<CreateCv />
-								<ul className="flex flex-col h-36 border-2 border-grey gap-2 border-solid p-2 overflow-y-auto">
+								<ul className="flex flex-col h-36 border rounded-md border-grey gap-2 border-solid p-2 overflow-y-auto">
 									{renderCvs()}
 								</ul>
 							</>

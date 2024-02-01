@@ -1,6 +1,4 @@
-import TextArea from './TextArea'
 import TextInput from './TextInput'
-import { useState } from 'react'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
 const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {

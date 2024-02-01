@@ -48,8 +48,8 @@ const Socials = () => {
   }
   return (
     <>
-      <div>
-        <h1>Socials:</h1>
+      <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+        <h1 className='font-bold text-gray-400'>Socials:</h1>
         {!isToggled ? (
           <Hide
             handleClick={() => {
@@ -95,7 +95,7 @@ const Socials = () => {
                 />
               </div>
               <button
-                className=' w-20 py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+                className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
                 onClick={handleSaveClick}
               >
                 Save

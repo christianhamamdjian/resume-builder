@@ -10,15 +10,9 @@ const ProfileImage = ({ url, display, textColor }) => {
     <>
       {display && (
         <img
-          // style={{
-          //   width: '100px',
-          //   height: '100px',
-          //   border: '4px solid #ffffff',
-          //   borderRadius: '50%',
-          // }}
           style={{
-            width: '280px',
-            height: '200px',
+            width: '160px',
+            height: '160px',
             objectFit: "cover",
             border: `${ctx.currentCvBorderWidth !== "" ? ctx.currentCvBorderWidth : info.borderWidth}px solid #ffffff`,
             borderRadius: `${ctx.currentCvRoundCorners !== "" ? ctx.currentCvRoundCorners : info.roundCorners}%`,

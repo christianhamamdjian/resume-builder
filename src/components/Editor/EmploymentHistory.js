@@ -57,7 +57,8 @@ const EmploymentHistory = () => {
   }
 
   return (
-    <div>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>Employment History:</h2>
       {
         !isToggled ? (
           <Hide
@@ -100,7 +101,6 @@ const EmploymentHistory = () => {
               index={index}
             />
             <ActionMenu
-              style='px-5'
               handleSaveClick={() => {
                 ctx.updateInfo(employmentInfo && employmentInfo, currentCv)
                 ctx.setCurrentCvEmploymentInfo(null)

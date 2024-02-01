@@ -42,10 +42,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
 /*
 =============== 
@@ -135,8 +135,29 @@ Navbar
 }
 
 pre {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; */
+  font-family: inherit;
+  line-height: 1.2rem;
+  font-size: .9rem;
   white-space: pre-wrap;
+}
+
+p {
+  font-family: inherit;
+  line-height: 1.2rem;
+  font-size: .9rem;
+  white-space: pre-wrap;
+}
+
+pre li {
+  margin: 0;
+  padding: 0;
+}
+
+pre ul {
+  list-style-position: outside;
+  list-style: square;
+  padding-inline-start: 20px;
 }
 
 /* print section */
@@ -163,7 +184,7 @@ pre {
   }
 
   .section__left-back {
-    width: 34.5%;
+    width: 17rem;
     min-width: 12rem;
     position: fixed;
     height: 100vh;
@@ -171,7 +192,7 @@ pre {
   }
 
   .section__left-back1 {
-    width: 34.5%;
+    width: 17rem;
     min-width: 12rem;
     position: fixed;
     height: 100vh;
@@ -179,7 +200,7 @@ pre {
   }
 
   .section__left-back2 {
-    width: 34.5%;
+    width: 17rem;
     min-width: 12rem;
     position: fixed;
     height: 100vh;
@@ -187,7 +208,7 @@ pre {
   }
 
   .section__left-back3 {
-    width: 34.5%;
+    width: 17rem;
     min-width: 12rem;
     position: fixed;
     height: 100vh;

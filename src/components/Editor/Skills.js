@@ -71,8 +71,8 @@ const Skills = () => {
   }
 
   return (
-    <>
-      <h1>Skills:</h1>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>Skills:</h2>
       {!isToggled ? (
         <Hide
           handleClick={() => {
@@ -105,7 +105,7 @@ const Skills = () => {
                 }}
               />
               {skills && skills.items.map((item, index) => (
-                <div key={index} className='flex flex-row py-1'>
+                <div key={index} className='flex flex-row py-1 gap-2'>
                   <TextInput
                     defaultValue={item && item.text}
                     // value={item && item.text}
@@ -140,7 +140,7 @@ const Skills = () => {
           </>
         )
       }
-    </>
+    </div>
   )
 }
 

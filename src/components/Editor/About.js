@@ -54,8 +54,8 @@ const About = () => {
     ctx.setCurrentCvAbout(null)
   }
   return (
-    <div>
-      <h2 className='font-bold'>About:</h2>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>About:</h2>
       {/* <Suggestions /> */}
       {!isToggled ? (
         <Hide

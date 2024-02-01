@@ -97,8 +97,8 @@ const CvInfo = () => {
   }
 
   return (
-    <>
-      <h1>Cv info:</h1>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+      <h2 className='font-bold text-gray-400'>Cv info:</h2>
       {!isToggled ? (
         <Hide
           handleClick={() => {
@@ -177,14 +177,14 @@ const CvInfo = () => {
               />
             </div>
             <button
-              className='py-1 px-6 border-gray-300  bg-gray-200 text-gray-600 rounded-lg shadow hover:bg-gray-300'
+              className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
               onClick={handleSaveClick}
             >
               Save
             </button>
           </>)
       }
-    </>
+    </div>
   )
 }
 

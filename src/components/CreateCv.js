@@ -39,7 +39,7 @@ const CreateCv = () => {
 					<div>
 						<form
 							// className='cv-create-wrapper'
-							className="flex px-4 justify-between"
+							className="flex mt-4 px-4 justify-between"
 							// onSubmit={(e) => createNew(e, cvs[0])}
 							onSubmit={(e) => createNew(e, newCv)}
 						>
@@ -51,17 +51,16 @@ const CreateCv = () => {
 								autoComplete='off'
 								value={cvTitle}
 								onChange={(e) => setCvTitle(e.target.value)}
-								style={{ padding: ".4rem", border: "1px solid #dddddd", marginRight: 20, marginBottom: ".5rem", minWidth: "10rem", width: "16rem" }}
+								style={{ padding: ".4rem", border: "1px solid #dddddd", borderRadius: ".4rem", marginRight: 20, marginBottom: ".5rem", minWidth: "10rem", width: "16rem" }}
 							/>
 							<div className='cv-actions'>
-								<button className='btn cv-create-button' disabled={cvTitle === ""}>
+								{/* <button className='btn cv-create-button' disabled={cvTitle === ""}> */}
+								<button className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' disabled={cvTitle === ""}>
 									New CV
 								</button>
 							</div>
 						</form>
 						<br />
-						{/* <CvList /> */}
-						{/* <SingleCv /> */}
 					</div>
 				</>
 			}
