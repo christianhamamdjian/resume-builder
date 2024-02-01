@@ -28,7 +28,7 @@ const Socials = ({ template }) => {
 }
 const Wrapper = ({ heading, ...props }) => {
   return (
-    <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto' }}>
+    <div style={{ marginTop: '2rem', marginLeft: 'auto', marginRight: 'auto', pageBreakInside: "avoid" }}>
       {props.children}
     </div>
   )

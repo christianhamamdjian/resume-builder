@@ -41,11 +41,15 @@ const Upload = () => {
         <div>
             <form onSubmit={submitHandler}>
                 <label>
-                    <input type='file' onChange={handleChange} />
+                    <input
+                        className='bg-gray-200 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+                        type='file' onChange={handleChange} />
                     {/* <span>+</span> */}
                 </label>
 
-                <button type='submit' className='button' disabled={!imageDataUrl}>
+                <button type='submit'
+                    className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+                    disabled={!imageDataUrl}>
                     {' '}
                     Upload Image
                 </button>
