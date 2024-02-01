@@ -16,7 +16,6 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
 
   return (
     <div className='px-5 py-2'>
-
       <TextInput
         id={'position'}
         index={index}
@@ -27,50 +26,35 @@ const EmploymentItem = ({ data, index, handleChange, employmentInfo }) => {
         defaultValue={data.position}
         handleChange={handleChange}
       />
-
-      <div>
-        <TextInput
-          id={'date'}
-          placeholder='Date From - To'
-          style='pb-2'
-          name='date'
-          defaultValue={data.date}
-          handleChange={handleChange}
-        />
-        <MarkdownEditor
-          id={'description'}
-          parent={'employment'}
-          index={index}
-          //markdown={markdowns['about'] || ''}
-          markdown={data.description}
-          //onInputChange={handleInputChange}
-          onInputChange={handleChange}
-          onStyleClick={handleStyleClick}
-        />
-        <MarkdownEditor
-          id={'responsibilities'}
-          parent={'employment'}
-          index={index}
-          //markdown={markdowns['about'] || ''}
-          markdown={data.responsibilities}
-          //onInputChange={handleInputChange}
-          onInputChange={handleChange}
-          onStyleClick={handleStyleClick}
-        />
-        {/* <TextArea
-            placeholder='Position Description'
-            name='description'
-            defaultValue={data.description}
-            handleChange={(e) => handleChange(index, e)}
-          />
-          <TextArea
-            placeholder='Responsibilities'
-            name='responsibilities'
-            defaultValue={data.responsibilities}
-            handleChange={(e) => handleChange(index, e)}
-          /> */}
-      </div>
-
+      <TextInput
+        id={'date'}
+        index={index}
+        placeholder='Date From - To'
+        style='pb-2'
+        name='date'
+        defaultValue={data.date}
+        handleChange={handleChange}
+      />
+      <MarkdownEditor
+        id={'description'}
+        parent={'employment'}
+        index={index}
+        //markdown={markdowns['about'] || ''}
+        markdown={data.description}
+        //onInputChange={handleInputChange}
+        onInputChange={handleChange}
+        onStyleClick={handleStyleClick}
+      />
+      <MarkdownEditor
+        id={'responsibilities'}
+        parent={'employment'}
+        index={index}
+        //markdown={markdowns['about'] || ''}
+        markdown={data.responsibilities}
+        //onInputChange={handleInputChange}
+        onInputChange={handleChange}
+        onStyleClick={handleStyleClick}
+      />
     </div>
   )
 }
