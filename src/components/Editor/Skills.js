@@ -21,7 +21,6 @@ const Skills = () => {
   const moveLeftContentUp = ctx.moveLeftContentUp
   const moveLeftContentDown = ctx.moveLeftContentDown
   const index = leftContentOrder && leftContentOrder.indexOf("Skills")
-  console.log(ctx.currentCvSkills, skills)
   useEffect(() => {
     const newSkills = ctx.getComponentData('Skills')
     setSkills(newSkills)
