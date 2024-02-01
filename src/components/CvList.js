@@ -20,7 +20,7 @@ const CvList = () => {
 			key={i}
 			className="flex px-2 py-2 justify-between bg-white"
 		>
-			<button className="flex-none w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
+			<button className="flex-none font-bold text-gray-400 w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
 			<div className="flex px-4 justify-between ml-auto gap-2">
 				<button className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' data-id={cvId} onClick={(e) => ctx.duplicateCv(e, cv)}>
 					Duplicate

@@ -3,8 +3,10 @@ import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import Error from "./components/Error";
+import ServerError from "./components/ServerError";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
+import Loading from "./components/Loading";
 export const BuilderContext = React.createContext({})
 
 function App() {
@@ -31,7 +33,8 @@ function App() {
   const [currentCvFontFamily, setCurrentCvFontFamily] = useState("")
   const [currentCvRoundCorners, setCurrentCvRoundCorners] = useState("")
   const [currentCvBorderWidth, setCurrentCvBorderWidth] = useState("")
-
+  const [loading, setLoading] = useState(false)
+  const [serverError, setServerError] = useState(false)
 
   const initialRightContent = [
     "About",
@@ -61,6 +64,7 @@ function App() {
 
   useEffect(() => {
     if (userId) {
+      setLoading(true)
       api.readAll()
         .then((allCvs) => {
           setInfoState(allCvs)
@@ -68,6 +72,7 @@ function App() {
           setCvSelected(allCvs[0])
           setRightContentOrder(allCvs[0]['data']["items"][1]['rightOrder'])
           setLeftContentOrder(allCvs[0]['data']["items"][1]['leftOrder'])
+          setLoading(false)
         })
         .catch((e) => {
           console.log(`There was an error fetching cvs`, e)
@@ -83,9 +88,10 @@ function App() {
       return id !== cvId
     })
     setInfoState(filteredCvs)
-
+    setLoading(true)
     api.delete(cvId).then(() => {
       console.log(`deleted cv id ${cvId}`)
+      setLoading(false)
     }).catch((e) => {
       console.log(`There was an error removing ${cvId}`, e)
     })
@@ -200,9 +206,11 @@ function App() {
     setInfoSelected(updatedCv['data']["items"])
     setTemplate("")
     if (cvId) {
+      setLoading(true)
       api.update(cvId, updatedCv['data']).then((response) => {
         console.log(`updated cv id ${cvId}`, response)
         setTemplate("")
+        setLoading(false)
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })
@@ -217,11 +225,19 @@ function App() {
       }
       return item
     })
+    setLoading(true)
     api.create(newCopy).then((response) => {
       console.log("New Cv was created successfully!")
       setInfoState([...infoState, response])
       setCvSelected(response)
+      setLoading(false)
     })
+  }
+  if (loading) {
+    return <Loading />
+  }
+  if (serverError) {
+    return <ServerError />
   }
   return (
     <>

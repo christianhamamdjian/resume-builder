@@ -1,8 +1,8 @@
 export const cvs = [
     {
         type: "id",
-        authorId: "e5a9a62d-cb34-4ac0-95b7-9680a794aba9",
-        id: 1706761714022
+        authorId: "",
+        id: ""
     },
     {
         type: "info",
@@ -11,7 +11,7 @@ export const cvs = [
         font: "Helvetica",
         roundCorners: "",
         borderWidth: "",
-        backgroundColor: "\#000000",
+        backgroundColor: "#028FCD",
         rightOrder: [
             "About",
             "Employment History",
