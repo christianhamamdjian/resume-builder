@@ -11,7 +11,7 @@ export const cvs = [
         font: "Helvetica",
         roundCorners: "",
         borderWidth: "",
-        backgroundColor: "#000000",
+        backgroundColor: "#00A1FF",
         rightOrder: [
             "About",
             "Employment History",
@@ -36,7 +36,7 @@ export const cvs = [
         type: 'Profile',
         name: 'John Doe',
         profession: 'Junior Developer',
-        profileImageURL: 'https://i.imgur.com/f6L6Y57.png',
+        profileImageURL: 'https://res.cloudinary.com/dzgrmafak/image/upload/v1706766045/kacpc2xeeaofvzhvg9ur.png',
         display: true,
     },
     {

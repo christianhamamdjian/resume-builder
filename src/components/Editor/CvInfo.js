@@ -97,7 +97,7 @@ const CvInfo = () => {
   }
 
   return (
-    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
       <h2 className='font-bold text-gray-400'>Cv info:</h2>
       {!isToggled ? (
         <Hide
@@ -124,11 +124,19 @@ const CvInfo = () => {
             />
             <h2>Template:</h2>
             <TemplateGallery updateTemplate={updateTemplate} />
-            <div className='field mt-6 mb-6'>
-              <label htmlFor="background-color">Background color: </label>
-              <input type="color" id="background-color" value={ctx.backgroundColor !== "" ? ctx.backgroundColor : ctx.getComponentData('info')} onChange={e => handleBackgroundColor(e)} />
+            <div className='field mt-6 mb-6  flex gap-4'>
+              <label
+                htmlFor="background-color"
+                className="block text-sm font-medium mb-2 dark:text-white"
+              >Background color: </label>
+              <input
+                type="color"
+                id="background-color"
+                className="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700"
+                value={ctx.backgroundColor !== "" ? ctx.backgroundColor : ctx.getComponentData('info')} onChange={e => handleBackgroundColor(e)}
+              />
             </div>
-            <div className='field mt-6 mb-6'>
+            <div className='field mt-6 mb-6  flex gap-4'>
               <label htmlFor="fonts">Choose a font:</label>
               <select
                 name="fonts"
@@ -152,7 +160,7 @@ const CvInfo = () => {
                 style={{ fontFamily: `${ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}` }}
               > {ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}</span>
             </div>
-            <div className='field mt-6 mb-6'>
+            <div className='field mt-6 mb-6 flex gap-4'>
               <label>Image corners:</label>
               <input
                 type="range"
@@ -164,7 +172,7 @@ const CvInfo = () => {
                 onChange={(e) => handleImageChange(e)}
               />
             </div>
-            <div className='field mt-6 mb-6'>
+            <div className='field mt-6 mb-6  flex gap-4'>
               <label>Image border:</label>
               <input
                 type="range"

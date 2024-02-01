@@ -18,7 +18,7 @@ const CvList = () => {
 		const cvId = ref["@ref"]["id"]
 		return <li
 			key={i}
-			className="flex px-2 py-2 justify-between bg-blue-50"
+			className="flex px-2 py-2 justify-between bg-white"
 		>
 			<button className="flex-none w-34 h-8" onClick={(e) => ctx.handleSelectedCv(e, i)}>{title}</button>
 			<div className="flex px-4 justify-between ml-auto gap-2">
@@ -54,7 +54,7 @@ const CvList = () => {
 						{!isToggled && (
 							<>
 								<CreateCv />
-								<ul className="flex flex-col h-36 border rounded-md border-grey gap-2 border-solid p-2 overflow-y-auto">
+								<ul className="flex flex-col h-36 border rounded-md border-grey bg-blue-50 gap-2 border-solid p-2 overflow-y-auto">
 									{renderCvs()}
 								</ul>
 							</>

@@ -29,7 +29,7 @@ const Projects = ({ projects, title }) => {
           <Divider />
           {currentCvProjects !== null ? currentCvProjects.items.map((project, index) => (
             <div key={index}>
-              <p style={{ fontSize: '13', marginVertical: '4' }}>
+              <p className="mt-6" style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
               </p>
               {/* <pre
@@ -41,7 +41,7 @@ const Projects = ({ projects, title }) => {
             </div>
           )) : projects.items.map((project, index) => (
             <div key={index}>
-              <p style={{ fontSize: '13', marginVertical: '4' }}>
+              <p className="mt-6" style={{ fontSize: '13', marginVertical: '4' }}>
                 {project.name}
               </p>
               {/* <pre
