@@ -4,6 +4,7 @@ import TextInput from './TextInput'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MoveUpDownLeft from './MoveUpDownLeft'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const Socials = () => {
@@ -45,6 +46,9 @@ const Socials = () => {
   const handleSaveClick = () => {
     ctx.updateInfo(socials && socials)
     ctx.setCurrentCvSocials(null)
+  }
+  if (ctx.loadingSocials) {
+    return <Loading />
   }
   return (
     <>

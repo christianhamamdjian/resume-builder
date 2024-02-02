@@ -5,6 +5,7 @@ import TextInput from './TextInput'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MoveUpDownLeft from './MoveUpDownLeft'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const Certifications = () => {
@@ -65,7 +66,9 @@ const Certifications = () => {
     ctx.updateInfo(certification && certification, currentCv)
     ctx.setCurrentCvCertifications(null)
   }
-
+  if (ctx.loadingCertifications) {
+    return <Loading />
+  }
   return (
     <>
       <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>

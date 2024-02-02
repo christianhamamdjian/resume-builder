@@ -34,6 +34,19 @@ function App() {
   const [currentCvRoundCorners, setCurrentCvRoundCorners] = useState("")
   const [currentCvBorderWidth, setCurrentCvBorderWidth] = useState("")
   const [loading, setLoading] = useState(false)
+  const [loadingAbout, setLoadingAbout] = useState(false)
+  const [loadingEmployment, setLoadingEmployment] = useState(false)
+  const [loadingProjects, setLoadingProjects] = useState(false)
+  const [loadingKeySkills, setLoadingKeySkills] = useState(false)
+  const [loadingCvInfo, setLoadingCvInfo] = useState(false)
+  const [loadingProfile, setLoadinProfile] = useState(false)
+  const [loadingSkills, setLoadingSkills] = useState(false)
+  const [loadingContact, setLoadingKeyContact] = useState(false)
+  const [loadingCertifications, setLoadingCertifications] = useState(false)
+  const [loadingLanguages, setLoadingLanguages] = useState(false)
+  const [loadingSocials, setLoadingSocials] = useState(false)
+  const [loadingEducation, setLoadingEducation] = useState(false)
+  const [loadingCvList, setLoadingCvList] = useState(false)
   const [serverError, setServerError] = useState(false)
 
   const initialRightContent = [
@@ -88,10 +101,10 @@ function App() {
       return id !== cvId
     })
     setInfoState(filteredCvs)
-    setLoading(true)
+    setLoadingCvList(true)
     api.delete(cvId).then(() => {
       console.log(`deleted cv id ${cvId}`)
-      setLoading(false)
+      setLoadingCvList(false)
     }).catch((e) => {
       console.log(`There was an error removing ${cvId}`, e)
     })
@@ -206,11 +219,36 @@ function App() {
     setInfoSelected(updatedCv['data']["items"])
     setTemplate("")
     if (cvId) {
-      setLoading(true)
+      console.log(item.type)
+      item.type === "About" && setLoadingAbout(true)
+      item.type === "Employment" && setLoadingEmployment(true)
+      item.type === "Projects" && setLoadingProjects(true)
+      item.type === "KeySkills" && setLoadingKeySkills(true)
+      item.type === "info" && setLoadingCvInfo(true)
+      item.type === "Profile" && setLoadinProfile(true)
+      item.type === "Education" && setLoadingEducation(true)
+      item.type === "Skills" && setLoadingSkills(true)
+      item.type === "Contact" && setLoadingKeyContact(true)
+      item.type === "Certifications" && setLoadingCertifications(true)
+      item.type === "Languages" && setLoadingLanguages(true)
+      item.type === "Socials" && setLoadingSocials(true)
+      // setLoading(true)
       api.update(cvId, updatedCv['data']).then((response) => {
         console.log(`updated cv id ${cvId}`, response)
         setTemplate("")
-        setLoading(false)
+        item.type === "About" && setLoadingAbout(false)
+        item.type === "Employment" && setLoadingEmployment(false)
+        item.type === "Projects" && setLoadingProjects(false)
+        item.type === "KeySkills" && setLoadingKeySkills(false)
+        item.type === "info" && setLoadingCvInfo(false)
+        item.type === "Profile" && setLoadinProfile(false)
+        item.type === "Education" && setLoadingEducation(false)
+        item.type === "Skills" && setLoadingSkills(false)
+        item.type === "Contact" && setLoadingKeyContact(false)
+        item.type === "Certifications" && setLoadingCertifications(false)
+        item.type === "Languages" && setLoadingLanguages(false)
+        item.type === "Socials" && setLoadingSocials(false)
+        // setLoading(false)
       }).catch((e) => {
         console.log(`There was an error updating ${cvId}`, e)
       })
@@ -225,12 +263,12 @@ function App() {
       }
       return item
     })
-    setLoading(true)
+    setLoadingCvList(true)
     api.create(newCopy).then((response) => {
       console.log("New Cv was created successfully!")
       setInfoState([...infoState, response])
       setCvSelected(response)
-      setLoading(false)
+      setLoadingCvList(false)
     })
   }
   if (loading) {
@@ -302,7 +340,21 @@ function App() {
                 setCurrentCvRoundCorners,
                 currentCvBorderWidth,
                 setCurrentCvBorderWidth,
-                duplicateCv
+                duplicateCv,
+                loadingAbout,
+                loadingEmployment,
+                loadingProjects,
+                loadingKeySkills,
+                loadingCvInfo,
+                loadingProfile,
+                loadingEducation,
+                loadingSkills,
+                loadingContact,
+                loadingCertifications,
+                loadingLanguages,
+                loadingSocials,
+                loadingCvList,
+                setLoadingCvList
               }}
             ><Dashboard />
             </BuilderContext.Provider>

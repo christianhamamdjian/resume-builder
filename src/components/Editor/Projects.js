@@ -7,6 +7,7 @@ import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import MoveUpDownRight from './MoveUpDownRight'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const Projects = () => {
@@ -78,6 +79,10 @@ const Projects = () => {
   const handleSaveClick = () => {
     ctx.updateInfo(projects && projects)
     ctx.setCurrentCvProjects(null)
+  }
+
+  if (ctx.loadingProjects) {
+    return <Loading />
   }
 
   return (

@@ -14,11 +14,13 @@ const CreateCv = () => {
 
 	const createNew = (e, cvInfo) => {
 		e.preventDefault()
+		ctx.setLoadingCvList(true)
 		api.create(cvInfo).then((response) => {
 			console.log("New Cv was created successfully!")
 			setInfoState([...allCvs, response])
 			setCvSelected(response)
 			setCvTitle("")
+			ctx.setLoadingCvList(false)
 		})
 	}
 

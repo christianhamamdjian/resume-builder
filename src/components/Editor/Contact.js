@@ -4,6 +4,7 @@ import ActionMenu from './ActionMenu'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MoveUpDownLeft from './MoveUpDownLeft'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const Contact = () => {
@@ -60,6 +61,9 @@ const Contact = () => {
   const handleSaveClick = () => {
     ctx.updateInfo(contact && contact, currentCv)
     ctx.setCurrentCvContact(null)
+  }
+  if (ctx.loadingContact) {
+    return <Loading />
   }
   return (
     <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>

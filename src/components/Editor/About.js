@@ -5,6 +5,7 @@ import Show from './Icons/Show'
 //import Suggestions from './Suggestions'
 import TextInput from './TextInput'
 import MoveUpDownRight from './MoveUpDownRight'
+import Loading from "../Loading";
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 
 import { BuilderContext } from '../../App'
@@ -52,6 +53,9 @@ const About = () => {
   const handleSaveClick = () => {
     ctx.updateInfo(about && about, currentCv)
     ctx.setCurrentCvAbout(null)
+  }
+  if (ctx.loadingAbout) {
+    return <Loading />
   }
   return (
     <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>

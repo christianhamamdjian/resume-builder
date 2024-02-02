@@ -9,7 +9,7 @@ const Navbar = () => {
 		<>
 			<nav className="bg-white border-gray-200">
 				<div className="flex flex-wrap justify-around items-center mx-auto max-w-screen-2xl p-4">
-					<h1 class="text-2xl font-bold italic text-gray-400">Resume Builder</h1>
+					<h1 className="text-2xl font-bold italic text-gray-400">Resume Builder</h1>
 					{user && <p className="ml-auto" >Welcome back <b>{user?.email}</b> !</p>}
 					<div className="login">
 						<div>

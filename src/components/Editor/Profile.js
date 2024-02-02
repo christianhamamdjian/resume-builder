@@ -5,6 +5,7 @@ import ToggleButton from './ToggleButton'
 import Upload from '../Upload'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const Profile = () => {
@@ -32,6 +33,9 @@ const Profile = () => {
   const handleSaveClick = () => {
     ctx.updateInfo(profile && profile)
     ctx.setCurrentCvProfile(null)
+  }
+  if (ctx.loadingProfile) {
+    return <Loading />
   }
   return (
     <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>

@@ -5,6 +5,7 @@ import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import TextInput from './TextInput'
 import MoveUpDownLeft from './MoveUpDownLeft'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const Education = () => {
@@ -65,7 +66,9 @@ const Education = () => {
     ctx.updateInfo(education && education, currentCv)
     ctx.setCurrentCvEducation(null)
   }
-
+  if (ctx.loadingEducation) {
+    return <Loading />
+  }
   return (
     <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
       <h2 className='font-bold text-gray-400'>Education:</h2>

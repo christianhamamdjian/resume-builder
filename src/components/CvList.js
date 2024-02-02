@@ -4,6 +4,7 @@ import CreateCv from './CreateCv'
 import Hide from '../components/Editor/Icons/Hide'
 import Show from '../components/Editor/Icons/Show'
 import AuthContext from "../context/authContext";
+import Loading from "../components/Loading";
 import { BuilderContext } from './../App'
 
 const CvList = () => {
@@ -31,7 +32,9 @@ const CvList = () => {
 			</div>
 		</li>
 	})
-
+	if (ctx.loadingCvList) {
+		return <Loading />
+	}
 	return (
 		<>
 			{user && (

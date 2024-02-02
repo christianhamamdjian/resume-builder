@@ -4,6 +4,7 @@ import ActionMenu from './ActionMenu'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MoveUpDownLeft from './MoveUpDownLeft'
+import Loading from "../Loading";
 import { BuilderContext } from '../../App'
 
 const Languages = () => {
@@ -61,7 +62,9 @@ const Languages = () => {
     ctx.updateInfo(languages && languages, currentCv)
     ctx.setCurrentCvLanguages(null)
   }
-
+  if (ctx.loadingLanguages) {
+    return <Loading />
+  }
   return (
     <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
       <h2 className='font-bold text-gray-400'>Languages:</h2>

@@ -5,6 +5,7 @@ import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import TextInput from './TextInput'
 import MoveUpDownRight from './MoveUpDownRight'
+import Loading from "../Loading";
 import { BuilderContext } from './../../App'
 
 const KeySkills = () => {
@@ -49,6 +50,9 @@ const KeySkills = () => {
   const handleSaveClick = () => {
     ctx.updateInfo(skills && skills)
     ctx.setCurrentCvKeySkills(null)
+  }
+  if (ctx.loadingKeySkills) {
+    return <Loading />
   }
   return (
     <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
