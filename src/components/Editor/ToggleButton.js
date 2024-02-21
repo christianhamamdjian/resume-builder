@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
 const ToggleButton = ({ name, handleChange, defaultValue, style }) => {
   const ctx = useContext(BuilderContext)

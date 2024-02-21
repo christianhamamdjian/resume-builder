@@ -6,7 +6,7 @@ import Show from './Icons/Show'
 import TextInput from './TextInput'
 import MoveUpDownRight from './MoveUpDownRight'
 import Loading from "../Loading";
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
 const KeySkills = () => {
   const ctx = useContext(BuilderContext)

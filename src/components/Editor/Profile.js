@@ -6,7 +6,7 @@ import Upload from '../Upload'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import Loading from "../Loading";
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
 const Profile = () => {
   const ctx = useContext(BuilderContext)

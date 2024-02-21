@@ -3,7 +3,7 @@ import ResumeEditLeft from './Editor/ResumeEditLeft'
 import ResumeEditRight from './Editor/ResumeEditRight'
 import PreviewScreen from './Preview/ResumeTemplate'
 import CvList from './CvList'
-import { BuilderContext } from './../App'
+import { BuilderContext } from '../App'
 
 const Dashboard = () => {
 

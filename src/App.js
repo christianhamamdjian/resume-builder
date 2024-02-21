@@ -143,7 +143,19 @@ function App() {
     setCurrentCvContact(null)
     setCurrentCvLanguages(null)
     setCurrentCvCertifications(null)
-    infoState.filter((cv, i) => {
+    // infoState.filter((cv, i) => {
+    //   if (+i === +id) {
+    //     setInfoSelected(cv['data']["items"])
+    //     setTemplate(cv['data']["items"][1]["template"])
+    //     setBackgroundColor(cv['data']["items"][1]["backgroundColor"])
+    //     setRightContentOrder(cv['data']["items"][1]['rightOrder'])
+    //     setLeftContentOrder(cv['data']["items"][1]['leftOrder'])
+    //     setCvSelected(cv)
+    //   } else {
+    //     return null
+    //   }
+    // })
+    infoState.forEach((cv, i) => {
       if (+i === +id) {
         setInfoSelected(cv['data']["items"])
         setTemplate(cv['data']["items"][1]["template"])
@@ -151,8 +163,6 @@ function App() {
         setRightContentOrder(cv['data']["items"][1]['rightOrder'])
         setLeftContentOrder(cv['data']["items"][1]['leftOrder'])
         setCvSelected(cv)
-      } else {
-        return null
       }
     })
   }

@@ -6,7 +6,7 @@ import Hide from './Icons/Hide'
 import Show from './Icons/Show'
 import MoveUpDownLeft from './MoveUpDownLeft'
 import Loading from "../Loading";
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
 const Certifications = () => {
   const ctx = useContext(BuilderContext)

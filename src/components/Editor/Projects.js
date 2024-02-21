@@ -8,7 +8,7 @@ import Show from './Icons/Show'
 import MarkdownEditor from '../markdown-editor/MarkdownEditor'
 import MoveUpDownRight from './MoveUpDownRight'
 import Loading from "../Loading";
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
 const Projects = () => {
   const ctx = useContext(BuilderContext)

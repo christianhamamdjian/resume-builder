@@ -5,7 +5,7 @@ import Hide from '../components/Editor/Icons/Hide'
 import Show from '../components/Editor/Icons/Show'
 import AuthContext from "../context/authContext";
 import Loading from "../components/Loading";
-import { BuilderContext } from './../App'
+import { BuilderContext } from '../App'
 
 const CvList = () => {
 	const ctx = useContext(BuilderContext)

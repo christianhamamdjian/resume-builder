@@ -6,7 +6,7 @@ import Show from './Icons/Show'
 import TextInput from './TextInput'
 import MoveUpDownLeft from './MoveUpDownLeft'
 import Loading from "../Loading";
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 
 const Education = () => {
   const ctx = useContext(BuilderContext)

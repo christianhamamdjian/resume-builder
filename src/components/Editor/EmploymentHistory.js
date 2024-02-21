@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { BuilderContext } from './../../App'
+import { BuilderContext } from '../../App'
 import EmploymentItem from './EmploymentItem'
 import Hide from './Icons/Hide'
 import Show from './Icons/Show'
