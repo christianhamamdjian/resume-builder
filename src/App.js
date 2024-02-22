@@ -88,6 +88,7 @@ function App() {
         })
         .catch((e) => {
           console.log(`There was an error fetching cvs`, e)
+          setLoading(false)
         })
     }
   }, [userId]);
