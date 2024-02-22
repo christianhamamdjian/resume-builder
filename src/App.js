@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import api from './utils/api'
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
-import Error from "./components/Error";
 import ServerError from "./components/ServerError";
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthContext from "./context/authContext";
@@ -143,18 +142,6 @@ function App() {
     setCurrentCvContact(null)
     setCurrentCvLanguages(null)
     setCurrentCvCertifications(null)
-    // infoState.filter((cv, i) => {
-    //   if (+i === +id) {
-    //     setInfoSelected(cv['data']["items"])
-    //     setTemplate(cv['data']["items"][1]["template"])
-    //     setBackgroundColor(cv['data']["items"][1]["backgroundColor"])
-    //     setRightContentOrder(cv['data']["items"][1]['rightOrder'])
-    //     setLeftContentOrder(cv['data']["items"][1]['leftOrder'])
-    //     setCvSelected(cv)
-    //   } else {
-    //     return null
-    //   }
-    // })
     infoState.forEach((cv, i) => {
       if (+i === +id) {
         setInfoSelected(cv['data']["items"])
@@ -369,7 +356,7 @@ function App() {
             ><Dashboard />
             </BuilderContext.Provider>
           } />}
-          <Route path="*" element={<Error />} />
+          <Route path="*" element={<ServerError />} />
         </Routes>
       </BrowserRouter >
     </>)
