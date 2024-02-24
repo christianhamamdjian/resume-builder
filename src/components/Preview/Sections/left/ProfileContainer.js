@@ -38,15 +38,15 @@ export const ProfileContainer = ({ name, profession, url, display, textColor }) 
       }}
     >
       <ProfileImage url={url} display={display} />
-      <div
+      {/* <div
         style={{
           justifyContent: 'center',
         }}
       >
         <p style={{ ...styles[`name_text${template}`], color: textColor }}>{name}</p>
       </div>
-      <p style={{ ...styles[`profession_text${template}`], color: textColor }}>{profession}</p>
-      <div
+      <p style={{ ...styles[`profession_text${template}`], color: textColor }}>{profession}</p> */}
+      {/* <div
         style={{
           marginTop: '10px',
           width: '10%',
@@ -55,7 +55,7 @@ export const ProfileContainer = ({ name, profession, url, display, textColor }) 
           backgroundColor: textColor,
           textAlign: 'center',
         }}
-      />
+      /> */}
     </div>
   )
 }
