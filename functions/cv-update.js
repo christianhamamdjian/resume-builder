@@ -11,7 +11,8 @@ exports.handler = (event, context) => {
   const id = getId(event.path)
   //console.log(id, data)
   console.log(`Function 'cv-update' invoked. update id: ${id}`)
-  return client.query(q.Update(q.Ref(`classes/cvs/${id}`), { data }))
+  // return client.query(q.Update(q.Ref(`classes/cvs/${id}`), { data }))
+  return client.query(q.Update(q.Ref(context.clientContext.user.app_metadata.roles[0] === 'Admin' ? `classes/admincvs/${id}` : `classes/cvs/${id}`), { data }))
     .then((response) => {
       console.log('success', response)
       return {

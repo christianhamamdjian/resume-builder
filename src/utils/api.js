@@ -26,7 +26,11 @@ const readAll = () => {
 }
 
 const update = (cvId, data) => {
+  let token = netlifyIdentity.currentUser().token.access_token
   return fetch(`/.netlify/functions/cv-update/${cvId}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    },
     body: JSON.stringify(data),
     method: 'POST'
   }).then(response => {
@@ -35,19 +39,12 @@ const update = (cvId, data) => {
 }
 
 const deleteCv = (cvId) => {
+  let token = netlifyIdentity.currentUser().token.access_token
   return fetch(`/.netlify/functions/cv-delete/${cvId}`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    },
     method: 'POST',
-  }).then(response => {
-    return response.json()
-  })
-}
-
-const batchDeleteCv = (cvIds) => {
-  return fetch(`/.netlify/functions/cv-delete-batch`, {
-    body: JSON.stringify({
-      ids: cvIds
-    }),
-    method: 'POST'
   }).then(response => {
     return response.json()
   })
@@ -58,5 +55,4 @@ export default {
   readAll: readAll,
   update: update,
   delete: deleteCv,
-  batchDelete: batchDeleteCv
 }

@@ -10,7 +10,8 @@ exports.handler = async (event, context) => {
   })
   const id = getId(event.path)
   console.log(`Function 'cv-delete' invoked. delete id: ${id}`)
-  return client.query(q.Delete(q.Ref(`classes/cvs/${id}`)))
+  // return client.query(q.Delete(q.Ref(`classes/cvs/${id}`)))
+  return client.query(q.Delete(q.Ref(context.clientContext.user.app_metadata.roles[0] === 'Admin' ? `classes/admincvs/${id}` : `classes/cvs/${id}`)))
     .then((response) => {
       console.log('success', response)
       return {

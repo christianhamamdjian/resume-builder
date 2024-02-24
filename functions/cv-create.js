@@ -7,8 +7,8 @@ exports.handler = async (event, context) => {
     const client = new faunadb.Client({ secret: process.env.FAUNADB_SERVER_SECRET });
     const data = JSON.parse(event.body);
     const result = await client.query(
-      // Create(Collection(context.clientContext.user.app_metadata.roles[0] === 'Admin' ? 'admincvs' : 'cvs'), {
-      Create(Collection('cvs'), {
+      Create(Collection(context.clientContext.user.app_metadata.roles[0] === 'Admin' ? 'admincvs' : 'cvs'), {
+        // Create(Collection('cvs'), {
         data: {
           items: data,
         },
