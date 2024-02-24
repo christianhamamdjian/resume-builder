@@ -19,11 +19,11 @@ const MarkdownButtons = ({ id, parent, onStyleClick, index }) => {
         <div style={{ marginTop: '10px', padding: '5px' }}>
             <button style={buttonStyle} onClick={() => handleStyle('**')}><strong>B</strong></button>
             <button style={buttonStyle} onClick={() => handleStyle('_')}><em>I</em></button>
-            <button style={buttonStyle} onClick={() => handleStyle('`')}><code>C</code></button>
-            <button style={buttonStyle} onClick={() => handleStyle('~~')}><del>D</del></button>
-            <button style={buttonStyle} onClick={() => handleStyle('- ')}><ul>:=</ul></button>
-            <button style={buttonStyle} onClick={() => handleStyle('1. ')}><ol>1.-</ol></button>
             <button style={buttonStyle} onClick={() => handleStyle('=')}><ins>U</ins></button>
+            <button style={buttonStyle} onClick={() => handleStyle('- ')}><ul>:=</ul></button>
+            {/* <button style={buttonStyle} onClick={() => handleStyle('~~')}><del>D</del></button> */}
+            {/* <button style={buttonStyle} onClick={() => handleStyle('`')}><code>C</code></button> */}
+            {/* <button style={buttonStyle} onClick={() => handleStyle('1. ')}><ol>1.-</ol></button> */}
         </div>
     );
 };
