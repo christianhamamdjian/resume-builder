@@ -58,7 +58,7 @@ const About = () => {
     return <Loading />
   }
   return (
-    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'}`}>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4 ' : 'border p-4 hover:bg-blue-50 cursor-pointer'} rounded-2xl`}>
       <h2 className='font-bold text-gray-400'>About:</h2>
       {/* <Suggestions /> */}
       {!isToggled ? (

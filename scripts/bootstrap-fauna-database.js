@@ -40,15 +40,8 @@ function createFaunaDB(key) {
             name: 'all_cvs',
             source: q.Ref('classes/cvs')
           }
-          // {
-          //   name: 'cvs_by_author',
-          //   source: q.Ref("classes/cvs"),
-          //   terms: [{ field: ["data", "cvs", 0, "author"] }],
-          //   values: [{ field: [] }]
-          // }
         ))
     }).catch((e) => {
-      // Database already exists
       if (e.requestResult.statusCode === 400 && e.message === 'instance not unique') {
         console.log('Fauna already setup! Good to go')
         console.log('Claim your fauna database with "netlify addons:auth fauna"')

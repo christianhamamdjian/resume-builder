@@ -18,7 +18,7 @@ const ResumeEdit = () => {
 
   return (
     <>
-      <div className='flex flex-col bg-white' >
+      <div className='flex flex-col bg-white gap-2 px-2' >
         {/* <div className='flex flex-col w-1/2'> */}
         {/* <div className={`border-t-gray-400 bg-${ctx.currentCvInfo ? 'blue-50' : "white"}`}>
           <CvInfo />

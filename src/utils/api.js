@@ -2,8 +2,11 @@
 import netlifyIdentity from "netlify-identity-widget";
 
 const create = (data) => {
-  //console.log(data)
+  let token = netlifyIdentity.currentUser().token.access_token
   return fetch('/.netlify/functions/cv-create', {
+    headers: {
+      authorization: `Bearer ${token}`
+    },
     body: JSON.stringify(data),
     method: 'POST'
   }).then(response => {
