@@ -32,9 +32,6 @@ const Skills = () => {
     setSkills(newSkills)
   }, [currentCv])
 
-  const handleEnable = (isEnabled) => {
-    setSkills({ ...skills, display: isEnabled })
-  }
   const handleChange = (e, i, title) => {
     if (title && title === "title") {
       setSkills({ ...skills, title: e.target.value })
@@ -103,7 +100,8 @@ const Skills = () => {
                 defaultValue={skills && skills.display}
                 // value={skills && skills.display}
                 handleChange={(name, prop, isEnabled) => {
-                  handleEnable(isEnabled)
+                  setSkills({ ...skills, display: isEnabled })
+                  ctx.setCurrentCvSkills({ ...skills, display: isEnabled })
                 }}
               />
               {skills && skills.items.map((item, index) => (

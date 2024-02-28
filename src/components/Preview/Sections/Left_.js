@@ -8,21 +8,42 @@ import '../../../index.css'
 
 const Socials = ({ template }) => {
   const ctx = useContext(BuilderContext)
+  const currentCvSocials = ctx.currentCvSocials
 
   return (
     <div style={{ ...styles[`socials__container${template}`] }}>
-      {ctx.getSocials().items.map((item, index) => {
-        if (item.enabled)
-          return (
-            <SVGItem
-              key={index}
-              textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`}
-              viewBox={item.viewBox}
-              path={item.path}
-              url={item.url}
-            />
-          )
-      })}
+      {currentCvSocials &&
+        currentCvSocials.items.map((item, index) => {
+          if (item.enabled) {
+            return (
+              <SVGItem
+                key={index}
+                textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`}
+                viewBox={item.viewBox}
+                path={item.path}
+                url={item.url}
+              />
+            )
+          }
+        }
+        )
+      }
+      {!currentCvSocials &&
+        ctx.getSocials().items.map((item, index) => {
+          if (item.enabled) {
+            return (
+              <SVGItem
+                key={index}
+                textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`}
+                viewBox={item.viewBox}
+                path={item.path}
+                url={item.url}
+              />
+            )
+          }
+        }
+        )
+      }
     </div>
   )
 }
@@ -113,8 +134,11 @@ export const Left = () => {
               </Wrapper>)
           }
           if (item === "Skills") {
-            return (skills && skills.display && (
-              <Wrapper key={index}>
+            if (currentCvSkills !== null && !currentCvSkills.display) {
+              return null
+            }
+            if (currentCvSkills !== null && currentCvSkills.display) {
+              return (<Wrapper key={index}>
                 <h3
                   style={{
                     color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
@@ -123,17 +147,34 @@ export const Left = () => {
                     paddingBottom: '10',
                   }}
                 >
-                  {currentCvSkills !== null ? currentCvSkills['title'] : skills.header}
+                  {currentCvSkills['title']}
                 </h3>
 
-                {currentCvSkills !== null ? currentCvSkills.items.map((item, index) => (
+                {currentCvSkills.items.map((item, index) => (
                   <SkillItem key={index} name={item.text} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} fillSkill={item.level} />
-                ))
-                  : skills && skills.items.map((item, index) => (
-                    <SkillItem key={index} name={item.text} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} fillSkill={item.level} />
-                  ))}
-              </Wrapper>
-            ))
+                ))}
+              </Wrapper>)
+            }
+            if (currentCvSkills === null && skills && !skills.display) {
+              return null
+            }
+            if (currentCvSkills === null && skills && skills.display) {
+              return (<Wrapper key={index}>
+                <h3
+                  style={{
+                    color: `${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`,
+                    fontSize: '15',
+                    fontWeight: "bold",
+                    paddingBottom: '10',
+                  }}
+                >
+                  {skills['title']}
+                </h3>
+                {skills.items.map((item, index) => (
+                  <SkillItem key={index} name={item.text} textColor={`${ctx.backgroundColor !== "#ffffff" ? "#ffffff" : "#000000"}`} fillSkill={item.level} />
+                ))}
+              </Wrapper>)
+            }
           }
           if (item === "Certifications") {
             return (certifications.display && (

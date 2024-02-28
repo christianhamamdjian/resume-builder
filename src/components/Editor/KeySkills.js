@@ -90,7 +90,9 @@ const KeySkills = () => {
           <ToggleButton
             defaultValue={skills && skills.display}
             handleChange={(name, prop, isEnabled) => {
-              ctx.updateInfo({ ...skills, display: isEnabled })
+              setSkills({ ...skills, display: isEnabled })
+              ctx.setCurrentCvKeySkills({ ...skills, display: isEnabled })
+              // ctx.updateInfo({ ...skills, display: isEnabled })
             }}
           />
           <MoveUpDownRight

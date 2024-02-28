@@ -143,6 +143,8 @@ const Projects = () => {
           <ToggleButton
             defaultValue={projects && projects.display}
             handleChange={(name, prop, isEnabled) => {
+              setProjects({ ...projects, display: isEnabled })
+              ctx.setCurrentCvProjects({ ...projects, display: isEnabled })
               ctx.updateInfo({ ...projects, display: isEnabled })
             }}
           />
