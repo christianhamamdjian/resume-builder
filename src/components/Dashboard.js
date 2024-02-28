@@ -13,16 +13,16 @@ const Dashboard = () => {
     return (
         <>
             <div className="flex justify-evenly flex-wrap">
-                <div className="flex flex-col bg-white sm:w-full md:w-full lg:w-1/4 bg-white'">
+                <div className="flex flex-col bg-white w-full sm:w-full md:w-full lg:w-1/4 bg-white'">
                     <div>
                         <CvList />
                     </div>
                     {ctx.infoState && ctx.infoState.length > 0 && id && <ResumeEditLeft />}
                 </div>
-                <div className="flex flex-col bg-white sm:w-full md:w-full lg:w-1/2 bg-white'">
+                <div className="flex flex-col bg-white w-full sm:w-full md:w-full lg:w-1/2 bg-white'">
                     {ctx.infoState && ctx.infoState.length > 0 && id && <PreviewScreen />}
                 </div>
-                <div className="flex flex-col bg-white sm:w-full md:w-full lg:w-1/4 bg-white'">
+                <div className="flex flex-col bg-white w-full sm:w-full md:w-full lg:w-1/4 bg-white'">
                     {ctx.infoState && ctx.infoState.length > 0 && id && <ResumeEditRight />}
                 </div>
             </div>
