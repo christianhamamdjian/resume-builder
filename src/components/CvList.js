@@ -39,7 +39,7 @@ const CvList = () => {
 		<>
 			{user && (
 				<>
-					<div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'flex flex-col justify-between border p-4 ' : 'border p-4 bg-white hover:bg-blue-50 cursor-pointer'}`}>
+					<div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'flex flex-col justify-between border p-4 ' : 'border p-4 bg-violet-50 hover:bg-blue-50 cursor-pointer'}`}>
 						<h2 className='font-bold text-gray-400'>Your documents: </h2>
 						{!isToggled ? (
 							<Hide
