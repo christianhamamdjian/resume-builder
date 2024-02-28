@@ -13,7 +13,20 @@ const KeySkills = ({ skills, title }) => {
 
   return (
     <div style={{ pageBreakInside: "avoid" }}>
-      {skills.display && (
+      {currentCvKeySkills !== null && currentCvKeySkills.display && <div style={{ paddingTop: '10px' }}>
+        <h3
+          style={{
+            color: '#000',
+            fontSize: '1rem',
+            fontWeight: "bold",
+          }}
+        >
+          {currentCvKeySkills['title']}
+        </h3>
+        <Divider />
+        <MarkdownPreview markdown={currentCvKeySkills.text} />
+      </div>}
+      {currentCvKeySkills === null && skills.display && (
         <div style={{ paddingTop: '10px' }}>
           <h3
             style={{
@@ -22,13 +35,10 @@ const KeySkills = ({ skills, title }) => {
               fontWeight: "bold",
             }}
           >
-            {/* {skills.header} */}
-            {currentCvKeySkills !== null ? currentCvKeySkills['title'] : title}
+            {title}
           </h3>
           <Divider />
-          <MarkdownPreview markdown={currentCvKeySkills !== null ? currentCvKeySkills.text : skills.text} />
-          {/* <pre style={{ fontSize: '11', marginTop: '4' }}>{skills.text}</pre> */}
-          {/* <pre style={{ ...styles[`main__text${template}`], fontSize: '11', marginTop: '4' }}>{currentCvKeySkills !== null ? currentCvKeySkills.text : skills.text}</pre> */}
+          <MarkdownPreview markdown={skills.text} />
         </div>
       )}
     </div>

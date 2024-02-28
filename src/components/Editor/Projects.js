@@ -103,7 +103,7 @@ const Projects = () => {
       )}
       {!isToggled && (
         <>
-          <div div className='flex flex-col gap-2 py-2'>
+          <div className='flex flex-col gap-2 py-2'>
             <TextInput
               key={index}
               placeholder='Custom field'
@@ -145,7 +145,7 @@ const Projects = () => {
             handleChange={(name, prop, isEnabled) => {
               setProjects({ ...projects, display: isEnabled })
               ctx.setCurrentCvProjects({ ...projects, display: isEnabled })
-              ctx.updateInfo({ ...projects, display: isEnabled })
+              // ctx.updateInfo({ ...projects, display: isEnabled })
             }}
           />
 

@@ -19,11 +19,14 @@ const MarkdownPreview = ({ markdown }) => {
         __html: DOMPurify.sanitize(convertMarkdownToHtml(markdown || ""))
     })
     return (
-        <div style={{ marginTop: '20px' }}>
-            <pre
-                dangerouslySetInnerHTML={sanitizedData()}
-            />
-        </div>
+        <>
+            {
+                markdown !== "" && <div style={{ marginTop: '20px' }}>
+                    <pre
+                        dangerouslySetInnerHTML={sanitizedData()}
+                    />
+                </div>
+            }</>
     );
 };
 

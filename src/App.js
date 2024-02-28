@@ -217,7 +217,6 @@ function App() {
     setInfoSelected(updatedCv['data']["items"])
     setTemplate("")
     if (cvId) {
-      console.log(item.type)
       item.type === "About" && setLoadingAbout(true)
       item.type === "Employment" && setLoadingEmployment(true)
       item.type === "Projects" && setLoadingProjects(true)
@@ -232,7 +231,7 @@ function App() {
       item.type === "Socials" && setLoadingSocials(true)
       // setLoading(true)
       api.update(cvId, updatedCv['data']).then((response) => {
-        console.log(`updated cv id ${cvId}`, response)
+        // console.log(`updated cv id ${cvId}`, response)
         setTemplate("")
         item.type === "About" && setLoadingAbout(false)
         item.type === "Employment" && setLoadingEmployment(false)

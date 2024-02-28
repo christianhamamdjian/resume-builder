@@ -95,7 +95,7 @@ const Profile = () => {
                 defaultValue={profile && profile.display}
                 handleChange={(name, prop, isEnabled) => {
                   setProfile(prevProfile => ({ ...prevProfile, display: isEnabled }))
-                  // ctx.updateInfo({ ...profile, display: isEnabled })
+                  ctx.updateInfo({ ...profile, display: isEnabled })
                   ctx.setCurrentCvProfile({ ...profile, display: isEnabled })
                 }}
               />

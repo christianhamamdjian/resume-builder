@@ -51,7 +51,6 @@ const EmploymentHistory = () => {
       const newEmploymentInfo = {
         ...employmentInfo, items: [...employmentInfo.items.slice(0, i), modifiedItem, ...employmentInfo.items.slice(i + 1)]
       }
-      console.log(e)
       setEmploymentInfo(newEmploymentInfo)
       ctx.setCurrentCvEmploymentInfo(newEmploymentInfo)
     }

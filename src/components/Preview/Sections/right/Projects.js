@@ -14,7 +14,8 @@ const Projects = ({ projects, title }) => {
 
   return (
     <div style={{ pageBreakInside: "avoid" }}>
-      {projects.display && (
+
+      {currentCvProjects !== null && currentCvProjects.display &&
         <div style={{ paddingTop: '20px' }}>
           <h3
             style={{
@@ -23,32 +24,37 @@ const Projects = ({ projects, title }) => {
               fontWeight: "bold",
             }}
           >
-            {/* {projects.header} */}
-            {currentCvProjects !== null ? currentCvProjects['title'] : title}
+            {currentCvProjects['title']}
           </h3>
           <Divider />
-          {currentCvProjects !== null ? currentCvProjects.items.map((project, index) => (
+          {currentCvProjects.items.map((project, index) => (
             <div key={index}>
               <p className="mt-6" style={{ fontSize: '13', marginVertical: '4' }}>
-                {project.name}
+                <em>{project.name}</em>
               </p>
-              {/* <pre
-                style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
-              >
-                {project.description}
-              </pre> */}
               <MarkdownPreview markdown={project.description} />
             </div>
-          )) : projects.items.map((project, index) => (
+          ))
+          }
+        </div>
+      }
+      {currentCvProjects === null && projects.display && (
+        <div style={{ paddingTop: '20px' }}>
+          <h3
+            style={{
+              color: '#000',
+              fontSize: '1rem',
+              fontWeight: "bold",
+            }}
+          >
+            {title}
+          </h3>
+          <Divider />
+          {projects.items.map((project, index) => (
             <div key={index}>
               <p className="mt-6" style={{ fontSize: '13', marginVertical: '4' }}>
-                {project.name}
+                <em>{project.name}</em>
               </p>
-              {/* <pre
-                style={{ fontSize: '11', marginTop: '4', marginLeft: '15px' }}
-              >
-                {project.description}
-              </pre> */}
               <MarkdownPreview markdown={project.description} />
             </div>
           ))}
