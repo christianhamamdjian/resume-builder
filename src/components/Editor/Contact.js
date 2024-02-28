@@ -103,16 +103,24 @@ const Contact = () => {
                 ))}
               </div>
             </div>
-            <MoveUpDownLeft
-              moveLeftContentUp={moveLeftContentUp}
-              moveLeftContentDown={moveLeftContentDown}
-              index={index}
-            />
-            <ActionMenu
-              handleSaveClick={handleSaveClick}
-              handleAddClick={handleAddClick}
-              handleRemoveClick={handleRemoveClick}
-            />
+            <div className='flex gap-6 justify-evenly'>
+              <MoveUpDownLeft
+                moveLeftContentUp={moveLeftContentUp}
+                moveLeftContentDown={moveLeftContentDown}
+                index={index}
+              />
+              <ActionMenu
+                // handleSaveClick={handleSaveClick}
+                handleAddClick={handleAddClick}
+                handleRemoveClick={handleRemoveClick}
+              />
+            </div>
+            <button
+              className={`${ctx.currentCvContact ? 'bg-green-400' : "bg-gray-400"} mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded`}
+              onClick={handleSaveClick}
+            >
+              Save
+            </button>
           </>
         )
       }

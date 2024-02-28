@@ -99,7 +99,8 @@ const Socials = () => {
                 />
               </div>
               <button
-                className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+                // className='bg-gray-400 mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+                className={`${ctx.currentCvSocials ? 'bg-green-400' : "bg-gray-400"} mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded`}
                 onClick={handleSaveClick}
               >
                 Save

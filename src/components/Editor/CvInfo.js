@@ -100,7 +100,7 @@ const CvInfo = () => {
     return <Loading />
   }
   return (
-    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4' : 'border p-4 hover:bg-blue-50 cursor-pointer rounded-2xl mt-2'}`}>
+    <div onClick={() => isToggled && setIsToggled(!isToggled)} className={`${!isToggled ? 'bg-blue-50  border p-4' : 'border p-4 hover:bg-blue-50 cursor-pointer'} rounded-2xl`}>
       <h2 className='font-bold text-gray-400'>Cv info:</h2>
       {!isToggled ? (
         <Hide
@@ -139,7 +139,7 @@ const CvInfo = () => {
                 value={ctx.backgroundColor !== "" ? ctx.backgroundColor : ctx.getComponentData('info')} onChange={e => handleBackgroundColor(e)}
               />
             </div>
-            <div className='field mt-6 mb-6  flex gap-4'>
+            <div className='field mt-6 mb-3  flex gap-4'>
               <label htmlFor="fonts">Choose a font:</label>
               <select
                 name="fonts"
@@ -158,11 +158,13 @@ const CvInfo = () => {
                   </option>
                 ))}
               </select>
-              <span
-                className='box-form-top-span'
-                style={{ fontFamily: `${ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}` }}
-              > {ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}</span>
             </div>
+            {/* <div className='box-form-top-span'
+              style={{ fontFamily: `${ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font}`, fontSize: "1.6rem" }}
+            >
+              Sample text. */}
+            {/* {ctx.currentCvFontFamily !== "" ? ctx.currentCvFontFamily : cvInfo && cvInfo.font} */}
+            {/* </div> */}
             <div className='field mt-6 mb-6 flex gap-4'>
               <label>Image corners:</label>
               <input
@@ -188,7 +190,8 @@ const CvInfo = () => {
               />
             </div>
             <button
-              className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+              // className='bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+              className={`${ctx.currentCvInfo ? 'bg-green-400' : "bg-gray-400"} hover:bg-gray-700 text-white font-bold py-2 px-4 rounded`}
               onClick={handleSaveClick}
             >
               Save

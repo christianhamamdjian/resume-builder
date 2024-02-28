@@ -97,31 +97,43 @@ const EmploymentHistory = () => {
                 />
               ))}
             </div>
-            <MoveUpDownRight
-              moveRightContentUp={moveRightContentUp}
-              moveRightContentDown={moveRightContentDown}
-              index={index}
-            />
-            <ActionMenu
-              handleSaveClick={() => {
+            <div className='flex gap-6 justify-evenly'>
+              <MoveUpDownRight
+                moveRightContentUp={moveRightContentUp}
+                moveRightContentDown={moveRightContentDown}
+                index={index}
+              />
+              <ActionMenu
+                // handleSaveClick={() => {
+                //   ctx.updateInfo(employmentInfo && employmentInfo, currentCv)
+                //   ctx.setCurrentCvEmploymentInfo(null)
+                // }}
+                handleAddClick={() =>
+                  setEmploymentInfo({
+                    ...employmentInfo,
+                    items: [...employmentInfo.items, newItem],
+                  })
+                }
+                handleRemoveClick={() =>
+                  setEmploymentInfo({
+                    ...employmentInfo,
+                    items: employmentInfo.items.filter(
+                      (item, index) => index < employmentInfo.items.length - 1
+                    ),
+                  })
+                }
+              />
+            </div>
+            <button
+              className={`${ctx.currentCvEmploymentInfo ? 'bg-green-400' : "bg-gray-400"} mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded`}
+              // onClick={handleSaveClick}
+              onClick={() => {
                 ctx.updateInfo(employmentInfo && employmentInfo, currentCv)
                 ctx.setCurrentCvEmploymentInfo(null)
               }}
-              handleAddClick={() =>
-                setEmploymentInfo({
-                  ...employmentInfo,
-                  items: [...employmentInfo.items, newItem],
-                })
-              }
-              handleRemoveClick={() =>
-                setEmploymentInfo({
-                  ...employmentInfo,
-                  items: employmentInfo.items.filter(
-                    (item, index) => index < employmentInfo.items.length - 1
-                  ),
-                })
-              }
-            />
+            >
+              Save
+            </button>
           </>
         )
       }

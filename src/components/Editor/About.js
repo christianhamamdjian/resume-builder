@@ -98,10 +98,16 @@ const About = () => {
             moveRightContentDown={moveRightContentDown}
             index={index}
           />
-          <ActionMenu
+          {/* <ActionMenu
             handleSaveClick={handleSaveClick}
             onlySave={true}
-          />
+          /> */}
+          <button
+            className={`${ctx.currentCvAbout ? 'bg-green-400' : "bg-gray-400"} mt-6 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded`}
+            onClick={handleSaveClick}
+          >
+            Save
+          </button>
         </>
       )
       }
