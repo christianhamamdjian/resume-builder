@@ -1,21 +1,26 @@
 # Resume Builder
 
-## Editor & Viewer
+## Create, Manage, Editor & Download
 
-- Built with react
-- Utilizes Styles, Images, SVGs
-- Highly customizable template
-- Clean Design
-- Editor styled with TailwindCSS
+### See the changes you make apply instantly to the preview. When satisfied with result you can save the modified section.
 
-## Available Scripts
+- Built with React
+- Back-end uses serverless Netlify functions
+- Authentication using Netlify Identity
+- Login using multiple options
+- Persists data to FaunaDB
+- Photos upload to Cloudinary
+- Document manager
+- Multiple templates
+- Draft section
+- Users only access their own documnents
+- Some sections content can be extended
+- Activate and deactivate the sections
+- Reorder the sections
+- Download Pdf
+- Uses TailwindCSS
 
-In the project directory, you can run:
-
-### `npm start`
+### `npm run dev`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Open [http://localhost:9999](http://localhost:9999) to view it in your browser.
