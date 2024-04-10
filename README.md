@@ -1,6 +1,8 @@
 # Resume Builder
 
-## Create, Manage, Editor & Download
+## Create, Manage, Edit & Download your documents
+
+[Online Demo](https://resume-builder-preview.netlify.app/)
 
 ### See the changes you make apply instantly to the preview. When satisfied with result you can save the modified section.
 
@@ -19,6 +21,10 @@
 - Reorder the sections
 - Download Pdf
 - Uses TailwindCSS
+
+### Get the necessary environment variables
+
+### `npm install`
 
 ### `npm run dev`
 
