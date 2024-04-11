@@ -4,6 +4,8 @@
 
 [Online Demo](https://resume-builder-preview.netlify.app/)
 
+![alt text](src/images/screenshot.png)
+
 ### See the changes you make apply instantly to the preview. When satisfied with result you can save the modified section.
 
 - Built with React
